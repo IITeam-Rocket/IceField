@@ -1,0 +1,17 @@
+package models;
+
+
+/**
+ * An interface representing the strategy of
+ * a Tile concerning a storm's effect on its
+ * inhabitants.
+ */
+public interface FrostBitePolicy {
+    /**
+     * Executes the strategy.
+     *
+     * @param victim the character being exposed
+     *               to the storm
+     */
+    void executeStrategy(Character victim);
+}

@@ -11,8 +11,8 @@ import java.util.ArrayList;
 public class Environment {
 
     static private Environment instance = new Environment();
-    ArrayList<Tile> tiles;
-    ArrayList<Character> characters;
+    ArrayList<Tile> iceTiles;
+    ArrayList<Character> players;
     Character currentPlayer;
     private boolean beaconIsDiscovered = false;
     private boolean cartridgeIsDiscovered = false;

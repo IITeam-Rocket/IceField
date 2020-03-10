@@ -8,7 +8,6 @@ public class DiveSuit extends Item {
     /**
      * Changes the finder's FallInWaterPolicy to
      * an instance of HasDiveSuitPolicy.
-     *
      * @param finder the character who discovered the item
      */
     @Override

@@ -1,5 +1,6 @@
 package models.characters;
 
+import models.tiles.IcePatch;
 import models.tiles.Tile;
 
 /**
@@ -15,6 +16,6 @@ public class Eskimo extends Character {
      */
     @Override
     public void useSpecial(Tile target) {
-
+        // Tile-t nem lehet úgy castolni hogy legyen changeFrostBitePolicy() fv
     }
 }

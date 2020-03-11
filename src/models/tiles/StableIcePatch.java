@@ -1,4 +1,6 @@
-package models;
+package models.tiles;
+
+import models.characters.Character;
 
 /**
  * An IcePatch that is stable, meaning

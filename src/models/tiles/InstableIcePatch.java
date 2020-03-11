@@ -1,4 +1,7 @@
-package models;
+package models.tiles;
+
+import models.characters.Character;
+import models.tiles.IcePatch;
 
 /**
  * An unstable IcePatch that may hold

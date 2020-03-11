@@ -1,5 +1,7 @@
-package models;
+package models.policies;
 
+
+import models.characters.Character;
 
 /**
  * A strategy of the player to help their friend

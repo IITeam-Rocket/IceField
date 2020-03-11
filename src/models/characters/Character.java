@@ -1,4 +1,8 @@
-package models;
+package models.characters;
+
+import models.policies.FallInWaterPolicy;
+import models.policies.RescueFriendPolicy;
+import models.tiles.Tile;
 
 /**
  * Represents a player character of the game.

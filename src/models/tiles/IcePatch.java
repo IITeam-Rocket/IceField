@@ -1,4 +1,8 @@
-package models;
+package models.tiles;
+
+import models.policies.FrostBitePolicy;
+import models.characters.Character;
+import models.items.Item;
 
 /**
  * A Tile frozen with ice on which characters

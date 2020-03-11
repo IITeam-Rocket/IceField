@@ -1,4 +1,7 @@
-package models;
+package models.policies;
+
+import models.characters.Character;
+import models.policies.FallInWaterPolicy;
 
 /**
  * A class representing the player's strategy of

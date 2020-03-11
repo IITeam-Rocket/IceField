@@ -1,4 +1,6 @@
-package models;
+package models.items;
+
+import models.characters.Character;
 
 /**
  * A cartridge that is a part of the SignalFlare

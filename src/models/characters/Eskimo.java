@@ -1,4 +1,6 @@
-package models;
+package models.characters;
+
+import models.tiles.Tile;
 
 /**
  * A character with the ability to build Igloos

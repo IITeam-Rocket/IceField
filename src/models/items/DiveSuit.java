@@ -1,4 +1,6 @@
-package models;
+package models.items;
+
+import models.characters.Character;
 
 /**
  * An item that changes the finder's

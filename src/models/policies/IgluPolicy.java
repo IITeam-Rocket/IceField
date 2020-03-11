@@ -1,4 +1,7 @@
-package models;
+package models.policies;
+
+import models.characters.Character;
+import models.policies.FrostBitePolicy;
 
 /**
  * The strategy of a Tile to protect

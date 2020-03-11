@@ -1,4 +1,7 @@
-package models;
+package models.tiles;
+
+import models.characters.Character;
+import models.items.Item;
 
 import java.util.ArrayList;
 

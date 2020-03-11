@@ -1,4 +1,6 @@
-package models;
+package models.items;
+
+import models.characters.Character;
 
 /**
  * A class representing a hidden item in the IcePatch.

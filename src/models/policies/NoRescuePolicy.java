@@ -1,5 +1,7 @@
-package models;
+package models.policies;
 
+
+import models.characters.Character;
 
 /**
  * A class representing the strategy of the player

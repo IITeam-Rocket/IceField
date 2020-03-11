@@ -1,7 +1,9 @@
 package models.characters;
 
+import models.Environment;
 import models.policies.FallInWaterPolicy;
 import models.policies.RescueFriendPolicy;
+import models.tiles.IcePatch;
 import models.tiles.Tile;
 
 /**
@@ -20,7 +22,7 @@ public abstract class Character {
      * the player stands on.
      */
     public void clearPatch() {
-
+        this.tile.removeSnow(strength);
     }
 
     /**
@@ -36,16 +38,20 @@ public abstract class Character {
      * Retrieves the item hidden in the current Tile.
      */
     public void retrieveItem() {
-
+        //probléma, hogy a tile-nak nincsen unBuryItem-je
     }
 
     /**
      * Increases bodyHeat.
      *
      * @param quantity the amount of heat
+     *
+     * @throws IllegalArgumentException
      */
     public void addHeat(int quantity) {
-
+        if(quantity < 0)
+            throw new IllegalArgumentException("Invalid quantity");
+        this.bodyHeat += quantity;
     }
 
     /**
@@ -53,9 +59,17 @@ public abstract class Character {
      * falls to zero.
      *
      * @param quantity the amount of heat
+     *
+     * @throws IllegalArgumentException
      */
     public void removeHeat(int quantity) {
+        if(quantity < 0)
+            throw new IllegalArgumentException("Invalid quantity");
+        this.bodyHeat -= quantity;
 
+        if(this.bodyHeat < 0){
+            Environment.getInstance().gameOver();
+        }
     }
 
     /**
@@ -69,9 +83,14 @@ public abstract class Character {
 
     /**
      * Executes the FallInWaterStrategy to avoid death.
+     *
+     * @throws NullPointerException
      */
     public void swimToShore() {
-
+        if(swimToShoreStrategy == null){
+            throw new NullPointerException("helpFriendStrategy not initialized");
+        }
+        swimToShoreStrategy.executeStrategy(this);
     }
 
     /**
@@ -79,9 +98,14 @@ public abstract class Character {
      * has fallen in water, and can't get out.
      *
      * @param friend the victim to rescue
+     *
+     * @throws NullPointerException
      */
     public void rescueFriend(Character friend) {
-
+        if(helpFriendStrategy == null){
+            throw new NullPointerException("helpFriendStrategy not initialized");
+        }
+        helpFriendStrategy.executeStrategy(friend);
     }
 
     /**
@@ -99,7 +123,7 @@ public abstract class Character {
      * @param strategy the new strategy
      */
     public void changeRescuePolicy(RescueFriendPolicy strategy) {
-
+        this.helpFriendStrategy = strategy;
     }
 
     /**
@@ -109,7 +133,7 @@ public abstract class Character {
      * @param strategy the new strategy
      */
     public void changeWaterPolicy(FallInWaterPolicy strategy) {
-
+        this.swimToShoreStrategy = strategy;
     }
 
 }

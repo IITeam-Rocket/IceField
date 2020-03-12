@@ -1,8 +1,7 @@
 package models.characters;
 
 import models.Environment;
-import models.policies.FallInWaterPolicy;
-import models.policies.RescueFriendPolicy;
+import models.policies.*;
 import models.tiles.IcePatch;
 import models.tiles.Tile;
 
@@ -16,6 +15,14 @@ public abstract class Character {
     protected RescueFriendPolicy helpFriendStrategy;
     protected FallInWaterPolicy swimToShoreStrategy;
     Tile tile;
+
+    public Character(int bodyHeat, int stamina){
+        this.bodyHeat = bodyHeat;
+        this.stamina = stamina;
+        this.strength = 1;
+        this.helpFriendStrategy = new NoRescuePolicy();
+        this.swimToShoreStrategy = new HasNoDiveSuitPolicy();
+    }
 
     /**
      * Removes some snow from the Tile
@@ -31,7 +38,10 @@ public abstract class Character {
      * @param destination the destination to move to
      */
     public void moveTo(Tile destination) {
+        destination.acceptCharacter(this);
+        this.tile.removeCharacter(this);
 
+        this.tile = destination;
     }
 
     /**
@@ -39,6 +49,7 @@ public abstract class Character {
      */
     public void retrieveItem() {
         //probléma, hogy a tile-nak nincsen unBuryItem-je
+        ((IcePatch) this.tile).unBuryItem(this);
     }
 
     /**

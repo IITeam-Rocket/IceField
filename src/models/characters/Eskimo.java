@@ -1,5 +1,6 @@
 package models.characters;
 
+import models.policies.IgluPolicy;
 import models.tiles.IcePatch;
 import models.tiles.Tile;
 
@@ -7,6 +8,10 @@ import models.tiles.Tile;
  * A character with the ability to build Igloos
  */
 public class Eskimo extends Character {
+
+    public Eskimo(int stamina) {
+        super(5, stamina);
+    }
 
     /**
      * Builds an Igloo on the target Tile,
@@ -16,6 +21,7 @@ public class Eskimo extends Character {
      */
     @Override
     public void useSpecial(Tile target) {
-        // Tile-t nem lehet úgy castolni hogy legyen changeFrostBitePolicy() fv
+        if(target.getCapacity() != 0)
+            ((IcePatch) target).changeFrostBitePolicy(new IgluPolicy());
     }
 }

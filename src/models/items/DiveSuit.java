@@ -1,6 +1,7 @@
 package models.items;
 
 import models.characters.Character;
+import models.policies.HasDiveSuitPolicy;
 
 /**
  * An item that changes the finder's
@@ -14,6 +15,6 @@ public class DiveSuit extends Item {
      */
     @Override
     public void uponDiscovery(Character finder) {
-
+        finder.changeWaterPolicy(new HasDiveSuitPolicy());
     }
 }

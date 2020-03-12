@@ -24,6 +24,15 @@ public abstract class Character {
         this.swimToShoreStrategy = new HasNoDiveSuitPolicy();
     }
 
+    public void setStrength(int s){
+        if(s < 0)
+            throw new IllegalArgumentException("You must stay positive!");
+        if(s > 2)
+            throw new IllegalArgumentException("Woah Cowboy, chill out!");
+
+        this.strength = s;
+    }
+
     /**
      * Removes some snow from the Tile
      * the player stands on.

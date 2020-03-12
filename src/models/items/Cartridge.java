@@ -1,5 +1,6 @@
 package models.items;
 
+import models.Environment;
 import models.characters.Character;
 
 /**
@@ -14,6 +15,6 @@ public class Cartridge extends Item {
      */
     @Override
     public void uponDiscovery(Character finder) {
-
+        Environment.getInstance().recordCartridge();
     }
 }

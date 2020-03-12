@@ -15,6 +15,6 @@ public class Shovel extends Item {
      */
     @Override
     public void uponDiscovery(Character finder) {
-
+        finder.setStrength(2);
     }
 }

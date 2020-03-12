@@ -2,6 +2,7 @@ package models.items;
 
 import models.characters.Character;
 import models.items.Item;
+import models.policies.HasRopePolicy;
 
 /**
  * An Item that changes the finding player's
@@ -16,6 +17,6 @@ public class Rope extends Item {
      */
     @Override
     public void uponDiscovery(Character finder) {
-
+        finder.changeRescuePolicy(new HasRopePolicy());
     }
 }

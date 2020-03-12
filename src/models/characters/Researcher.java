@@ -1,5 +1,6 @@
 package models.characters;
 
+import models.tiles.IcePatch;
 import models.tiles.Tile;
 
 /**
@@ -8,6 +9,10 @@ import models.tiles.Tile;
  * players.
  */
 public class Researcher extends Character {
+    public Researcher(int stamina) {
+        super(4, stamina);
+    }
+
     /**
      * Analyzes the target tile, and finds its
      * capacity.
@@ -17,6 +22,6 @@ public class Researcher extends Character {
      */
     @Override
     public void useSpecial(Tile target) {
-
+        target.getCapacity();
     }
 }

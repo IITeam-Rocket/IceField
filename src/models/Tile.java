@@ -64,4 +64,33 @@ abstract public class Tile {
      */
     abstract public int getCapacity();
 
+    /**
+     * Returns the number of layers of snow on the
+     * Tile.
+     *
+     * @return the layers of snow on the Tile
+     */
+    public int getSnowDepth() {
+        return snowDepth;
+    }
+
+    /**
+     * Returns a list of Characters currently standing
+     * on the Tile.
+     *
+     * @return a list of Characters standing on the Tile
+     */
+    public ArrayList<Character> getCharacters() {
+        return characters;
+    }
+
+    /**
+     * Returns a list of Tiles consisting of the Tile's
+     * neighbouring Tiles.
+     *
+     * @return a list of neighbouring Tiles
+     */
+    public ArrayList<Tile> getNeighbours() {
+        return neighbours;
+    }
 }

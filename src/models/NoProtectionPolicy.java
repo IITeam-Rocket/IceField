@@ -15,6 +15,6 @@ public class NoProtectionPolicy implements FrostBitePolicy {
      */
     @Override
     public void executeStrategy(Character victim) {
-
+        victim.removeHeat(1);
     }
 }

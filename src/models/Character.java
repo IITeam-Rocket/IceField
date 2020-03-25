@@ -9,14 +9,14 @@ public abstract class Character {
     protected int strength;
     protected RescueFriendPolicy helpFriendStrategy;
     protected FallInWaterPolicy swimToShoreStrategy;
-    Tile tile;
+    protected Tile tile;
 
     /**
      * Removes some snow from the Tile
      * the player stands on.
      */
     public void clearPatch() {
-
+        tile.removeSnow(strength);
     }
 
     /**
@@ -25,14 +25,14 @@ public abstract class Character {
      * @param destination the destination to move to
      */
     public void moveTo(Tile destination) {
-
+        //TODO
     }
 
     /**
      * Retrieves the item hidden in the current Tile.
      */
     public void retrieveItem() {
-
+        //TODO
     }
 
     /**
@@ -41,7 +41,7 @@ public abstract class Character {
      * @param quantity the amount of heat
      */
     public void addHeat(int quantity) {
-
+        bodyHeat += quantity;
     }
 
     /**
@@ -51,7 +51,9 @@ public abstract class Character {
      * @param quantity the amount of heat
      */
     public void removeHeat(int quantity) {
-
+        bodyHeat -= quantity;
+        if (bodyHeat <= 0)
+            Environment.getInstance().gameOver();
     }
 
     /**
@@ -60,14 +62,14 @@ public abstract class Character {
      * the game, otherwise nothing happens.
      */
     public void craftSignalFlare() {
-
+        Environment.getInstance().winGame();
     }
 
     /**
      * Executes the FallInWaterStrategy to avoid death.
      */
     public void swimToShore() {
-
+        swimToShoreStrategy.executeStrategy(this);
     }
 
     /**
@@ -77,7 +79,7 @@ public abstract class Character {
      * @param friend the victim to rescue
      */
     public void rescueFriend(Character friend) {
-
+        helpFriendStrategy.executeStrategy(friend);
     }
 
     /**
@@ -95,7 +97,7 @@ public abstract class Character {
      * @param strategy the new strategy
      */
     public void changeRescuePolicy(RescueFriendPolicy strategy) {
-
+        helpFriendStrategy = strategy;
     }
 
     /**
@@ -105,7 +107,63 @@ public abstract class Character {
      * @param strategy the new strategy
      */
     public void changeWaterPolicy(FallInWaterPolicy strategy) {
-
+        swimToShoreStrategy = strategy;
     }
 
+    /**
+     * Returns the body-heat of the character.
+     *
+     * @return the bodyHeat of the character
+     */
+    public int getBodyHeat() {
+        return bodyHeat;
+    }
+
+    /**
+     * Returns the stamina of the character.
+     *
+     * @return the number of actions the character
+     * can execute
+     */
+    public int getStamina() {
+        return stamina;
+    }
+
+    /**
+     * Returns the strength of the character.
+     *
+     * @return the amount of snow the character
+     * can clear
+     */
+    public int getStrength() {
+        return strength;
+    }
+
+    /**
+     * Returns the character's strategy in the event of
+     * rescuing a friend.
+     *
+     * @return the character's strategy of helping a friend
+     */
+    public RescueFriendPolicy getHelpFriendStrategy() {
+        return helpFriendStrategy;
+    }
+
+    /**
+     * Returns the character's strategy of getting out of water.
+     *
+     * @return the character's strategy of getting out of water
+     */
+    public FallInWaterPolicy getSwimToShoreStrategy() {
+        return swimToShoreStrategy;
+    }
+
+    /**
+     * Returns the Tile the character is currently standing on.
+     *
+     * @return the Tile the character is on
+     */
+    public Tile getTile() {
+        return tile;
+    }
 }

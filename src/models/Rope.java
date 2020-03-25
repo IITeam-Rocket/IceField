@@ -13,6 +13,6 @@ public class Rope extends Item {
      */
     @Override
     public void uponDiscovery(Character finder) {
-
+        finder.changeRescuePolicy(new HasRopePolicy());
     }
 }

@@ -15,6 +15,5 @@ public class Researcher extends Character {
      */
     @Override
     public void useSpecial(Tile target) {
-
     }
 }

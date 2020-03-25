@@ -12,6 +12,6 @@ public class DiveSuit extends Item {
      */
     @Override
     public void uponDiscovery(Character finder) {
-
+        finder.changeWaterPolicy(new HasDiveSuitPolicy());
     }
 }

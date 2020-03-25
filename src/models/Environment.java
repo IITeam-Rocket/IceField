@@ -11,9 +11,9 @@ import java.util.ArrayList;
 public class Environment {
 
     static private Environment instance = new Environment();
-    ArrayList<Tile> iceTiles;
-    ArrayList<Character> players;
-    Character currentPlayer;
+    private ArrayList<Tile> iceTiles;
+    private ArrayList<Character> players;
+    private Character currentPlayer;
     private boolean beaconIsDiscovered = false;
     private boolean cartridgeIsDiscovered = false;
     private boolean gunIsDiscovered = false;
@@ -85,4 +85,63 @@ public class Environment {
     public void playGame() {
     }
 
+    /**
+     * Returns with a list of all the Tiles present in the game
+     *
+     * @return the list of Tiles in the game
+     */
+    public ArrayList<Tile> getIceTiles() {
+        return iceTiles;
+    }
+
+    /**
+     * Return a list of Characters in the game
+     *
+     * @return the list of players
+     */
+    public ArrayList<Character> getPlayers() {
+        return players;
+    }
+
+    /**
+     * Returns the current player
+     *
+     * @return the current player
+     */
+    public Character getCurrentPlayer() {
+        return currentPlayer;
+    }
+
+    /**
+     * Returns the whether the Beacon has been discovered
+     * in the current game.
+     *
+     * @return true if the Beacon has been found
+     * false otherwise.
+     */
+    public boolean isBeaconIsDiscovered() {
+        return beaconIsDiscovered;
+    }
+
+    /**
+     * Returns the whether the Cartridge has been discovered
+     * in the current game.
+     *
+     * @return true if the Cartridge has been found
+     * false otherwise.
+     */
+    public boolean isCartridgeIsDiscovered() {
+        return cartridgeIsDiscovered;
+    }
+
+    /**
+     * Returns the whether the Gun has been discovered
+     * in the current game.
+     *
+     * @return true if the Gun has been found
+     * false otherwise.
+     */
+    public boolean isGunIsDiscovered() {
+        return gunIsDiscovered;
+    }
 }

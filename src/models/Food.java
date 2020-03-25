@@ -11,6 +11,6 @@ public class Food extends Item {
      */
     @Override
     public void uponDiscovery(Character finder) {
-
+        finder.addHeat(1);
     }
 }

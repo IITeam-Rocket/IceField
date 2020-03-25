@@ -39,4 +39,14 @@ public class InstableIcePatch extends IcePatch {
      */
     public void flip() {
     }
+
+    /**
+     * Returns whether the Patch is unfit for
+     * standing on it
+     *
+     * @return false, if the Patch can
+     */
+    public boolean isFlipped() {
+        return flipped;
+    }
 }

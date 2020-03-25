@@ -13,6 +13,7 @@ public class Eskimo extends Character {
      */
     @Override
     public void useSpecial(Tile target) {
-
+        if (target == tile)
+            ((IcePatch) tile).changeFrostBitePolicy(new IgluPolicy());
     }
 }

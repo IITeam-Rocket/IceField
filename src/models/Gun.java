@@ -12,6 +12,6 @@ public class Gun extends Item {
      */
     @Override
     public void uponDiscovery(Character finder) {
-
+        Environment.getInstance().recordGun();
     }
 }

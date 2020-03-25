@@ -12,6 +12,6 @@ public class Cartridge extends Item {
      */
     @Override
     public void uponDiscovery(Character finder) {
-
+        Environment.getInstance().recordCartridge();
     }
 }

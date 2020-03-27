@@ -1,6 +1,9 @@
 <project>
   <modelVersion>4.0.0</modelVersion>
- 
+  <groupId>com.github.IITeam-Rocket</groupId>
+  <artifactId>IceField</artifactId>
+  <version>1.0.0</version>	
+  
   <repositories>
     <repository>
       <id>com.github.IITeam-Rocket</id>
@@ -69,6 +72,15 @@
       </plugins>
     </pluginManagement>
   </build>
+ 
+ <dependencies>
+	<dependency>
+		<groupId>junit</groupId>
+		<artifactId>junit</artifactId>
+		<version>5.6.1</version>
+		<scope>test</scope>
+	</dependency>
+ </dependencies>
  
   <reporting>
     <outputDirectory>${project.build.directory}/site</outputDirectory>

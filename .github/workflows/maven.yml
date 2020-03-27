@@ -15,10 +15,17 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up JDK 14
-      uses: actions/setup-java@v1
-      with:
-        java-version: 14
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
+      - uses: actions/checkout@v2
+      - name: Set up JDK 14
+        uses: action/setup-java@v1
+        with:
+          java-version: 14
+          architecture: x64
+      - name: Run with Maven
+        run: mvn -B package --file pom.xml | mkdir staging && cp target/*.jar staging
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v1
+        with:
+          name: Package
+          path: staging
+      

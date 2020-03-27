@@ -69,6 +69,7 @@ public class Skeleton {
             catch(InputMismatchException exception)
             {
                 System.out.println("Please enter a number! (1-" + answers.length + ")");
+                in.next();
             }
         }
 
@@ -105,11 +106,11 @@ public class Skeleton {
         return false;
     }
 
-    private int getNumber(String question)
+    private int getNumber(String question, int max)
     {
         boolean answered = false;
 
-        System.out.println(question + " (Number 0>=)");
+        System.out.println(question + " (0-" + max + ")");
 
         int input = -1;
 
@@ -121,14 +122,15 @@ public class Skeleton {
             {
                 input = in.nextInt();
 
-                if(input >= 0)
+                if(input >= 0 && input <= max)
                     answered = true;
                 else
-                    System.out.println("Please enter a number (>=0)!");
+                    System.out.println("Please enter a number (0-" + max + ")!");
             }
             catch(InputMismatchException exception)
             {
-                System.out.println("Please enter a number (>=0)!");
+                System.out.println("Please enter a number (0-" + max + ")!");
+                in.next();
             }
         }
 
@@ -155,7 +157,43 @@ public class Skeleton {
 
     private void menuCraftSignalFlare()
     {
-        boolean answer = getYesNo("Does a character have a rope?");
+        boolean answerBeacon = getYesNo("Does any character have a Beacon?");
+
+        if(answerBeacon)
+        {
+            boolean answerGun = getYesNo("Does any character have a Gun?");
+
+            if(answerGun)
+            {
+                boolean answerCatridge = getYesNo("Does any character have a Catridge?");
+
+                if(answerCatridge)
+                {
+                    boolean answerTile = getYesNo("Are the characters owning the Beacon, the Gun and the Catridge on the same tile?");
+
+                    if(answerTile)
+                    {
+                        //TODO: Eltudják készíteni a jelzőraktát, így ki is lövik és megnyerik a játékot
+                    }
+                    else
+                    {
+                        //TODO: Nem egy mezőn vannak a darabokat birtokló szereplők nem tudják elkészíteni az jelzőrakétát
+                    }
+                }
+                else
+                {
+                    //TODO: Egyik karakternél sincs patron
+                }
+            }
+            else
+            {
+                //TODO: Egyik karakternél sincs pisztoly
+            }
+        }
+        else
+        {
+            //TODO: Egyik karakternél sincs jelzőfény
+        }
     }
 
     private void menuRescueFriend()
@@ -186,10 +224,10 @@ public class Skeleton {
                     //TODO: Lyukat analizál
                     break;
                 case 2:
-                    //TODO Instablit analizál
+                    //TODO: Instablit analizál
                     break;
                 case 3:
-                    //TODO Stabilt analizál
+                    //TODO: Stabilt analizál
                     break;
             }
         }
@@ -203,10 +241,10 @@ public class Skeleton {
                     //TODO: Lyukra épít iglut
                     break;
                 case 2:
-                    //TODO Instablra épít iglut
+                    //TODO: Instablra épít iglut
                     break;
                 case 3:
-                    //TODO Stabilra épít iglut
+                    //TODO: Stabilra épít iglut
                     break;
             }
         }
@@ -244,18 +282,33 @@ public class Skeleton {
 
     private void menuMakeStorm()
     {
-        int igluInside = getNumber("How many characters are inside of an iglu?");
-        int igluOutside = getNumber("How many characters are outside of an iglu?\n (Don't enter a really big number you will be asked to give their)");
+        int igluInside = getNumber("How many characters are inside of an iglu?", 10);
+        int igluOutside = getNumber("How many characters are outside of an iglu?\n (Don't enter a huge number, because you will be asked to give their body heat individually)",10);
+
 
         for(int i = 0; i < igluOutside; i++)
         {
-            //int igluOutside = getNumber("How many characters are outside of an iglu?");
+            int bodyheat = getNumber("Enter the body heat for character " + (i + 1) + "/" + igluOutside, 100); //TODO: Jó lesz max 100?
+            //TODO: Itt végig kell menni a játékosokon akik nincsennek igluban, és a bekért hőérzetet kell nekik beállítani
         }
+
+        //TODO: Itt szimulálni kell a vihart, aki bent van sebződik (azokat a karaktereket is érdemes lehet létrehozni, akik igluban vannak a megfelelő szimuláció érdekében)
     }
 
     private void menuClearPatch()
     {
+        int snowAmount = getNumber("How many units of snow are there currently on the targeted tile?", 6);
 
+        boolean answer = getYesNo("Does a character have a shovel?");
+
+        if(answer)
+        {
+            //TODO: Van lapátja, így leszed 2 egység havat
+        }
+        else
+        {
+            //TODO: Nincs lapátja
+        }
     }
 
     public void run()

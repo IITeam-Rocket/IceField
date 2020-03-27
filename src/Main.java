@@ -1,6 +1,9 @@
+import controllers.Skeleton;
+
 public class Main {
 
-    public static void main(String[] args) {
-        System.out.println("Hello World!");
+    public static void main(String[] args){
+        Skeleton skeleton = new Skeleton();
+        skeleton.run();
     }
 }

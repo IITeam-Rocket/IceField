@@ -48,4 +48,12 @@ public class TabController {
             System.out.print("\t");
         }
     }
+    /**
+     * Prints the current number of tabs to the
+     * standard output and prints the s String to the standard output.
+     */
+    public static void printlnWithIndents(String s){
+        printIndents();
+        System.out.println(s);
+    }
 }

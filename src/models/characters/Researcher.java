@@ -2,6 +2,8 @@ package models.characters;
 
 import models.tiles.Tile;
 
+import static controllers.TabController.*;
+
 /**
  * A character with the ability to analyze
  * the surrounding tiles' capacity to hold
@@ -27,6 +29,12 @@ public class Researcher extends Character {
      */
     @Override
     public void useSpecial(Tile target) {
-        ///TODO implement useSpecial()
+        addIndent();
+        printlnWithIndents("Researcher.useSpecial(target)");
+
+        target.getCapacity();
+
+        printlnWithIndents("return");
+        removeIndent();
     }
 }

@@ -67,7 +67,7 @@ public class CharactersTest {
     }
 
     @Test
-    void whatamievendoingTest() {
+    void whatamievendoingTest() throws EndofGameException {
         int bh = eskimo.getBodyHeat();
 
         eskimo.addHeat(1);
@@ -84,6 +84,7 @@ public class CharactersTest {
         assertThrows(IllegalArgumentException.class, () -> researcher.addHeat(-1));
     }
 
+    @Test
     void EskimoBodyHeatGetterTest() {
         assertEquals(eskimo.bodyHeat, eskimo.getBodyHeat(), "Wong never how");
     }

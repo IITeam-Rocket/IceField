@@ -1,6 +1,7 @@
 package models;
 
 import models.characters.Character;
+import models.exceptions.EndofGameException;
 import models.tiles.Tile;
 
 import java.util.ArrayList;
@@ -73,9 +74,10 @@ public class Environment {
 
     /**
      * Plays the losing game sequence.
+     * @throws EndofGameException
      */
-    public void gameOver() {
-        ///TODO implement gameOver()
+    public void gameOver() throws EndofGameException {
+        throw new EndofGameException("Somebody died!");
     }
 
     /**

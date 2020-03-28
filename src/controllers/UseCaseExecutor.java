@@ -3,5 +3,5 @@ package controllers;
 /**
  * A class that sets up and executes use cases
  */
-public class UseCaseExecuter {
+public class UseCaseExecutor {
 }

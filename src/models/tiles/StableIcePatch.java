@@ -2,6 +2,8 @@ package models.tiles;
 
 import models.characters.Character;
 
+import static controllers.TabController.*;
+
 /**
  * An IcePatch that is stable, meaning
  * it may support an indefinite number of
@@ -16,6 +18,10 @@ public class StableIcePatch extends IcePatch {
      */
     @Override
     public boolean acceptCharacter(Character character) {
+        addIndent();
+        printlnWithIndents("StableIcePatch.acceptCharacter()");
+        printlnWithIndents("return: true");
+        removeIndent();
         return true;
     }
 
@@ -27,6 +33,10 @@ public class StableIcePatch extends IcePatch {
      */
     @Override
     public int getCapacity() {
+        addIndent();
+        printlnWithIndents("StableIcePatch.getCapacity()");
+        printlnWithIndents("return: true");
+        removeIndent();
         return -1;
     }
 }

@@ -2,6 +2,8 @@ package models.policies;
 
 import models.characters.Character;
 
+import static controllers.TabController.*;
+
 /**
  * The strategy of a Tile to not
  * protect its inhabitants from a
@@ -17,6 +19,12 @@ public class NoProtectionPolicy implements FrostBitePolicy {
      */
     @Override
     public void executeStrategy(Character victim) {
+        addIndent();
+        printlnWithIndents("NoProtectionPolicy.executeStrategy()");
+
         victim.removeHeat(1);
+
+        printlnWithIndents("return");
+        removeIndent();
     }
 }

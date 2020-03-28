@@ -2,6 +2,9 @@ package models.policies;
 
 
 import models.characters.Character;
+import models.tiles.Tile;
+
+import static controllers.TabController.*;
 
 /**
  * A strategy of the player to help their friend
@@ -17,7 +20,16 @@ public class HasRopePolicy implements RescueFriendPolicy {
      * @param friend the friend who fell in water
      */
     @Override
-    public void executeStrategy(Character friend) {
-        ///TODO
+    public void executeStrategy(Character friend, Tile dest) {
+        addIndent();
+        printlnWithIndents("RescueFriendPolicy.executeStrategy()");
+
+        dest.acceptCharacter(friend);
+
+        Tile source = friend.getTile();
+        source.removeCharacter(friend);
+
+        printlnWithIndents("return");
+        removeIndent();
     }
 }

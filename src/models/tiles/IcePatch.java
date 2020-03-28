@@ -26,7 +26,7 @@ abstract public class IcePatch extends Tile {
      */
     @Override
     public void reactToStorm() {
-        ///TODO
+        addSnow(1);
     }
 
     /**

@@ -2,6 +2,8 @@ package models.policies;
 
 import models.characters.Character;
 
+import static controllers.TabController.*;
+
 /**
  * The strategy of a Tile to protect
  * its inhabitants with an Igloo
@@ -15,6 +17,9 @@ public class IgluPolicy implements FrostBitePolicy {
      */
     @Override
     public void executeStrategy(Character victim) {
-        ///TODO
+        addIndent();
+        printlnWithIndents("IgluPolicy.executeStrategy()");
+        printlnWithIndents("return");
+        removeIndent();
     }
 }

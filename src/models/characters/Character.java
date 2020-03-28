@@ -42,6 +42,7 @@ public abstract class Character {
 
         tile.removeSnow(strength);
 
+        printIndents();
         System.out.println("return");
 
         removeIndent();
@@ -59,6 +60,7 @@ public abstract class Character {
 
         //TODO
 
+        printIndents();
         System.out.println("return");
         removeIndent();
     }
@@ -73,6 +75,7 @@ public abstract class Character {
 
         //TODO
 
+        printIndents();
         System.out.println("return");
         removeIndent();
     }
@@ -89,6 +92,7 @@ public abstract class Character {
 
         bodyHeat += quantity;
 
+        printIndents();
         System.out.println("return");
         removeIndent();
     }

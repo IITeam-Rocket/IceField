@@ -158,7 +158,14 @@ public class Skeleton {
         }
     }
 
-
+    /**
+     * Asks the user to enter a number between 0 and max.
+     *
+     * @param question a String containing a question to which
+     *                 the user can answer with the number.
+     * @param max      the largest possible number that can be chosen
+     * @return the chosen number
+     */
     private int getNumber(String question, int max) {
 
         String range = " (0-" + max + ")";
@@ -168,7 +175,6 @@ public class Skeleton {
 
         while (true) {
             System.out.print("> ");
-
             try {
                 input = in.nextInt();
 

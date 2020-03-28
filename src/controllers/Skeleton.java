@@ -7,6 +7,7 @@ import java.util.Scanner;
  * A class that controls the menu and executes the use-cases
  */
 public class Skeleton {
+    private UseCaseExecutor executor = new UseCaseExecutor();
 
     private Scanner in = new Scanner(System.in);
     String[] useCases = {
@@ -27,12 +28,13 @@ public class Skeleton {
             "Make a Storm without an Igloo",
             "Make a Storm with an Igloo",
             "Unbury Food",
-            "Unb8ury DiveSuit",
+            "Unbury DiveSuit",
             "Unbury Rope",
             "Unbury Shovel",
             "Unbury Cartridge",
             "Unbury Beacon",
-            "Unbury Gun"};
+            "Unbury Gun",
+            "Exit"};
 
     /**
      * Prints the team's info on the screen.
@@ -77,70 +79,73 @@ public class Skeleton {
     private void executeSelected(int selectedItem) {
         switch (selectedItem) {
             case 1:
-                //TODO: Move Character to Stable IcePatch
+                executor.moveCharacterToStable();
                 break;
             case 2:
-                //TODO: Move Character to Instable IcePatch without flip
+                executor.moveCharacterToInstable();
                 break;
             case 3:
-                //TODO: Move Character to Instable IcePatch flipping with DiveSuit
+                executor.moveCharacterToInstableWithDiveSuit();
                 break;
             case 4:
-                //TODO: Move Character to Instable IcePatch flipping without DiveSuit
+                executor.moveCharacterToInstableNoDiveSuit();
                 break;
             case 5:
-                //TODO: Move Character to  Undiscovered Hole
+                executor.moveCharacterToUndiscoveredHole();
                 break;
             case 6:
-                //TODO: Craft Signal Flare
+                executor.moveCharacterToDiscoveredHole();
                 break;
             case 7:
-                //TODO: Clear Patch
+                executor.craftSignalFlare();
                 break;
             case 8:
-                //TODO: Analyze an Stable IcePatch
+                executor.clearPatch();
                 break;
             case 9:
-                //TODO: Analyze an Instable IcePatch
+                executor.analyzeStable();
                 break;
             case 10:
-                //TODO: Analyze a Hole
+                executor.analyzeInstable();
                 break;
             case 11:
-                //TODO: Build an Igloo
+                executor.analyzeHole();
                 break;
             case 12:
-                //TODO: Rescue a Friend with a Rope
+                executor.buildIglu();
                 break;
             case 13:
-                //TODO: Rescue a Friend with Nothing
+                executor.rescueFriendWithRope();
                 break;
             case 14:
-                //TODO: Make a Storm without an Igloo
+                executor.rescueFriendWithNothing();
                 break;
             case 15:
-                //TODO: Make a Storm with an Igloo
+                executor.makeStormWithoutIglu();
                 break;
             case 16:
-                //TODO: Unbury Food
+                executor.makeStormWithIglu();
                 break;
             case 17:
-                //TODO: Unbury DiveSuit
+                executor.unburyFood();
                 break;
             case 18:
-                //TODO: Unbury Rope
+                executor.unburyDiveSuit();
                 break;
             case 19:
-                //TODO: Unbury Shovel
+                executor.unburyRope();
                 break;
             case 20:
-                //TODO: Unbury Cartridge
+                executor.unburyShovel();
                 break;
             case 21:
-                //TODO: Unbury Beacon
+                executor.unburyCartridge();
                 break;
             case 22:
-                //TODO: Unbury Gun
+                executor.unburyBeacon();
+                break;
+            case 23:
+                executor.unburyGun();
                 break;
         }
     }
@@ -155,7 +160,7 @@ public class Skeleton {
 
         int selectedItem = 0;
 
-        while (selectedItem != 8) {
+        while (selectedItem != 24) {
             try {
                 System.out.print("> ");
                 selectedItem = in.nextInt();

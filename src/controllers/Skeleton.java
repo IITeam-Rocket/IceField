@@ -87,21 +87,18 @@ public class Skeleton {
 
     private boolean getYesNo(String question)
     {
-        boolean answered = false;
 
         System.out.println(question + " (y/n)");
 
-        while(!answered)
-        {
+        while (true) {
             System.out.print("> ");
 
-            try
-            {
+            try {
                 String input = in.next();
 
-                if(input.equals("y"))
+                if (input.equals("y"))
                     return true;
-                else if(input.equals("n"))
+                else if (input.equals("n"))
                     return false;
                 else
                     System.out.println("Please enter y/n!");
@@ -117,22 +114,19 @@ public class Skeleton {
 
     private int getNumber(String question, int max)
     {
-        boolean answered = false;
 
         System.out.println(question + " (0-" + max + ")");
 
         int input = -1;
 
-        while(!answered)
-        {
+        while (true) {
             System.out.print("> ");
 
-            try
-            {
+            try {
                 input = in.nextInt();
 
-                if(input >= 0 && input <= max)
-                    answered = true;
+                if (input >= 0 && input <= max)
+                    break;
                 else
                     System.out.println("Please enter a number (0-" + max + ")!");
             }

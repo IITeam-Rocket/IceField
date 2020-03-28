@@ -310,6 +310,10 @@ public class Skeleton {
         }
     }
 
+    /**
+     * Executes the Skeleton program used to
+     * test the work-in-progress game.
+     */
     public void run() {
         printInfo();
         printMenu();

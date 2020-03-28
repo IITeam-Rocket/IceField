@@ -91,7 +91,13 @@ public class Skeleton {
         }
     }
 
-
+    /**
+     * Asks the user to select aa menu option from a specified
+     * list, and returns the number of the chosen one.
+     *
+     * @param answers an array of Strings containing the options
+     * @return the number of the chosen option
+     */
     private int getMenuOption(String[] answers) {
         if (answers.length == 0)
             return -1;
@@ -121,6 +127,13 @@ public class Skeleton {
         return input;
     }
 
+    /**
+     * Asks the user to answer to a Yes or No question,
+     * and returns with the boolean answer.
+     *
+     * @param question a String containing a simple question
+     * @return true if answer was a yes, false otherwise
+     */
     private boolean getYesNo(String question) {
 
         System.out.println(question + " (y/n)");
@@ -145,6 +158,7 @@ public class Skeleton {
         }
     }
 
+
     private int getNumber(String question, int max) {
 
         String range = " (0-" + max + ")";
@@ -162,7 +176,7 @@ public class Skeleton {
                     break;
                 else
                     System.out.println("Please enter a number" + range + "!");
-            } catch(InputMismatchException exception) {
+            } catch (InputMismatchException exception) {
                 System.out.println("Please enter a number" + range + "!");
                 in.next();
             }
@@ -190,16 +204,16 @@ public class Skeleton {
     private void menuCraftSignalFlare() {
         boolean answerBeacon = getYesNo("Does any character have a Beacon?");
 
-        if(answerBeacon) {
+        if (answerBeacon) {
             boolean answerGun = getYesNo("Does any character have a Gun?");
 
-            if(answerGun) {
+            if (answerGun) {
                 boolean answerCatridge = getYesNo("Does any character have a Cartridge?");
 
-                if(answerCatridge) {
+                if (answerCatridge) {
                     boolean answerTile = getYesNo("Are the characters owning the Beacon, the Gun and the Cartridge on the same tile?");
 
-                    if(answerTile) {
+                    if (answerTile) {
                         //TODO: Eltudják készíteni a jelzőraktát, így ki is lövik és megnyerik a játékot
 
                     } else {
@@ -223,7 +237,7 @@ public class Skeleton {
     private void menuRescueFriend() {
         boolean answer = getYesNo("Does the character have a rope?");
 
-        if(answer) {
+        if (answer) {
             //TODO: Van kötél
 
         } else {
@@ -235,7 +249,7 @@ public class Skeleton {
     private void menuUseSpecial() {
         int option = getMenuOption(new String[]{"Analyze Tile - Researcher", "Build Iglu - Eskimo"});
 
-        if(option == 0) {
+        if (option == 0) {
             int suboption = getMenuOption(new String[]{"Analyze Hole", "Analyze Instable", "Analyze Stable"});
 
             switch (suboption) {
@@ -294,10 +308,10 @@ public class Skeleton {
 
     private void menuMakeStorm() {
         int igluInside = getNumber("How many characters are inside of an iglu?", 10);
-        int igluOutside = getNumber("How many characters are outside of an iglu?\n (Don't enter a huge number, because you will be asked to give their body heat individually)",10);
+        int igluOutside = getNumber("How many characters are outside of an iglu?\n (Don't enter a huge number, because you will be asked to give their body heat individually)", 10);
 
 
-        for(int i = 0; i < igluOutside; i++) {
+        for (int i = 0; i < igluOutside; i++) {
             int bodyheat = getNumber("Enter the body heat for character " + (i + 1) + "/" + igluOutside, 100); //TODO: Jó lesz max 100?
             //TODO: Itt végig kell menni a játékosokon akik nincsennek igluban, és a bekért hőérzetet kell nekik beállítani
         }
@@ -310,7 +324,7 @@ public class Skeleton {
 
         boolean answer = getYesNo("Does a character have a shovel?");
 
-        if(answer) {
+        if (answer) {
             //TODO: Van lapátja, így leszed 2 egység havat
         } else {
             //TODO: Nincs lapátja

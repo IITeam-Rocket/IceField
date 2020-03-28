@@ -94,9 +94,15 @@ public abstract class Character {
      * @param quantity the amount of heat
      */
     public void removeHeat(int quantity) {
+        addIndent();
+        printlnWithIndents("removeHeat(" + quantity + ")");
+
         bodyHeat -= quantity;
         if (bodyHeat <= 0)
             Environment.getInstance().gameOver();
+
+        printlnWithIndents("return");
+        removeIndent();
     }
 
     /**
@@ -105,14 +111,26 @@ public abstract class Character {
      * the game, otherwise nothing happens.
      */
     public void craftSignalFlare() {
+        addIndent();
+        printlnWithIndents("craftSignalFlare()");
+
         Environment.getInstance().winGame();
+
+        printlnWithIndents("return");
+        removeIndent();
     }
 
     /**
      * Executes the FallInWaterStrategy to avoid death.
      */
     public void swimToShore() {
+        addIndent();
+        printlnWithIndents("swimToShore()");
+
         swimToShoreStrategy.executeStrategy(this);
+
+        printlnWithIndents("return");
+        removeIndent();
     }
 
     /**
@@ -122,7 +140,13 @@ public abstract class Character {
      * @param friend the victim to rescue
      */
     public void rescueFriend(Character friend) {
+        addIndent();
+        printlnWithIndents("rescueFriend(friend)");
+
         helpFriendStrategy.executeStrategy(friend);
+
+        printlnWithIndents("return");
+        removeIndent();
     }
 
     /**
@@ -139,8 +163,14 @@ public abstract class Character {
      *
      * @param strategy the new strategy
      */
-    public void changeRescuePolicy(RescueFriendPolicy strategy) {
+    public void changeRescuePolicy(RescueFriendPolicy strategy){
+        addIndent();
+        printlnWithIndents("changeRescuePolicy(strategy)");
+
         helpFriendStrategy = strategy;
+
+        printlnWithIndents("return");
+        removeIndent();
     }
 
     /**
@@ -150,7 +180,13 @@ public abstract class Character {
      * @param strategy the new strategy
      */
     public void changeWaterPolicy(FallInWaterPolicy strategy) {
+        addIndent();
+        printlnWithIndents("changeWaterPolicy(strategy)");
+
         swimToShoreStrategy = strategy;
+
+        printlnWithIndents("return");
+        removeIndent();
     }
 
     /**
@@ -159,6 +195,13 @@ public abstract class Character {
      * @return the bodyHeat of the character
      */
     public int getBodyHeat() {
+        addIndent();
+        printlnWithIndents("getBodyHeat()");
+
+
+        printlnWithIndents("return " + bodyHeat );
+        removeIndent();
+
         return bodyHeat;
     }
 
@@ -169,6 +212,12 @@ public abstract class Character {
      * can execute
      */
     public int getStamina() {
+        addIndent();
+        printlnWithIndents("getStamina()");
+
+        printlnWithIndents("return " + stamina);
+        removeIndent();
+
         return stamina;
     }
 
@@ -179,6 +228,12 @@ public abstract class Character {
      * can clear
      */
     public int getStrength() {
+        addIndent();
+        printlnWithIndents("getStrength()");
+
+        printlnWithIndents("return " + strength);
+        removeIndent();
+
         return strength;
     }
 
@@ -189,6 +244,12 @@ public abstract class Character {
      * @return the character's strategy of helping a friend
      */
     public RescueFriendPolicy getHelpFriendStrategy() {
+        addIndent();
+        printlnWithIndents("getHelpFriendStrategy()");
+
+        printlnWithIndents("return helpFriendStrategy");
+        removeIndent();
+
         return helpFriendStrategy;
     }
 
@@ -198,6 +259,12 @@ public abstract class Character {
      * @return the character's strategy of getting out of water
      */
     public FallInWaterPolicy getSwimToShoreStrategy() {
+        addIndent();
+        printlnWithIndents("getSwimToShoreStrategy()");
+
+        printlnWithIndents("return swimToShoreStrategy");
+        removeIndent();
+
         return swimToShoreStrategy;
     }
 
@@ -207,6 +274,13 @@ public abstract class Character {
      * @return the Tile the character is on
      */
     public Tile getTile() {
+        addIndent();
+        printlnWithIndents("getTile()");
+
+        printlnWithIndents("return tile");
+        removeIndent();
+
+
         return tile;
     }
 }

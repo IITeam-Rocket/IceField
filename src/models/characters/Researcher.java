@@ -27,7 +27,7 @@ public class Researcher extends Character {
     @Override
     public void useSpecial(Tile target) {
         addIndent();
-        printlnWithIndents("analizeTile(target)");
+        printlnWithIndents("Researcher.useSpecial(target)");
 
         ///TODO implement useSpecial()
 

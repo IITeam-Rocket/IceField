@@ -20,7 +20,7 @@ public class Gun extends Item {
     @Override
     public void uponDiscovery(Character finder) {
         addIndent();
-        printlnWithIndents("gunDiscovery(finder)");
+        printlnWithIndents("Gun.uponDiscovery(finder)");
 
         Environment.getInstance().recordGun();
 

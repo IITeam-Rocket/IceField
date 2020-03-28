@@ -34,7 +34,7 @@ public abstract class Character {
      */
     public void clearPatch() {
         addIndent();
-        printlnWithIndents("clearPatch()");
+        printlnWithIndents("Character.clearPatch()");
 
         tile.removeSnow(strength);
 
@@ -50,7 +50,7 @@ public abstract class Character {
      */
     public void moveTo(Tile destination) {
         addIndent();
-        printlnWithIndents("moveTo(" + destination +")");
+        printlnWithIndents("Character.moveTo(destination)");
 
         //TODO
 
@@ -63,7 +63,7 @@ public abstract class Character {
      */
     public void retrieveItem() {
         addIndent();
-        printlnWithIndents("retriveItem()");
+        printlnWithIndents("Character.retriveItem()");
 
         //TODO
 
@@ -78,7 +78,7 @@ public abstract class Character {
      */
     public void addHeat(int quantity) {
         addIndent();
-        printlnWithIndents("adHeat(" + quantity + ")");
+        printlnWithIndents("Character.adHeat(" + quantity + ")");
 
         bodyHeat += quantity;
 
@@ -94,7 +94,7 @@ public abstract class Character {
      */
     public void removeHeat(int quantity) {
         addIndent();
-        printlnWithIndents("removeHeat(" + quantity + ")");
+        printlnWithIndents("Character.removeHeat(" + quantity + ")");
 
         bodyHeat -= quantity;
         if (bodyHeat <= 0)
@@ -111,7 +111,7 @@ public abstract class Character {
      */
     public void craftSignalFlare() {
         addIndent();
-        printlnWithIndents("craftSignalFlare()");
+        printlnWithIndents("Character.craftSignalFlare()");
 
         Environment.getInstance().winGame();
 
@@ -124,7 +124,7 @@ public abstract class Character {
      */
     public void swimToShore() {
         addIndent();
-        printlnWithIndents("swimToShore()");
+        printlnWithIndents("Character.swimToShore()");
 
         swimToShoreStrategy.executeStrategy(this);
 
@@ -140,7 +140,7 @@ public abstract class Character {
      */
     public void rescueFriend(Character friend) {
         addIndent();
-        printlnWithIndents("rescueFriend(friend)");
+        printlnWithIndents("Character.rescueFriend(friend)");
 
         helpFriendStrategy.executeStrategy(friend);
 
@@ -164,7 +164,7 @@ public abstract class Character {
      */
     public void changeRescuePolicy(RescueFriendPolicy strategy){
         addIndent();
-        printlnWithIndents("changeRescuePolicy(strategy)");
+        printlnWithIndents("Character.changeRescuePolicy(strategy)");
 
         helpFriendStrategy = strategy;
 
@@ -180,7 +180,7 @@ public abstract class Character {
      */
     public void changeWaterPolicy(FallInWaterPolicy strategy) {
         addIndent();
-        printlnWithIndents("changeWaterPolicy(strategy)");
+        printlnWithIndents("Character.changeWaterPolicy(strategy)");
 
         swimToShoreStrategy = strategy;
 
@@ -195,7 +195,7 @@ public abstract class Character {
      */
     public int getBodyHeat() {
         addIndent();
-        printlnWithIndents("getBodyHeat()");
+        printlnWithIndents("Character.getBodyHeat()");
 
 
         printlnWithIndents("return " + bodyHeat );
@@ -212,7 +212,7 @@ public abstract class Character {
      */
     public int getStamina() {
         addIndent();
-        printlnWithIndents("getStamina()");
+        printlnWithIndents("Character.getStamina()");
 
         printlnWithIndents("return " + stamina);
         removeIndent();
@@ -228,7 +228,7 @@ public abstract class Character {
      */
     public int getStrength() {
         addIndent();
-        printlnWithIndents("getStrength()");
+        printlnWithIndents("Character.getStrength()");
 
         printlnWithIndents("return " + strength);
         removeIndent();
@@ -244,7 +244,7 @@ public abstract class Character {
      */
     public RescueFriendPolicy getHelpFriendStrategy() {
         addIndent();
-        printlnWithIndents("getHelpFriendStrategy()");
+        printlnWithIndents("Character.getHelpFriendStrategy()");
 
         printlnWithIndents("return helpFriendStrategy");
         removeIndent();
@@ -259,7 +259,7 @@ public abstract class Character {
      */
     public FallInWaterPolicy getSwimToShoreStrategy() {
         addIndent();
-        printlnWithIndents("getSwimToShoreStrategy()");
+        printlnWithIndents("Character.getSwimToShoreStrategy()");
 
         printlnWithIndents("return swimToShoreStrategy");
         removeIndent();
@@ -274,7 +274,7 @@ public abstract class Character {
      */
     public Tile getTile() {
         addIndent();
-        printlnWithIndents("getTile()");
+        printlnWithIndents("Character.getTile()");
 
         printlnWithIndents("return tile");
         removeIndent();

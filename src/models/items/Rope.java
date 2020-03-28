@@ -21,7 +21,7 @@ public class Rope extends Item {
     @Override
     public void uponDiscovery(Character finder) {
         addIndent();
-        printlnWithIndents("ropeDiscovery(finder)");
+        printlnWithIndents("Rope.uponDiscovery(finder)");
 
         finder.changeRescuePolicy(new HasRopePolicy());
 

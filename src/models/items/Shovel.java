@@ -19,7 +19,7 @@ public class Shovel extends Item {
     @Override
     public void uponDiscovery(Character finder) {
         addIndent();
-        printlnWithIndents("shovelDiscovery(finder)");
+        printlnWithIndents("Shovel.uponDiscovery(finder)");
 
         //TODO
 

@@ -26,7 +26,7 @@ public class Eskimo extends Character {
     @Override
     public void useSpecial(Tile target) {
         addIndent();
-        printlnWithIndents("buildingIglu(target)");
+        printlnWithIndents("Eskimo.useSpecial(target)");
 
         if (target == tile)
             ((IcePatch) tile).changeFrostBitePolicy(new IgluPolicy());

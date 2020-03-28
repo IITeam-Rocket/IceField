@@ -20,7 +20,7 @@ public class Beacon extends Item {
     @Override
     public void uponDiscovery(Character finder) {
         addIndent();
-        printlnWithIndents("beaconDiscovery(finder)");
+        printlnWithIndents("Beacon.uponDiscovery(finder)");
 
         Environment.getInstance().recordBeacon();
 

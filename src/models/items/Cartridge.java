@@ -20,7 +20,7 @@ public class Cartridge extends Item {
     @Override
     public void uponDiscovery(Character finder) {
         addIndent();
-        printlnWithIndents("cartridgeDiscovery(finder)");
+        printlnWithIndents("Cartridge.uponDiscovery(finder)");
 
         Environment.getInstance().recordCartridge();
 

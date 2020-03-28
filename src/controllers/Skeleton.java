@@ -102,24 +102,21 @@ public class Skeleton {
             System.out.println((i + 1) + ". " + answers[i]);
         }
 
-        boolean answered = false;
+        int input;
 
-        int input = -1;
-
-        while(!answered) {
+        while (true) {
             System.out.print("> ");
 
             try {
                 input = in.nextInt();
-
-                if(input <= 0 || input > answers.length)
-                    System.out.println("Please enter a number between 1-" + answers.length + "!");
-                else
-                    answered = true;
-            } catch(InputMismatchException exception) {
+            } catch (InputMismatchException exception) {
                 System.out.println("Please enter a number! (1-" + answers.length + ")");
-                in.next();
+                continue;
             }
+            if (input <= 0 || input > answers.length)
+                System.out.println("Please enter a number between 1-" + answers.length + "!");
+            else
+                break;
         }
 
         return input;
@@ -131,19 +128,21 @@ public class Skeleton {
 
         while (true) {
             System.out.print("> ");
+            String input;
 
             try {
-                String input = in.next();
-
-                if (input.equals("y"))
-                    return true;
-                else if (input.equals("n"))
-                    return false;
-                else
-                    System.out.println("Please enter y/n!");
-            } catch(InputMismatchException exception) {
+                input = in.next();
+            } catch (InputMismatchException exception) {
                 System.out.println("Please enter y/n!");
+                continue;
             }
+
+            if (input.equals("y"))
+                return true;
+            else if (input.equals("n"))
+                return false;
+            else
+                System.out.println("Please enter y/n!");
         }
     }
 
@@ -152,7 +151,7 @@ public class Skeleton {
         String range = " (0-" + max + ")";
         System.out.println(question + range);
 
-        int input = -1;
+        int input;
 
         while (true) {
             System.out.print("> ");
@@ -322,7 +321,6 @@ public class Skeleton {
     public void run() {
         printInfo();
         printMenu();
-
 
         int selectedItem = 0;
 

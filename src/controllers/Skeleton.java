@@ -210,37 +210,16 @@ public class Skeleton {
         }
     }
 
+    /**
+     * Executes CraftSignalFlare use case
+     */
     private void menuCraftSignalFlare() {
         boolean answerBeacon = getYesNo("Does any character have a Beacon?");
+        boolean answerGun = getYesNo("Does any character have a Gun?");
+        boolean answerCartridge = getYesNo("Does any character have a Cartridge?");
+        boolean answerTile = getYesNo("Are all the characters on the same tile?");
 
-        if (answerBeacon) {
-            boolean answerGun = getYesNo("Does any character have a Gun?");
-
-            if (answerGun) {
-                boolean answerCatridge = getYesNo("Does any character have a Cartridge?");
-
-                if (answerCatridge) {
-                    boolean answerTile = getYesNo("Are the characters owning the Beacon, the Gun and the Cartridge on the same tile?");
-
-                    if (answerTile) {
-                        //TODO: Eltudják készíteni a jelzőraktát, így ki is lövik és megnyerik a játékot
-
-                    } else {
-                        //TODO: Nem egy mezőn vannak a darabokat birtokló szereplők nem tudják elkészíteni az jelzőrakétát
-
-                    }
-                } else {
-                    //TODO: Egyik karakternél sincs patron
-
-                }
-            } else {
-                //TODO: Egyik karakternél sincs pisztoly
-
-            }
-        } else {
-            //TODO: Egyik karakternél sincs jelzőfény
-
-        }
+        //TODO: CraftSignalFlare
     }
 
     private void menuRescueFriend() {
@@ -273,16 +252,7 @@ public class Skeleton {
                     break;
             }
         } else {
-            int suboption = getMenuOption(new String[]{"Build Iglu On Hole", "Build Iglu On Instable", "Build Iglu On Stable"});
-
-            switch (suboption) {
-                case 1:
-                    //TODO: Lyukra épít iglut
-                case 2:
-                    //TODO: Instablra épít iglut
-                case 3:
-                    //TODO: Stabilra épít iglut
-                    break;
+            //TODO iglut épít
             }
         }
     }

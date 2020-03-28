@@ -35,8 +35,5 @@ public class TilesTest {
 
             assertEquals(cocain + s, t.getSnowDepth(), "Snowing heavy right?");
         }
-
-
     }
-
 }

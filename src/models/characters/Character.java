@@ -6,7 +6,6 @@ import models.policies.HasNoDiveSuitPolicy;
 import models.policies.NoRescuePolicy;
 import models.policies.RescueFriendPolicy;
 import models.tiles.Tile;
-import controllers.TabController;
 
 import static controllers.TabController.*;
 

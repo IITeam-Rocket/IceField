@@ -8,6 +8,10 @@ import models.policies.RescueFriendPolicy;
 import models.tiles.Tile;
 import controllers.TabController;
 
+import static controllers.TabController.addIndent;
+import static controllers.TabController.printIndents;
+import static controllers.TabController.removeIndent;
+
 /**
  * Represents a player character of the game.
  */
@@ -32,15 +36,15 @@ public abstract class Character {
      * the player stands on.
      */
     public void clearPatch() {
-        TabController.addIndent();
-        TabController.printIndents();
+        addIndent();
+        printIndents();
         System.out.println("clearPatch()");
 
         tile.removeSnow(strength);
 
         System.out.println("return");
 
-        TabController.removeIndent();
+        removeIndent();
     }
 
     /**
@@ -49,22 +53,28 @@ public abstract class Character {
      * @param destination the destination to move to
      */
     public void moveTo(Tile destination) {
-
+        addIndent();
+        printIndents();
         System.out.println("moveTo(" + destination +")");
 
         //TODO
 
-
         System.out.println("return");
-
-
+        removeIndent();
     }
 
     /**
      * Retrieves the item hidden in the current Tile.
      */
     public void retrieveItem() {
+        addIndent();
+        printIndents();
+        System.out.println("retriveItem()");
+
         //TODO
+
+        System.out.println("return");
+        removeIndent();
     }
 
     /**
@@ -73,7 +83,14 @@ public abstract class Character {
      * @param quantity the amount of heat
      */
     public void addHeat(int quantity) {
+        addIndent();
+        printIndents();
+        System.out.println("adHeat(" + quantity + ")");
+
         bodyHeat += quantity;
+
+        System.out.println("return");
+        removeIndent();
     }
 
     /**

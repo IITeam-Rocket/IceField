@@ -191,6 +191,9 @@ public class Skeleton {
         return input;
     }
 
+    /**
+     * Executes one of the 'MoveCharacter' use cases.
+     */
     private void menuMoveCharacter() {
         int option = getMenuOption(new String[]{"Move To Hole", "Move To Instable", "Move To Stable"});
 

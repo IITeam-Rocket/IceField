@@ -8,9 +8,7 @@ import models.policies.RescueFriendPolicy;
 import models.tiles.Tile;
 import controllers.TabController;
 
-import static controllers.TabController.addIndent;
-import static controllers.TabController.printIndents;
-import static controllers.TabController.removeIndent;
+import static controllers.TabController.*;
 
 /**
  * Represents a player character of the game.
@@ -37,13 +35,11 @@ public abstract class Character {
      */
     public void clearPatch() {
         addIndent();
-        printIndents();
-        System.out.println("clearPatch()");
+        printlnWithIndents("clearPatch()");
 
         tile.removeSnow(strength);
 
-        printIndents();
-        System.out.println("return");
+        printlnWithIndents("return");
 
         removeIndent();
     }
@@ -55,13 +51,11 @@ public abstract class Character {
      */
     public void moveTo(Tile destination) {
         addIndent();
-        printIndents();
-        System.out.println("moveTo(" + destination +")");
+        printlnWithIndents("moveTo(" + destination +")");
 
         //TODO
 
-        printIndents();
-        System.out.println("return");
+        printlnWithIndents("return");
         removeIndent();
     }
 
@@ -70,13 +64,11 @@ public abstract class Character {
      */
     public void retrieveItem() {
         addIndent();
-        printIndents();
-        System.out.println("retriveItem()");
+        printlnWithIndents("retriveItem()");
 
         //TODO
 
-        printIndents();
-        System.out.println("return");
+        printlnWithIndents("return");
         removeIndent();
     }
 
@@ -87,13 +79,11 @@ public abstract class Character {
      */
     public void addHeat(int quantity) {
         addIndent();
-        printIndents();
-        System.out.println("adHeat(" + quantity + ")");
+        printlnWithIndents("adHeat(" + quantity + ")");
 
         bodyHeat += quantity;
 
-        printIndents();
-        System.out.println("return");
+        printlnWithIndents("return");
         removeIndent();
     }
 

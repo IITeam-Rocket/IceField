@@ -56,9 +56,7 @@ jobs:
       - name: Building test report
         run: mkdir reporting-zip
       - name: Create Zip File
-        uses: montudor/action-zip@v0.1.0
-        with:
-          args: zip -qq -r ./reporting-zip/report.zip ./target
+        run: powershell Compress-Archiv target reporting-zip\Report.zip
       - name: Upload report artifacts
         uses: actions/upload-artifact@v1
         with:

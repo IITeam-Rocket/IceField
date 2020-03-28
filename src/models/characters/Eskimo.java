@@ -9,6 +9,10 @@ import models.tiles.Tile;
  */
 public class Eskimo extends Character {
 
+    public Eskimo() {
+        super(5, 4, 1);
+    }
+
     /**
      * Builds an Igloo on the target Tile,
      * changing its FrostBitePolicy.

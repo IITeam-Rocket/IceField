@@ -2,6 +2,8 @@ package models.characters;
 
 import models.Environment;
 import models.policies.FallInWaterPolicy;
+import models.policies.HasNoDiveSuitPolicy;
+import models.policies.NoRescuePolicy;
 import models.policies.RescueFriendPolicy;
 import models.tiles.Tile;
 
@@ -15,6 +17,14 @@ public abstract class Character {
     protected RescueFriendPolicy helpFriendStrategy;
     protected FallInWaterPolicy swimToShoreStrategy;
     protected Tile tile;
+
+    protected Character(int bodyHeat, int stamina, int strength) {
+        this.bodyHeat = bodyHeat;
+        this.strength = strength;
+        this.stamina = stamina;
+        helpFriendStrategy = new NoRescuePolicy();
+        swimToShoreStrategy = new HasNoDiveSuitPolicy();
+    }
 
     /**
      * Removes some snow from the Tile

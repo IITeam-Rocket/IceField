@@ -8,6 +8,11 @@ import models.tiles.Tile;
  * players.
  */
 public class Researcher extends Character {
+
+    public Researcher() {
+        super(4, 4, 1);
+    }
+
     /**
      * Analyzes the target tile, and finds its
      * capacity.

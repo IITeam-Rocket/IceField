@@ -5,12 +5,15 @@ import models.items.Item;
 
 import java.util.ArrayList;
 
+import static controllers.TabController.*;
+
 /**
  * A class representing an IceTile
  * which is a part of the IceField
  */
 abstract public class Tile {
     protected int snowDepth;
+    static final int maxsnowDepth = 6;
     protected ArrayList<Character> characters;
     protected ArrayList<Tile> neighbours;
 
@@ -28,7 +31,7 @@ abstract public class Tile {
      * @param character the character to remove
      */
     public void removeCharacter(Character character) {
-        ///TODO
+        characters.remove(character);
     }
 
     /**
@@ -37,7 +40,8 @@ abstract public class Tile {
      * @param quantity the amount of snow to add
      */
     public void addSnow(int quantity) {
-        ///TODO
+        if(snowDepth < maxsnowDepth) //hardcoded????
+            snowDepth++;
     }
 
     /**
@@ -46,7 +50,14 @@ abstract public class Tile {
      * @param quantity the amount of snow to remove
      */
     public void removeSnow(int quantity) {
-        ///TODO
+        addIndent();
+        printlnWithIndents("Tile.removeSnow()");
+
+        if(snowDepth < maxsnowDepth) //hardcoded????
+            snowDepth++;
+
+        printlnWithIndents("return");
+        removeIndent();
     }
 
     /**
@@ -78,6 +89,10 @@ abstract public class Tile {
      * @return the layers of snow on the Tile
      */
     public int getSnowDepth() {
+        addIndent();
+        printlnWithIndents("Tile.getSnowDepth()");
+        printlnWithIndents("return: " + snowDepth);
+        removeIndent();
         return snowDepth;
     }
 
@@ -88,6 +103,10 @@ abstract public class Tile {
      * @return a list of Characters standing on the Tile
      */
     public ArrayList<Character> getCharacters() {
+        addIndent();
+        printlnWithIndents("Tile.getCharacters()");
+        printlnWithIndents("return: ArrayList<Character>");
+        removeIndent();
         return characters;
     }
 
@@ -98,6 +117,10 @@ abstract public class Tile {
      * @return a list of neighbouring Tiles
      */
     public ArrayList<Tile> getNeighbours() {
+        addIndent();
+        printlnWithIndents("Tile.getNeighbours()");
+        printlnWithIndents("return: ArrayList<Tile>");
+        removeIndent();
         return neighbours;
     }
 }

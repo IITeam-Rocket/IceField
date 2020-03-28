@@ -23,7 +23,7 @@ public class Hole extends Tile {
      */
     @Override
     public void reactToStorm() {
-        ///TODO
+        addSnow(1);
     }
 
     /**

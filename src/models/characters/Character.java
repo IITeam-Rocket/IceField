@@ -284,4 +284,13 @@ public abstract class Character {
 
         return tile;
     }
+
+    /**
+     * Sets the character's strength
+     *
+     * @param quantity the character's new strength
+     */
+    public void setStrength(int quantity){
+        strength = quantity;
+    }
 }

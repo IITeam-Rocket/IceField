@@ -21,7 +21,7 @@ public class Shovel extends Item {
         addIndent();
         printlnWithIndents("Shovel.uponDiscovery(finder)");
 
-        //TODO
+        finder.setStrength(2);
 
         printlnWithIndents("return");
         removeIndent();

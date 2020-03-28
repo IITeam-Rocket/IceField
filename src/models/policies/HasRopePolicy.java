@@ -20,11 +20,11 @@ public class HasRopePolicy implements RescueFriendPolicy {
      * @param friend the friend who fell in water
      */
     @Override
-    public void executeStrategy(Character friend) {
+    public void executeStrategy(Character friend, Tile dest) {
         addIndent();
         printlnWithIndents("RescueFriendPolicy.executeStrategy()");
 
-        //TODO
+        dest.acceptCharacter(friend);
 
         Tile source = friend.getTile();
         source.removeCharacter(friend);

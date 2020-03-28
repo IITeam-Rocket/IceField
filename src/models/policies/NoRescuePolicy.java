@@ -2,6 +2,7 @@ package models.policies;
 
 
 import models.characters.Character;
+import models.tiles.Tile;
 
 import static controllers.TabController.*;
 import static controllers.TabController.printlnWithIndents;
@@ -19,7 +20,7 @@ public class NoRescuePolicy implements RescueFriendPolicy {
      * @param friend the friend who fell in water.
      */
     @Override
-    public void executeStrategy(Character friend) {
+    public void executeStrategy(Character friend, Tile dest) {
         addIndent();
         printlnWithIndents("NoRescuePolicy.executeStrategy()");
         printlnWithIndents("return");

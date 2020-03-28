@@ -18,6 +18,7 @@ jobs:
     - name: Validating project
       run: mvn -B validate --file pom.xml
   build:
+    needs: validate
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
@@ -35,6 +36,7 @@ jobs:
       run: mvn -B compile --file pom.xml
 
   Testing:
+    needs: build
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
@@ -51,3 +53,14 @@ jobs:
             restore-keys: ${{ runner.os }}-m2
       - name: Tesing shit
         run: mvn -B test --file pom.xml
+      - name: Building test report
+        run: mkdir reporting-zip
+      - name: Create Zip File
+        uses: montudor/action-zip@v0.1.0
+        with:
+          args: zip -qq -r ./reporting-zip/report.zip ./target
+      - name: Upload report artifacts
+        uses: actions/upload-artifact@v1
+        with:
+          name: Report
+          path: reporting-zip

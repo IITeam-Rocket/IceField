@@ -2,6 +2,10 @@ package models.items;
 
 import models.characters.Character;
 
+import static controllers.TabController.addIndent;
+import static controllers.TabController.printlnWithIndents;
+import static controllers.TabController.removeIndent;
+
 /**
  * An Item that gives the finding character
  * strength up to a unit of 2.
@@ -14,6 +18,12 @@ public class Shovel extends Item {
      */
     @Override
     public void uponDiscovery(Character finder) {
+        addIndent();
+        printlnWithIndents("shovelDiscovery(finder)");
 
+        //TODO
+
+        printlnWithIndents("return");
+        removeIndent();
     }
 }

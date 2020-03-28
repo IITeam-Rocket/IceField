@@ -56,7 +56,7 @@ jobs:
       - name: Building test report
         run: mkdir reporting-zip
       - name: Create Zip File
-        run: powershell Compress-Archiv target reporting-zip\Report.zip
+        run: powershell Compress-Archive target reporting-zip\Report.zip
       - name: Upload report artifacts
         uses: actions/upload-artifact@v1
         with:

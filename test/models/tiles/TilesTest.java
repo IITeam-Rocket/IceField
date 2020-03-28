@@ -1,11 +1,11 @@
 package models.tiles;
 
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class TilesTest {
-    @BeforeAll
-    void Inicialization(){
+    @BeforeEach
+    void Initialization() {
 
     }
 

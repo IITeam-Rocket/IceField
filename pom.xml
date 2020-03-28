@@ -95,7 +95,21 @@
                 <plugin>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>3.0.0-M4</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.junit.jupiter</groupId>
+                            <artifactId>junit-jupiter-engine</artifactId>
+                            <version>5.3.2</version>
+                        </dependency>
+                    </dependencies>
                     <configuration>
+                        <properties>
+                            <configurationParameters>
+                                junit.jupiter.conditions.deactivate = *
+                                junit.jupiter.extensions.autodetection.enabled = true
+                                junit.jupiter.testinstance.lifecycle.default = per_class
+                            </configurationParameters>
+                        </properties>
                         <statelessTestsetReporter
                                 implementation="org.apache.maven.plugin.surefire.extensions.junit5.JUnit5Xml30StatelessReporter">
                             <disable>false</disable>
@@ -160,8 +174,8 @@
     <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.4.0</version>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.3.0</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

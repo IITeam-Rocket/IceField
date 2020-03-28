@@ -30,9 +30,10 @@ public class Skeleton {
         System.out.println();
     }
 
-
-    private void printMenu()
-    {
+    /**
+     * Prints the options the user can choose to the screen.
+     */
+    private void printMenu() {
         System.out.println("Please choose a menu option (1-8):");
         System.out.println("1. Move Character");
         System.out.println("2. Craft Signal Flare");

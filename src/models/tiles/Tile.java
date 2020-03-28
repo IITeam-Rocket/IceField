@@ -49,8 +49,10 @@ abstract public class Tile {
         addIndent();
         printlnWithIndents("Tile.addSnow()");
 
-        if(snowDepth < maxsnowDepth)
-            snowDepth++;
+        snowDepth += quantity;
+
+        if (snowDepth > maxsnowDepth)
+            snowDepth = maxsnowDepth;
 
         printlnWithIndents("return");
         removeIndent();

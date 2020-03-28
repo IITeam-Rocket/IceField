@@ -30,10 +30,15 @@ public class TilesTest {
         for (int i = 0; i < 100; i++) {
             Tile t = new Hole();
             int cocain = t.getSnowDepth();
-            int s = r.nextInt();
+            int s = r.nextInt(10);
             t.addSnow(s);
+            if (s + cocain > Tile.maxsnowDepth) {
+                s = Tile.maxsnowDepth;
+                assertEquals(s, t.getSnowDepth(), "Snowing heavy right?");
+            } else {
+                assertEquals(cocain + s, t.getSnowDepth(), "Snowing heavy right?");
+            }
 
-            assertEquals(cocain + s, t.getSnowDepth(), "Snowing heavy right?");
         }
     }
 }

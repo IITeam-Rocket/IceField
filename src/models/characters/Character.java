@@ -6,6 +6,7 @@ import models.policies.HasNoDiveSuitPolicy;
 import models.policies.NoRescuePolicy;
 import models.policies.RescueFriendPolicy;
 import models.tiles.Tile;
+import controllers.TabController;
 
 /**
  * Represents a player character of the game.
@@ -31,7 +32,15 @@ public abstract class Character {
      * the player stands on.
      */
     public void clearPatch() {
+        TabController.addIndent();
+        TabController.printIndents();
+        System.out.println("clearPatch()");
+
         tile.removeSnow(strength);
+
+        System.out.println("return");
+
+        TabController.removeIndent();
     }
 
     /**
@@ -40,7 +49,15 @@ public abstract class Character {
      * @param destination the destination to move to
      */
     public void moveTo(Tile destination) {
+
+        System.out.println("moveTo(" + destination +")");
+
         //TODO
+
+
+        System.out.println("return");
+
+
     }
 
     /**

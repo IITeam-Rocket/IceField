@@ -98,8 +98,8 @@ public class Skeleton {
 
         System.out.println("Please choose a menu option (1-" + answers.length + "):");
 
-        for (int i = 0; i < answers.length; i++) {
-            System.out.println((i + 1) + ". " + answers[i]);
+        for (int i = 1; i <= answers.length; i++) {
+            System.out.println(i + ". " + answers[i]);
         }
 
         int input;

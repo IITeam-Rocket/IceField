@@ -45,6 +45,7 @@ public class Skeleton {
         System.out.println("8. Exit program");
     }
 
+
     private int getMenuOption(String[] answers)
     {
         if(answers.length == 0)
@@ -330,59 +331,62 @@ public class Skeleton {
 
         printMenu();
 
-        boolean running = true;
 
         in = new Scanner(System.in);
+        int selectedItem = 0;
 
-        while(running) {
-            int option;
-
+        while (selectedItem != 8) {
             try {
                 System.out.print("> ");
-                option = in.nextInt();
+                selectedItem = in.nextInt();
 
-                switch (option)
-                {
-                    case 1:
-                        menuMoveCharacter();
-                        printMenu();
-                        break;
-                    case 2:
-                        menuCraftSignalFlare();
-                        printMenu();
-                        break;
-                    case 3:
-                        menuRescueFriend();
-                        printMenu();
-                        break;
-                    case 4:
-                        menuUseSpecial();
-                        printMenu();
-                        break;
-                    case 5:
-                        menuUnburyItem();
-                        printMenu();
-                        break;
-                    case 6:
-                        menuMakeStorm();
-                        printMenu();
-                        break;
-                    case 7:
-                        menuClearPatch();
-                        printMenu();
-                        break;
-                    case 8:
-                        System.out.println("Goodbye :D");
-                        running = false;
-                        break;
-                    default:
-                        System.out.println("Please enter a number between 1-8!");
-                }
-            }
-            catch(InputMismatchException exception)
-            {
+                executeSelected(selectedItem);
+            } catch (InputMismatchException exception) {
                 System.out.println("Please enter a number! (1-8)");
             }
+        }
+    }
+
+    /**
+     * Executes the proper menu item specified by selectedItem.
+     *
+     * @param selectedItem the menu item the player has selected.
+     */
+    private void executeSelected(int selectedItem) {
+        switch (selectedItem) {
+            case 1:
+                menuMoveCharacter();
+                printMenu();
+                break;
+            case 2:
+                menuCraftSignalFlare();
+                printMenu();
+                break;
+            case 3:
+                menuRescueFriend();
+                printMenu();
+                break;
+            case 4:
+                menuUseSpecial();
+                printMenu();
+                break;
+            case 5:
+                menuUnburyItem();
+                printMenu();
+                break;
+            case 6:
+                menuMakeStorm();
+                printMenu();
+                break;
+            case 7:
+                menuClearPatch();
+                printMenu();
+                break;
+            case 8:
+                System.out.println("Goodbye :D");
+                break;
+            default:
+                System.out.println("Please enter a number between 1-8!");
         }
     }
 }

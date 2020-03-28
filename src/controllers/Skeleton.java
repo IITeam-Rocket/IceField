@@ -5,11 +5,18 @@ import java.util.Scanner;
 
 public class Skeleton {
 
-    private boolean running;
     private Scanner in;
 
-    private void printInfo()
-    {
+    /**
+     * Prints the team's info on the screen.
+     * Info includes:
+     * Title
+     * Team ID
+     * Team Name
+     * Consultant
+     * Team members' info
+     */
+    private void printInfo() {
         System.out.println("Szoftver projekt laboratórium - Skeleton");
         System.out.println("21 - team_rocket");
         System.out.println();
@@ -22,6 +29,7 @@ public class Skeleton {
         System.out.println("Tóth Máté               HBFE3R  extralarge3@gmail.com");
         System.out.println();
     }
+
 
     private void printMenu()
     {
@@ -321,7 +329,7 @@ public class Skeleton {
 
         printMenu();
 
-        running = true;
+        boolean running = true;
 
         in = new Scanner(System.in);
 

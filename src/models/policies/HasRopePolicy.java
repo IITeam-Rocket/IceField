@@ -3,6 +3,8 @@ package models.policies;
 
 import models.characters.Character;
 
+import static controllers.TabController.*;
+
 /**
  * A strategy of the player to help their friend
  * when said friend has fallen into water. This strategy is
@@ -18,6 +20,9 @@ public class HasRopePolicy implements RescueFriendPolicy {
      */
     @Override
     public void executeStrategy(Character friend) {
-        ///TODO
+        addIndent();
+        printlnWithIndents("RescueFriendPolicy.executeStrategy()");
+        printlnWithIndents("return");
+        removeIndent();
     }
 }

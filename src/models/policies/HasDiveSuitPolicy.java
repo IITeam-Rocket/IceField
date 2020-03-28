@@ -2,6 +2,8 @@ package models.policies;
 
 import models.characters.Character;
 
+import static controllers.TabController.*;
+
 /**
  * A class representing the player's strategy of
  * getting out of water upon falling in it.
@@ -16,6 +18,11 @@ public class HasDiveSuitPolicy implements FallInWaterPolicy {
      */
     @Override
     public void executeStrategy(Character player) {
-        ///TODO
+
+        addIndent();
+        printlnWithIndents("HasDiveSuitPolicy.executeStrategy()");
+        printlnWithIndents("return");
+        removeIndent();
+
     }
 }

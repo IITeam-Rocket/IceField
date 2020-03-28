@@ -3,6 +3,9 @@ package models.policies;
 
 import models.characters.Character;
 
+import static controllers.TabController.*;
+import static controllers.TabController.printlnWithIndents;
+
 /**
  * A class representing the strategy of the player
  * to help a friend in need. This particular
@@ -17,6 +20,9 @@ public class NoRescuePolicy implements RescueFriendPolicy {
      */
     @Override
     public void executeStrategy(Character friend) {
-        ///TODO
+        addIndent();
+        printlnWithIndents("NoRescuePolicy.executeStrategy()");
+        printlnWithIndents("return");
+        removeIndent();
     }
 }

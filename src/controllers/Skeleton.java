@@ -95,11 +95,10 @@ public class Skeleton {
     private int getMenuOption(String[] answers) {
         if (answers.length == 0)
             return -1;
-
         System.out.println("Please choose a menu option (1-" + answers.length + "):");
 
         for (int i = 1; i <= answers.length; i++) {
-            System.out.println(i + ". " + answers[i]);
+            System.out.println(i + ". " + answers[i - 1]);
         }
 
         int input;

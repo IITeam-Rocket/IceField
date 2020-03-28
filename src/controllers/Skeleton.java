@@ -222,6 +222,9 @@ public class Skeleton {
         //TODO: CraftSignalFlare
     }
 
+    /**
+     * Executes one of the 'RescueFriend' use cases
+     */
     private void menuRescueFriend() {
         boolean answer = getYesNo("Does the character have a rope?");
 
@@ -254,7 +257,6 @@ public class Skeleton {
         } else {
             //TODO iglut épít
             }
-        }
     }
 
     private void menuUnburyItem() {

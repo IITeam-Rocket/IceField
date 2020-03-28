@@ -31,7 +31,13 @@ abstract public class Tile {
      * @param character the character to remove
      */
     public void removeCharacter(Character character) {
+        addIndent();
+        printlnWithIndents("Tile.removeCharacter()");
+
         characters.remove(character);
+
+        printlnWithIndents("return");
+        removeIndent();
     }
 
     /**
@@ -40,8 +46,14 @@ abstract public class Tile {
      * @param quantity the amount of snow to add
      */
     public void addSnow(int quantity) {
-        if(snowDepth < maxsnowDepth) //hardcoded????
+        addIndent();
+        printlnWithIndents("Tile.addSnow()");
+
+        if(snowDepth < maxsnowDepth)
             snowDepth++;
+
+        printlnWithIndents("return");
+        removeIndent();
     }
 
     /**
@@ -53,8 +65,8 @@ abstract public class Tile {
         addIndent();
         printlnWithIndents("Tile.removeSnow()");
 
-        if(snowDepth < maxsnowDepth) //hardcoded????
-            snowDepth++;
+        if(snowDepth > 0) //hardcoded????
+            snowDepth--;
 
         printlnWithIndents("return");
         removeIndent();

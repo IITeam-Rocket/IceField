@@ -1,7 +1,6 @@
 package models.policies;
 
 import models.characters.Character;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * The strategy of a Tile to protect
@@ -16,6 +15,6 @@ public class IgluPolicy implements FrostBitePolicy {
      */
     @Override
     public void executeStrategy(Character victim) {
-        throw new NotImplementedException();
+        ///TODO
     }
 }

@@ -1,7 +1,6 @@
 package models.policies;
 
 import models.characters.Character;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * A class representing the strategy of the
@@ -17,6 +16,6 @@ public class HasNoDiveSuitPolicy implements FallInWaterPolicy {
      */
     @Override
     public void executeStrategy(Character player) {
-        throw new NotImplementedException();
+        ///TODO
     }
 }

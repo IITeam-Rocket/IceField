@@ -1,7 +1,5 @@
 package controllers;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -146,13 +144,13 @@ public class Skeleton {
         {
             case 1:
                 //TODO: Lyukra lép
-                throw new NotImplementedException();
+                break;
             case 2:
                 //TODO Instablira lép
-                throw new NotImplementedException();
+                break;
             case 3:
                 //TODO Stabilra lép
-                throw new NotImplementedException();
+                break;
         }
     }
 
@@ -175,30 +173,30 @@ public class Skeleton {
                     if(answerTile)
                     {
                         //TODO: Eltudják készíteni a jelzőraktát, így ki is lövik és megnyerik a játékot
-                        throw new NotImplementedException();
+
                     }
                     else
                     {
                         //TODO: Nem egy mezőn vannak a darabokat birtokló szereplők nem tudják elkészíteni az jelzőrakétát
-                        throw new NotImplementedException();
+
                     }
                 }
                 else
                 {
                     //TODO: Egyik karakternél sincs patron
-                    throw new NotImplementedException();
+
                 }
             }
             else
             {
                 //TODO: Egyik karakternél sincs pisztoly
-                throw new NotImplementedException();
+
             }
         }
         else
         {
             //TODO: Egyik karakternél sincs jelzőfény
-            throw new NotImplementedException();
+
         }
     }
 
@@ -209,12 +207,12 @@ public class Skeleton {
         if(answer)
         {
             //TODO: Van kötél
-            throw new NotImplementedException();
+
         }
         else
         {
             //TODO: Nincs kötél
-            throw new NotImplementedException();
+
         }
     }
 
@@ -230,11 +228,13 @@ public class Skeleton {
             {
                 case 1:
                     //TODO: Lyukat analizál
+                    break;
                 case 2:
                     //TODO: Instablit analizál
+                    break;
                 case 3:
                     //TODO: Stabilt analizál
-                    throw new NotImplementedException();
+                    break;
             }
         }
         else
@@ -249,7 +249,7 @@ public class Skeleton {
                     //TODO: Instablra épít iglut
                 case 3:
                     //TODO: Stabilra épít iglut
-                    throw new NotImplementedException();
+                    break;
             }
         }
     }
@@ -308,12 +308,10 @@ public class Skeleton {
         if(answer)
         {
             //TODO: Van lapátja, így leszed 2 egység havat
-            throw new NotImplementedException();
         }
         else
         {
             //TODO: Nincs lapátja
-            throw new NotImplementedException();
         }
     }
 

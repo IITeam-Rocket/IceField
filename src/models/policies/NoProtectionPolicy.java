@@ -21,10 +21,10 @@ public class NoProtectionPolicy implements FrostBitePolicy {
     public void executeStrategy(Character victim) {
         addIndent();
         printlnWithIndents("NoProtectionPolicy.executeStrategy()");
-        printlnWithIndents("return");
 
         victim.removeHeat(1);
 
+        printlnWithIndents("return");
         removeIndent();
     }
 }

@@ -2,6 +2,7 @@ package models.policies;
 
 
 import models.characters.Character;
+import models.tiles.Tile;
 
 import static controllers.TabController.*;
 
@@ -22,6 +23,12 @@ public class HasRopePolicy implements RescueFriendPolicy {
     public void executeStrategy(Character friend) {
         addIndent();
         printlnWithIndents("RescueFriendPolicy.executeStrategy()");
+
+        //TODO
+
+        Tile source = friend.getTile();
+        source.removeCharacter(friend);
+
         printlnWithIndents("return");
         removeIndent();
     }

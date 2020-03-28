@@ -24,7 +24,6 @@ public class HasDiveSuitPolicy implements FallInWaterPolicy {
 
         addIndent();
         printlnWithIndents("HasDiveSuitPolicy.executeStrategy()");
-        printlnWithIndents("return");
 
         Tile source = player.getTile();
         ArrayList<Tile> neighbourtiles = source.getNeighbours();
@@ -38,6 +37,7 @@ public class HasDiveSuitPolicy implements FallInWaterPolicy {
 
         source.removeCharacter(player);
 
+        printlnWithIndents("return");
         removeIndent();
 
     }

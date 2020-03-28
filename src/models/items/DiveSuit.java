@@ -3,9 +3,7 @@ package models.items;
 import models.characters.Character;
 import models.policies.HasDiveSuitPolicy;
 
-import static controllers.TabController.addIndent;
-import static controllers.TabController.printlnWithIndents;
-import static controllers.TabController.removeIndent;
+import static controllers.TabController.*;
 
 /**
  * An item that changes the finder's

@@ -2,9 +2,7 @@ package models.items;
 
 import models.characters.Character;
 
-import static controllers.TabController.addIndent;
-import static controllers.TabController.printlnWithIndents;
-import static controllers.TabController.removeIndent;
+import static controllers.TabController.*;
 
 /**
  * An Item that gives the finding character

@@ -9,6 +9,30 @@ import java.util.Scanner;
 public class Skeleton {
 
     private Scanner in = new Scanner(System.in);
+    String[] useCases = {
+            "Move Character to Stable IcePatch",
+            "Move Character to Instable IcePatch without flip",
+            "Move Character to Instable IcePatch flipping with DiveSuit",
+            "Move Character to Instable IcePatch flipping without DiveSuit",
+            "Move Character to  Undiscovered Hole",
+            "Move Character to Discovered Hole",
+            "Craft Signal Flare",
+            "Clear Patch",
+            "Analyze an Stable IcePatch",
+            "Analyze an Instable IcePatch",
+            "Analyze a Hole",
+            "Build an Igloo",
+            "Rescue a Friend with a Rope",
+            "Rescue a Friend with Nothing",
+            "Make a Storm without an Igloo",
+            "Make a Storm with an Igloo",
+            "Unbury Food",
+            "Unb8ury DiveSuit",
+            "Unbury Rope",
+            "Unbury Shovel",
+            "Unbury Cartridge",
+            "Unbury Beacon",
+            "Unbury Gun"};
 
     /**
      * Prints the team's info on the screen.
@@ -37,15 +61,12 @@ public class Skeleton {
      * Prints the options the user can choose to the screen.
      */
     private void printMenu() {
-        System.out.println("Please choose a menu option (1-8):");
-        System.out.println("1. Move Character");
-        System.out.println("2. Craft Signal Flare");
-        System.out.println("3. Rescue Friend");
-        System.out.println("4. Use Special");
-        System.out.println("5. Unbury Item");
-        System.out.println("6. Make Storm");
-        System.out.println("7. Clear Patch");
-        System.out.println("8. Exit program");
+
+
+        System.out.println("Please choose a menu option (1-" + (useCases.length + 1) + "):");
+        for (int i = 1; i <= useCases.length; ++i) {
+            System.out.println(i + ". " + useCases[i - 1]);
+        }
     }
 
     /**
@@ -56,257 +77,71 @@ public class Skeleton {
     private void executeSelected(int selectedItem) {
         switch (selectedItem) {
             case 1:
-                menuMoveCharacter();
-                printMenu();
+                //TODO: Move Character to Stable IcePatch
                 break;
             case 2:
-                menuCraftSignalFlare();
-                printMenu();
+                //TODO: Move Character to Instable IcePatch without flip
                 break;
             case 3:
-                menuRescueFriend();
-                printMenu();
+                //TODO: Move Character to Instable IcePatch flipping with DiveSuit
                 break;
             case 4:
-                menuUseSpecial();
-                printMenu();
+                //TODO: Move Character to Instable IcePatch flipping without DiveSuit
                 break;
             case 5:
-                menuUnburyItem();
-                printMenu();
+                //TODO: Move Character to  Undiscovered Hole
                 break;
             case 6:
-                menuMakeStorm();
-                printMenu();
+                //TODO: Craft Signal Flare
                 break;
             case 7:
-                menuClearPatch();
-                printMenu();
+                //TODO: Clear Patch
                 break;
             case 8:
-                System.out.println("Goodbye :D");
+                //TODO: Analyze an Stable IcePatch
                 break;
-            default:
-                System.out.println("Please enter a number between 1-8!");
-        }
-    }
-
-    /**
-     * Asks the user to select aa menu option from a specified
-     * list, and returns the number of the chosen one.
-     *
-     * @param answers an array of Strings containing the options
-     * @return the number of the chosen option
-     */
-    private int getMenuOption(String[] answers) {
-        if (answers.length == 0)
-            return -1;
-        System.out.println("Please choose a menu option (1-" + answers.length + "):");
-
-        for (int i = 1; i <= answers.length; i++) {
-            System.out.println(i + ". " + answers[i - 1]);
-        }
-
-        int input;
-
-        while (true) {
-            System.out.print("> ");
-
-            try {
-                input = in.nextInt();
-            } catch (InputMismatchException exception) {
-                System.out.println("Please enter a number! (1-" + answers.length + ")");
-                continue;
-            }
-            if (input <= 0 || input > answers.length)
-                System.out.println("Please enter a number between 1-" + answers.length + "!");
-            else
+            case 9:
+                //TODO: Analyze an Instable IcePatch
                 break;
-        }
-
-        return input;
-    }
-
-    /**
-     * Asks the user to answer to a Yes or No question,
-     * and returns with the boolean answer.
-     *
-     * @param question a String containing a simple question
-     * @return true if answer was a yes, false otherwise
-     */
-    private boolean getYesNo(String question) {
-
-        System.out.println(question + " (y/n)");
-
-        while (true) {
-            System.out.print("> ");
-            String input;
-
-            try {
-                input = in.next();
-            } catch (InputMismatchException exception) {
-                System.out.println("Please enter y/n!");
-                continue;
-            }
-
-            if (input.equals("y"))
-                return true;
-            else if (input.equals("n"))
-                return false;
-            else
-                System.out.println("Please enter y/n!");
-        }
-    }
-
-    /**
-     * Asks the user to enter a number between 0 and max.
-     *
-     * @param question a String containing a question to which
-     *                 the user can answer with the number.
-     * @param max      the largest possible number that can be chosen
-     * @return the chosen number
-     */
-    private int getNumber(String question, int max) {
-
-        String range = " (0-" + max + ")";
-        System.out.println(question + range);
-
-        int input;
-
-        while (true) {
-            System.out.print("> ");
-            try {
-                input = in.nextInt();
-
-                if (input >= 0 && input <= max)
-                    break;
-                else
-                    System.out.println("Please enter a number" + range + "!");
-            } catch (InputMismatchException exception) {
-                System.out.println("Please enter a number" + range + "!");
-                in.next();
-            }
-        }
-
-        return input;
-    }
-
-    /**
-     * Executes one of the 'MoveCharacter' use cases.
-     */
-    private void menuMoveCharacter() {
-        int option = getMenuOption(new String[]{"Move To Hole", "Move To Instable", "Move To Stable"});
-
-        switch (option) {
-            case 1:
-                //TODO: Lyukra lép
+            case 10:
+                //TODO: Analyze a Hole
                 break;
-            case 2:
-                //TODO Instablira lép
+            case 11:
+                //TODO: Build an Igloo
                 break;
-            case 3:
-                //TODO Stabilra lép
+            case 12:
+                //TODO: Rescue a Friend with a Rope
                 break;
-        }
-    }
-
-    /**
-     * Executes CraftSignalFlare use case
-     */
-    private void menuCraftSignalFlare() {
-        boolean answerBeacon = getYesNo("Does any character have a Beacon?");
-        boolean answerGun = getYesNo("Does any character have a Gun?");
-        boolean answerCartridge = getYesNo("Does any character have a Cartridge?");
-        boolean answerTile = getYesNo("Are all the characters on the same tile?");
-
-        //TODO: CraftSignalFlare
-    }
-
-    /**
-     * Executes one of the 'RescueFriend' use cases
-     */
-    private void menuRescueFriend() {
-        boolean answer = getYesNo("Does the character have a rope?");
-        if (answer) {
-            //TODO: Van kötél
-
-        } else {
-            //TODO: Nincs kötél
-        }
-    }
-
-    /**
-     * Executes one of the 'UseSpecial' use cases
-     */
-    private void menuUseSpecial() {
-        int option = getMenuOption(new String[]{"Analyze Tile - Researcher", "Build Iglu - Eskimo"});
-
-        if (option == 0) {
-            int subOption = getMenuOption(new String[]{"Analyze Hole", "Analyze Instable", "Analyze Stable"});
-            switch (subOption) {
-                case 1:
-                    //TODO: Lyukat analizál
-                    break;
-                case 2:
-                    //TODO: Instablit analizál
-                    break;
-                case 3:
-                    //TODO: Stabilt analizál
-                    break;
-            }
-        } else {
-            //TODO iglut épít
-        }
-    }
-
-    /**
-     * Executes one of the 'Unbury Item' use cases
-     */
-    private void menuUnburyItem() {
-        int option = getMenuOption(new String[]{"Unbury Food", "Unbury Divesuit", "Unbury Shovel", "Unbury Rope", "Unbury Beacon", "Unbury Gun", "Unbury Cartridge"});
-        switch (option) {
-            case 1:
-                //TODO: Kaját ás ki
+            case 13:
+                //TODO: Rescue a Friend with Nothing
                 break;
-            case 2:
-                //TODO: Búvárruhát ás ki
+            case 14:
+                //TODO: Make a Storm without an Igloo
                 break;
-            case 3:
-                //TODO: Lapátot ás ki
+            case 15:
+                //TODO: Make a Storm with an Igloo
                 break;
-            case 4:
-                //TODO: Kötelet ás ki
+            case 16:
+                //TODO: Unbury Food
                 break;
-            case 5:
-                //TODO: Jelzőfényt ás ki
+            case 17:
+                //TODO: Unbury DiveSuit
                 break;
-            case 6:
-                //TODO: Pisztolyt ás ki
+            case 18:
+                //TODO: Unbury Rope
                 break;
-            case 7:
-                //TODO: Patront ás ki
+            case 19:
+                //TODO: Unbury Shovel
                 break;
-        }
-    }
-
-    /**
-     * Executes a 'MakeStorm' use case
-     */
-    private void menuMakeStorm() {
-        boolean hasIglu = getYesNo("Does the tile have an Igloo?");
-        //TODO: makeStorm
-    }
-
-    /**
-     * Executes one of the 'ClearPatch' use cases
-     */
-    private void menuClearPatch() {
-        boolean answer = getYesNo("Does a character have a shovel?");
-
-        if (answer) {
-            //TODO: Van lapátja, így leszed 2 egység havat
-        } else {
-            //TODO: Nincs lapátja
+            case 20:
+                //TODO: Unbury Cartridge
+                break;
+            case 21:
+                //TODO: Unbury Beacon
+                break;
+            case 22:
+                //TODO: Unbury Gun
+                break;
         }
     }
 
@@ -326,7 +161,7 @@ public class Skeleton {
                 selectedItem = in.nextInt();
                 executeSelected(selectedItem);
             } catch (InputMismatchException exception) {
-                System.out.println("Please enter a number! (1-8)");
+                System.out.println("Please enter a number! (1-" + (useCases.length + 1) + ")");
             }
         }
     }

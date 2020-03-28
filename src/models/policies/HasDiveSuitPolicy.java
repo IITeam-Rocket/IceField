@@ -1,6 +1,11 @@
 package models.policies;
 
 import models.characters.Character;
+import models.tiles.Tile;
+
+import java.util.ArrayList;
+
+import static controllers.TabController.*;
 
 /**
  * A class representing the player's strategy of
@@ -16,6 +21,24 @@ public class HasDiveSuitPolicy implements FallInWaterPolicy {
      */
     @Override
     public void executeStrategy(Character player) {
-        ///TODO
+
+        addIndent();
+        printlnWithIndents("HasDiveSuitPolicy.executeStrategy()");
+
+        Tile source = player.getTile();
+        ArrayList<Tile> neighbourtiles = source.getNeighbours();
+        boolean accepted = false;
+
+        for(Tile t : neighbourtiles)
+        {
+            if(t.acceptCharacter(player))
+                break;
+        }
+
+        source.removeCharacter(player);
+
+        printlnWithIndents("return");
+        removeIndent();
+
     }
 }

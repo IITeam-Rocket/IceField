@@ -2,6 +2,8 @@ package models.tiles;
 
 import models.characters.Character;
 
+import static controllers.TabController.*;
+
 /**
  * A tile with no solid platform.
  */
@@ -15,6 +17,10 @@ public class Hole extends Tile {
      */
     @Override
     public boolean acceptCharacter(Character character) {
+        addIndent();
+        printlnWithIndents("Hole.acceptCharacter()");
+        printlnWithIndents("return: false");
+        removeIndent();
         return false;
     }
 
@@ -23,7 +29,14 @@ public class Hole extends Tile {
      */
     @Override
     public void reactToStorm() {
-        ///TODO
+        addIndent();
+        printlnWithIndents("Hole.reactToStorm()");
+
+        addSnow(1);
+
+        printlnWithIndents("return");
+        removeIndent();
+
     }
 
     /**
@@ -34,6 +47,11 @@ public class Hole extends Tile {
      */
     @Override
     public int getCapacity() {
+        addIndent();
+        printlnWithIndents("Hole.getCapacity()");
+        printlnWithIndents("return: 0");
+        removeIndent();
+
         return 0;
     }
 }

@@ -4,7 +4,9 @@ import models.policies.IgluPolicy;
 import models.tiles.IcePatch;
 import models.tiles.Tile;
 
-import static controllers.TabController.*;
+import static controllers.TabController.addIndent;
+import static controllers.TabController.printlnWithIndents;
+import static controllers.TabController.removeIndent;
 
 /**
  * A character with the ability to build Igloos

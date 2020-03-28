@@ -17,6 +17,11 @@ public class Eskimo extends Character {
         super(5, 4, 1);
     }
 
+    public Eskimo(Tile starting) {
+        super(5, 4, 1);
+        this.tile = starting;
+    }
+
     /**
      * Builds an Igloo on the target Tile,
      * changing its FrostBitePolicy.

@@ -2,6 +2,10 @@ package models.policies;
 
 
 import models.characters.Character;
+import models.tiles.Tile;
+
+import static controllers.TabController.*;
+import static controllers.TabController.printlnWithIndents;
 
 /**
  * A class representing the strategy of the player
@@ -16,7 +20,10 @@ public class NoRescuePolicy implements RescueFriendPolicy {
      * @param friend the friend who fell in water.
      */
     @Override
-    public void executeStrategy(Character friend) {
-        ///TODO
+    public void executeStrategy(Character friend, Tile dest) {
+        addIndent();
+        printlnWithIndents("NoRescuePolicy.executeStrategy()");
+        printlnWithIndents("return");
+        removeIndent();
     }
 }

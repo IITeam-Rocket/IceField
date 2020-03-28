@@ -297,9 +297,10 @@ public class Skeleton {
         //TODO: makeStorm
     }
 
+    /**
+     * Executes one of the 'ClearPatch' use cases
+     */
     private void menuClearPatch() {
-        int snowAmount = getNumber("How many units of snow are there currently on the targeted tile?", 6);
-
         boolean answer = getYesNo("Does a character have a shovel?");
 
         if (answer) {

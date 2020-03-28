@@ -1,6 +1,7 @@
 package controllers;
 
 import models.characters.Researcher;
+import models.tiles.Hole;
 import models.tiles.StableIcePatch;
 
 /**
@@ -9,14 +10,24 @@ import models.tiles.StableIcePatch;
 public class UseCaseExecutor {
 
     /**
-     * Creates a character and moves it to a StableIcePatch.
+     * Sets up and executes the MoveCharacterToStable use case.
      */
-    public static void moveCharacterToStable() {
+    public static void MoveCharacterToStable() {
         StableIcePatch source = new StableIcePatch();
-        Researcher explorer = new Researcher(source);
         StableIcePatch dest = new StableIcePatch();
+        Researcher explorer = new Researcher(source);
 
         explorer.moveTo(dest);
     }
 
+    /**
+     * Sets up and executes the MoveCharacterToHole use case.
+     */
+    public static void MoveCharacterToHole() {
+        StableIcePatch source = new StableIcePatch();
+        Hole dest = new Hole();
+        Researcher explorer = new Researcher(source);
+
+        explorer.moveTo(dest);
+    }
 }

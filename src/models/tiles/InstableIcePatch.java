@@ -2,6 +2,8 @@ package models.tiles;
 
 import models.characters.Character;
 
+import static controllers.TabController.*;
+
 /**
  * An unstable IcePatch that may hold
  * a number of people before flipping
@@ -19,8 +21,12 @@ public class InstableIcePatch extends IcePatch {
      * @return true if successful, false otherwise
      */
     @Override
-    public boolean acceptCharacter(Character character) {
-        return false;
+    public boolean acceptCharacter(Character character){
+    addIndent();
+    printlnWithIndents("InstableIcePatch.acceptCharacter()");
+    printlnWithIndents("return: true");
+    removeIndent();
+    return true;
     }
 
     /**
@@ -31,6 +37,10 @@ public class InstableIcePatch extends IcePatch {
      */
     @Override
     public int getCapacity() {
+        addIndent();
+        printlnWithIndents("InstableIcePatch.getCapacity()");
+        printlnWithIndents("return: " + playerCapacity);
+        removeIndent();
         return playerCapacity;
     }
 
@@ -40,7 +50,13 @@ public class InstableIcePatch extends IcePatch {
      * and vice versa.
      */
     public void flip() {
-        ///TODO
+        addIndent();
+        printlnWithIndents("InstableIcePatch.flip()");
+
+        flipped = !flipped;
+
+        printlnWithIndents("return");
+        removeIndent();
     }
 
     /**
@@ -50,6 +66,11 @@ public class InstableIcePatch extends IcePatch {
      * @return false, if the Patch can
      */
     public boolean isFlipped() {
+        addIndent();
+        printlnWithIndents("InstableIcePatch.isFlipped()");
+        printlnWithIndents("return: "+ flipped);
+        removeIndent();
+
         return flipped;
     }
 }

@@ -144,7 +144,7 @@ public abstract class Character {
         addIndent();
         printlnWithIndents("Character.rescueFriend(friend)");
 
-        helpFriendStrategy.executeStrategy(friend);
+        helpFriendStrategy.executeStrategy(friend, tile);
 
         printlnWithIndents("return");
         removeIndent();

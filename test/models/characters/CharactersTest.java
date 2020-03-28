@@ -19,6 +19,11 @@ public class CharactersTest {
 
     @Test
     void eskimoDefaultBodyHeatTest() {
+        assertEquals(5, eskimo.getBodyHeat(), "Sup");
+    }
+
+    @Test
+    void EskimoDefaultBodyHeatTest() {
         assertEquals(5, eskimo.bodyHeat, "Wong do not hot");
     }
 
@@ -77,5 +82,9 @@ public class CharactersTest {
         Assertions.assertThrows(IllegalArgumentException.class, () -> eskimo.removeHeat(-1));
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> researcher.addHeat(-1));
+    }
+
+    void EskimoBodyHeatGetterTest() {
+        assertEquals(eskimo.bodyHeat, eskimo.getBodyHeat(), "Wong never how");
     }
 }

@@ -4,9 +4,7 @@ import models.policies.IgluPolicy;
 import models.tiles.IcePatch;
 import models.tiles.Tile;
 
-import static controllers.TabController.addIndent;
-import static controllers.TabController.printlnWithIndents;
-import static controllers.TabController.removeIndent;
+import static controllers.TabController.*;
 
 /**
  * A character with the ability to build Igloos
@@ -15,6 +13,11 @@ public class Eskimo extends Character {
 
     public Eskimo() {
         super(5, 4, 1);
+    }
+
+    public Eskimo(Tile starting) {
+        super(5, 4, 1);
+        this.tile = starting;
     }
 
     /**

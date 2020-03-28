@@ -236,7 +236,7 @@ public class Skeleton {
     }
 
     /**
-     * Executes one of the UseSpecial use cases
+     * Executes one of the 'UseSpecial' use cases
      */
     private void menuUseSpecial() {
         int option = getMenuOption(new String[]{"Analyze Tile - Researcher", "Build Iglu - Eskimo"});
@@ -259,9 +259,11 @@ public class Skeleton {
         }
     }
 
+    /**
+     * Executes one of the 'Unbury Item' use cases
+     */
     private void menuUnburyItem() {
         int option = getMenuOption(new String[]{"Unbury Food", "Unbury Divesuit", "Unbury Shovel", "Unbury Rope", "Unbury Beacon", "Unbury Gun", "Unbury Cartridge"});
-
         switch (option) {
             case 1:
                 //TODO: Kaját ás ki

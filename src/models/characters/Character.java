@@ -6,6 +6,7 @@ import models.policies.HasNoDiveSuitPolicy;
 import models.policies.NoRescuePolicy;
 import models.policies.RescueFriendPolicy;
 import models.tiles.Tile;
+import models.tiles.IcePatch;
 
 import static controllers.TabController.*;
 
@@ -67,7 +68,8 @@ public abstract class Character {
         addIndent();
         printlnWithIndents("Character.retriveItem()");
 
-        //TODO: tile.unburyItem(this) tile doesn't have unburyItem
+        IcePatch p = (IcePatch) this.tile;
+        p.unBuryItem(this);
 
         printlnWithIndents("return");
         removeIndent();

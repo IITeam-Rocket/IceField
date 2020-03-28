@@ -227,23 +227,23 @@ public class Skeleton {
      */
     private void menuRescueFriend() {
         boolean answer = getYesNo("Does the character have a rope?");
-
         if (answer) {
             //TODO: Van kötél
 
         } else {
             //TODO: Nincs kötél
-
         }
     }
 
+    /**
+     * Executes one of the UseSpecial use cases
+     */
     private void menuUseSpecial() {
         int option = getMenuOption(new String[]{"Analyze Tile - Researcher", "Build Iglu - Eskimo"});
 
         if (option == 0) {
-            int suboption = getMenuOption(new String[]{"Analyze Hole", "Analyze Instable", "Analyze Stable"});
-
-            switch (suboption) {
+            int subOption = getMenuOption(new String[]{"Analyze Hole", "Analyze Instable", "Analyze Stable"});
+            switch (subOption) {
                 case 1:
                     //TODO: Lyukat analizál
                     break;
@@ -256,7 +256,7 @@ public class Skeleton {
             }
         } else {
             //TODO iglut épít
-            }
+        }
     }
 
     private void menuUnburyItem() {

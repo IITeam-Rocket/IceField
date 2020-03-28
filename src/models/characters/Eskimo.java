@@ -4,6 +4,8 @@ import models.policies.IgluPolicy;
 import models.tiles.IcePatch;
 import models.tiles.Tile;
 
+import static controllers.TabController.*;
+
 /**
  * A character with the ability to build Igloos
  */
@@ -26,7 +28,13 @@ public class Eskimo extends Character {
      */
     @Override
     public void useSpecial(Tile target) {
+        addIndent();
+        printlnWithIndents("Eskimo.useSpecial(target)");
+
         if (target == tile)
             ((IcePatch) tile).changeFrostBitePolicy(new IgluPolicy());
+
+        printlnWithIndents("return");
+        removeIndent();
     }
 }

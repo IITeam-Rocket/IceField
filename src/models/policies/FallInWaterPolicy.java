@@ -1,4 +1,6 @@
-package models;
+package models.policies;
+
+import models.characters.Character;
 
 /**
  * A strategy of a player to do when they

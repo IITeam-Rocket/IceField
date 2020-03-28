@@ -1,4 +1,6 @@
-package models;
+package models.items;
+
+import models.characters.Character;
 
 /**
  * An Item that gives the finding character

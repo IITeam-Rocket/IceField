@@ -1,4 +1,7 @@
-package models;
+package models.characters;
+
+import models.tiles.Tile;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * A character with the ability to analyze
@@ -15,5 +18,6 @@ public class Researcher extends Character {
      */
     @Override
     public void useSpecial(Tile target) {
+        throw new NotImplementedException();
     }
 }

@@ -1,4 +1,6 @@
-package models;
+package models.policies;
+
+import models.characters.Character;
 
 /**
  * The strategy of a Tile to not

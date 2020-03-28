@@ -1,4 +1,7 @@
-package models;
+package models.items;
+
+import models.characters.Character;
+import models.policies.HasDiveSuitPolicy;
 
 /**
  * An item that changes the finder's

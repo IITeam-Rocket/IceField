@@ -1,7 +1,8 @@
 package controllers;
 
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 import java.util.InputMismatchException;
-import java.util.List;
 import java.util.Scanner;
 
 public class Skeleton {
@@ -13,15 +14,15 @@ public class Skeleton {
     {
         System.out.println("Szoftver projekt laboratórium - Skeleton");
         System.out.println("21 - team_rocket");
-        System.out.println("");
+        System.out.println();
         System.out.println("Konzulens: Dr. Goldschmidt Balázs");
-        System.out.println("");
+        System.out.println();
         System.out.println("Ábrahám Dániel          DASGYJ  d.abraham96@icloud.com");
         System.out.println("Matyasi Lilla Nóra      X986BV  lilla.matyasi@gmail.com");
         System.out.println("Kovács Marcell          U1UOXZ  kovacs.marcell99@gmail.com");
         System.out.println("Józsa György Bence      PAYR41  jozsa.gyuri9910@gmail.com");
         System.out.println("Tóth Máté               HBFE3R  extralarge3@gmail.com");
-        System.out.println("");
+        System.out.println();
     }
 
     private void printMenu()
@@ -145,13 +146,13 @@ public class Skeleton {
         {
             case 1:
                 //TODO: Lyukra lép
-                break;
+                throw new NotImplementedException();
             case 2:
                 //TODO Instablira lép
-                break;
+                throw new NotImplementedException();
             case 3:
                 //TODO Stabilra lép
-                break;
+                throw new NotImplementedException();
         }
     }
 
@@ -174,25 +175,30 @@ public class Skeleton {
                     if(answerTile)
                     {
                         //TODO: Eltudják készíteni a jelzőraktát, így ki is lövik és megnyerik a játékot
+                        throw new NotImplementedException();
                     }
                     else
                     {
                         //TODO: Nem egy mezőn vannak a darabokat birtokló szereplők nem tudják elkészíteni az jelzőrakétát
+                        throw new NotImplementedException();
                     }
                 }
                 else
                 {
                     //TODO: Egyik karakternél sincs patron
+                    throw new NotImplementedException();
                 }
             }
             else
             {
                 //TODO: Egyik karakternél sincs pisztoly
+                throw new NotImplementedException();
             }
         }
         else
         {
             //TODO: Egyik karakternél sincs jelzőfény
+            throw new NotImplementedException();
         }
     }
 
@@ -203,10 +209,12 @@ public class Skeleton {
         if(answer)
         {
             //TODO: Van kötél
+            throw new NotImplementedException();
         }
         else
         {
             //TODO: Nincs kötél
+            throw new NotImplementedException();
         }
     }
 
@@ -222,13 +230,11 @@ public class Skeleton {
             {
                 case 1:
                     //TODO: Lyukat analizál
-                    break;
                 case 2:
                     //TODO: Instablit analizál
-                    break;
                 case 3:
                     //TODO: Stabilt analizál
-                    break;
+                    throw new NotImplementedException();
             }
         }
         else
@@ -239,13 +245,11 @@ public class Skeleton {
             {
                 case 1:
                     //TODO: Lyukra épít iglut
-                    break;
                 case 2:
                     //TODO: Instablra épít iglut
-                    break;
                 case 3:
                     //TODO: Stabilra épít iglut
-                    break;
+                    throw new NotImplementedException();
             }
         }
     }
@@ -304,10 +308,12 @@ public class Skeleton {
         if(answer)
         {
             //TODO: Van lapátja, így leszed 2 egység havat
+            throw new NotImplementedException();
         }
         else
         {
             //TODO: Nincs lapátja
+            throw new NotImplementedException();
         }
     }
 

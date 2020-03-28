@@ -1,5 +1,7 @@
-package models;
+package models.policies;
 
+
+import models.characters.Character;
 
 /**
  * Interface that represents a strategy concerning

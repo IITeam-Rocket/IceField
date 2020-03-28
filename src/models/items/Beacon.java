@@ -1,4 +1,7 @@
-package models;
+package models.items;
+
+import models.Environment;
+import models.characters.Character;
 
 /**
  * A beacon that is one part of the SignalFlare

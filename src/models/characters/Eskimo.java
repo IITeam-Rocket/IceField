@@ -1,4 +1,8 @@
-package models;
+package models.characters;
+
+import models.policies.IgluPolicy;
+import models.tiles.IcePatch;
+import models.tiles.Tile;
 
 /**
  * A character with the ability to build Igloos

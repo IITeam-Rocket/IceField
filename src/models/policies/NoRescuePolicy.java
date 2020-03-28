@@ -1,5 +1,8 @@
-package models;
+package models.policies;
 
+
+import models.characters.Character;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * A class representing the strategy of the player
@@ -15,6 +18,6 @@ public class NoRescuePolicy implements RescueFriendPolicy {
      */
     @Override
     public void executeStrategy(Character friend) {
-
+        throw new NotImplementedException();
     }
 }

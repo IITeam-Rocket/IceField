@@ -1,4 +1,7 @@
-package models;
+package models.items;
+
+import models.characters.Character;
+import models.policies.HasRopePolicy;
 
 /**
  * An Item that changes the finding player's

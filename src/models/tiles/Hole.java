@@ -1,4 +1,7 @@
-package models;
+package models.tiles;
+
+import models.characters.Character;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * A tile with no solid platform.
@@ -21,7 +24,7 @@ public class Hole extends Tile {
      */
     @Override
     public void reactToStorm() {
-
+        throw new NotImplementedException();
     }
 
     /**

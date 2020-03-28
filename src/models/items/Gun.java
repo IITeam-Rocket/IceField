@@ -1,4 +1,7 @@
-package models;
+package models.items;
+
+import models.Environment;
+import models.characters.Character;
 
 /**
  * A gun that is a part of the SignalFlare

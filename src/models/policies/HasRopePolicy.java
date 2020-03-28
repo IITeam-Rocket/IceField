@@ -1,5 +1,8 @@
-package models;
+package models.policies;
 
+
+import models.characters.Character;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * A strategy of the player to help their friend
@@ -16,6 +19,6 @@ public class HasRopePolicy implements RescueFriendPolicy {
      */
     @Override
     public void executeStrategy(Character friend) {
-
+        throw new NotImplementedException();
     }
 }

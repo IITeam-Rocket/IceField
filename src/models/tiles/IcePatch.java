@@ -1,4 +1,9 @@
-package models;
+package models.tiles;
+
+import models.characters.Character;
+import models.items.Item;
+import models.policies.FrostBitePolicy;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * A Tile frozen with ice on which characters
@@ -13,7 +18,7 @@ abstract public class IcePatch extends Tile {
      * @return the buried item
      */
     public Item unBuryItem(Character player) {
-        return null;
+        throw new NotImplementedException();
     }
 
     /**
@@ -21,7 +26,7 @@ abstract public class IcePatch extends Tile {
      */
     @Override
     public void reactToStorm() {
-
+        throw new NotImplementedException();
     }
 
     /**
@@ -30,6 +35,7 @@ abstract public class IcePatch extends Tile {
      * @param strategy the new strategy
      */
     public void changeFrostBitePolicy(FrostBitePolicy strategy) {
+        throw new NotImplementedException();
     }
 
 }

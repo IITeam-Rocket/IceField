@@ -1,4 +1,7 @@
-package models;
+package models.tiles;
+
+import models.characters.Character;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * An unstable IcePatch that may hold
@@ -38,6 +41,7 @@ public class InstableIcePatch extends IcePatch {
      * and vice versa.
      */
     public void flip() {
+        throw new NotImplementedException();
     }
 
     /**

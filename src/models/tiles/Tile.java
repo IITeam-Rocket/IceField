@@ -1,4 +1,8 @@
-package models;
+package models.tiles;
+
+import models.characters.Character;
+import models.items.Item;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
 
@@ -25,6 +29,7 @@ abstract public class Tile {
      * @param character the character to remove
      */
     public void removeCharacter(Character character) {
+        throw new NotImplementedException();
     }
 
     /**
@@ -33,6 +38,7 @@ abstract public class Tile {
      * @param quantity the amount of snow to add
      */
     public void addSnow(int quantity) {
+        throw new NotImplementedException();
     }
 
     /**
@@ -41,6 +47,7 @@ abstract public class Tile {
      * @param quantity the amount of snow to remove
      */
     public void removeSnow(int quantity) {
+        throw new NotImplementedException();
     }
 
     /**
@@ -49,6 +56,7 @@ abstract public class Tile {
      * @param item the item to bury
      */
     public void storeItem(Item item) {
+        throw new NotImplementedException();
     }
 
     /**

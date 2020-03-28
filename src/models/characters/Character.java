@@ -1,4 +1,10 @@
-package models;
+package models.characters;
+
+import models.Environment;
+import models.policies.FallInWaterPolicy;
+import models.policies.RescueFriendPolicy;
+import models.tiles.Tile;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * Represents a player character of the game.
@@ -25,6 +31,7 @@ public abstract class Character {
      * @param destination the destination to move to
      */
     public void moveTo(Tile destination) {
+        throw new NotImplementedException();
         //TODO
     }
 
@@ -32,6 +39,7 @@ public abstract class Character {
      * Retrieves the item hidden in the current Tile.
      */
     public void retrieveItem() {
+        throw new NotImplementedException();
         //TODO
     }
 

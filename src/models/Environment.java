@@ -1,5 +1,8 @@
 package models;
 
+import models.characters.Character;
+import models.tiles.Tile;
+
 import java.util.ArrayList;
 
 /**

@@ -17,7 +17,7 @@ public class CharactersTest {
         researcher = new Researcher();
     }
 
-    @DynamicTest
+    @Test
     void eskimoDefaultBodyHeatTest() {
         assertEquals(5, eskimo.getBodyHeat(), "Sup");
     }

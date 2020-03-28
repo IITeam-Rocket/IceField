@@ -52,7 +52,9 @@ public abstract class Character {
         addIndent();
         printlnWithIndents("Character.moveTo(destination)");
 
-        //TODO
+        if(destination.acceptCharacter(this)){
+            tile.removeCharacter(this);
+        }
 
         printlnWithIndents("return");
         removeIndent();
@@ -65,7 +67,7 @@ public abstract class Character {
         addIndent();
         printlnWithIndents("Character.retriveItem()");
 
-        //TODO
+        //TODO: tile.unburyItem(this) tile doesn't have unburyItem
 
         printlnWithIndents("return");
         removeIndent();

@@ -17,6 +17,11 @@ public class Researcher extends Character {
         super(4, 4, 1);
     }
 
+    public Researcher(Tile starting) {
+        super(4, 4, 1);
+        this.tile = starting;
+    }
+
     /**
      * Analyzes the target tile, and finds its
      * capacity.

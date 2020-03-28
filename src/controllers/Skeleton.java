@@ -289,17 +289,12 @@ public class Skeleton {
         }
     }
 
+    /**
+     * Executes a 'MakeStorm' use case
+     */
     private void menuMakeStorm() {
-        int igluInside = getNumber("How many characters are inside of an iglu?", 10);
-        int igluOutside = getNumber("How many characters are outside of an iglu?\n (Don't enter a huge number, because you will be asked to give their body heat individually)", 10);
-
-
-        for (int i = 0; i < igluOutside; i++) {
-            int bodyheat = getNumber("Enter the body heat for character " + (i + 1) + "/" + igluOutside, 100); //TODO: Jó lesz max 100?
-            //TODO: Itt végig kell menni a játékosokon akik nincsennek igluban, és a bekért hőérzetet kell nekik beállítani
-        }
-
-        //TODO: Itt szimulálni kell a vihart, aki bent van sebződik (azokat a karaktereket is érdemes lehet létrehozni, akik igluban vannak a megfelelő szimuláció érdekében)
+        boolean hasIglu = getYesNo("Does the tile have an Igloo?");
+        //TODO: makeStorm
     }
 
     private void menuClearPatch() {

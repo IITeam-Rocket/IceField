@@ -13,7 +13,7 @@ import static controllers.TabController.*;
  */
 abstract public class Tile {
     protected int snowDepth;
-    static final int maxsnowDepth = 6;
+    static final int maxSnowDepth = 6;
     protected ArrayList<Character> characters = new ArrayList<>();
     protected ArrayList<Tile> neighbours = new ArrayList<>();
 
@@ -51,8 +51,8 @@ abstract public class Tile {
 
         snowDepth += quantity;
 
-        if (snowDepth > maxsnowDepth)
-            snowDepth = maxsnowDepth;
+        if (snowDepth > maxSnowDepth)
+            snowDepth = maxSnowDepth;
 
         printlnWithIndents("return");
         removeIndent();

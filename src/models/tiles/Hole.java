@@ -17,7 +17,7 @@ public class Hole extends Tile {
         Random r = new Random();
         int i = 0;
         while (i == 0)
-            i = r.nextInt(maxsnowDepth + 1);
+            i = r.nextInt(maxSnowDepth + 1);
 
         snowDepth = i;
     }

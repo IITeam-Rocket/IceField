@@ -32,8 +32,8 @@ public class TilesTest {
             int cocain = t.getSnowDepth();
             int s = r.nextInt(10);
             t.addSnow(s);
-            if (s + cocain > Tile.maxsnowDepth) {
-                s = Tile.maxsnowDepth;
+            if (s + cocain > Tile.maxSnowDepth) {
+                s = Tile.maxSnowDepth;
                 assertEquals(s, t.getSnowDepth(), "Snowing heavy right?");
             } else {
                 assertEquals(cocain + s, t.getSnowDepth(), "Snowing heavy right?");

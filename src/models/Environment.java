@@ -6,9 +6,7 @@ import models.tiles.Tile;
 
 import java.util.ArrayList;
 
-import static controllers.TabController.addIndent;
-import static controllers.TabController.printlnWithIndents;
-import static controllers.TabController.removeIndent;
+import static controllers.TabController.*;
 
 /**
  * Singleton class representing the Environment and the Game
@@ -123,7 +121,7 @@ public class Environment {
     }
 
     /**
-     * Controls the entire gameplay.
+     * Controls the entire game-play.
      */
     public void playGame() {
         addIndent();

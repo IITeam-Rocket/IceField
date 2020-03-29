@@ -27,10 +27,19 @@ public class InstableIcePatch extends IcePatch {
     @Override
     public boolean acceptCharacter(Character character) {
         addIndent();
-    printlnWithIndents("InstableIcePatch.acceptCharacter()");
-    printlnWithIndents("return: true");
-    removeIndent();
-    return true;
+        printlnWithIndents("InstableIcePatch.acceptCharacter()");
+
+        characters.add(character);
+        if(characters.size() > playerCapacity){
+            flip();
+            for (Character var :characters) {
+                var.swimToShore();
+            }
+        }
+
+        printlnWithIndents("return: true");
+        removeIndent();
+        return true;
     }
 
     /**

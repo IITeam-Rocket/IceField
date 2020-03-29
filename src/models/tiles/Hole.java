@@ -33,6 +33,16 @@ public class Hole extends Tile {
     public boolean acceptCharacter(Character character) {
         addIndent();
         printlnWithIndents("Hole.acceptCharacter()");
+
+        if(!isDiscovered){
+            reveal();
+            character.swimToShore();
+
+            printlnWithIndents("return: true");
+            removeIndent();
+            return true;
+        }
+
         printlnWithIndents("return: false");
         removeIndent();
         return false;
@@ -63,10 +73,24 @@ public class Hole extends Tile {
     public int getCapacity() {
         addIndent();
         printlnWithIndents("Hole.getCapacity()");
+
+        reveal();
+
         printlnWithIndents("return: 0");
         removeIndent();
 
         return 0;
+    }
+    /**
+     * Sets isDiscovered true.
+     */
+    public void reveal(){
+        addIndent();
+        printlnWithIndents("Hole.revesl()");
+        setDiscovered(true);
+
+        printlnWithIndents("return");
+        removeIndent();
     }
 
     public boolean isDiscovered() {

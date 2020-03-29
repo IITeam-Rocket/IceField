@@ -36,6 +36,7 @@ public class UseCaseExecutor {
     public static void moveCharacterToInstable() {
         StableIcePatch source = new StableIcePatch();
         InstableIcePatch dest = new InstableIcePatch();
+        dest.setPlayerCapacity(10);
         Researcher explorer = new Researcher(source);
         source.addCharacter(explorer);
 

@@ -78,70 +78,73 @@ public class Skeleton {
     private void executeSelected(int selectedItem) {
         switch (selectedItem) {
             case 1:
-                //TODO: Move Character to Stable IcePatch
+                UseCaseExecutor.moveCharacterToStable();
                 break;
             case 2:
-                //TODO: Move Character to Instable IcePatch without flip
+                UseCaseExecutor.moveCharacterToInstable();
                 break;
             case 3:
-                //TODO: Move Character to Instable IcePatch flipping with DiveSuit
+                UseCaseExecutor.moveCharacterToInstableWithDiveSuit();
                 break;
             case 4:
-                //TODO: Move Character to Instable IcePatch flipping without DiveSuit
+                UseCaseExecutor.moveCharacterToInstableNoDiveSuit();
                 break;
             case 5:
-                //TODO: Move Character to  Undiscovered Hole
+                UseCaseExecutor.moveCharacterToUndiscoveredHole();
                 break;
             case 6:
-                //TODO: Craft Signal Flare
+                UseCaseExecutor.moveCharacterToDiscoveredHole();
                 break;
             case 7:
-                //TODO: Clear Patch
+                UseCaseExecutor.craftSignalFlare();
                 break;
             case 8:
-                //TODO: Analyze an Stable IcePatch
+                UseCaseExecutor.clearPatch();
                 break;
             case 9:
-                //TODO: Analyze an Instable IcePatch
+                UseCaseExecutor.analyzeStable();
                 break;
             case 10:
-                //TODO: Analyze a Hole
+                UseCaseExecutor.analyzeInstable();
                 break;
             case 11:
-                //TODO: Build an Igloo
+                UseCaseExecutor.analyzeHole();
                 break;
             case 12:
-                //TODO: Rescue a Friend with a Rope
+                UseCaseExecutor.buildIglu();
                 break;
             case 13:
-                //TODO: Rescue a Friend with Nothing
+                UseCaseExecutor.rescueFriendWithRope();
                 break;
             case 14:
-                //TODO: Make a Storm without an Igloo
+                UseCaseExecutor.rescueFriendWithNothing();
                 break;
             case 15:
-                //TODO: Make a Storm with an Igloo
+                UseCaseExecutor.makeStormWithoutIglu();
                 break;
             case 16:
-                //TODO: Unbury Food
+                UseCaseExecutor.makeStormWithIglu();
                 break;
             case 17:
-                //TODO: Unbury DiveSuit
+                UseCaseExecutor.unburyFood();
                 break;
             case 18:
-                //TODO: Unbury Rope
+                UseCaseExecutor.unburyDiveSuit();
                 break;
             case 19:
-                //TODO: Unbury Shovel
+                UseCaseExecutor.unburyRope();
                 break;
             case 20:
-                //TODO: Unbury Cartridge
+                UseCaseExecutor.unburyShovel();
                 break;
             case 21:
-                //TODO: Unbury Beacon
+                UseCaseExecutor.unburyCartridge();
                 break;
             case 22:
-                //TODO: Unbury Gun
+                UseCaseExecutor.unburyBeacon();
+                break;
+            case 23:
+                UseCaseExecutor.unburyGun();
                 break;
         }
     }

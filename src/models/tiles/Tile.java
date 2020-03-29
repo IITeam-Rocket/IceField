@@ -137,4 +137,16 @@ abstract public class Tile {
         removeIndent();
         return neighbours;
     }
+
+    public void setSnowDepth(int snowDepth) {
+        this.snowDepth = snowDepth;
+    }
+
+    public void setCharacters(ArrayList<Character> characters) {
+        this.characters = characters;
+    }
+
+    public void setNeighbours(ArrayList<Tile> neighbours) {
+        this.neighbours = neighbours;
+    }
 }

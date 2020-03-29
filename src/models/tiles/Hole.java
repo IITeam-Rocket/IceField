@@ -11,6 +11,8 @@ import static controllers.TabController.*;
  */
 public class Hole extends Tile {
 
+    private boolean isDiscovered = false;
+
     public Hole() {
         Random r = new Random();
         int i = 0;
@@ -19,6 +21,7 @@ public class Hole extends Tile {
 
         snowDepth = i;
     }
+
     /**
      * If the Hole has not been revealed, the
      * accepts the player, otherwise it doesn't.
@@ -34,7 +37,6 @@ public class Hole extends Tile {
         removeIndent();
         return false;
     }
-
     /**
      * Realises the storm's effects.
      */
@@ -64,5 +66,13 @@ public class Hole extends Tile {
         removeIndent();
 
         return 0;
+    }
+
+    public boolean isDiscovered() {
+        return isDiscovered;
+    }
+
+    public void setDiscovered(boolean discovered) {
+        isDiscovered = discovered;
     }
 }

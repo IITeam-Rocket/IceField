@@ -72,12 +72,8 @@ public class Environment {
         return null;
     }
 
-    /**
-     * Plays the losing game sequence.
-     * @throws EndofGameException
-     */
-    public void gameOver() throws EndofGameException {
-        throw new EndofGameException("Somebody died!");
+    public static void setInstance(Environment instance) {
+        Environment.instance = instance;
     }
 
     /**
@@ -152,5 +148,38 @@ public class Environment {
      */
     public boolean isGunIsDiscovered() {
         return gunIsDiscovered;
+    }
+
+    /**
+     * Plays the losing game sequence.
+     *
+     * @throws EndofGameException always
+     */
+    public void gameOver() throws EndofGameException {
+        throw new EndofGameException("Somebody died!");
+    }
+
+    public void setIceTiles(ArrayList<Tile> iceTiles) {
+        this.iceTiles = iceTiles;
+    }
+
+    public void setPlayers(ArrayList<Character> players) {
+        this.players = players;
+    }
+
+    public void setCurrentPlayer(Character currentPlayer) {
+        this.currentPlayer = currentPlayer;
+    }
+
+    public void setBeaconIsDiscovered(boolean beaconIsDiscovered) {
+        this.beaconIsDiscovered = beaconIsDiscovered;
+    }
+
+    public void setCartridgeIsDiscovered(boolean cartridgeIsDiscovered) {
+        this.cartridgeIsDiscovered = cartridgeIsDiscovered;
+    }
+
+    public void setGunIsDiscovered(boolean gunIsDiscovered) {
+        this.gunIsDiscovered = gunIsDiscovered;
     }
 }

@@ -52,4 +52,12 @@ public class InstableIcePatch extends IcePatch {
     public boolean isFlipped() {
         return flipped;
     }
+
+    public void setPlayerCapacity(int playerCapacity) {
+        this.playerCapacity = playerCapacity;
+    }
+
+    public void setFlipped(boolean flipped) {
+        this.flipped = flipped;
+    }
 }

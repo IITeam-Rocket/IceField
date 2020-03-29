@@ -78,7 +78,7 @@ public abstract class Character {
      * Increases bodyHeat.
      *
      * @param quantity the amount of heat
-     * @throws IllegalArgumentException
+     * @throws IllegalArgumentException if quantity is negative
      */
     public void addHeat(int quantity) throws IllegalArgumentException {
         if (quantity < 1) throw new IllegalArgumentException("Must not be negative");
@@ -296,7 +296,27 @@ public abstract class Character {
      *
      * @param quantity the character's new strength
      */
-    public void setStrength(int quantity){
+    public void setStrength(int quantity) {
         strength = quantity;
+    }
+
+    public void setBodyHeat(int bodyHeat) {
+        this.bodyHeat = bodyHeat;
+    }
+
+    public void setStamina(int stamina) {
+        this.stamina = stamina;
+    }
+
+    public void setHelpFriendStrategy(RescueFriendPolicy helpFriendStrategy) {
+        this.helpFriendStrategy = helpFriendStrategy;
+    }
+
+    public void setSwimToShoreStrategy(FallInWaterPolicy swimToShoreStrategy) {
+        this.swimToShoreStrategy = swimToShoreStrategy;
+    }
+
+    public void setTile(Tile tile) {
+        this.tile = tile;
     }
 }

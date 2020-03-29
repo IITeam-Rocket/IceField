@@ -75,10 +75,23 @@ public class InstableIcePatch extends IcePatch {
     }
 
     public void setPlayerCapacity(int playerCapacity) {
+
+        addIndent();
+        printlnWithIndents("InstableIcePatch.setPlayerCapacity()");
+
         this.playerCapacity = playerCapacity;
+
+        printlnWithIndents("return");
+        removeIndent();
     }
 
     public void setFlipped(boolean flipped) {
+        addIndent();
+        printlnWithIndents("InstableIcePatch.setFlipped()");
+
         this.flipped = flipped;
+
+        printlnWithIndents("return");
+        removeIndent();
     }
 }

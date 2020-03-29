@@ -6,6 +6,10 @@ import models.tiles.Tile;
 
 import java.util.ArrayList;
 
+import static controllers.TabController.addIndent;
+import static controllers.TabController.printlnWithIndents;
+import static controllers.TabController.removeIndent;
+
 /**
  * Singleton class representing the Environment and the Game
  * It controls the gameplay with the environmental state
@@ -31,6 +35,11 @@ public class Environment {
      * @return the singleton object
      */
     static public Environment getInstance() {
+        addIndent();
+        printlnWithIndents("Environment.getInstance()");
+
+        printlnWithIndents("return: instance");
+        removeIndent();
         return instance;
     }
 
@@ -38,21 +47,35 @@ public class Environment {
      * Records the discovery of Beacon.
      */
     public void recordBeacon() {
+        addIndent();
+        printlnWithIndents("Environment.recordBeacon()");
         this.beaconIsDiscovered = true;
+
+        printlnWithIndents("return");
+        removeIndent();
     }
 
     /**
      * Records the discovery of Cartridge.
      */
     public void recordCartridge() {
+        addIndent();
+        printlnWithIndents("Environment.recordCartridge()");
+
         this.cartridgeIsDiscovered = true;
+        printlnWithIndents("return");
+        removeIndent();
     }
 
     /**
      * Records the discovery of Gun.
      */
     public void recordGun() {
+        addIndent();
+        printlnWithIndents("Environment.recordGun()");
         this.gunIsDiscovered = true;
+        printlnWithIndents("return");
+        removeIndent();
     }
 
     /**
@@ -60,7 +83,18 @@ public class Environment {
      * and takes the Characters' body-heat.
      */
     public void makeStorm() {
-        ///TODO implement makeStorm()
+        addIndent();
+        printlnWithIndents("Environment.makeStorm()");
+
+        ArrayList<Tile> randomTiles = getRandomTiles();
+
+        for(Tile tile: randomTiles){
+            tile.addSnow(1);
+            tile.reactToStorm();
+        }
+
+        printlnWithIndents("return");
+        removeIndent();
     }
 
     /**
@@ -69,6 +103,11 @@ public class Environment {
      * @return a random set of tiles.
      */
     public ArrayList<Tile> getRandomTiles() {
+        addIndent();
+        printlnWithIndents("Environment.getRandomTiles()");
+
+        printlnWithIndents("return: tiles");
+        removeIndent();
         return null;
     }
 
@@ -76,14 +115,22 @@ public class Environment {
      * Plays the winning game sequence.
      */
     public void winGame() {
+        addIndent();
+        printlnWithIndents("Environment.winGame()");
         ///TODO implement winGame()
+        printlnWithIndents("return");
+        removeIndent();
     }
 
     /**
      * Controls the entire gameplay.
      */
     public void playGame() {
+        addIndent();
+        printlnWithIndents("Environment.playGame()");
         ///TODO implement playGame()
+        printlnWithIndents("return");
+        removeIndent();
     }
 
     /**
@@ -92,6 +139,11 @@ public class Environment {
      * @return the list of Tiles in the game
      */
     public ArrayList<Tile> getIceTiles() {
+        addIndent();
+        printlnWithIndents("Environment.getIceTiles()");
+
+        printlnWithIndents("return: iceTiles");
+        removeIndent();
         return iceTiles;
     }
 
@@ -101,6 +153,11 @@ public class Environment {
      * @return the list of players
      */
     public ArrayList<Character> getPlayers() {
+        addIndent();
+        printlnWithIndents("Environment.getPlayers()");
+
+        printlnWithIndents("return: players");
+        removeIndent();
         return players;
     }
 
@@ -110,6 +167,11 @@ public class Environment {
      * @return the current player
      */
     public Character getCurrentPlayer() {
+        addIndent();
+        printlnWithIndents("Environment.getCurrentPlayer()");
+
+        printlnWithIndents("return: currentPlayer");
+        removeIndent();
         return currentPlayer;
     }
 
@@ -121,6 +183,11 @@ public class Environment {
      * false otherwise.
      */
     public boolean isBeaconIsDiscovered() {
+        addIndent();
+        printlnWithIndents("Environment.isBeaconIsDiscovered()");
+
+        printlnWithIndents("return: beaconIsDiscovered");
+        removeIndent();
         return beaconIsDiscovered;
     }
 
@@ -132,6 +199,11 @@ public class Environment {
      * false otherwise.
      */
     public boolean isCartridgeIsDiscovered() {
+        addIndent();
+        printlnWithIndents("Environment.isCartridgeIsDiscovered()");
+
+        printlnWithIndents("return: cartridgeIsDiscovered");
+        removeIndent();
         return cartridgeIsDiscovered;
     }
 
@@ -143,6 +215,11 @@ public class Environment {
      * false otherwise.
      */
     public boolean isGunIsDiscovered() {
+        addIndent();
+        printlnWithIndents("Environment.isGunIsDiscovered()");
+
+        printlnWithIndents("return: gunIsDiscovered");
+        removeIndent();
         return gunIsDiscovered;
     }
 
@@ -152,6 +229,11 @@ public class Environment {
      * @throws EndOfGameException always
      */
     public void gameOver() throws EndOfGameException {
+        addIndent();
+        printlnWithIndents("Environment.gameOver()");
+
+        printlnWithIndents("throw: EndOfGameException");
+        removeIndent();
         throw new EndOfGameException("Somebody died!");
     }
 

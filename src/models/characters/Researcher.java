@@ -35,7 +35,6 @@ public class Researcher extends Character {
         addIndent();
         printlnWithIndents("Researcher.useSpecial(target)");
 
-        ///TODO implement useSpecial()
         target.getCapacity();
 
         printlnWithIndents("return");

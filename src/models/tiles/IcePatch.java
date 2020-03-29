@@ -64,7 +64,13 @@ abstract public class IcePatch extends Tile {
      * @param strategy the new strategy
      */
     public void changeFrostBitePolicy(FrostBitePolicy strategy) {
-        ///TODO
+        addIndent();
+        printlnWithIndents("IcePatch.ReactToStorm()");
+
+        this.frostBiteStrategy = strategy;
+
+        printlnWithIndents("return");
+        removeIndent();
     }
 
     public Item getBuriedItem() {

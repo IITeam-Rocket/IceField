@@ -81,7 +81,7 @@ abstract public class Tile {
      * @param item the item to bury
      */
     public void storeItem(Item item) {
-        ///TODO
+        //TODO
     }
 
     /**

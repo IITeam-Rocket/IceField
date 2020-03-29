@@ -67,8 +67,9 @@ abstract public class Tile {
         addIndent();
         printlnWithIndents("Tile.removeSnow()");
 
-        if(snowDepth > 0) //hardcoded????
-            snowDepth--;
+        snowDepth -= quantity;
+        if (snowDepth < 0)  //Yeah, hardcoded.
+            snowDepth = 0;
 
         printlnWithIndents("return");
         removeIndent();

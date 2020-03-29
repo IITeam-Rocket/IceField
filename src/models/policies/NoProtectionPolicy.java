@@ -21,7 +21,7 @@ public class NoProtectionPolicy implements FrostBitePolicy {
     @Override
     public void executeStrategy(Character victim) throws EndOfGameException {
         addIndent();
-        printlnWithIndents("NoProtectionPolicy.executeStrategy()");
+        printlnWithIndents("NoProtectionPolicy.executeStrategy(victim)");
 
         victim.removeHeat(1);
 

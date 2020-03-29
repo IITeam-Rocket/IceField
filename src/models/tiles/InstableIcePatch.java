@@ -27,7 +27,7 @@ public class InstableIcePatch extends IcePatch {
     @Override
     public boolean acceptCharacter(Character character) {
         addIndent();
-        printlnWithIndents("InstableIcePatch.acceptCharacter()");
+        printlnWithIndents("InstableIcePatch.acceptCharacter(character)");
 
         characters.add(character);
         if(characters.size() > playerCapacity){

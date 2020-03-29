@@ -23,7 +23,7 @@ public class HasRopePolicy implements RescueFriendPolicy {
     @Override
     public void executeStrategy(Character friend, Tile dest) {
         addIndent();
-        printlnWithIndents("RescueFriendPolicy.executeStrategy()");
+        printlnWithIndents("RescueFriendPolicy.executeStrategy(friend, dest)");
 
         Tile source = friend.getTile();
         dest.acceptCharacter(friend);

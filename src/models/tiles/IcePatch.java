@@ -25,7 +25,7 @@ abstract public class IcePatch extends Tile {
      */
     public Item unBuryItem(Character player) {
         addIndent();
-        printlnWithIndents("IcePatch.unBuryItem()");
+        printlnWithIndents("IcePatch.unBuryItem(player)");
 
         if(snowDepth > 0){
             printlnWithIndents("return: null");

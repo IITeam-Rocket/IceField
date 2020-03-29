@@ -22,7 +22,7 @@ public class NoRescuePolicy implements RescueFriendPolicy {
     @Override
     public void executeStrategy(Character friend, Tile dest) {
         addIndent();
-        printlnWithIndents("NoRescuePolicy.executeStrategy()");
+        printlnWithIndents("NoRescuePolicy.executeStrategy(friend, dest)");
         printlnWithIndents("return");
         removeIndent();
     }

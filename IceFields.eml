@@ -5,5 +5,6 @@
 	<contentEntry url="file://$MODULE_DIR$">
 		<testFolder url="file://$MODULE_DIR$/test"/>
 	</contentEntry>
+	<lib name="JUnit4" scope="TEST"/>
 	<lib name="JUnit5.4" scope="TEST"/>
 </component>

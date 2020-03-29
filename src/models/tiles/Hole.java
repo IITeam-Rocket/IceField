@@ -32,7 +32,7 @@ public class Hole extends Tile {
     @Override
     public boolean acceptCharacter(Character character) {
         addIndent();
-        printlnWithIndents("Hole.acceptCharacter()");
+        printlnWithIndents("Hole.acceptCharacter(character)");
 
         if(!isDiscovered){
             reveal();

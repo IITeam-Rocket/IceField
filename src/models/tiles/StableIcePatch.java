@@ -19,7 +19,7 @@ public class StableIcePatch extends IcePatch {
     @Override
     public boolean acceptCharacter(Character character) {
         addIndent();
-        printlnWithIndents("StableIcePatch.acceptCharacter()");
+        printlnWithIndents("StableIcePatch.acceptCharacter(character)");
         printlnWithIndents("return: true");
         removeIndent();
         return true;

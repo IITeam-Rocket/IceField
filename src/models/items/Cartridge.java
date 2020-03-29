@@ -3,9 +3,7 @@ package models.items;
 import models.Environment;
 import models.characters.Character;
 
-import static controllers.TabController.addIndent;
-import static controllers.TabController.printlnWithIndents;
-import static controllers.TabController.removeIndent;
+import static controllers.TabController.*;
 
 /**
  * A cartridge that is a part of the SignalFlare

@@ -3,9 +3,7 @@ package models.items;
 import models.characters.Character;
 import models.policies.HasRopePolicy;
 
-import static controllers.TabController.addIndent;
-import static controllers.TabController.printlnWithIndents;
-import static controllers.TabController.removeIndent;
+import static controllers.TabController.*;
 
 /**
  * An Item that changes the finding player's

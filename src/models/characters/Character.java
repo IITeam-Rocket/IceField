@@ -1,6 +1,7 @@
 package models.characters;
 
 import models.Environment;
+import models.exceptions.EndOfGameException;
 import models.policies.FallInWaterPolicy;
 import models.policies.HasNoDiveSuitPolicy;
 import models.policies.NoRescuePolicy;
@@ -77,8 +78,11 @@ public abstract class Character {
      * Increases bodyHeat.
      *
      * @param quantity the amount of heat
+     * @throws IllegalArgumentException if quantity is negative
      */
-    public void addHeat(int quantity) {
+    public void addHeat(int quantity) throws IllegalArgumentException {
+        if (quantity < 1) throw new IllegalArgumentException("Must not be negative");
+
         addIndent();
         printlnWithIndents("Character.adHeat(" + quantity + ")");
 
@@ -94,7 +98,9 @@ public abstract class Character {
      *
      * @param quantity the amount of heat
      */
-    public void removeHeat(int quantity) {
+    public void removeHeat(int quantity) throws IllegalArgumentException, EndOfGameException {
+        if (quantity < 1) throw new IllegalArgumentException("Must not be negative");
+
         addIndent();
         printlnWithIndents("Character.removeHeat(" + quantity + ")");
 
@@ -290,7 +296,27 @@ public abstract class Character {
      *
      * @param quantity the character's new strength
      */
-    public void setStrength(int quantity){
+    public void setStrength(int quantity) {
         strength = quantity;
+    }
+
+    public void setBodyHeat(int bodyHeat) {
+        this.bodyHeat = bodyHeat;
+    }
+
+    public void setStamina(int stamina) {
+        this.stamina = stamina;
+    }
+
+    public void setHelpFriendStrategy(RescueFriendPolicy helpFriendStrategy) {
+        this.helpFriendStrategy = helpFriendStrategy;
+    }
+
+    public void setSwimToShoreStrategy(FallInWaterPolicy swimToShoreStrategy) {
+        this.swimToShoreStrategy = swimToShoreStrategy;
+    }
+
+    public void setTile(Tile tile) {
+        this.tile = tile;
     }
 }

@@ -1,11 +1,11 @@
 package models.characters;
 
-import models.exceptions.EndofGameException;
-import org.junit.jupiter.api.Assertions;
+import models.exceptions.EndOfGameException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CharactersTest {
     Character eskimo;
@@ -44,7 +44,7 @@ public class CharactersTest {
 
     @Test
     void speedRunTest() {
-        Assertions.assertThrows(Exception.class, () -> {
+        assertThrows(Exception.class, () -> {
             for (int i = 0; i < 5; i++)
                 eskimo.clearPatch();
         }, "(saucy)");
@@ -52,7 +52,7 @@ public class CharactersTest {
 
     @Test
     void healthPotionTest() {
-        Assertions.assertThrows(EndofGameException.class, () -> {
+        assertThrows(EndOfGameException.class, () -> {
             for (int i = 0; i < 10; i++)
                 researcher.removeHeat(1);
         }, "Raw sauce");
@@ -60,14 +60,14 @@ public class CharactersTest {
 
     @Test
     void healthPotionTest2() {
-        Assertions.assertThrows(EndofGameException.class, () -> {
+        assertThrows(EndOfGameException.class, () -> {
             for (int i = 0; i < 10; i++)
                 eskimo.removeHeat(1);
         }, "");
     }
 
     @Test
-    void whatamievendoingTest() {
+    void whatamievendoingTest() throws EndOfGameException {
         int bh = eskimo.getBodyHeat();
 
         eskimo.addHeat(1);
@@ -79,11 +79,12 @@ public class CharactersTest {
 
     @Test
     void gettingHeatedTest() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> eskimo.removeHeat(-1));
+        assertThrows(IllegalArgumentException.class, () -> eskimo.removeHeat(-1));
 
-        Assertions.assertThrows(IllegalArgumentException.class, () -> researcher.addHeat(-1));
+        assertThrows(IllegalArgumentException.class, () -> researcher.addHeat(-1));
     }
 
+    @Test
     void EskimoBodyHeatGetterTest() {
         assertEquals(eskimo.bodyHeat, eskimo.getBodyHeat(), "Wong never how");
     }

@@ -1,6 +1,7 @@
 package models;
 
 import models.characters.Character;
+import models.exceptions.EndOfGameException;
 import models.tiles.Tile;
 
 import java.util.ArrayList;
@@ -69,13 +70,6 @@ public class Environment {
      */
     public ArrayList<Tile> getRandomTiles() {
         return null;
-    }
-
-    /**
-     * Plays the losing game sequence.
-     */
-    public void gameOver() {
-        ///TODO implement gameOver()
     }
 
     /**
@@ -150,5 +144,38 @@ public class Environment {
      */
     public boolean isGunIsDiscovered() {
         return gunIsDiscovered;
+    }
+
+    /**
+     * Plays the losing game sequence.
+     *
+     * @throws EndOfGameException always
+     */
+    public void gameOver() throws EndOfGameException {
+        throw new EndOfGameException("Somebody died!");
+    }
+
+    public void setIceTiles(ArrayList<Tile> iceTiles) {
+        this.iceTiles = iceTiles;
+    }
+
+    public void setPlayers(ArrayList<Character> players) {
+        this.players = players;
+    }
+
+    public void setCurrentPlayer(Character currentPlayer) {
+        this.currentPlayer = currentPlayer;
+    }
+
+    public void setBeaconIsDiscovered(boolean beaconIsDiscovered) {
+        this.beaconIsDiscovered = beaconIsDiscovered;
+    }
+
+    public void setCartridgeIsDiscovered(boolean cartridgeIsDiscovered) {
+        this.cartridgeIsDiscovered = cartridgeIsDiscovered;
+    }
+
+    public void setGunIsDiscovered(boolean gunIsDiscovered) {
+        this.gunIsDiscovered = gunIsDiscovered;
     }
 }

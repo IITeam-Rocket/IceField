@@ -6,6 +6,7 @@ import models.characters.Eskimo;
 import models.characters.Researcher;
 import models.items.*;
 import models.policies.HasDiveSuitPolicy;
+import models.policies.IgluPolicy;
 import models.tiles.Hole;
 import models.tiles.InstableIcePatch;
 import models.tiles.StableIcePatch;
@@ -204,15 +205,44 @@ public class UseCaseExecutor {
     /**
      * Sets up and executes the makeStormWithoutIglu use case
      */
-    public static void makeStormWithoutIglu(){
-        //TODO
+    public static void makeStormWithoutIglu() {
+        StableIcePatch tile = new StableIcePatch();
+        ArrayList<Tile> tiles = new ArrayList<>();
+        tiles.add(tile);
+        Researcher victim1 = new Researcher(tile);
+        Researcher victim2 = new Researcher(tile);
+        Eskimo victim3 = new Eskimo(tile);
+        ArrayList<Character> players = new ArrayList<>();
+        players.add(victim1);
+        players.add(victim2);
+        players.add(victim3);
+        Environment environment = Environment.getInstance();
+        environment.setPlayers(players);
+        environment.setIceTiles(tiles);
+
+        environment.makeStorm();
     }
 
     /**
      * Sets up and executes the makeStormWithIglu use case
      */
-    public static void makeStormWithIglu(){
-        //TODO
+    public static void makeStormWithIglu() {
+        StableIcePatch tile = new StableIcePatch();
+        tile.setFrostBiteStrategy(new IgluPolicy());
+        ArrayList<Tile> tiles = new ArrayList<>();
+        tiles.add(tile);
+        Researcher victim1 = new Researcher(tile);
+        Researcher victim2 = new Researcher(tile);
+        Eskimo victim3 = new Eskimo(tile);
+        ArrayList<Character> players = new ArrayList<>();
+        players.add(victim1);
+        players.add(victim2);
+        players.add(victim3);
+        Environment environment = Environment.getInstance();
+        environment.setPlayers(players);
+        environment.setIceTiles(tiles);
+
+        environment.makeStorm();
     }
 
     /**

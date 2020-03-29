@@ -1,8 +1,10 @@
 package models.tiles;
 
 import models.characters.Character;
+import models.exceptions.EndOfGameException;
 import models.items.Item;
 import models.policies.FrostBitePolicy;
+import models.policies.NoProtectionPolicy;
 
 import static controllers.TabController.*;
 
@@ -13,6 +15,7 @@ import static controllers.TabController.*;
 abstract public class IcePatch extends Tile {
 
     private Item buriedItem;
+    private FrostBitePolicy frostBiteStrategy = new NoProtectionPolicy();
 
     /**
      * Returns the item hidden in the IcePatch.
@@ -34,6 +37,13 @@ abstract public class IcePatch extends Tile {
         printlnWithIndents("IcePatch.ReactToStorm()");
 
         addSnow(1);
+        for (Character victim : characters) {
+            try {
+                frostBiteStrategy.executeStrategy(victim);
+            } catch (EndOfGameException e) {
+                e.printStackTrace();
+            }
+        }
 
         printlnWithIndents("return");
         removeIndent();
@@ -54,5 +64,9 @@ abstract public class IcePatch extends Tile {
 
     public void setBuriedItem(Item buriedItem) {
         this.buriedItem = buriedItem;
+    }
+
+    public void setFrostBiteStrategy(FrostBitePolicy frostBiteStrategy) {
+        this.frostBiteStrategy = frostBiteStrategy;
     }
 }

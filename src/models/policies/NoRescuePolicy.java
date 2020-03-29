@@ -5,7 +5,6 @@ import models.characters.Character;
 import models.tiles.Tile;
 
 import static controllers.TabController.*;
-import static controllers.TabController.printlnWithIndents;
 
 /**
  * A class representing the strategy of the player
@@ -18,6 +17,7 @@ public class NoRescuePolicy implements RescueFriendPolicy {
      * Does nothing, as there is no strategy.
      *
      * @param friend the friend who fell in water.
+     * @param dest   the destination tile
      */
     @Override
     public void executeStrategy(Character friend, Tile dest) {

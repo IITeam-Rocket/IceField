@@ -18,6 +18,7 @@ public class HasRopePolicy implements RescueFriendPolicy {
      * to his tile.
      *
      * @param friend the friend who fell in water
+     * @param dest   the destination tile
      */
     @Override
     public void executeStrategy(Character friend, Tile dest) {

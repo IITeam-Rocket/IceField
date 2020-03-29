@@ -5,8 +5,10 @@ import models.characters.Character;
 import models.characters.Eskimo;
 import models.characters.Researcher;
 import models.items.*;
+import models.policies.FrostBitePolicy;
 import models.policies.HasDiveSuitPolicy;
 import models.policies.IgluPolicy;
+import models.policies.NoProtectionPolicy;
 import models.tiles.Hole;
 import models.tiles.InstableIcePatch;
 import models.tiles.StableIcePatch;
@@ -17,7 +19,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
- * A class that sets up and executes use cases
+ * A class that sets up and executes use cases.
  */
 public class UseCaseExecutor {
 
@@ -34,7 +36,7 @@ public class UseCaseExecutor {
     }
 
     /**
-     * Sets up and executes the MoveCharacterToInstable use case
+     * Sets up and executes the MoveCharacterToInstable use case.
      */
     public static void moveCharacterToInstable() {
         StableIcePatch source = new StableIcePatch();
@@ -46,7 +48,7 @@ public class UseCaseExecutor {
     }
 
     /**
-     * Sets up and executes the moveCharacterToInstableNoDiveSuit use case
+     * Sets up and executes the moveCharacterToInstableNoDiveSuit use case.
      */
     public static void moveCharacterToInstableNoDiveSuit() {
         StableIcePatch source = new StableIcePatch();
@@ -58,7 +60,7 @@ public class UseCaseExecutor {
     }
 
     /**
-     * Sets up and executes the moveCharacterToInstableWithDiveSuit use case
+     * Sets up and executes the moveCharacterToInstableWithDiveSuit use case.
      */
     public static void moveCharacterToInstableWithDiveSuit() {
         StableIcePatch source = new StableIcePatch();
@@ -71,7 +73,7 @@ public class UseCaseExecutor {
     }
 
     /**
-     * Sets up and executes the moveCharacterToUndiscoveredHole use case
+     * Sets up and executes the moveCharacterToUndiscoveredHole use case.
      */
     public static void moveCharacterToUndiscoveredHole() {
         StableIcePatch source = new StableIcePatch();
@@ -83,7 +85,7 @@ public class UseCaseExecutor {
     }
 
     /**
-     * Sets up and executes the moveCharacterToDiscoveredHole use case
+     * Sets up and executes the moveCharacterToDiscoveredHole use case.
      */
     public static void moveCharacterToDiscoveredHole() {
         StableIcePatch source = new StableIcePatch();
@@ -96,7 +98,7 @@ public class UseCaseExecutor {
     }
 
     /**
-     * Sets up and executes the craftSignalFlare use case
+     * Sets up and executes the craftSignalFlare use case.
      */
     public static void craftSignalFlare() {
         boolean beaconFound = getYesNo("Has the Beacon been found?");
@@ -122,7 +124,7 @@ public class UseCaseExecutor {
     }
 
     /**
-     * Sets up and executes the clearPatch use case
+     * Sets up and executes the clearPatch use case.
      */
     public static void clearPatch() {
         StableIcePatch tile = new StableIcePatch();
@@ -133,7 +135,7 @@ public class UseCaseExecutor {
     }
 
     /**
-     * Sets up and executes the analyzeStable use case
+     * Sets up and executes the analyzeStable use case.
      */
     public static void analyzeStable() {
         StableIcePatch tile = new StableIcePatch();
@@ -148,7 +150,7 @@ public class UseCaseExecutor {
     }
 
     /**
-     * Sets up and executes the analyzeInstable use case
+     * Sets up and executes the analyzeInstable use case.
      */
     public static void analyzeInstable() {
         StableIcePatch tile = new StableIcePatch();
@@ -163,7 +165,7 @@ public class UseCaseExecutor {
     }
 
     /**
-     * Sets up and executes the analyzeHole use case
+     * Sets up and executes the analyzeHole use case.
      */
     public static void analyzeHole() {
         StableIcePatch tile = new StableIcePatch();
@@ -178,7 +180,7 @@ public class UseCaseExecutor {
     }
 
     /**
-     * Sets up and executes the buildIglu use case
+     * Sets up and executes the buildIglu use case.
      */
     public static void buildIglu() {
         StableIcePatch tile = new StableIcePatch();
@@ -189,47 +191,46 @@ public class UseCaseExecutor {
     }
 
     /**
-     * Sets up and executes the rescueFriendWithRope use case
+     * Sets up and executes the rescueFriendWithRope use case.
      */
     public static void rescueFriendWithRope(){
         //TODO
     }
 
     /**
-     * Sets up and executes the rescueFriendWithNothing use case
+     * Sets up and executes the rescueFriendWithNothing use case.
      */
     public static void rescueFriendWithNothing(){
         //TODO
     }
 
     /**
-     * Sets up and executes the makeStormWithoutIglu use case
+     * Sets up and executes the makeStormWithoutIglu use case.
      */
     public static void makeStormWithoutIglu() {
-        StableIcePatch tile = new StableIcePatch();
-        ArrayList<Tile> tiles = new ArrayList<>();
-        tiles.add(tile);
-        Researcher victim1 = new Researcher(tile);
-        Researcher victim2 = new Researcher(tile);
-        Eskimo victim3 = new Eskimo(tile);
-        ArrayList<Character> players = new ArrayList<>();
-        players.add(victim1);
-        players.add(victim2);
-        players.add(victim3);
-        Environment environment = Environment.getInstance();
-        environment.setPlayers(players);
-        environment.setIceTiles(tiles);
+        Environment environment = setUpStorm(new NoProtectionPolicy());
 
         environment.makeStorm();
     }
 
     /**
-     * Sets up and executes the makeStormWithIglu use case
+     * Sets up and executes the makeStormWithIglu use case.
      */
     public static void makeStormWithIglu() {
+        Environment environment = setUpStorm(new IgluPolicy());
+        environment.makeStorm();
+    }
+
+    /**
+     * Sets up the Environment for 'makeStorm' use cases.
+     *
+     * @param frostBiteStrategy the strategy of the tile
+     * @return the all set-up Environment
+     */
+    private static Environment setUpStorm(FrostBitePolicy frostBiteStrategy) {
         StableIcePatch tile = new StableIcePatch();
-        tile.setFrostBiteStrategy(new IgluPolicy());
         ArrayList<Tile> tiles = new ArrayList<>();
+        tile.setFrostBiteStrategy(frostBiteStrategy);
         tiles.add(tile);
         Researcher victim1 = new Researcher(tile);
         Researcher victim2 = new Researcher(tile);
@@ -241,12 +242,11 @@ public class UseCaseExecutor {
         Environment environment = Environment.getInstance();
         environment.setPlayers(players);
         environment.setIceTiles(tiles);
-
-        environment.makeStorm();
+        return environment;
     }
 
     /**
-     * Sets up and executes the unburyFood use case
+     * Sets up and executes the unburyFood use case.
      */
     public static void unburyFood() {
         StableIcePatch target = new StableIcePatch();
@@ -259,7 +259,7 @@ public class UseCaseExecutor {
     }
 
     /**
-     * Sets up and executes the unburyDiveSuit use case
+     * Sets up and executes the unburyDiveSuit use case.
      */
     public static void unburyDiveSuit() {
         StableIcePatch target = new StableIcePatch();
@@ -272,7 +272,7 @@ public class UseCaseExecutor {
     }
 
     /**
-     * Sets up and executes the unburyRope use case
+     * Sets up and executes the unburyRope use case.
      */
     public static void unburyRope() {
         StableIcePatch target = new StableIcePatch();
@@ -285,7 +285,7 @@ public class UseCaseExecutor {
     }
 
     /**
-     * Sets up and executes the unburyShovel use case
+     * Sets up and executes the unburyShovel use case.
      */
     public static void unburyShovel() {
         StableIcePatch target = new StableIcePatch();
@@ -298,7 +298,7 @@ public class UseCaseExecutor {
     }
 
     /**
-     * Sets up and executes the unburyCartridge use case
+     * Sets up and executes the unburyCartridge use case.
      */
     public static void unburyCartridge() {
         StableIcePatch target = new StableIcePatch();
@@ -311,7 +311,7 @@ public class UseCaseExecutor {
     }
 
     /**
-     * Sets up and executes the unburyBeacon use case
+     * Sets up and executes the unburyBeacon use case.
      */
     public static void unburyBeacon() {
         StableIcePatch target = new StableIcePatch();
@@ -324,7 +324,7 @@ public class UseCaseExecutor {
     }
 
     /**
-     * Sets up and executes the unburyGun use case
+     * Sets up and executes the unburyGun use case.
      */
     public static void unburyGun() {
         StableIcePatch target = new StableIcePatch();

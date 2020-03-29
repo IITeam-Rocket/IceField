@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class Skeleton {
 
     private Scanner in = new Scanner(System.in);
-    String[] useCases = {
+    private String[] useCases = {
             "Move Character to Stable IcePatch",
             "Move Character to Instable IcePatch without flip",
             "Move Character to Instable IcePatch flipping with DiveSuit",

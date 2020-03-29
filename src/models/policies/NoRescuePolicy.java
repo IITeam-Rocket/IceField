@@ -5,6 +5,7 @@ import models.characters.Character;
 import models.tiles.Tile;
 
 import static controllers.TabController.*;
+import static controllers.TabController.printlnWithIndents;
 
 /**
  * A class representing the strategy of the player

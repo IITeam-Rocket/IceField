@@ -4,6 +4,8 @@ import models.characters.Character;
 import models.items.Item;
 import models.policies.FrostBitePolicy;
 
+import static controllers.TabController.*;
+
 /**
  * A Tile frozen with ice on which characters
  * can stand on.
@@ -26,7 +28,13 @@ abstract public class IcePatch extends Tile {
      */
     @Override
     public void reactToStorm() {
+        addIndent();
+        printlnWithIndents("IcePatch.ReactToStorm()");
+
         addSnow(1);
+
+        printlnWithIndents("return");
+        removeIndent();
     }
 
     /**

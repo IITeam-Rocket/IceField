@@ -37,6 +37,7 @@ public class Hole extends Tile {
         removeIndent();
         return false;
     }
+
     /**
      * Realises the storm's effects.
      */

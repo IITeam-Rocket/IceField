@@ -67,6 +67,7 @@ public class Skeleton {
         for (int i = 1; i <= useCases.length; ++i) {
             System.out.println(i + ". " + useCases[i - 1]);
         }
+        System.out.println((useCases.length + 1) + ". Exit");
     }
 
     /**
@@ -155,7 +156,7 @@ public class Skeleton {
 
         int selectedItem = 0;
 
-        while (selectedItem != 8) {
+        while (selectedItem != useCases.length + 1) {
             try {
                 System.out.print("> ");
                 selectedItem = in.nextInt();

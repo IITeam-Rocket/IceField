@@ -36,8 +36,7 @@ public class UseCaseExecutor {
      */
     public static void moveCharacterToInstable() {
         StableIcePatch source = new StableIcePatch();
-        InstableIcePatch dest = new InstableIcePatch();
-        dest.setPlayerCapacity(10);
+        InstableIcePatch dest = new InstableIcePatch(10);
         Researcher explorer = new Researcher(source);
         source.addCharacter(explorer);
 
@@ -49,8 +48,7 @@ public class UseCaseExecutor {
      */
     public static void moveCharacterToInstableNoDiveSuit() {
         StableIcePatch source = new StableIcePatch();
-        InstableIcePatch dest = new InstableIcePatch();
-        dest.setPlayerCapacity(0);
+        InstableIcePatch dest = new InstableIcePatch(0);
         Researcher explorer = new Researcher(source);
         source.addCharacter(explorer);
 
@@ -62,8 +60,7 @@ public class UseCaseExecutor {
      */
     public static void moveCharacterToInstableWithDiveSuit() {
         StableIcePatch source = new StableIcePatch();
-        InstableIcePatch dest = new InstableIcePatch();
-        dest.setPlayerCapacity(0);
+        InstableIcePatch dest = new InstableIcePatch(0);
         Researcher explorer = new Researcher(source);
         explorer.setSwimToShoreStrategy(new HasDiveSuitPolicy());
         source.addCharacter(explorer);
@@ -153,7 +150,7 @@ public class UseCaseExecutor {
      */
     public static void analyzeInstable() {
         StableIcePatch tile = new StableIcePatch();
-        InstableIcePatch target = new InstableIcePatch();
+        InstableIcePatch target = new InstableIcePatch(10);
         ArrayList<Tile> neighbours = new ArrayList<>();
         neighbours.add(target);
         tile.setNeighbours(neighbours);

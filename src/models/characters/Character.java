@@ -1,6 +1,7 @@
 package models.characters;
 
 import models.Environment;
+import models.exceptions.EndofGameException;
 import models.policies.FallInWaterPolicy;
 import models.policies.HasNoDiveSuitPolicy;
 import models.policies.NoRescuePolicy;
@@ -77,8 +78,11 @@ public abstract class Character {
      * Increases bodyHeat.
      *
      * @param quantity the amount of heat
+     * @throws IllegalArgumentException
      */
-    public void addHeat(int quantity) {
+    public void addHeat(int quantity) throws IllegalArgumentException {
+        if (quantity < 1) throw new IllegalArgumentException("Must not be negative");
+
         addIndent();
         printlnWithIndents("Character.adHeat(" + quantity + ")");
 
@@ -94,7 +98,9 @@ public abstract class Character {
      *
      * @param quantity the amount of heat
      */
-    public void removeHeat(int quantity) {
+    public void removeHeat(int quantity) throws IllegalArgumentException, EndofGameException {
+        if (quantity < 1) throw new IllegalArgumentException("Must not be negative");
+
         addIndent();
         printlnWithIndents("Character.removeHeat(" + quantity + ")");
 

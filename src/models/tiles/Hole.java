@@ -2,12 +2,23 @@ package models.tiles;
 
 import models.characters.Character;
 
+import java.util.Random;
+
 import static controllers.TabController.*;
 
 /**
  * A tile with no solid platform.
  */
 public class Hole extends Tile {
+
+    public Hole() {
+        Random r = new Random();
+        int i = 0;
+        while (i == 0)
+            i = r.nextInt(maxsnowDepth + 1);
+
+        snowDepth = i;
+    }
     /**
      * If the Hole has not been revealed, the
      * accepts the player, otherwise it doesn't.

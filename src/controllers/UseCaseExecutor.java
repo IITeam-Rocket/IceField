@@ -2,6 +2,7 @@ package controllers;
 
 import models.Environment;
 import models.characters.Character;
+import models.characters.Eskimo;
 import models.characters.Researcher;
 import models.policies.HasDiveSuitPolicy;
 import models.tiles.Hole;
@@ -180,8 +181,12 @@ public class UseCaseExecutor {
     /**
      * Sets up and executes the buildIglu use case
      */
-    public static void buildIglu(){
-        //TODO
+    public static void buildIglu() {
+        StableIcePatch tile = new StableIcePatch();
+        Eskimo explorer = new Eskimo(tile);
+        tile.addCharacter(explorer);
+
+        explorer.useSpecial(tile);
     }
 
     /**

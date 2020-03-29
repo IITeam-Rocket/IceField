@@ -25,6 +25,7 @@ public class UseCaseExecutor {
         StableIcePatch source = new StableIcePatch();
         StableIcePatch dest = new StableIcePatch();
         Researcher explorer = new Researcher(source);
+        source.addCharacter(explorer);
 
         explorer.moveTo(dest);
     }
@@ -36,6 +37,7 @@ public class UseCaseExecutor {
         StableIcePatch source = new StableIcePatch();
         InstableIcePatch dest = new InstableIcePatch();
         Researcher explorer = new Researcher(source);
+        source.addCharacter(explorer);
 
         explorer.moveTo(dest);
     }
@@ -48,6 +50,7 @@ public class UseCaseExecutor {
         InstableIcePatch dest = new InstableIcePatch();
         dest.setPlayerCapacity(0);
         Researcher explorer = new Researcher(source);
+        source.addCharacter(explorer);
 
         explorer.moveTo(dest);
     }
@@ -61,6 +64,7 @@ public class UseCaseExecutor {
         dest.setPlayerCapacity(0);
         Researcher explorer = new Researcher(source);
         explorer.setSwimToShoreStrategy(new HasDiveSuitPolicy());
+        source.addCharacter(explorer);
 
         explorer.moveTo(dest);
     }
@@ -72,6 +76,7 @@ public class UseCaseExecutor {
         StableIcePatch source = new StableIcePatch();
         Hole dest = new Hole();
         Researcher explorer = new Researcher(source);
+        source.addCharacter(explorer);
 
         explorer.moveTo(dest);
     }
@@ -84,6 +89,7 @@ public class UseCaseExecutor {
         Hole dest = new Hole();
         dest.setDiscovered(true);
         Researcher explorer = new Researcher(source);
+        source.addCharacter(explorer);
 
         explorer.moveTo(dest);
     }
@@ -102,6 +108,7 @@ public class UseCaseExecutor {
         Researcher player = new Researcher(tile);
         ArrayList<Character> players = new ArrayList<>();
         players.add(player);
+        tile.addCharacter(player);
         Environment environment = Environment.getInstance();
         environment.setBeaconIsDiscovered(beaconFound);
         environment.setCartridgeIsDiscovered(cartridgeFound);
@@ -119,6 +126,7 @@ public class UseCaseExecutor {
     public static void clearPatch() {
         StableIcePatch tile = new StableIcePatch();
         Researcher explorer = new Researcher(tile);
+        tile.addCharacter(explorer);
 
         explorer.clearPatch();
     }
@@ -133,6 +141,7 @@ public class UseCaseExecutor {
         neighbours.add(target);
         tile.setNeighbours(neighbours);
         Researcher explorer = new Researcher(tile);
+        tile.addCharacter(explorer);
 
         explorer.useSpecial(target);
     }
@@ -147,6 +156,7 @@ public class UseCaseExecutor {
         neighbours.add(target);
         tile.setNeighbours(neighbours);
         Researcher explorer = new Researcher(tile);
+        tile.addCharacter(explorer);
 
         explorer.useSpecial(target);
     }
@@ -161,6 +171,7 @@ public class UseCaseExecutor {
         neighbours.add(target);
         tile.setNeighbours(neighbours);
         Researcher explorer = new Researcher(tile);
+        tile.addCharacter(explorer);
 
         explorer.useSpecial(target);
     }

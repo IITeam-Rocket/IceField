@@ -1,7 +1,7 @@
 package models.policies;
 
 import models.characters.Character;
-import models.exceptions.EndofGameException;
+import models.exceptions.EndOfGameException;
 
 import static controllers.TabController.*;
 
@@ -19,7 +19,7 @@ public class NoProtectionPolicy implements FrostBitePolicy {
      *               to the storm
      */
     @Override
-    public void executeStrategy(Character victim) throws EndofGameException {
+    public void executeStrategy(Character victim) throws EndOfGameException {
         addIndent();
         printlnWithIndents("NoProtectionPolicy.executeStrategy()");
 

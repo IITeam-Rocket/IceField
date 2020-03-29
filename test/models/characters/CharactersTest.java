@@ -1,6 +1,6 @@
 package models.characters;
 
-import models.exceptions.EndofGameException;
+import models.exceptions.EndOfGameException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -52,7 +52,7 @@ public class CharactersTest {
 
     @Test
     void healthPotionTest() {
-        assertThrows(EndofGameException.class, () -> {
+        assertThrows(EndOfGameException.class, () -> {
             for (int i = 0; i < 10; i++)
                 researcher.removeHeat(1);
         }, "Raw sauce");
@@ -60,14 +60,14 @@ public class CharactersTest {
 
     @Test
     void healthPotionTest2() {
-        assertThrows(EndofGameException.class, () -> {
+        assertThrows(EndOfGameException.class, () -> {
             for (int i = 0; i < 10; i++)
                 eskimo.removeHeat(1);
         }, "");
     }
 
     @Test
-    void whatamievendoingTest() throws EndofGameException {
+    void whatamievendoingTest() throws EndOfGameException {
         int bh = eskimo.getBodyHeat();
 
         eskimo.addHeat(1);

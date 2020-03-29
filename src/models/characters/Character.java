@@ -1,7 +1,7 @@
 package models.characters;
 
 import models.Environment;
-import models.exceptions.EndofGameException;
+import models.exceptions.EndOfGameException;
 import models.policies.FallInWaterPolicy;
 import models.policies.HasNoDiveSuitPolicy;
 import models.policies.NoRescuePolicy;
@@ -98,7 +98,7 @@ public abstract class Character {
      *
      * @param quantity the amount of heat
      */
-    public void removeHeat(int quantity) throws IllegalArgumentException, EndofGameException {
+    public void removeHeat(int quantity) throws IllegalArgumentException, EndOfGameException {
         if (quantity < 1) throw new IllegalArgumentException("Must not be negative");
 
         addIndent();

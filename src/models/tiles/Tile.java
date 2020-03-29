@@ -138,6 +138,16 @@ abstract public class Tile {
         return neighbours;
     }
 
+    /**
+     * Adds a Character to the list of Characters who are
+     * currently standing on the Tile.
+     *
+     * @param character the Character to add
+     */
+    public void addCharacter(Character character) {
+        this.characters.add(character);
+    }
+
     public void setSnowDepth(int snowDepth) {
         this.snowDepth = snowDepth;
     }

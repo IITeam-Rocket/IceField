@@ -146,6 +146,9 @@ public class Skeleton {
             case 23:
                 UseCaseExecutor.unburyGun();
                 break;
+            case 24:
+                System.out.println("Goodbye!");
+                break;
             default:
                 System.out.println("Please enter a number! (1-" + (useCases.length + 1) + ")");
         }

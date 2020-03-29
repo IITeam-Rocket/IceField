@@ -2,10 +2,12 @@ package models.characters;
 
 import models.Environment;
 import models.exceptions.EndOfGameException;
+import models.items.Item;
 import models.policies.FallInWaterPolicy;
 import models.policies.HasNoDiveSuitPolicy;
 import models.policies.NoRescuePolicy;
 import models.policies.RescueFriendPolicy;
+import models.tiles.IcePatch;
 import models.tiles.Tile;
 
 import static controllers.TabController.*;
@@ -68,7 +70,11 @@ public abstract class Character {
         addIndent();
         printlnWithIndents("Character.retriveItem()");
 
-        //TODO: tile.unburyItem(this) tile doesn't have unburyItem
+        IcePatch p = (IcePatch) this.tile;
+        Item find = p.unBuryItem(this);
+
+        if(find != null)
+            find.uponDiscovery(this);
 
         printlnWithIndents("return");
         removeIndent();

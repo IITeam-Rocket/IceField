@@ -27,7 +27,6 @@ public class HasDiveSuitPolicy implements FallInWaterPolicy {
 
         Tile source = player.getTile();
         ArrayList<Tile> neighbourtiles = source.getNeighbours();
-        boolean accepted = false;
 
         for(Tile t : neighbourtiles)
         {

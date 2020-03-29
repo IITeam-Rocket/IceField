@@ -25,9 +25,9 @@ public class HasRopePolicy implements RescueFriendPolicy {
         addIndent();
         printlnWithIndents("RescueFriendPolicy.executeStrategy()");
 
+        Tile source = friend.getTile();
         dest.acceptCharacter(friend);
 
-        Tile source = friend.getTile();
         source.removeCharacter(friend);
 
         printlnWithIndents("return");

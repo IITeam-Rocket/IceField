@@ -85,7 +85,14 @@ public class Environment {
     public void makeStorm() {
         addIndent();
         printlnWithIndents("Environment.makeStorm()");
-        ///TODO implement makeStorm()
+
+        ArrayList<Tile> randomTiles = getRandomTiles();
+
+        for(Tile tile: randomTiles){
+            tile.addSnow(1);
+            tile.reactToStorm();
+        }
+
         printlnWithIndents("return");
         removeIndent();
     }

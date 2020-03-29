@@ -86,7 +86,7 @@ public class Hole extends Tile {
      */
     public void reveal(){
         addIndent();
-        printlnWithIndents("Hole.revesl()");
+        printlnWithIndents("Hole.reveals()");
         setDiscovered(true);
 
         printlnWithIndents("return");

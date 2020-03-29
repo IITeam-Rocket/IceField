@@ -24,8 +24,17 @@ abstract public class IcePatch extends Tile {
      * @return the buried item
      */
     public Item unBuryItem(Character player) {
-        ///TODO
-        throw new NullPointerException("Not implemented yet");
+        addIndent();
+        printlnWithIndents("IcePatch.unBuryItem()");
+
+        if(snowDepth > 0){
+            printlnWithIndents("return: null");
+            removeIndent();
+            return null;
+        }
+        printlnWithIndents("return: item");
+        removeIndent();
+        return buriedItem;
     }
 
     /**

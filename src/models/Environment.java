@@ -2,6 +2,7 @@ package models;
 
 import models.characters.Character;
 import models.exceptions.EndOfGameException;
+import models.tiles.StableIcePatch;
 import models.tiles.Tile;
 
 import java.util.ArrayList;
@@ -106,7 +107,13 @@ public class Environment {
 
         printlnWithIndents("return: tiles");
         removeIndent();
-        return null;
+
+        ArrayList<Tile> tiles = new ArrayList<Tile>();
+        StableIcePatch stable = new StableIcePatch();
+        stable.addSnow(2);
+        tiles.add(stable);
+
+        return tiles;
     }
 
     /**

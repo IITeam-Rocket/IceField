@@ -139,7 +139,7 @@ abstract public class Tile {
     }
 
     /**
-     * Adds a Character to the list of Characters who are
+     * Adds a Character to the list of Characters
      * currently standing on the Tile.
      *
      * @param character the Character to add
@@ -147,6 +147,7 @@ abstract public class Tile {
     public void addCharacter(Character character) {
         this.characters.add(character);
     }
+
 
     public void setSnowDepth(int snowDepth) {
         this.snowDepth = snowDepth;

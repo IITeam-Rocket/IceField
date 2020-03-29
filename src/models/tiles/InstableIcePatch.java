@@ -12,7 +12,11 @@ import static controllers.TabController.*;
 public class InstableIcePatch extends IcePatch {
 
     int playerCapacity;
-    boolean flipped;
+    boolean flipped = false;
+
+    public InstableIcePatch(int playerCapacity) {
+        this.playerCapacity = playerCapacity;
+    }
 
     /**
      * Accepts the player who tries to move on it.
@@ -21,8 +25,8 @@ public class InstableIcePatch extends IcePatch {
      * @return true if successful, false otherwise
      */
     @Override
-    public boolean acceptCharacter(Character character){
-    addIndent();
+    public boolean acceptCharacter(Character character) {
+        addIndent();
     printlnWithIndents("InstableIcePatch.acceptCharacter()");
     printlnWithIndents("return: true");
     removeIndent();

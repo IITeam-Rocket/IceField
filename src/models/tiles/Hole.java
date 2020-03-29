@@ -8,6 +8,9 @@ import static controllers.TabController.*;
  * A tile with no solid platform.
  */
 public class Hole extends Tile {
+
+    private boolean isDiscovered = false;
+
     /**
      * If the Hole has not been revealed, the
      * accepts the player, otherwise it doesn't.
@@ -53,5 +56,13 @@ public class Hole extends Tile {
         removeIndent();
 
         return 0;
+    }
+
+    public boolean isDiscovered() {
+        return isDiscovered;
+    }
+
+    public void setDiscovered(boolean discovered) {
+        isDiscovered = discovered;
     }
 }

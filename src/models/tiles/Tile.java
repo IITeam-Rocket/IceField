@@ -14,8 +14,8 @@ import static controllers.TabController.*;
 abstract public class Tile {
     protected int snowDepth;
     static final int maxsnowDepth = 6;
-    protected ArrayList<Character> characters;
-    protected ArrayList<Tile> neighbours;
+    protected ArrayList<Character> characters = new ArrayList<>();
+    protected ArrayList<Tile> neighbours = new ArrayList<>();
 
     /**
      * Accepts the player who tries to move on it.
@@ -134,5 +134,28 @@ abstract public class Tile {
         printlnWithIndents("return: ArrayList<Tile>");
         removeIndent();
         return neighbours;
+    }
+
+    /**
+     * Adds a Character to the list of Characters
+     * currently standing on the Tile.
+     *
+     * @param character the Character to add
+     */
+    public void addCharacter(Character character) {
+        this.characters.add(character);
+    }
+
+
+    public void setSnowDepth(int snowDepth) {
+        this.snowDepth = snowDepth;
+    }
+
+    public void setCharacters(ArrayList<Character> characters) {
+        this.characters = characters;
+    }
+
+    public void setNeighbours(ArrayList<Tile> neighbours) {
+        this.neighbours = neighbours;
     }
 }

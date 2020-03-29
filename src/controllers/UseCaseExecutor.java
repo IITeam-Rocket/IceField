@@ -5,10 +5,7 @@ import models.characters.Character;
 import models.characters.Eskimo;
 import models.characters.Researcher;
 import models.items.*;
-import models.policies.FrostBitePolicy;
-import models.policies.HasDiveSuitPolicy;
-import models.policies.IgluPolicy;
-import models.policies.NoProtectionPolicy;
+import models.policies.*;
 import models.tiles.Hole;
 import models.tiles.InstableIcePatch;
 import models.tiles.StableIcePatch;
@@ -193,15 +190,31 @@ public class UseCaseExecutor {
     /**
      * Sets up and executes the rescueFriendWithRope use case.
      */
-    public static void rescueFriendWithRope(){
-        //TODO
+    public static void rescueFriendWithRope() {
+        StableIcePatch dest = new StableIcePatch();
+        Hole source = new Hole();
+        Researcher player = new Researcher(dest);
+        Researcher victim = new Researcher(source);
+        player.setHelpFriendStrategy(new HasRopePolicy());
+        dest.addCharacter(player);
+        source.acceptCharacter(victim);
+
+        player.rescueFriend(victim);
     }
 
     /**
      * Sets up and executes the rescueFriendWithNothing use case.
      */
-    public static void rescueFriendWithNothing(){
-        //TODO
+    public static void rescueFriendWithNothing() {
+        StableIcePatch dest = new StableIcePatch();
+        Hole source = new Hole();
+        Researcher player = new Researcher(dest);
+        Researcher victim = new Researcher(source);
+        player.setHelpFriendStrategy(new NoRescuePolicy());
+        dest.addCharacter(player);
+        source.acceptCharacter(victim);
+
+        player.rescueFriend(victim);
     }
 
     /**

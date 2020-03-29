@@ -72,10 +72,6 @@ public class Environment {
         return null;
     }
 
-    public static void setInstance(Environment instance) {
-        Environment.instance = instance;
-    }
-
     /**
      * Plays the winning game sequence.
      */

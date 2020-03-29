@@ -12,6 +12,8 @@ import static controllers.TabController.*;
  */
 abstract public class IcePatch extends Tile {
 
+    private Item buriedItem;
+
     /**
      * Returns the item hidden in the IcePatch.
      *
@@ -46,4 +48,11 @@ abstract public class IcePatch extends Tile {
         ///TODO
     }
 
+    public Item getBuriedItem() {
+        return buriedItem;
+    }
+
+    public void setBuriedItem(Item buriedItem) {
+        this.buriedItem = buriedItem;
+    }
 }

@@ -4,6 +4,7 @@ import models.Environment;
 import models.characters.Character;
 import models.characters.Eskimo;
 import models.characters.Researcher;
+import models.items.*;
 import models.policies.HasDiveSuitPolicy;
 import models.tiles.Hole;
 import models.tiles.InstableIcePatch;
@@ -217,50 +218,92 @@ public class UseCaseExecutor {
     /**
      * Sets up and executes the unburyFood use case
      */
-    public static void unburyFood(){
-        //TODO
+    public static void unburyFood() {
+        StableIcePatch target = new StableIcePatch();
+        Researcher finder = new Researcher(target);
+        target.addCharacter(finder);
+        Food food = new Food();
+        target.setBuriedItem(food);
+
+        finder.retrieveItem();
     }
 
     /**
      * Sets up and executes the unburyDiveSuit use case
      */
-    public static void unburyDiveSuit(){
-        //TODO
+    public static void unburyDiveSuit() {
+        StableIcePatch target = new StableIcePatch();
+        Researcher finder = new Researcher(target);
+        target.addCharacter(finder);
+        DiveSuit diveSuit = new DiveSuit();
+        target.setBuriedItem(diveSuit);
+
+        finder.retrieveItem();
     }
 
     /**
      * Sets up and executes the unburyRope use case
      */
-    public static void unburyRope(){
-        //TODO
+    public static void unburyRope() {
+        StableIcePatch target = new StableIcePatch();
+        Researcher finder = new Researcher(target);
+        target.addCharacter(finder);
+        Rope rope = new Rope();
+        target.setBuriedItem(rope);
+
+        finder.retrieveItem();
     }
 
     /**
      * Sets up and executes the unburyShovel use case
      */
-    public static void unburyShovel(){
-        //TODO
+    public static void unburyShovel() {
+        StableIcePatch target = new StableIcePatch();
+        Researcher finder = new Researcher(target);
+        target.addCharacter(finder);
+        Shovel shovel = new Shovel();
+        target.setBuriedItem(shovel);
+
+        finder.retrieveItem();
     }
 
     /**
      * Sets up and executes the unburyCartridge use case
      */
-    public static void unburyCartridge(){
-        //TODO
+    public static void unburyCartridge() {
+        StableIcePatch target = new StableIcePatch();
+        Researcher finder = new Researcher(target);
+        target.addCharacter(finder);
+        Cartridge cartridge = new Cartridge();
+        target.setBuriedItem(cartridge);
+
+        finder.retrieveItem();
     }
 
     /**
      * Sets up and executes the unburyBeacon use case
      */
-    public static void unburyBeacon(){
-        //TODO
+    public static void unburyBeacon() {
+        StableIcePatch target = new StableIcePatch();
+        Researcher finder = new Researcher(target);
+        target.addCharacter(finder);
+        Beacon beacon = new Beacon();
+        target.setBuriedItem(beacon);
+
+        finder.retrieveItem();
     }
 
     /**
      * Sets up and executes the unburyGun use case
      */
     public static void unburyGun() {
-        //TODO
+        StableIcePatch target = new StableIcePatch();
+        Researcher finder = new Researcher(target);
+        target.addCharacter(finder);
+        Gun gun = new Gun();
+        target.setBuriedItem(gun);
+
+        finder.retrieveItem();
     }
 
     /**

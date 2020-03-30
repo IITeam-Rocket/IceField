@@ -18,7 +18,7 @@ public class IgluPolicy implements FrostBitePolicy {
     @Override
     public void executeStrategy(Character victim) {
         addIndent();
-        printlnWithIndents("IgluPolicy.executeStrategy()");
+        printlnWithIndents("IgluPolicy.executeStrategy(victim)");
         printlnWithIndents("return");
         removeIndent();
     }

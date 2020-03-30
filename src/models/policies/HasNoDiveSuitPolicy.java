@@ -19,7 +19,7 @@ public class HasNoDiveSuitPolicy implements FallInWaterPolicy {
     @Override
     public void executeStrategy(Character player) {
         addIndent();
-        printlnWithIndents("HasNoDiveSuitPolicy.executeStrategy()");
+        printlnWithIndents("HasNoDiveSuitPolicy.executeStrategy(player)");
         printlnWithIndents("return");
         removeIndent();
     }

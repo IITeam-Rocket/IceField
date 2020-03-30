@@ -32,7 +32,7 @@ abstract public class Tile {
      */
     public void removeCharacter(Character character) {
         addIndent();
-        printlnWithIndents("Tile.removeCharacter()");
+        printlnWithIndents("Tile.removeCharacter(character)");
 
         characters.remove(character);
 
@@ -47,7 +47,7 @@ abstract public class Tile {
      */
     public void addSnow(int quantity) {
         addIndent();
-        printlnWithIndents("Tile.addSnow()");
+        printlnWithIndents("Tile.addSnow() " + quantity);
 
         snowDepth += quantity;
 
@@ -65,7 +65,7 @@ abstract public class Tile {
      */
     public void removeSnow(int quantity) {
         addIndent();
-        printlnWithIndents("Tile.removeSnow()");
+        printlnWithIndents("Tile.removeSnow()" + quantity);
 
         snowDepth -= quantity;
         if (snowDepth < 0)  //Yeah, hardcoded.

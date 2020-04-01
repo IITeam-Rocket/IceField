@@ -3,6 +3,8 @@ package models.items;
 import models.characters.Character;
 import models.policies.HasDiveSuitPolicy;
 
+import static controllers.TabController.*;
+
 /**
  * An item that changes the finder's
  * FallInWaterPolicy.
@@ -15,6 +17,12 @@ public class DiveSuit extends Item {
      */
     @Override
     public void uponDiscovery(Character finder) {
+        addIndent();
+        printlnWithIndents("DiveSuit.uponDiscovery(finder)");
+
         finder.changeWaterPolicy(new HasDiveSuitPolicy());
+
+        printlnWithIndents("return");
+        removeIndent();
     }
 }

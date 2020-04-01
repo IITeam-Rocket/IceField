@@ -1,7 +1,8 @@
 package models.items;
 
 import models.characters.Character;
-import models.items.Item;
+
+import static controllers.TabController.*;
 
 /**
  * An Item that gives the finding character
@@ -15,6 +16,12 @@ public class Shovel extends Item {
      */
     @Override
     public void uponDiscovery(Character finder) {
+        addIndent();
+        printlnWithIndents("Shovel.uponDiscovery(finder)");
+
         finder.setStrength(2);
+
+        printlnWithIndents("return");
+        removeIndent();
     }
 }

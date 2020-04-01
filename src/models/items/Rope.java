@@ -1,8 +1,9 @@
 package models.items;
 
 import models.characters.Character;
-import models.items.Item;
 import models.policies.HasRopePolicy;
+
+import static controllers.TabController.*;
 
 /**
  * An Item that changes the finding player's
@@ -17,6 +18,12 @@ public class Rope extends Item {
      */
     @Override
     public void uponDiscovery(Character finder) {
+        addIndent();
+        printlnWithIndents("Rope.uponDiscovery(finder)");
+
         finder.changeRescuePolicy(new HasRopePolicy());
+
+        printlnWithIndents("return");
+        removeIndent();
     }
 }

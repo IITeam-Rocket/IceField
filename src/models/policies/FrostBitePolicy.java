@@ -2,6 +2,7 @@ package models.policies;
 
 
 import models.characters.Character;
+import models.exceptions.EndOfGameException;
 
 /**
  * An interface representing the strategy of
@@ -15,5 +16,5 @@ public interface FrostBitePolicy {
      * @param victim the character being exposed
      *               to the storm
      */
-    void executeStrategy(Character victim);
+    void executeStrategy(Character victim) throws EndOfGameException;
 }

@@ -1,7 +1,9 @@
 package models.policies;
 
 import models.characters.Character;
-import models.policies.FrostBitePolicy;
+import models.exceptions.EndOfGameException;
+
+import static controllers.TabController.*;
 
 /**
  * The strategy of a Tile to not
@@ -17,7 +19,13 @@ public class NoProtectionPolicy implements FrostBitePolicy {
      *               to the storm
      */
     @Override
-    public void executeStrategy(Character victim) {
+    public void executeStrategy(Character victim) throws EndOfGameException {
+        addIndent();
+        printlnWithIndents("NoProtectionPolicy.executeStrategy(victim)");
 
+        victim.removeHeat(1);
+
+        printlnWithIndents("return");
+        removeIndent();
     }
 }

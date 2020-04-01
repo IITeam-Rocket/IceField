@@ -1,9 +1,16 @@
 package models.characters;
 
 import models.Environment;
-import models.policies.*;
+import models.exceptions.EndOfGameException;
+import models.items.Item;
+import models.policies.FallInWaterPolicy;
+import models.policies.HasNoDiveSuitPolicy;
+import models.policies.NoRescuePolicy;
+import models.policies.RescueFriendPolicy;
 import models.tiles.IcePatch;
 import models.tiles.Tile;
+
+import static controllers.TabController.*;
 
 /**
  * Represents a player character of the game.
@@ -14,23 +21,14 @@ public abstract class Character {
     protected int strength;
     protected RescueFriendPolicy helpFriendStrategy;
     protected FallInWaterPolicy swimToShoreStrategy;
-    Tile tile;
+    protected Tile tile;
 
-    public Character(int bodyHeat, int stamina){
+    protected Character(int bodyHeat, int stamina, int strength) {
         this.bodyHeat = bodyHeat;
+        this.strength = strength;
         this.stamina = stamina;
-        this.strength = 1;
-        this.helpFriendStrategy = new NoRescuePolicy();
-        this.swimToShoreStrategy = new HasNoDiveSuitPolicy();
-    }
-
-    public void setStrength(int s){
-        if(s < 0)
-            throw new IllegalArgumentException("You must stay positive!");
-        if(s > 2)
-            throw new IllegalArgumentException("Woah Cowboy, chill out!");
-
-        this.strength = s;
+        helpFriendStrategy = new NoRescuePolicy();
+        swimToShoreStrategy = new HasNoDiveSuitPolicy();
     }
 
     /**
@@ -38,7 +36,14 @@ public abstract class Character {
      * the player stands on.
      */
     public void clearPatch() {
-        this.tile.removeSnow(strength);
+        addIndent();
+        printlnWithIndents("Character.clearPatch()");
+
+        tile.removeSnow(strength);
+
+        printlnWithIndents("return");
+
+        removeIndent();
     }
 
     /**
@@ -47,31 +52,50 @@ public abstract class Character {
      * @param destination the destination to move to
      */
     public void moveTo(Tile destination) {
-        destination.acceptCharacter(this);
-        this.tile.removeCharacter(this);
+        addIndent();
+        printlnWithIndents("Character.moveTo(destination)");
 
-        this.tile = destination;
+        if(destination.acceptCharacter(this)){
+            tile.removeCharacter(this);
+        }
+
+        printlnWithIndents("return");
+        removeIndent();
     }
 
     /**
      * Retrieves the item hidden in the current Tile.
      */
     public void retrieveItem() {
-        //probléma, hogy a tile-nak nincsen unBuryItem-je
-        ((IcePatch) this.tile).unBuryItem(this);
+        addIndent();
+        printlnWithIndents("Character.retriveItem()");
+
+        IcePatch p = (IcePatch) this.tile;
+        Item find = p.unBuryItem(this);
+
+        if(find != null)
+            find.uponDiscovery(this);
+
+        printlnWithIndents("return");
+        removeIndent();
     }
 
     /**
      * Increases bodyHeat.
      *
      * @param quantity the amount of heat
-     *
-     * @throws IllegalArgumentException
+     * @throws IllegalArgumentException if quantity is negative
      */
-    public void addHeat(int quantity) {
-        if(quantity < 0)
-            throw new IllegalArgumentException("Invalid quantity");
-        this.bodyHeat += quantity;
+    public void addHeat(int quantity) throws IllegalArgumentException {
+        if (quantity < 1) throw new IllegalArgumentException("Must not be negative");
+
+        addIndent();
+        printlnWithIndents("Character.adHeat(" + quantity + ")");
+
+        bodyHeat += quantity;
+
+        printlnWithIndents("return");
+        removeIndent();
     }
 
     /**
@@ -79,17 +103,19 @@ public abstract class Character {
      * falls to zero.
      *
      * @param quantity the amount of heat
-     *
-     * @throws IllegalArgumentException
      */
-    public void removeHeat(int quantity) {
-        if(quantity < 0)
-            throw new IllegalArgumentException("Invalid quantity");
-        this.bodyHeat -= quantity;
+    public void removeHeat(int quantity) throws IllegalArgumentException, EndOfGameException {
+        if (quantity < 1) throw new IllegalArgumentException("Must not be negative");
 
-        if(this.bodyHeat < 0){
+        addIndent();
+        printlnWithIndents("Character.removeHeat(" + quantity + ")");
+
+        bodyHeat -= quantity;
+        if (bodyHeat <= 0)
             Environment.getInstance().gameOver();
-        }
+
+        printlnWithIndents("return");
+        removeIndent();
     }
 
     /**
@@ -98,19 +124,26 @@ public abstract class Character {
      * the game, otherwise nothing happens.
      */
     public void craftSignalFlare() {
+        addIndent();
+        printlnWithIndents("Character.craftSignalFlare()");
 
+        Environment.getInstance().winGame();
+
+        printlnWithIndents("return");
+        removeIndent();
     }
 
     /**
      * Executes the FallInWaterStrategy to avoid death.
-     *
-     * @throws NullPointerException
      */
     public void swimToShore() {
-        if(swimToShoreStrategy == null){
-            throw new NullPointerException("helpFriendStrategy not initialized");
-        }
+        addIndent();
+        printlnWithIndents("Character.swimToShore()");
+
         swimToShoreStrategy.executeStrategy(this);
+
+        printlnWithIndents("return");
+        removeIndent();
     }
 
     /**
@@ -118,14 +151,15 @@ public abstract class Character {
      * has fallen in water, and can't get out.
      *
      * @param friend the victim to rescue
-     *
-     * @throws NullPointerException
      */
     public void rescueFriend(Character friend) {
-        if(helpFriendStrategy == null){
-            throw new NullPointerException("helpFriendStrategy not initialized");
-        }
-        helpFriendStrategy.executeStrategy(friend);
+        addIndent();
+        printlnWithIndents("Character.rescueFriend(friend)");
+
+        helpFriendStrategy.executeStrategy(friend, tile);
+
+        printlnWithIndents("return");
+        removeIndent();
     }
 
     /**
@@ -142,8 +176,14 @@ public abstract class Character {
      *
      * @param strategy the new strategy
      */
-    public void changeRescuePolicy(RescueFriendPolicy strategy) {
-        this.helpFriendStrategy = strategy;
+    public void changeRescuePolicy(RescueFriendPolicy strategy){
+        addIndent();
+        printlnWithIndents("Character.changeRescuePolicy(strategy)");
+
+        helpFriendStrategy = strategy;
+
+        printlnWithIndents("return");
+        removeIndent();
     }
 
     /**
@@ -153,7 +193,136 @@ public abstract class Character {
      * @param strategy the new strategy
      */
     public void changeWaterPolicy(FallInWaterPolicy strategy) {
-        this.swimToShoreStrategy = strategy;
+        addIndent();
+        printlnWithIndents("Character.changeWaterPolicy(strategy)");
+
+        swimToShoreStrategy = strategy;
+
+        printlnWithIndents("return");
+        removeIndent();
     }
 
+    /**
+     * Returns the body-heat of the character.
+     *
+     * @return the bodyHeat of the character
+     */
+    public int getBodyHeat() {
+        addIndent();
+        printlnWithIndents("Character.getBodyHeat()");
+
+
+        printlnWithIndents("return " + bodyHeat );
+        removeIndent();
+
+        return bodyHeat;
+    }
+
+    /**
+     * Returns the stamina of the character.
+     *
+     * @return the number of actions the character
+     * can execute
+     */
+    public int getStamina() {
+        addIndent();
+        printlnWithIndents("Character.getStamina()");
+
+        printlnWithIndents("return " + stamina);
+        removeIndent();
+
+        return stamina;
+    }
+
+    /**
+     * Returns the strength of the character.
+     *
+     * @return the amount of snow the character
+     * can clear
+     */
+    public int getStrength() {
+        addIndent();
+        printlnWithIndents("Character.getStrength()");
+
+        printlnWithIndents("return " + strength);
+        removeIndent();
+
+        return strength;
+    }
+
+    /**
+     * Returns the character's strategy in the event of
+     * rescuing a friend.
+     *
+     * @return the character's strategy of helping a friend
+     */
+    public RescueFriendPolicy getHelpFriendStrategy() {
+        addIndent();
+        printlnWithIndents("Character.getHelpFriendStrategy()");
+
+        printlnWithIndents("return helpFriendStrategy");
+        removeIndent();
+
+        return helpFriendStrategy;
+    }
+
+    /**
+     * Returns the character's strategy of getting out of water.
+     *
+     * @return the character's strategy of getting out of water
+     */
+    public FallInWaterPolicy getSwimToShoreStrategy() {
+        addIndent();
+        printlnWithIndents("Character.getSwimToShoreStrategy()");
+
+        printlnWithIndents("return swimToShoreStrategy");
+        removeIndent();
+
+        return swimToShoreStrategy;
+    }
+
+    /**
+     * Returns the Tile the character is currently standing on.
+     *
+     * @return the Tile the character is on
+     */
+    public Tile getTile() {
+        addIndent();
+        printlnWithIndents("Character.getTile()");
+
+        printlnWithIndents("return tile");
+        removeIndent();
+
+
+        return tile;
+    }
+
+    /**
+     * Sets the character's strength
+     *
+     * @param quantity the character's new strength
+     */
+    public void setStrength(int quantity) {
+        strength = quantity;
+    }
+
+    public void setBodyHeat(int bodyHeat) {
+        this.bodyHeat = bodyHeat;
+    }
+
+    public void setStamina(int stamina) {
+        this.stamina = stamina;
+    }
+
+    public void setHelpFriendStrategy(RescueFriendPolicy helpFriendStrategy) {
+        this.helpFriendStrategy = helpFriendStrategy;
+    }
+
+    public void setSwimToShoreStrategy(FallInWaterPolicy swimToShoreStrategy) {
+        this.swimToShoreStrategy = swimToShoreStrategy;
+    }
+
+    public void setTile(Tile tile) {
+        this.tile = tile;
+    }
 }

@@ -1,7 +1,8 @@
 package models.policies;
 
 import models.characters.Character;
-import models.policies.FallInWaterPolicy;
+
+import static controllers.TabController.*;
 
 /**
  * A class representing the strategy of the
@@ -17,6 +18,9 @@ public class HasNoDiveSuitPolicy implements FallInWaterPolicy {
      */
     @Override
     public void executeStrategy(Character player) {
-
+        addIndent();
+        printlnWithIndents("HasNoDiveSuitPolicy.executeStrategy(player)");
+        printlnWithIndents("return");
+        removeIndent();
     }
 }

@@ -1,7 +1,8 @@
 package models.tiles;
 
 import models.characters.Character;
-import models.tiles.IcePatch;
+
+import static controllers.TabController.*;
 
 /**
  * An unstable IcePatch that may hold
@@ -11,7 +12,11 @@ import models.tiles.IcePatch;
 public class InstableIcePatch extends IcePatch {
 
     int playerCapacity;
-    boolean flipped;
+    boolean flipped = false;
+
+    public InstableIcePatch(int playerCapacity) {
+        this.playerCapacity = playerCapacity;
+    }
 
     /**
      * Accepts the player who tries to move on it.
@@ -21,7 +26,20 @@ public class InstableIcePatch extends IcePatch {
      */
     @Override
     public boolean acceptCharacter(Character character) {
-        return false;
+        addIndent();
+        printlnWithIndents("InstableIcePatch.acceptCharacter(character)");
+
+        characters.add(character);
+        if(characters.size() > playerCapacity){
+            flip();
+            for (Character var :characters) {
+                var.swimToShore();
+            }
+        }
+
+        printlnWithIndents("return: true");
+        removeIndent();
+        return true;
     }
 
     /**
@@ -32,6 +50,10 @@ public class InstableIcePatch extends IcePatch {
      */
     @Override
     public int getCapacity() {
+        addIndent();
+        printlnWithIndents("InstableIcePatch.getCapacity()");
+        printlnWithIndents("return: " + playerCapacity);
+        removeIndent();
         return playerCapacity;
     }
 
@@ -41,5 +63,48 @@ public class InstableIcePatch extends IcePatch {
      * and vice versa.
      */
     public void flip() {
+        addIndent();
+        printlnWithIndents("InstableIcePatch.flip()");
+
+        flipped = !flipped;
+
+        printlnWithIndents("return");
+        removeIndent();
+    }
+
+    /**
+     * Returns whether the Patch is unfit for
+     * standing on it
+     *
+     * @return false, if the Patch can
+     */
+    public boolean isFlipped() {
+        addIndent();
+        printlnWithIndents("InstableIcePatch.isFlipped()");
+        printlnWithIndents("return: "+ flipped);
+        removeIndent();
+
+        return flipped;
+    }
+
+    public void setPlayerCapacity(int playerCapacity) {
+
+        addIndent();
+        printlnWithIndents("InstableIcePatch.setPlayerCapacity()");
+
+        this.playerCapacity = playerCapacity;
+
+        printlnWithIndents("return");
+        removeIndent();
+    }
+
+    public void setFlipped(boolean flipped) {
+        addIndent();
+        printlnWithIndents("InstableIcePatch.setFlipped()");
+
+        this.flipped = flipped;
+
+        printlnWithIndents("return");
+        removeIndent();
     }
 }

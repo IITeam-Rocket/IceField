@@ -19,6 +19,11 @@ public class InstableIcePatch extends IcePatch {
     int playerCapacity;
     boolean flipped = false;
 
+    public InstableIcePatch(int playerCapacity) {
+        super();
+        this.playerCapacity = playerCapacity;
+    }
+
     public InstableIcePatch(int ID, int playerCapacity) {
         super(ID);
         this.playerCapacity = playerCapacity;

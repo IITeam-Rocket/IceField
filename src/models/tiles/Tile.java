@@ -17,10 +17,16 @@ import java.util.ArrayList;
  */
 abstract public class Tile {
     protected static final int maxSnowDepth = 6;
+    protected static int IDCounter = 0;
     protected final int ID;
     protected int snowDepth;
     protected ArrayList<Figure> entities = new ArrayList<>();
     protected ArrayList<Tile> neighbours = new ArrayList<>();
+
+    public Tile() {
+        this.ID = IDCounter;
+        IDCounter++;
+    }
 
     public Tile(int ID) {
         this.ID = ID;

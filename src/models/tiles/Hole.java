@@ -17,6 +17,10 @@ public class Hole extends Tile {
 
     private boolean isDiscovered = false;
 
+    public Hole() {
+        super();
+    }
+
     public Hole(int ID) {
         super(ID);
         Random r = new Random();

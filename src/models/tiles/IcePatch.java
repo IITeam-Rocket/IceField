@@ -20,6 +20,10 @@ abstract public class IcePatch extends Tile {
     private Item buriedItem;
     private ProtectionPolicy protectionStrategy = new NoProtectionPolicy();
 
+    public IcePatch() {
+        super();
+    }
+
     public IcePatch(int ID) {
         super(ID);
     }

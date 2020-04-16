@@ -16,6 +16,10 @@ import models.figures.Figure;
  */
 public class StableIcePatch extends IcePatch {
 
+    public StableIcePatch() {
+        super();
+    }
+
     public StableIcePatch(int ID) {
         super(ID);
     }

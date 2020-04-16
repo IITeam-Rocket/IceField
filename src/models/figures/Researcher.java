@@ -39,4 +39,10 @@ public class Researcher extends Character {
         ///TODO implement useSpecial()
         target.getCapacity();
     }
+
+    // TODO: 2020. 04. 16. javadoc
+    @Override
+    public void step() {
+        // TODO: 2020. 04. 16. implement
+    }
 }

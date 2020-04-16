@@ -38,4 +38,10 @@ public class Eskimo extends Character {
         if (target == tile)
             ((IcePatch) tile).changeFrostBitePolicy(new IglooPolicy());
     }
+
+    // TODO: 2020. 04. 16. javadoc
+    @Override
+    public void step() {
+        // TODO: 2020. 04. 16. implement
+    }
 }

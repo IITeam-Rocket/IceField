@@ -1,9 +1,9 @@
 package controllers;
 
 import models.Environment;
-import models.characters.Character;
-import models.characters.Eskimo;
-import models.characters.Researcher;
+import models.figures.Character;
+import models.figures.Eskimo;
+import models.figures.Researcher;
 import models.items.*;
 import models.policies.*;
 import models.tiles.Hole;
@@ -71,7 +71,7 @@ public class UseCaseExecutor {
         StableIcePatch source = new StableIcePatch();
         InstableIcePatch dest = new InstableIcePatch(0);
         Researcher explorer = new Researcher(source);
-        explorer.setSwimToShoreStrategy(new HasDiveSuitPolicy());
+        explorer.setSwimToShoreStrategy(new SwimOutPolicy());
         source.addCharacter(explorer);
 
         explorer.moveTo(dest);
@@ -262,7 +262,7 @@ public class UseCaseExecutor {
     public static void makeStormWithIglu() {
         System.out.println("Usecase: MakeStormWithIglu");
 
-        Environment environment = setUpStorm(new IgluPolicy());
+        Environment environment = setUpStorm(new IglooPolicy());
         environment.makeStorm();
     }
 
@@ -270,14 +270,15 @@ public class UseCaseExecutor {
      * Sets up the Environment for 'makeStorm' use cases.
      *
      * @param frostBiteStrategy the strategy of the tile
+     *
      * @return the all set-up Environment
      */
-    private static Environment setUpStorm(FrostBitePolicy frostBiteStrategy) {
+    private static Environment setUpStorm(ProtectionPolicy frostBiteStrategy) {
         System.out.println("Usecase: SetUpStorm");
 
         StableIcePatch tile = new StableIcePatch();
         ArrayList<Tile> tiles = new ArrayList<>();
-        tile.setFrostBiteStrategy(frostBiteStrategy);
+        tile.setProtectionStrategy(frostBiteStrategy);
         tiles.add(tile);
         Researcher victim1 = new Researcher(tile);
         Researcher victim2 = new Researcher(tile);

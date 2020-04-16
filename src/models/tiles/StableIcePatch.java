@@ -1,27 +1,35 @@
 package models.tiles;
 
-import models.characters.Character;
-
-import static controllers.TabController.*;
+import models.figures.Figure;
 
 /**
  * An IcePatch that is stable, meaning
  * it may support an indefinite number of
  * characters.
+ *
+ * @author Józsa György
+ * @version 2.0
+ * @see models.tiles.IcePatch
+ * @see models.tiles.Tile
+ * @since skeleton
+ * @since 2020.03.10
  */
 public class StableIcePatch extends IcePatch {
+
+    public StableIcePatch(int ID) {
+        super(ID);
+    }
+
     /**
      * Accepts the player who tries to move on it.
      *
-     * @param character the player to accept
+     * @param figure the player to accept
+     *
      * @return true
      */
     @Override
-    public boolean acceptCharacter(Character character) {
-        addIndent();
-        printlnWithIndents("StableIcePatch.acceptCharacter(character)");
-        printlnWithIndents("return: true");
-        removeIndent();
+    public boolean acceptCharacter(Figure figure) {
+        //TODO
         return true;
     }
 
@@ -33,10 +41,6 @@ public class StableIcePatch extends IcePatch {
      */
     @Override
     public int getCapacity() {
-        addIndent();
-        printlnWithIndents("StableIcePatch.getCapacity()");
-        printlnWithIndents("return: true");
-        removeIndent();
         return -1;
     }
 }

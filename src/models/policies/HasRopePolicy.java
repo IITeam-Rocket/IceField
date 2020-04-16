@@ -1,15 +1,18 @@
 package models.policies;
 
-
-import models.characters.Character;
+import models.figures.Character;
 import models.tiles.Tile;
-
-import static controllers.TabController.*;
 
 /**
  * A strategy of the player to help their friend
  * when said friend has fallen into water. This strategy is
  * to pull them out with a rope.
+ *
+ * @author Józsa György
+ * @version 2.0
+ * @see models.policies.RescueFriendPolicy
+ * @since skeleton
+ * @since 2020.03.10
  */
 public class HasRopePolicy implements RescueFriendPolicy {
 
@@ -22,15 +25,11 @@ public class HasRopePolicy implements RescueFriendPolicy {
      */
     @Override
     public void executeStrategy(Character friend, Tile dest) {
-        addIndent();
-        printlnWithIndents("RescueFriendPolicy.executeStrategy(friend, dest)");
 
         Tile source = friend.getTile();
         dest.acceptCharacter(friend);
 
         source.removeCharacter(friend);
 
-        printlnWithIndents("return");
-        removeIndent();
     }
 }

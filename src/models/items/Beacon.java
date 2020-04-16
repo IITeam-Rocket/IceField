@@ -1,13 +1,16 @@
 package models.items;
 
 import models.Environment;
-import models.characters.Character;
-
-import static controllers.TabController.*;
+import models.figures.Character;
 
 /**
  * A beacon that is one part of the SignalFlare
  * needed to win the game
+ *
+ * @author Józsa György
+ * @version 2.0
+ * @since skeleton
+ * @since 2020.03.10
  */
 public class Beacon extends Item {
     /**
@@ -17,12 +20,6 @@ public class Beacon extends Item {
      */
     @Override
     public void uponDiscovery(Character finder) {
-        addIndent();
-        printlnWithIndents("Beacon.uponDiscovery(finder)");
-
         Environment.getInstance().recordBeacon();
-
-        printlnWithIndents("return");
-        removeIndent();
     }
 }

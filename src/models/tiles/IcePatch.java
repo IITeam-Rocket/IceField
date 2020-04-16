@@ -1,39 +1,38 @@
 package models.tiles;
 
-import models.characters.Character;
-import models.exceptions.EndOfGameException;
+import models.figures.Character;
 import models.items.Item;
-import models.policies.FrostBitePolicy;
 import models.policies.NoProtectionPolicy;
-
-import static controllers.TabController.*;
+import models.policies.ProtectionPolicy;
 
 /**
  * A Tile frozen with ice on which characters
  * can stand on.
+ *
+ * @author Józsa György
+ * @version 2.0
+ * @see models.tiles.Tile
+ * @since skeleton
+ * @since 2020.03.10
  */
 abstract public class IcePatch extends Tile {
 
     private Item buriedItem;
-    private FrostBitePolicy frostBiteStrategy = new NoProtectionPolicy();
+    private ProtectionPolicy protectionStrategy = new NoProtectionPolicy();
+
+    public IcePatch(int ID) {
+        super(ID);
+    }
 
     /**
      * Returns the item hidden in the IcePatch.
      *
      * @param player the player who picked the item up
+     *
      * @return the buried item
      */
     public Item unBuryItem(Character player) {
-        addIndent();
-        printlnWithIndents("IcePatch.unBuryItem(player)");
-
-        if(snowDepth > 0){
-            printlnWithIndents("return: null");
-            removeIndent();
-            return null;
-        }
-        printlnWithIndents("return: item");
-        removeIndent();
+        //TODO
         return buriedItem;
     }
 
@@ -42,20 +41,7 @@ abstract public class IcePatch extends Tile {
      */
     @Override
     public void reactToStorm() {
-        addIndent();
-        printlnWithIndents("IcePatch.ReactToStorm()");
-
-        addSnow(1);
-        for (Character victim : characters) {
-            try {
-                frostBiteStrategy.executeStrategy(victim);
-            } catch (EndOfGameException e) {
-                e.printStackTrace();
-            }
-        }
-
-        printlnWithIndents("return");
-        removeIndent();
+        //TODO
     }
 
     /**
@@ -63,7 +49,7 @@ abstract public class IcePatch extends Tile {
      *
      * @param strategy the new strategy
      */
-    public void changeFrostBitePolicy(FrostBitePolicy strategy) {
+    public void changeFrostBitePolicy(ProtectionPolicy strategy) {
         ///TODO
     }
 
@@ -75,7 +61,7 @@ abstract public class IcePatch extends Tile {
         this.buriedItem = buriedItem;
     }
 
-    public void setFrostBiteStrategy(FrostBitePolicy frostBiteStrategy) {
-        this.frostBiteStrategy = frostBiteStrategy;
+    public void setProtectionStrategy(ProtectionPolicy protectionStrategy) {
+        this.protectionStrategy = protectionStrategy;
     }
 }

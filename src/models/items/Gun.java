@@ -1,13 +1,16 @@
 package models.items;
 
 import models.Environment;
-import models.characters.Character;
-
-import static controllers.TabController.*;
+import models.figures.Character;
 
 /**
  * A gun that is a part of the SignalFlare
  * needed to win the game
+ *
+ * @author Józsa György
+ * @version 2.0
+ * @since skeleton
+ * @since 2020.03.10
  */
 public class Gun extends Item {
     /**
@@ -17,12 +20,6 @@ public class Gun extends Item {
      */
     @Override
     public void uponDiscovery(Character finder) {
-        addIndent();
-        printlnWithIndents("Gun.uponDiscovery(finder)");
-
         Environment.getInstance().recordGun();
-
-        printlnWithIndents("return");
-        removeIndent();
     }
 }

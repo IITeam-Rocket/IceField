@@ -1,24 +1,29 @@
-package models.characters;
+package models.figures;
 
-import models.policies.IgluPolicy;
+import models.policies.IglooPolicy;
 import models.tiles.IcePatch;
 import models.tiles.Tile;
 
-import static controllers.TabController.addIndent;
-import static controllers.TabController.printlnWithIndents;
-import static controllers.TabController.removeIndent;
-
 /**
  * A character with the ability to build Igloos
+ *
+ * @author Józsa György
+ * @version 2.0
+ * @see models.figures.Figure
+ * @see models.figures.Character
+ * @since skeleton
+ * @since 2020.03.10
  */
 public class Eskimo extends Character {
 
+    // TODO: 2020. 04. 15. javadoc
     public Eskimo() {
-        super(5, 4, 1);
+        super(5, 4);
     }
 
+    // TODO: 2020. 04. 15. javadoc
     public Eskimo(Tile starting) {
-        super(5, 4, 1);
+        super(5, 4);
         this.tile = starting;
     }
 
@@ -30,13 +35,7 @@ public class Eskimo extends Character {
      */
     @Override
     public void useSpecial(Tile target) {
-        addIndent();
-        printlnWithIndents("Eskimo.useSpecial(target)");
-
         if (target == tile)
-            ((IcePatch) tile).changeFrostBitePolicy(new IgluPolicy());
-
-        printlnWithIndents("return");
-        removeIndent();
+            ((IcePatch) tile).changeFrostBitePolicy(new IglooPolicy());
     }
 }

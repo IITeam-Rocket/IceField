@@ -1,12 +1,16 @@
 package models.items;
 
-import models.characters.Character;
-
-import static controllers.TabController.*;
+import models.figures.Character;
 
 /**
  * An Item that gives the finding character
- * strength up to a unit of 2.
+ * the ability to remove 2 units of snow
+ * on clearing.
+ *
+ * @author Józsa György
+ * @version 2.0
+ * @since skeleton
+ * @since 2020.03.10
  */
 public class Shovel extends Item {
     /**
@@ -16,12 +20,6 @@ public class Shovel extends Item {
      */
     @Override
     public void uponDiscovery(Character finder) {
-        addIndent();
-        printlnWithIndents("Shovel.uponDiscovery(finder)");
-
-        finder.setStrength(2);
-
-        printlnWithIndents("return");
-        removeIndent();
+        // TODO: 2020. 04. 15. implement
     }
 }

@@ -1,25 +1,29 @@
-package models.characters;
+package models.figures;
 
 import models.tiles.Tile;
-
-import static controllers.TabController.*;
-import static controllers.TabController.addIndent;
-import static controllers.TabController.printlnWithIndents;
-import static controllers.TabController.removeIndent;
 
 /**
  * A character with the ability to analyze
  * the surrounding tiles' capacity to hold
  * players.
+ *
+ * @author Józsa György
+ * @version 2.0
+ * @see models.figures.Character
+ * @see models.figures.Figure
+ * @since skeleton
+ * @since 2020.03.10
  */
 public class Researcher extends Character {
 
+    // TODO: 2020. 04. 15. javadoc
     public Researcher() {
-        super(4, 4, 1);
+        super(4, 4);
     }
 
+    // TODO: 2020. 04. 15. javadoc
     public Researcher(Tile starting) {
-        super(4, 4, 1);
+        super(4, 4);
         this.tile = starting;
     }
 
@@ -32,13 +36,7 @@ public class Researcher extends Character {
      */
     @Override
     public void useSpecial(Tile target) {
-        addIndent();
-        printlnWithIndents("Researcher.useSpecial(target)");
-
         ///TODO implement useSpecial()
         target.getCapacity();
-
-        printlnWithIndents("return");
-        removeIndent();
     }
 }

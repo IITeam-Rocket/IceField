@@ -1,19 +1,24 @@
 package models.tiles;
 
-import models.characters.Character;
+import models.figures.Figure;
 
 import java.util.Random;
 
-import static controllers.TabController.*;
-
 /**
  * A tile with no solid platform.
+ *
+ * @author Józsa György
+ * @version 2.0
+ * @see models.tiles.Tile
+ * @since skeleton
+ * @since 2020.03.10
  */
 public class Hole extends Tile {
 
     private boolean isDiscovered = false;
 
-    public Hole() {
+    public Hole(int ID) {
+        super(ID);
         Random r = new Random();
         int i = 0;
         while (i == 0)
@@ -26,25 +31,13 @@ public class Hole extends Tile {
      * If the Hole has not been revealed, the
      * accepts the player, otherwise it doesn't.
      *
-     * @param character the player to accept
+     * @param figure the player to accept
+     *
      * @return true if successful, false otherwise
      */
     @Override
-    public boolean acceptCharacter(Character character) {
-        addIndent();
-        printlnWithIndents("Hole.acceptCharacter(character)");
-
-        if(!isDiscovered){
-            reveal();
-            character.swimToShore();
-
-            printlnWithIndents("return: true");
-            removeIndent();
-            return true;
-        }
-
-        printlnWithIndents("return: false");
-        removeIndent();
+    public boolean acceptCharacter(Figure figure) {
+        //TODO
         return false;
     }
 
@@ -53,14 +46,7 @@ public class Hole extends Tile {
      */
     @Override
     public void reactToStorm() {
-        addIndent();
-        printlnWithIndents("Hole.reactToStorm()");
-
-        addSnow(1);
-
-        printlnWithIndents("return");
-        removeIndent();
-
+        //TODO
     }
 
     /**
@@ -71,26 +57,13 @@ public class Hole extends Tile {
      */
     @Override
     public int getCapacity() {
-        addIndent();
-        printlnWithIndents("Hole.getCapacity()");
-
-        reveal();
-
-        printlnWithIndents("return: 0");
-        removeIndent();
-
         return 0;
     }
+
     /**
      * Sets isDiscovered true.
      */
-    public void reveal(){
-        addIndent();
-        printlnWithIndents("Hole.reveals()");
-        setDiscovered(true);
-
-        printlnWithIndents("return");
-        removeIndent();
+    public void reveal() {
     }
 
     public boolean isDiscovered() {

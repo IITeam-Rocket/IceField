@@ -1,13 +1,16 @@
 package models.items;
 
-import models.characters.Character;
+import models.figures.Character;
 import models.policies.HasRopePolicy;
-
-import static controllers.TabController.*;
 
 /**
  * An Item that changes the finding player's
  * RescueFriendPolicy.
+ *
+ * @author Józsa György
+ * @version 2.0
+ * @since skeleton
+ * @since 2020.03.10
  */
 public class Rope extends Item {
     /**
@@ -18,12 +21,6 @@ public class Rope extends Item {
      */
     @Override
     public void uponDiscovery(Character finder) {
-        addIndent();
-        printlnWithIndents("Rope.uponDiscovery(finder)");
-
         finder.changeRescuePolicy(new HasRopePolicy());
-
-        printlnWithIndents("return");
-        removeIndent();
     }
 }

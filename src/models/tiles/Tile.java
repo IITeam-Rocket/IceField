@@ -1,43 +1,47 @@
 package models.tiles;
 
-import models.characters.Character;
+import models.figures.Character;
+import models.figures.Figure;
 import models.items.Item;
 
 import java.util.ArrayList;
 
-import static controllers.TabController.*;
-
 /**
  * A class representing an IceTile
  * which is a part of the IceField
+ *
+ * @author Józsa György
+ * @version 2.0
+ * @since skeleton
+ * @since 2020.03.10
  */
 abstract public class Tile {
+    protected static final int maxSnowDepth = 6;
+    protected final int ID;
     protected int snowDepth;
-    static final int maxSnowDepth = 6;
-    protected ArrayList<Character> characters = new ArrayList<>();
+    protected ArrayList<Figure> entities = new ArrayList<>();
     protected ArrayList<Tile> neighbours = new ArrayList<>();
+
+    public Tile(int ID) {
+        this.ID = ID;
+    }
 
     /**
      * Accepts the player who tries to move on it.
      *
-     * @param character the player to accept
+     * @param figure the player to accept
+     *
      * @return true if successful, false otherwise
      */
-    abstract public boolean acceptCharacter(Character character);
+    abstract public boolean acceptCharacter(Figure figure);
 
     /**
-     * Removes the character from the Tile.
+     * Removes the figure from the Tile.
      *
-     * @param character the character to remove
+     * @param figure the figure to remove
      */
-    public void removeCharacter(Character character) {
-        addIndent();
-        printlnWithIndents("Tile.removeCharacter(character)");
-
-        characters.remove(character);
-
-        printlnWithIndents("return");
-        removeIndent();
+    public void removeCharacter(Figure figure) {
+        entities.remove(figure);
     }
 
     /**
@@ -46,16 +50,7 @@ abstract public class Tile {
      * @param quantity the amount of snow to add
      */
     public void addSnow(int quantity) {
-        addIndent();
-        printlnWithIndents("Tile.addSnow() " + quantity);
-
-        snowDepth += quantity;
-
-        if (snowDepth > maxSnowDepth)
-            snowDepth = maxSnowDepth;
-
-        printlnWithIndents("return");
-        removeIndent();
+        //TODO
     }
 
     /**
@@ -64,15 +59,7 @@ abstract public class Tile {
      * @param quantity the amount of snow to remove
      */
     public void removeSnow(int quantity) {
-        addIndent();
-        printlnWithIndents("Tile.removeSnow()" + quantity);
-
-        snowDepth -= quantity;
-        if (snowDepth < 0)  //Yeah, hardcoded.
-            snowDepth = 0;
-
-        printlnWithIndents("return");
-        removeIndent();
+        // TODO
     }
 
     /**
@@ -81,7 +68,7 @@ abstract public class Tile {
      * @param item the item to bury
      */
     public void storeItem(Item item) {
-        ///TODO
+        //TODO
     }
 
     /**
@@ -104,11 +91,11 @@ abstract public class Tile {
      * @return the layers of snow on the Tile
      */
     public int getSnowDepth() {
-        addIndent();
-        printlnWithIndents("Tile.getSnowDepth()");
-        printlnWithIndents("return: " + snowDepth);
-        removeIndent();
         return snowDepth;
+    }
+
+    public void setSnowDepth(int snowDepth) {
+        this.snowDepth = snowDepth;
     }
 
     /**
@@ -117,12 +104,12 @@ abstract public class Tile {
      *
      * @return a list of Characters standing on the Tile
      */
-    public ArrayList<Character> getCharacters() {
-        addIndent();
-        printlnWithIndents("Tile.getCharacters()");
-        printlnWithIndents("return: ArrayList<Character>");
-        removeIndent();
-        return characters;
+    public ArrayList<Figure> getEntities() {
+        return entities;
+    }
+
+    public void setEntities(ArrayList<Figure> entities) {
+        this.entities = entities;
     }
 
     /**
@@ -132,11 +119,11 @@ abstract public class Tile {
      * @return a list of neighbouring Tiles
      */
     public ArrayList<Tile> getNeighbours() {
-        addIndent();
-        printlnWithIndents("Tile.getNeighbours()");
-        printlnWithIndents("return: ArrayList<Tile>");
-        removeIndent();
         return neighbours;
+    }
+
+    public void setNeighbours(ArrayList<Tile> neighbours) {
+        this.neighbours = neighbours;
     }
 
     /**
@@ -146,19 +133,6 @@ abstract public class Tile {
      * @param character the Character to add
      */
     public void addCharacter(Character character) {
-        this.characters.add(character);
-    }
-
-
-    public void setSnowDepth(int snowDepth) {
-        this.snowDepth = snowDepth;
-    }
-
-    public void setCharacters(ArrayList<Character> characters) {
-        this.characters = characters;
-    }
-
-    public void setNeighbours(ArrayList<Tile> neighbours) {
-        this.neighbours = neighbours;
+        this.entities.add(character);
     }
 }

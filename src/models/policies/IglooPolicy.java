@@ -4,9 +4,9 @@ import models.exceptions.EndOfGameException;
 import models.figures.Figure;
 
 /**
- * The strategy of a Tile to not
- * protect its inhabitants from a
- * snow storm.
+ * The strategy of a Tile to protect
+ * its inhabitants from a storm and
+ * an attack.
  *
  * @author Józsa György
  * @version 2.0
@@ -14,35 +14,31 @@ import models.figures.Figure;
  * @since skeleton
  * @since 2020.03.10
  */
-public class NoProtectionPolicy implements ProtectionPolicy {
+public class IglooPolicy implements ProtectionPolicy {
 
     /**
-     * Provides no protection against a storm,
-     * instead damages the inhabitant.
+     * Executes strategy of protecting against a storm.
      *
      * @param victim the character being exposed
      *               to the storm
      *
-     * @throws EndOfGameException If victim's body heat reaches zero.
+     * @throws EndOfGameException Never
+     * @see EndOfGameException
      */
     @Override
     public void protectAgainstStorm(Figure victim) throws EndOfGameException {
-        //TODO: figure or character?
     }
 
     /**
-     * Provides no protection against an attack,
-     * ends the game.
+     * Executes strategy of protecting the victim.
      *
      * @param victim   the victim suffering the attack
      * @param attacker the attacker who initiates the attack
      *
-     * @throws EndOfGameException If victim is not attacker.
+     * @throws EndOfGameException Never
      * @see EndOfGameException
      */
     @Override
     public void protectAgainstAttack(Figure victim, Figure attacker) throws EndOfGameException {
-        if (victim != attacker)
-            throw new EndOfGameException("A character has been mauled!");
     }
 }

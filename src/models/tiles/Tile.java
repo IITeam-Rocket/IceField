@@ -141,4 +141,16 @@ abstract public class Tile {
     public void addCharacter(Character character) {
         this.entities.add(character);
     }
+
+    public static int getMaxSnowDepth() {
+        return maxSnowDepth;
+    }
+
+    public static int getIDCounter() {
+        return IDCounter;
+    }
+
+    public int getID() {
+        return ID;
+    }
 }

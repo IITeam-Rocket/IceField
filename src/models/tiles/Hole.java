@@ -23,12 +23,6 @@ public class Hole extends Tile {
 
     public Hole(int ID) {
         super(ID);
-        Random r = new Random();
-        int i = 0;
-        while (i == 0)
-            i = r.nextInt(maxSnowDepth + 1);
-
-        snowDepth = i;
     }
 
     /**
@@ -56,11 +50,13 @@ public class Hole extends Tile {
     /**
      * Returns the maximum number of characters the
      * Tile can hold at one time, which is zero.
+     * It also reveals the hole.
      *
      * @return 0
      */
     @Override
     public int getCapacity() {
+        reveal();
         return 0;
     }
 
@@ -68,6 +64,7 @@ public class Hole extends Tile {
      * Sets isDiscovered true.
      */
     public void reveal() {
+        isDiscovered = true;
     }
 
     public boolean isDiscovered() {

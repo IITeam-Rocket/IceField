@@ -4,6 +4,5 @@ public class FileTest {
 
     @Test
     public void tester() {
-        //lol lol lol
     }
 }

@@ -2,8 +2,6 @@ package models.tiles;
 
 import models.figures.Figure;
 
-import java.util.Random;
-
 /**
  * A tile with no solid platform.
  *
@@ -17,10 +15,19 @@ public class Hole extends Tile {
 
     private boolean isDiscovered = false;
 
+    /**
+     * Default constructor
+     */
     public Hole() {
         super();
     }
 
+    /**
+     * Constructor with explicit ID
+     * tag.
+     *
+     * @param ID the ID of the hole.
+     */
     public Hole(int ID) {
         super(ID);
     }
@@ -31,11 +38,16 @@ public class Hole extends Tile {
      *
      * @param figure the player to accept
      *
-     * @return true if successful, false otherwise
+     * @return false
      */
     @Override
     public boolean acceptCharacter(Figure figure) {
-        //TODO
+        if (!isDiscovered) {
+            reveal();
+            entities.add(figure);
+            figure.setTile(this);
+            figure.swimToShore();
+        }
         return false;
     }
 
@@ -44,7 +56,7 @@ public class Hole extends Tile {
      */
     @Override
     public void reactToStorm() {
-        //TODO
+        snowDepth++;
     }
 
     /**

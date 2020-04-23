@@ -36,7 +36,6 @@ class HoleTest {
         assertFalse(hole2.isDiscovered(), "Second hole is already revealed on initialization!");
     }
 
-
     @Test
     @Order(2)
     public void reveal_causes_isDiscovered_to_be_true() {

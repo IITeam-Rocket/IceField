@@ -1,12 +1,10 @@
 package models.tiles;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class HoleTest {
     private Hole hole;
     private Hole hole1;
@@ -23,7 +21,7 @@ class HoleTest {
     @Order(0)
     public void can_initialize_with_no_arguments() {
         assertNotNull(hole, "Hole did not initialize at all!");
-        assertEquals(1, hole.getID(), "ID did not initialize correctly!");
+        assertEquals(0, hole.getID(), "ID did not initialize correctly!");
         assertFalse(hole.isDiscovered(), "Already revealed on initialization!");
     }
 
@@ -44,5 +42,18 @@ class HoleTest {
     public void reveal_causes_isDiscovered_to_be_true() {
         hole.reveal();
         assertTrue(hole.isDiscovered(), "Revealing did not cause the hole to be discovered!");
+    }
+
+    @Test
+    @Order(3)
+    public void calling_getCapacity_returns_zero() {
+        assertEquals(0, hole.getCapacity(), "Capacity of hole is nonzero!");
+    }
+
+    @Test
+    @Order(4)
+    public void calling_getCapacity_reveals_hole() {
+        hole.getCapacity();
+        assertTrue(hole.isDiscovered(), "Calling getCapacity did not reveal hole!");
     }
 }

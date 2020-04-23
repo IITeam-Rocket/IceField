@@ -24,6 +24,7 @@ abstract public class Figure {
     public void moveTo(Tile destination) {
         if (destination.acceptCharacter(this)) {
             tile.removeCharacter(this);
+            tile = destination;
         }
     }
 

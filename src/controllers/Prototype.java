@@ -103,6 +103,8 @@ public class Prototype {
     private void command_save(String[] lineParts) {
         if(!checkParamNum(lineParts, 1))
             return;
+
+        //TODO: Legyen minden szerializálható
     }
 
     private void command_random(String[] lineParts) {

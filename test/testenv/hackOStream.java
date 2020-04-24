@@ -20,6 +20,7 @@ public class hackOStream extends PrintStream {
     }
 
     public String ReadLine() {
+        if (lines.isEmpty()) return null;
         return lines.pop();
     }
 }

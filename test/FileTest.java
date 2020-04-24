@@ -25,8 +25,7 @@ public class FileTest {
         testEnv = new TreeMap<File, File>();
         wd = new File(System.clearProperty("user.dir"));
         File[] files = wd.listFiles();
-        System.out.println("\n\n\n\tWorking dir");
-        for (File f : files) System.out.println(f.getName());
+
         for (File f :
                 files) {
             if (f.isDirectory() && f.getName().equals("test")) {
@@ -36,8 +35,6 @@ public class FileTest {
         }
         files = wd.listFiles();
 
-        System.out.println("\n\n\n\tIn test");
-        for (File f : files) System.out.println(f.getName());
         for (File f :
                 files) {
             if (f.isDirectory() && f.getName().equals("resources")) {
@@ -45,8 +42,6 @@ public class FileTest {
                 break;
             }
         }
-        System.out.println("\n\n\n\tIn resource");
-        for (File f : files) System.out.println(f.getName());
         FileFilter testFilter = new FileFilter() {
             @Override
             public boolean accept(File f) {
@@ -76,7 +71,6 @@ public class FileTest {
 
     @Test
     public void tester() throws IOException, FileTestFailedException {
-
         for (Map.Entry<File, File> entry : testEnv.entrySet()) {
 
             File testInputFile = entry.getKey();
@@ -86,7 +80,6 @@ public class FileTest {
 
             FileInputStream fis = new FileInputStream(testInputFile);
             System.setIn(fis);
-
 
             Prototype game = new Prototype();
             game.run();
@@ -99,8 +92,6 @@ public class FileTest {
                 String actualLine = consoleOut.ReadLine();
 
                 if (expectedLine == null) break;
-                if (actualLine == null)
-                    throw new FileTestFailedException(String.format("Nem teljesített teszt %s - %s", testFilename, testExpectedFilename));
 
                 assertEquals(expectedLine, actualLine, String.format("Error in testfile: %s expected output file: %s", testFilename, testExpectedFilename));
             }

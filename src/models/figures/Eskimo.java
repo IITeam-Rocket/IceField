@@ -36,7 +36,7 @@ public class Eskimo extends Character {
     @Override
     public void useSpecial(Tile target) {
         if (target == tile)
-            ((IcePatch) tile).changeFrostBitePolicy(new IglooPolicy());
+            ((IcePatch) tile).changeProtectionPolicy(new IglooPolicy());
     }
 
     // TODO: 2020. 04. 16. javadoc

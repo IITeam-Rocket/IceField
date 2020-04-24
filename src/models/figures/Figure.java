@@ -45,6 +45,12 @@ abstract public class Figure {
     // TODO: 2020. 04. 16. javadoc
     abstract public void step();
 
+    // TODO: 2020. 04. 24. javadoc
+    abstract public void reactToAttack();
+
+    // TODO: 2020. 04. 24. javadoc
+    abstract public void reactToStorm();
+
     public FallInWaterPolicy getSwimToShoreStrategy() {
         return swimToShoreStrategy;
     }

@@ -1,6 +1,7 @@
 package models.tiles;
 
 import models.figures.Character;
+import models.figures.Figure;
 import models.items.Item;
 import models.policies.NoProtectionPolicy;
 import models.policies.ProtectionPolicy;
@@ -45,7 +46,10 @@ abstract public class IcePatch extends Tile {
      */
     @Override
     public void reactToStorm() {
-        //TODO
+        if (snowDepth < maxSnowDepth)
+            snowDepth++;
+        for (Figure figure : entities)
+            figure.reactToStorm();
     }
 
     /**
@@ -54,7 +58,8 @@ abstract public class IcePatch extends Tile {
      * @param strategy the new strategy
      */
     public void changeProtectionPolicy(ProtectionPolicy strategy) {
-
+        if (strategy.getPriority() > protectionStrategy.getPriority())
+            protectionStrategy = strategy;
     }
 
     public Item getBuriedItem() {

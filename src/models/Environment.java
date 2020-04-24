@@ -28,6 +28,8 @@ public class Environment {
     private boolean gunIsDiscovered = false;
 
     private Environment() {
+        iceTiles = new ArrayList<Tile>();
+        players = new ArrayList<Character>();
     }
 
     /**

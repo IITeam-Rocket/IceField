@@ -1,5 +1,6 @@
 package models.tiles;
 
+import jdk.jshell.spi.ExecutionControl;
 import models.figures.Character;
 import models.figures.Figure;
 import models.items.Item;
@@ -54,9 +55,12 @@ abstract public class Tile {
      * Increases the amount of snow on the Tile.
      *
      * @param quantity the amount of snow to add
+     *
+     * @return the quantity of snow that was succesfully added
      */
-    public void addSnow(int quantity) {
-        //TODO
+    public int addSnow(int quantity) {
+        //TODO: Arra figyelni, hogy van maximum!!!!
+        return -1;
     }
 
     /**
@@ -136,10 +140,10 @@ abstract public class Tile {
      * Adds a Character to the list of Characters
      * currently standing on the Tile.
      *
-     * @param character the Character to add
+     * @param figure the Figure to add
      */
-    public void addCharacter(Character character) {
-        this.entities.add(character);
+    public void addCharacter(Figure figure) {
+        this.entities.add(figure);
     }
 
     public static int getMaxSnowDepth() {

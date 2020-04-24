@@ -2,6 +2,7 @@ package models;
 
 import models.exceptions.EndOfGameException;
 import models.figures.Character;
+import models.figures.Figure;
 import models.tiles.Tile;
 
 import java.util.ArrayList;
@@ -21,15 +22,15 @@ public class Environment {
 
     static private final Environment instance = new Environment();
     private ArrayList<Tile> iceTiles;
-    private ArrayList<Character> players;
-    private Character currentPlayer;
+    private ArrayList<Figure> players;
+    private Figure currentPlayer;
     private boolean beaconIsDiscovered = false;
     private boolean cartridgeIsDiscovered = false;
     private boolean gunIsDiscovered = false;
 
     private Environment() {
         iceTiles = new ArrayList<Tile>();
-        players = new ArrayList<Character>();
+        players = new ArrayList<Figure>();
     }
 
     /**
@@ -109,15 +110,15 @@ public class Environment {
     }
 
     /**
-     * Return a list of Characters in the game
+     * Return a list of Figures in the game
      *
      * @return the list of players
      */
-    public ArrayList<Character> getPlayers() {
+    public ArrayList<Figure> getPlayers() {
         return players;
     }
 
-    public void setPlayers(ArrayList<Character> players) {
+    public void setPlayers(ArrayList<Figure> players) {
         this.players = players;
     }
 
@@ -126,11 +127,11 @@ public class Environment {
      *
      * @return the current player
      */
-    public Character getCurrentPlayer() {
+    public Figure getCurrentPlayer() {
         return currentPlayer;
     }
 
-    public void setCurrentPlayer(Character currentPlayer) {
+    public void setCurrentPlayer(Figure currentPlayer) {
         this.currentPlayer = currentPlayer;
     }
 

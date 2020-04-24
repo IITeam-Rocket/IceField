@@ -2,6 +2,7 @@ package controllers;
 
 import models.Environment;
 import models.figures.Eskimo;
+import models.figures.Figure;
 import models.figures.PolarBear;
 import models.figures.Researcher;
 import models.items.*;
@@ -19,6 +20,7 @@ public class Prototype {
     private boolean file;
     private boolean running;
     private PrintStream console;
+    private int currentPlayerID;
 
     private void printInfo() {
         System.out.println("Szoftver projekt laboratórium - Prototípus");
@@ -111,13 +113,11 @@ public class Prototype {
         if(!checkParamNum(lineParts, 1))
             return;
 
-        if(lineParts[1].equals("on"))
-        {
+        if(lineParts[1].equals("on")) {
             RandomController.setRandom(true);
             System.out.println("set random: on");
         }
-        else if(lineParts[1].equals("off"))
-        {
+        else if(lineParts[1].equals("off")) {
             RandomController.setRandom(true);
             System.out.println("set random: off");
         }
@@ -126,12 +126,51 @@ public class Prototype {
     }
 
     private void command_nextcharacter(String[] lineParts) {
+        if(Environment.getInstance().getPlayers().size() == 0) {
+            System.out.println("There are currently no characters!");
+            return;
+        }
+
+        if(Environment.getInstance().getCurrentPlayer() == null) {
+            Environment.getInstance().setCurrentPlayer(Environment.getInstance().getPlayers().get(0));
+            currentPlayerID = 0;
+        }
+        else {
+            if (currentPlayerID == Environment.getInstance().getPlayers().size() - 1) {
+                currentPlayerID = 0;
+                //TODO: End round
+                System.out.println("Ending round...");
+                for (Figure f : Environment.getInstance().getPlayers())
+                    f.step();
+                //TODO: Create Tile step() function
+                //for (Tile t : Environment.getInstance().getIceTiles())
+                  //  t.step();
+            }
+            else
+                currentPlayerID++;
+
+            Environment.getInstance().setCurrentPlayer(Environment.getInstance().getPlayers().get(currentPlayerID));
+        }
+
+        //TODO: Implement PolearBear Stuff, when random is on and when random is off
+
+        //TODO: Implement logic
 
     }
 
     private void command_move(String[] lineParts) {
-        if(!checkParamNumNoErrorMessage(lineParts, 1)) {
+        if(Environment.getInstance().getCurrentPlayer() == null) {
+            System.out.println("There is no Figure selected, please use the \"nextcharacter\" command before the first move!");
+            return;
+        }
 
+        if(!checkParamNumNoErrorMessage(lineParts, 1)) {
+            Tile currentTile = Environment.getInstance().getCurrentPlayer().getTile();
+            System.out.print("neighbours: ");
+            for(Tile tile : currentTile.getNeighbours()) {
+                System.out.print(tile.getID() + " ");
+            }
+            System.out.println();
         }
         else {
 

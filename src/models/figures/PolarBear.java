@@ -44,4 +44,14 @@ public class PolarBear extends Figure {
     public void reactToStorm() {
 
     }
+
+    /**
+     * Returns the base body heat of the figure
+     *
+     * @return negative one
+     */
+    @Override
+    public int getBaseBodyHeat() {
+        return -1;
+    }
 }

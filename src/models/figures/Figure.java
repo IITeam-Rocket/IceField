@@ -41,6 +41,10 @@ abstract public class Figure {
 
     // TODO: 2020. 04. 16. javadoc
 
+    public void setTile(Tile tile) {
+        this.tile = tile;
+    }
+
     abstract public void step();
 
     /**
@@ -57,9 +61,12 @@ abstract public class Figure {
      */
     abstract public void reactToStorm() throws EndOfGameException;
 
-    public void setTile(Tile tile) {
-        this.tile = tile;
-    }
+    /**
+     * Returns the base body heat of the figure
+     *
+     * @return the base body heat
+     */
+    abstract public int getBaseBodyHeat();
 
     public FallInWaterPolicy getSwimToShoreStrategy() {
         return swimToShoreStrategy;

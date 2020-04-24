@@ -76,7 +76,7 @@ public abstract class Character extends Figure {
             throw new IllegalArgumentException("Must not be negative");
         bodyHeat -= quantity;
         if (bodyHeat <= 0)
-            Environment.getInstance().gameOver();
+            throw new EndOfGameException("A player has frozen to death!");
     }
 
     /**
@@ -184,6 +184,26 @@ public abstract class Character extends Figure {
         return tile;
     }
 
+    /**
+     * Realises a attack's effect on the figure.
+     *
+     * @throws EndOfGameException always
+     */
+    @Override
+    public void reactToAttack() throws EndOfGameException {
+        throw new EndOfGameException("A player has been attacked!")
+    }
+
+    /**
+     * Realises a blizzard's effect on the figure.
+     *
+     * @throws EndOfGameException if character's
+     *                            body heat reaches zero.
+     */
+    @Override
+    public void reactToStorm() throws EndOfGameException {
+        removeHeat(1);
+    }
 
     public void setBodyHeat(int bodyHeat) {
         this.bodyHeat = bodyHeat;

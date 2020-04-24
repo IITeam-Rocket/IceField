@@ -16,6 +16,9 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ *  A class which controls the Prototype version and it's main purpose is to interpret console commands and give feedback
+ */
 public class Prototype {
     private Scanner in;
     private boolean file;
@@ -23,6 +26,9 @@ public class Prototype {
     private PrintStream console;
     private int currentPlayerID;
 
+    /**
+     * Prints the info about the creators of the program
+     */
     private void printInfo() {
         System.out.println("Szoftver projekt laboratórium - Prototípus");
         System.out.println("21 - team_rocket");
@@ -37,6 +43,9 @@ public class Prototype {
         System.out.println();
     }
 
+    /**
+     * Prints the item IDs
+     */
     private void printItems()
     {
         System.out.println("1 food");
@@ -50,6 +59,9 @@ public class Prototype {
         System.out.println("9 tent");
     }
 
+    /**
+     * Prints the character IDs
+     */
     private void printCharacters()
     {
         System.out.println("1 eskimo");
@@ -57,6 +69,11 @@ public class Prototype {
         System.out.println("3 polarbear");
     }
 
+    /**
+     * Interprets the command input
+     *
+     * @param lineParts The line's parts which should be interpreted, split at every space delim
+     */
     private void command_input(String[] lineParts) {
         if(!checkParamNum(lineParts, 1))
             return;
@@ -75,6 +92,11 @@ public class Prototype {
         }
     }
 
+    /**
+     * Interprets the command output
+     *
+     * @param lineParts The line's parts which should be interpreted, split at every space delim
+     */
     private void command_output(String[] lineParts) {
         if(!checkParamNum(lineParts, 1))
             return;
@@ -96,6 +118,11 @@ public class Prototype {
         }
     }
 
+    /**
+     * Interprets the command load
+     *
+     * @param lineParts The line's parts which should be interpreted, split at every space delim
+     */
     private void command_load(String[] lineParts) {
         if(!checkParamNum(lineParts, 1))
             return;
@@ -103,6 +130,11 @@ public class Prototype {
         //TODO: Legyen minden szerializálható
     }
 
+    /**
+     * Interprets the command save
+     *
+     * @param lineParts The line's parts which should be interpreted, split at every space delim
+     */
     private void command_save(String[] lineParts) {
         if(!checkParamNum(lineParts, 1))
             return;
@@ -110,6 +142,11 @@ public class Prototype {
         //TODO: Legyen minden szerializálható
     }
 
+    /**
+     * Interprets the command random
+     *
+     * @param lineParts The line's parts which should be interpreted, split at every space delim
+     */
     private void command_random(String[] lineParts) {
         if(!checkParamNum(lineParts, 1))
             return;
@@ -126,6 +163,11 @@ public class Prototype {
             invalidParameter("random", lineParts[1]);
     }
 
+    /**
+     * Interprets the command nextcharacter
+     *
+     * @param lineParts The line's parts which should be interpreted, split at every space delim
+     */
     private void command_nextcharacter(String[] lineParts) {
         if(Environment.getInstance().getPlayers().size() == 0) {
             System.out.println("There are currently no characters!");
@@ -163,6 +205,11 @@ public class Prototype {
 
     }
 
+    /**
+     * Interprets the command move
+     *
+     * @param lineParts The line's parts which should be interpreted, split at every space delim
+     */
     private void command_move(String[] lineParts) {
         if(Environment.getInstance().getCurrentPlayer() == null) {
             System.out.println("There is no Figure selected, please use the \"nextcharacter\" command before the first move!");
@@ -202,6 +249,11 @@ public class Prototype {
         }
     }
 
+    /**
+     * Interprets the command unbury
+     *
+     * @param lineParts The line's parts which should be interpreted, split at every space delim
+     */
     private void command_unbury(String[] lineParts) {
         if(Environment.getInstance().getCurrentPlayer() == null) {
             System.out.println("There is no Figure selected, please use the \"nextcharacter\" command before the first unbury!");
@@ -212,6 +264,11 @@ public class Prototype {
         //Environment.getInstance().getCurrentPlayer().retrieveItem();
     }
 
+    /**
+     * Interprets the command clearsnow
+     *
+     * @param lineParts The line's parts which should be interpreted, split at every space delim
+     */
     private void command_clearsnow(String[] lineParts) {
         if(!checkParamNum(lineParts, 1))
             return;
@@ -224,11 +281,21 @@ public class Prototype {
         //TODO: Tudni kéne milyen karakterrel van dolgunk a medve havat lapátolni
     }
 
+    /**
+     * Interprets the command simulateweather
+     *
+     * @param lineParts The line's parts which should be interpreted, split at every space delim
+     */
     private void command_simulateweather(String[] lineParts) {
         Environment.getInstance().makeStorm();
         System.out.println("weather simulated");
     }
 
+    /**
+     * Interprets the command rescue
+     *
+     * @param lineParts The line's parts which should be interpreted, split at every space delim
+     */
     private void command_rescue(String[] lineParts) {
         if(!checkParamNum(lineParts, 1))
             return;
@@ -241,6 +308,11 @@ public class Prototype {
         //TODO: Tudni kéne milyen karakterrel van dolgunk a medve havat lapátolni
     }
 
+    /**
+     * Interprets the command craftsignalflare
+     *
+     * @param lineParts The line's parts which should be interpreted, split at every space delim
+     */
     private void command_craftsignalflare(String[] lineParts) {
         if(Environment.getInstance().getCurrentPlayer() == null) {
             System.out.println("There is no Figure selected, please use the \"nextcharacter\" command before the first craftsignalflare!");
@@ -250,6 +322,11 @@ public class Prototype {
         //TODO: Tudni kéne milyen karakterrel van dolgunk a medve havat lapátolni
     }
 
+    /**
+     * Interprets the command buildiglu
+     *
+     * @param lineParts The line's parts which should be interpreted, split at every space delim
+     */
     private void command_buildiglu(String[] lineParts) {
         if(Environment.getInstance().getCurrentPlayer() == null) {
             System.out.println("There is no Figure selected, please use the \"nextcharacter\" command before the first buildiglu!");
@@ -259,6 +336,11 @@ public class Prototype {
         //TODO: Tudni kéne milyen karakterrel van dolgunk a medve havat lapátolni
     }
 
+    /**
+     * Interprets the command buildtent
+     *
+     * @param lineParts The line's parts which should be interpreted, split at every space delim
+     */
     private void command_buildtent(String[] lineParts) {
         if(Environment.getInstance().getCurrentPlayer() == null) {
             System.out.println("There is no Figure selected, please use the \"nextcharacter\" command before the first buildtent!");
@@ -268,6 +350,11 @@ public class Prototype {
         //TODO: Tudni kéne milyen karakterrel van dolgunk a medve havat lapátolni
     }
 
+    /**
+     * Interprets the command analyzetile
+     *
+     * @param lineParts The line's parts which should be interpreted, split at every space delim
+     */
     private void command_analyzetile(String[] lineParts) {
         if(!checkParamNum(lineParts, 1))
             return;
@@ -280,6 +367,11 @@ public class Prototype {
         //TODO: Tudni kéne milyen karakterrel van dolgunk a medve havat lapátolni
     }
 
+    /**
+     * Interprets the command addtile
+     *
+     * @param lineParts The line's parts which should be interpreted, split at every space delim
+     */
     private void command_addtile(String[] lineParts) {
         if(!checkParamNum(lineParts, 1))
             return;
@@ -320,6 +412,11 @@ public class Prototype {
         Environment.getInstance().getIceTiles().add(tile);
     }
 
+    /**
+     * Interprets the command neighbourtile
+     *
+     * @param lineParts The line's parts which should be interpreted, split at every space delim
+     */
     private void command_neighbourtile(String[] lineParts) {
         if(!checkParamNum(lineParts, 2))
             return;
@@ -375,6 +472,11 @@ public class Prototype {
         System.out.println("neighbours: " + firstID + ", " + secondID);
     }
 
+    /**
+     * Interprets the command additemtotile
+     *
+     * @param lineParts The line's parts which should be interpreted, split at every space delim
+     */
     private void command_additemtotile(String[] lineParts) {
         if(!checkParamNumNoErrorMessage(lineParts, 2)) {
             printItems();
@@ -450,6 +552,11 @@ public class Prototype {
         }
     }
 
+    /**
+     * Interprets the command addcharactertotile
+     *
+     * @param lineParts The line's parts which should be interpreted, split at every space delim
+     */
     private void command_addcharactertotile(String[] lineParts) {
         if(!checkParamNumNoErrorMessage(lineParts, 2)) {
             printCharacters();
@@ -505,6 +612,11 @@ public class Prototype {
         }
     }
 
+    /**
+     * Interprets the command addsnowtotile
+     *
+     * @param lineParts The line's parts which should be interpreted, split at every space delim
+     */
     private void command_addsnowtotile(String[] lineParts) {
         if(!checkParamNumNoErrorMessage(lineParts, 2)) {
             printCharacters();
@@ -538,10 +650,24 @@ public class Prototype {
         }
     }
 
+    /**
+     * Checks if there are enough parameters to interpret the line, without an error message
+     *
+     * @param lineParts The line's parts which should be interpreted, split at every space delim
+     * @param paramNumWithoutCommand The number of parameters not counting the command itself
+     * @return returns are there enough parameters
+     */
     private boolean checkParamNumNoErrorMessage(String[] lineParts, int paramNumWithoutCommand) {
         return !(lineParts.length < paramNumWithoutCommand + 1);
     }
 
+    /**
+     * Checks if there are enough parameters to interpret the line, given an error message if there aren't enough
+     *
+     * @param lineParts The line's parts which should be interpreted, split at every space delim
+     * @param paramNumWithoutCommand The number of parameters not counting the command itself
+     * @return returns are there enough parameters
+     */
     private boolean checkParamNum(String[] lineParts, int paramNumWithoutCommand) {
         if(lineParts.length < paramNumWithoutCommand + 1) {
             missingParameter(lineParts[0]);
@@ -550,22 +676,49 @@ public class Prototype {
         return true;
     }
 
+    /**
+     * Prints an error, that a parameter was missing in a command
+     *
+     * @param command The command which was tryed to be interpreted
+     */
     private void missingParameter(String command) {
         invalidParameter(command, "Missing parameter!");
     }
 
+    /**
+     * Prints an error, that a parameter was invalid in a command
+     *
+     * @param command The command which was tryed to be interpreted
+     * @param param The parameter which was wrong during the interpretation
+     */
     private void invalidParameter(String command, String param) {
         System.out.println("Invalid parameter in " + "\"" + command + "\" command: " + param);
     }
 
+    /**
+     * Prints an error, that the command was invalid without a bonus error message
+     *
+     * @param line The line which should be interpreted
+     */
     private void invalidCommand(String line) {
         invalidCommand(line, "");
     }
 
+    /**
+     * Prints an error, that the command was invalid with a bonus error message
+     *
+     * @param line The line which should be interpreted
+     * @param errorMessage Error message
+     */
     private void invalidCommand(String line, String errorMessage) {
-        System.out.println("Invalid command: " + line);
+        System.out.println("Invalid command: " + line + (errorMessage.equals("") ? "" : (" because " + errorMessage)));
     }
 
+    /**
+     * Interprets the given line as defined in the input language
+     *
+     * @param line The line which should be interpreted
+     */
     private void interpret(String line) {
         String[] lineSegments = line.split(" ");
         if(lineSegments.length == 0) {
@@ -646,6 +799,9 @@ public class Prototype {
         }
     }
 
+    /**
+     * Runs the prototype
+     */
     public void run()
     {
         printInfo();

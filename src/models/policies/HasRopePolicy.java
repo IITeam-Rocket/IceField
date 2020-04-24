@@ -3,6 +3,8 @@ package models.policies;
 import models.figures.Character;
 import models.tiles.Tile;
 
+import java.io.Serializable;
+
 /**
  * A strategy of the player to help their friend
  * when said friend has fallen into water. This strategy is
@@ -14,7 +16,7 @@ import models.tiles.Tile;
  * @since skeleton
  * @since 2020.03.10
  */
-public class HasRopePolicy implements RescueFriendPolicy {
+public class HasRopePolicy implements RescueFriendPolicy, Serializable {
 
     /**
      * Executes the strategy. Pulls the character

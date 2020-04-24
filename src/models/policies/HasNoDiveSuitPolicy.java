@@ -2,6 +2,8 @@ package models.policies;
 
 import models.figures.Figure;
 
+import java.io.Serializable;
+
 
 /**
  * A class representing the strategy of the
@@ -14,7 +16,7 @@ import models.figures.Figure;
  * @since skeleton
  * @since 2020.03.10
  */
-public class HasNoDiveSuitPolicy implements FallInWaterPolicy {
+public class HasNoDiveSuitPolicy implements FallInWaterPolicy, Serializable {
     /**
      * Executes the strategy. The strategy is to not
      * do anything and die.

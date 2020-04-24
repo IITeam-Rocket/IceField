@@ -2,6 +2,8 @@ package models.items;
 
 import models.figures.Character;
 
+import java.io.Serializable;
+
 /**
  * A class representing a tent buried in snow
  * that can be erected, providing one turn of
@@ -13,7 +15,7 @@ import models.figures.Character;
  * @since prototype
  * @since 2020.04.24
  */
-public class Tent extends Item {
+public class Tent extends Item implements Serializable {
     /**
      * Builds a tent on the tile.
      *

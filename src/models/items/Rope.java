@@ -3,6 +3,8 @@ package models.items;
 import models.figures.Character;
 import models.policies.HasRopePolicy;
 
+import java.io.Serializable;
+
 /**
  * An Item that changes the finding player's
  * RescueFriendPolicy.
@@ -12,7 +14,7 @@ import models.policies.HasRopePolicy;
  * @since skeleton
  * @since 2020.03.10
  */
-public class Rope extends Item {
+public class Rope extends Item implements Serializable {
     /**
      * Changes the finder's RescueFriendPolicy to
      * an instance of HasRopePolicy.

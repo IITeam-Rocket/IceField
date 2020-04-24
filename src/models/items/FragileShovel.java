@@ -3,6 +3,8 @@ package models.items;
 import models.figures.Character;
 import models.policies.FragileShovelPolicy;
 
+import java.io.Serializable;
+
 /**
  * A class representing a fragile shovel
  * that can be used to clear 2 units of
@@ -15,7 +17,7 @@ import models.policies.FragileShovelPolicy;
  * @since prototype
  * @since 2020.04.24
  */
-public class FragileShovel extends Item {
+public class FragileShovel extends Item implements Serializable {
     /**
      * Changes the strategy of the finder to clear an
      * ice patch.

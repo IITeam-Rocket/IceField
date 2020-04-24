@@ -7,6 +7,8 @@ import models.items.Item;
 import models.policies.NoProtectionPolicy;
 import models.policies.ProtectionPolicy;
 
+import java.io.Serializable;
+
 /**
  * A Tile frozen with ice on which characters
  * can stand on.
@@ -17,7 +19,7 @@ import models.policies.ProtectionPolicy;
  * @since skeleton
  * @since 2020.03.10
  */
-abstract public class IcePatch extends Tile {
+abstract public class IcePatch extends Tile implements Serializable {
 
     // TODO: 2020. 04. 24. javadoc
     private Item buriedItem;

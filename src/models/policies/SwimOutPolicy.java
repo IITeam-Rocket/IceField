@@ -3,6 +3,7 @@ package models.policies;
 import models.figures.Figure;
 import models.tiles.Tile;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -17,7 +18,7 @@ import java.util.ArrayList;
  * @since skeleton
  * @since 2020.03.10
  */
-public class SwimOutPolicy implements FallInWaterPolicy {
+public class SwimOutPolicy implements FallInWaterPolicy, Serializable {
     /**
      * Executes the player's strategy of getting out of water
      *

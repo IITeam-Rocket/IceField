@@ -1,9 +1,9 @@
 package models;
 
-import models.exceptions.EndOfGameException;
 import models.figures.Figure;
 import models.tiles.Tile;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -17,7 +17,7 @@ import java.util.ArrayList;
  * @since 2020.03.10
  */
 
-public class Environment {
+public class Environment implements Serializable {
 
     // TODO: 2020. 04. 24. jaavadoc
     static private final Environment instance = new Environment();
@@ -187,10 +187,8 @@ public class Environment {
 
     /**
      * Plays the losing game sequence.
-     *
-     * @throws EndOfGameException always
      */
-    public void gameOver() throws EndOfGameException {
+    public void gameOver() {
         // TODO: 2020. 04. 15. implement
     }
 }

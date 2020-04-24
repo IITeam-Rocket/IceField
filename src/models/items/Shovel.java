@@ -3,6 +3,8 @@ package models.items;
 import models.figures.Character;
 import models.policies.ShovelPolicy;
 
+import java.io.Serializable;
+
 /**
  * An Item that gives the finding character
  * the ability to remove 2 units of snow
@@ -13,7 +15,7 @@ import models.policies.ShovelPolicy;
  * @since skeleton
  * @since 2020.03.10
  */
-public class Shovel extends Item {
+public class Shovel extends Item implements Serializable {
     /**
      * Sets the finder player's strength to 2, if it's lower.
      *

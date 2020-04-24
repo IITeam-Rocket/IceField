@@ -3,6 +3,8 @@ package models.tiles;
 import models.exceptions.EndOfGameException;
 import models.figures.Figure;
 
+import java.io.Serializable;
+
 /**
  * A tile with no solid platform.
  *
@@ -12,7 +14,7 @@ import models.figures.Figure;
  * @since skeleton
  * @since 2020.03.10
  */
-public class Hole extends Tile {
+public class Hole extends Tile implements Serializable {
 
     // TODO: 2020. 04. 24. javadoc
     private boolean isDiscovered = false;

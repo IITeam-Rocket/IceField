@@ -3,6 +3,8 @@ package models.items;
 import models.Environment;
 import models.figures.Character;
 
+import java.io.Serializable;
+
 /**
  * A beacon that is one part of the SignalFlare
  * needed to win the game
@@ -12,7 +14,7 @@ import models.figures.Character;
  * @since skeleton
  * @since 2020.03.10
  */
-public class Beacon extends Item {
+public class Beacon extends Item implements Serializable {
     /**
      * Records that the beacon has been discovered.
      *

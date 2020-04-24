@@ -4,6 +4,8 @@ import models.exceptions.EndOfGameException;
 import models.policies.FallInWaterPolicy;
 import models.tiles.Tile;
 
+import java.io.Serializable;
+
 /**
  * Represents a figure that is standing on a tile.
  *
@@ -12,7 +14,7 @@ import models.tiles.Tile;
  * @since prototype
  * @since 2020.03.10
  */
-abstract public class Figure {
+abstract public class Figure implements Serializable {
     // TODO: 2020. 04. 24. javadoc
     protected Tile tile;
     // TODO: 2020. 04. 24. javadoc

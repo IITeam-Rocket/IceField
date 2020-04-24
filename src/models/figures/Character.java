@@ -7,6 +7,8 @@ import models.policies.*;
 import models.tiles.IcePatch;
 import models.tiles.Tile;
 
+import java.io.Serializable;
+
 
 /**
  * Represents a playable character of the game.
@@ -17,7 +19,7 @@ import models.tiles.Tile;
  * @since skeleton
  * @since 2020.03.10
  */
-public abstract class Character extends Figure {
+public abstract class Character extends Figure implements Serializable {
     // TODO: 2020. 04. 24. javadoc
     protected int bodyHeat;
     // TODO: 2020. 04. 24. javadoc

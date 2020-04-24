@@ -4,6 +4,7 @@ import models.exceptions.EndOfGameException;
 import models.figures.Figure;
 import models.items.Item;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -15,7 +16,7 @@ import java.util.ArrayList;
  * @since skeleton
  * @since 2020.03.10
  */
-abstract public class Tile {
+abstract public class Tile implements Serializable {
     // TODO: 2020. 04. 24. javadoc
     protected static final int maxSnowDepth = 6;
     // TODO: 2020. 04. 24. javadoc

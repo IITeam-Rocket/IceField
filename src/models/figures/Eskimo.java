@@ -4,6 +4,8 @@ import models.policies.IglooPolicy;
 import models.tiles.IcePatch;
 import models.tiles.Tile;
 
+import java.io.Serializable;
+
 /**
  * A character with the ability to build Igloos
  *
@@ -14,7 +16,7 @@ import models.tiles.Tile;
  * @since skeleton
  * @since 2020.03.10
  */
-public class Eskimo extends Character {
+public class Eskimo extends Character implements Serializable {
 
     // TODO: 2020. 04. 15. javadoc
     public Eskimo() {

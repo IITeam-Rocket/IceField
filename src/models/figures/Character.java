@@ -205,6 +205,14 @@ public abstract class Character extends Figure {
         removeHeat(1);
     }
 
+    /**
+     * Changes the tile's ProtectionPolicy to
+     * a new instance of TentPolicy.
+     */
+    public void buildTent() {
+        ((IcePatch) tile).changeProtectionPolicy(new TentPolicy());
+    }
+
     public void setBodyHeat(int bodyHeat) {
         this.bodyHeat = bodyHeat;
     }

@@ -3,10 +3,7 @@ package models.figures;
 import models.Environment;
 import models.exceptions.EndOfGameException;
 import models.items.Item;
-import models.policies.FallInWaterPolicy;
-import models.policies.HasNoDiveSuitPolicy;
-import models.policies.NoRescuePolicy;
-import models.policies.RescueFriendPolicy;
+import models.policies.*;
 import models.tiles.IcePatch;
 import models.tiles.Tile;
 
@@ -23,14 +20,14 @@ import models.tiles.Tile;
 public abstract class Character extends Figure {
     protected int bodyHeat;
     protected int stamina;
-    protected RescueFriendPolicy helpFriendStrategy;
+    protected RescueFriendPolicy helpFriendStrategy = new NoRescuePolicy();
+    protected ClearSnowPolicy clearPatchStrategy = new EmptyHandPolicy();
 
 
     // TODO: 2020. 04. 15. javadoc 
     protected Character(int bodyHeat, int stamina) {
         this.bodyHeat = bodyHeat;
         this.stamina = stamina;
-        helpFriendStrategy = new NoRescuePolicy();
         swimToShoreStrategy = new HasNoDiveSuitPolicy();
     }
 

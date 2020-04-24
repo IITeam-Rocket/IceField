@@ -58,26 +58,12 @@ abstract public class Tile {
         entities.remove(figure);
     }
 
-    /**
-     * Increases the amount of snow on the Tile.
-     *
-     * @param quantity the amount of snow to add
-     */
-    public void addSnow(int quantity) {
-        //TODO
-    }
-
     public static int getMaxSnowDepth() {
         return maxSnowDepth;
     }
 
-    /**
-     * Buries an item in the Tile
-     *
-     * @param item the item to bury
-     */
-    public void storeItem(Item item) {
-        //TODO
+    public static int getIDCounter() {
+        return IDCounter;
     }
 
     /**
@@ -133,10 +119,6 @@ abstract public class Tile {
         this.entities.add(character);
     }
 
-    public static int getIDCounter() {
-        return IDCounter;
-    }
-
     /**
      * Decreases the amount of snow on the Tile
      * by quantity. The amount of snow cannot
@@ -165,4 +147,25 @@ abstract public class Tile {
     public void setNeighbours(ArrayList<Tile> neighbours) {
         this.neighbours = neighbours;
     }
+
+    /**
+     * Increases the amount of snow on the Tile.
+     *
+     * @param quantity the amount of snow to add
+     */
+    public void addSnow(int quantity) {
+        snowDepth += quantity;
+        if (snowDepth > maxSnowDepth)
+            snowDepth = maxSnowDepth;
+    }
+
+    /**
+     * Buries an item in the Tile
+     *
+     * @param item the item to bury
+     *
+     * @return true if the item was stored,
+     * false otherwise
+     */
+    abstract public boolean storeItem(Item item);
 }

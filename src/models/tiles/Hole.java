@@ -1,6 +1,7 @@
 package models.tiles;
 
 import models.figures.Figure;
+import models.items.Item;
 
 /**
  * A tile with no solid platform.
@@ -13,6 +14,12 @@ import models.figures.Figure;
  */
 public class Hole extends Tile {
 
+    /**
+     * Represents the whether the hole
+     * has been identified or not.
+     * False, if the hole is hidden,
+     * true otherwise.
+     */
     private boolean isDiscovered = false;
 
     /**
@@ -48,6 +55,18 @@ public class Hole extends Tile {
             figure.setTile(this);
             figure.swimToShore();
         }
+        return false;
+    }
+
+    /**
+     * Buries an item in the Tile
+     *
+     * @param item the item to bury
+     *
+     * @return false
+     */
+    @Override
+    public boolean storeItem(Item item) {
         return false;
     }
 

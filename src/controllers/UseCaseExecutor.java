@@ -3,6 +3,7 @@ package controllers;
 import models.Environment;
 import models.figures.Character;
 import models.figures.Eskimo;
+import models.figures.Figure;
 import models.figures.Researcher;
 import models.items.*;
 import models.policies.*;
@@ -120,7 +121,7 @@ public class UseCaseExecutor {
         ArrayList<Tile> tiles = new ArrayList<>();
         tiles.add(tile);
         Researcher player = new Researcher(tile);
-        ArrayList<Character> players = new ArrayList<>();
+        ArrayList<Figure> players = new ArrayList<>();
         players.add(player);
         tile.addCharacter(player);
         Environment environment = Environment.getInstance();
@@ -283,7 +284,7 @@ public class UseCaseExecutor {
         Researcher victim1 = new Researcher(tile);
         Researcher victim2 = new Researcher(tile);
         Eskimo victim3 = new Eskimo(tile);
-        ArrayList<Character> players = new ArrayList<>();
+        ArrayList<Figure> players = new ArrayList<>();
         players.add(victim1);
         players.add(victim2);
         players.add(victim3);

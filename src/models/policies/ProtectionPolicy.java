@@ -43,6 +43,10 @@ public interface ProtectionPolicy {
     default void step() {
     }
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Returns the priority of the strategy
+     *
+     * @return the priority
+     */
     int getPriority();
 }

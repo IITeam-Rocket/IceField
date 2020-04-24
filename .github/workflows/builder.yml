@@ -17,26 +17,9 @@ jobs:
         restore-keys: ${{ runner.os }}-m2
     - name: Validating project
       run: mvn -B validate --file pom.xml
-  build:
-    needs: validate
-    runs-on: windows-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Set up JDK 14
-      uses: actions/setup-java@v1
-      with:
-        java-version: 14
-    - name: Cache Maven packages
-      uses: actions/cache@v1
-      with:
-        path: ~/.m2
-        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-        restore-keys: ${{ runner.os }}-m2
-    - name: Compiling
-      run: mvn -B compile --file pom.xml
 
   Testing:
-    needs: build
+    needs: validate
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2

@@ -29,10 +29,19 @@ public class Prototype {
         if(!checkParamNum(lineParts, 1))
             return;
 
+        if(lineParts[1].equals("console")) {
+            System.out.println("Setting input to console...");
+            in = new Scanner(System.in);
+            System.out.println("Input set to console!");
+            return;
+        }
+
         try {
             in = new Scanner(new File(lineParts[1]));
         } catch (FileNotFoundException e) {
+            System.out.println("Setting input to " + lineParts[1] + "...");
             System.out.println("File " + lineParts[1] + " doesn't exist!");
+            System.out.println("Input set to " + lineParts[1] + "!");
         }
     }
 
@@ -277,9 +286,11 @@ public class Prototype {
                 in = new Scanner(System.in);
             }
 
-            String line = in.nextLine();
-            line = line.toLowerCase();
-            interpret(line);
+            if(in.hasNextLine()) {
+                String line = in.nextLine();
+                line = line.toLowerCase();
+                interpret(line);
+            }
         }
     }
 }

@@ -45,4 +45,14 @@ public class NoProtectionPolicy implements ProtectionPolicy {
         if (victim != attacker)
             throw new EndOfGameException("A character has been mauled!");
     }
+
+    /**
+     * Returns the priority of the strategy
+     *
+     * @return zero
+     */
+    @Override
+    public int getPriority() {
+        return 0;
+    }
 }

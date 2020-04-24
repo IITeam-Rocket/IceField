@@ -1,6 +1,8 @@
 package models.tiles;
 
+import models.exceptions.EndOfGameException;
 import models.figures.Character;
+import models.figures.Figure;
 import models.items.Item;
 import models.policies.NoProtectionPolicy;
 import models.policies.ProtectionPolicy;
@@ -42,10 +44,16 @@ abstract public class IcePatch extends Tile {
 
     /**
      * Realises the storm's effects.
+     *
+     * @throws EndOfGameException if a player freezes
+     *                            to death
      */
     @Override
-    public void reactToStorm() {
-        //TODO
+    public void reactToStorm() throws EndOfGameException {
+        if (snowDepth < maxSnowDepth)
+            snowDepth++;
+        for (Figure figure : entities)
+            figure.reactToStorm();
     }
 
     /**
@@ -53,8 +61,9 @@ abstract public class IcePatch extends Tile {
      *
      * @param strategy the new strategy
      */
-    public void changeFrostBitePolicy(ProtectionPolicy strategy) {
-        ///TODO
+    public void changeProtectionPolicy(ProtectionPolicy strategy) {
+        if (strategy.getPriority() > protectionStrategy.getPriority())
+            protectionStrategy = strategy;
     }
 
     public Item getBuriedItem() {

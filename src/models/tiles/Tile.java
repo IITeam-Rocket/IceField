@@ -1,5 +1,6 @@
 package models.tiles;
 
+import models.exceptions.EndOfGameException;
 import jdk.jshell.spi.ExecutionControl;
 import models.figures.Character;
 import models.figures.Figure;
@@ -83,8 +84,11 @@ abstract public class Tile {
 
     /**
      * Realises the storm's effects.
+     *
+     * @throws EndOfGameException if a player freezes
+     *                            to death
      */
-    abstract public void reactToStorm();
+    abstract public void reactToStorm() throws EndOfGameException;
 
     /**
      * Returns the maximum number of characters the

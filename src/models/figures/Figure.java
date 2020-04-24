@@ -1,5 +1,6 @@
 package models.figures;
 
+import models.exceptions.EndOfGameException;
 import models.policies.FallInWaterPolicy;
 import models.tiles.Tile;
 
@@ -38,12 +39,27 @@ abstract public class Figure {
         return tile;
     }
 
+    // TODO: 2020. 04. 16. javadoc
+
+    abstract public void step();
+
+    /**
+     * Realises a attack's effect on the figure.
+     *
+     * @throws EndOfGameException on player death
+     */
+    abstract public void reactToAttack() throws EndOfGameException;
+
+    /**
+     * Realises a blizzard's effect on the figure.
+     *
+     * @throws EndOfGameException on player death
+     */
+    abstract public void reactToStorm() throws EndOfGameException;
+
     public void setTile(Tile tile) {
         this.tile = tile;
     }
-
-    // TODO: 2020. 04. 16. javadoc
-    abstract public void step();
 
     public FallInWaterPolicy getSwimToShoreStrategy() {
         return swimToShoreStrategy;

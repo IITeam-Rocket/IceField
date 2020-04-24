@@ -41,4 +41,14 @@ public class IglooPolicy implements ProtectionPolicy {
     @Override
     public void protectAgainstAttack(Figure victim, Figure attacker) throws EndOfGameException {
     }
+
+    /**
+     * Returns the priority of the strategy
+     *
+     * @return 2
+     */
+    @Override
+    public int getPriority() {
+        return 2;
+    }
 }

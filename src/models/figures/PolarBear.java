@@ -28,4 +28,20 @@ public class PolarBear extends Figure {
 
         // TODO: 2020. 04. 16. attack tile
     }
+
+    /**
+     * Realises a attack's effect on the figure.
+     */
+    @Override
+    public void reactToAttack() {
+
+    }
+
+    /**
+     * Realises a blizzard's effect on the figure.
+     */
+    @Override
+    public void reactToStorm() {
+
+    }
 }

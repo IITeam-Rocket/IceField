@@ -55,4 +55,15 @@ public class TentPolicy implements ProtectionPolicy {
     public void step() {
         isIntact = false;
     }
+
+    /**
+     * Returns the priority of the strategy
+     *
+     * @return one if the tent is intact,
+     * zero otherwise
+     */
+    @Override
+    public int getPriority() {
+        return isIntact ? 1 : 0;
+    }
 }

@@ -1,5 +1,6 @@
 package models.figures;
 
+import models.exceptions.EndOfGameException;
 import models.policies.FallInWaterPolicy;
 import models.tiles.Tile;
 
@@ -44,13 +45,17 @@ abstract public class Figure {
 
     /**
      * Realises a attack's effect on the figure.
+     *
+     * @throws EndOfGameException on player death
      */
-    abstract public void reactToAttack();
+    abstract public void reactToAttack() throws EndOfGameException;
 
     /**
      * Realises a blizzard's effect on the figure.
+     *
+     * @throws EndOfGameException on player death
      */
-    abstract public void reactToStorm();
+    abstract public void reactToStorm() throws EndOfGameException;
 
     public void setTile(Tile tile) {
         this.tile = tile;

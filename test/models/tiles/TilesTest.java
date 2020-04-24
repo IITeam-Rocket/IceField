@@ -1,5 +1,6 @@
 package models.tiles;
 
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import java.util.Random;
@@ -7,8 +8,8 @@ import java.util.Random;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-
-public class TilesTest {
+@Tag("Unit")
+class TilesTest {
 
     @Test
     void holeInitTest() {

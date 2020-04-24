@@ -1,6 +1,7 @@
 import controllers.Prototype;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import testenv.hackOStream;
 
@@ -10,6 +11,7 @@ import java.util.TreeMap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@Tag("Integration")
 public class FileTest {
     private final hackOStream consoleOut = new hackOStream();
     private final PrintStream os = System.out;

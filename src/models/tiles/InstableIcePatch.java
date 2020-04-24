@@ -19,11 +19,13 @@ public class InstableIcePatch extends IcePatch {
     int playerCapacity;
     boolean flipped = false;
 
+    // TODO: 2020. 04. 24. javadoc
     public InstableIcePatch(int playerCapacity) {
         super();
         this.playerCapacity = playerCapacity;
     }
 
+    // TODO: 2020. 04. 24. javadoc
     public InstableIcePatch(int ID, int playerCapacity) {
         super(ID);
         this.playerCapacity = playerCapacity;

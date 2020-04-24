@@ -51,7 +51,7 @@ abstract public class IcePatch extends Tile {
     @Override
     public void reactToStorm() throws EndOfGameException {
         if (snowDepth < maxSnowDepth)
-            snowDepth++;
+            addSnow(1);
         for (Figure figure : entities)
             figure.reactToStorm();
     }

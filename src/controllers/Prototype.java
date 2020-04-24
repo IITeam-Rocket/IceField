@@ -61,16 +61,14 @@ public class Prototype {
         if(lineParts[1].equals("console")) {
             System.out.println("set input: console");
             in = new Scanner(System.in);
-            System.out.println("set input: console");
             return;
         }
 
         try {
+            System.out.println("set input: " + lineParts[1]);
             in = new Scanner(new File(lineParts[1]));
         } catch (FileNotFoundException e) {
-            System.out.println("set input: " + lineParts[1]);
             System.out.println("File " + lineParts[1] + " doesn't exist!");
-            System.out.println("set input: " + lineParts[1]);
         }
     }
 
@@ -235,7 +233,7 @@ public class Prototype {
             return;
         }
 
-        if(Environment.getInstance().getIceTiles().size() - 1 > firstID || firstID < 0 || Environment.getInstance().getIceTiles().size() - 1 > secondID || secondID < 0) {
+        if(Environment.getInstance().getIceTiles().size() - 1 < firstID || firstID < 0 || Environment.getInstance().getIceTiles().size() - 1 < secondID || secondID < 0) {
             System.out.println("Tile IDs must be between 0 and the maximum ID of " + (Environment.getInstance().getIceTiles().size() - 1));
             return;
         }
@@ -244,8 +242,6 @@ public class Prototype {
             System.out.println("A tile can't be it's own neighbour!");
             return;
         }
-
-        System.out.println("neighbours: " + firstID + ", " + secondID);
 
         Tile firstTile = Environment.getInstance().getIceTiles().get(firstID);
         Tile secondTile = Environment.getInstance().getIceTiles().get(secondID);
@@ -266,6 +262,8 @@ public class Prototype {
 
         firstTile.getNeighbours().add(secondTile);
         secondTile.getNeighbours().add(firstTile);
+
+        System.out.println("neighbours: " + firstID + ", " + secondID);
     }
 
     private void command_additemtotile(String[] lineParts) {
@@ -292,7 +290,7 @@ public class Prototype {
                 return;
             }
 
-            if(Environment.getInstance().getIceTiles().size() - 1 > tileID || tileID < 0) {
+            if(Environment.getInstance().getIceTiles().size() - 1 < tileID || tileID < 0) {
                 System.out.println("Tile ID must be between 0 and the maximum ID of " + (Environment.getInstance().getIceTiles().size() - 1));
                 return;
             }
@@ -367,7 +365,7 @@ public class Prototype {
                 return;
             }
 
-            if (Environment.getInstance().getIceTiles().size() - 1 > tileID || tileID < 0) {
+            if (Environment.getInstance().getIceTiles().size() - 1 < tileID || tileID < 0) {
                 System.out.println("Tile ID must be between 0 and the maximum ID of " + (Environment.getInstance().getIceTiles().size() - 1));
                 return;
             }
@@ -422,7 +420,7 @@ public class Prototype {
                 return;
             }
 
-            if (Environment.getInstance().getIceTiles().size() - 1 > tileID || tileID < 0) {
+            if (Environment.getInstance().getIceTiles().size() - 1 < tileID || tileID < 0) {
                 System.out.println("Tile ID must be between 0 and the maximum ID of " + (Environment.getInstance().getIceTiles().size() - 1));
                 return;
             }

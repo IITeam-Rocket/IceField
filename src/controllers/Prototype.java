@@ -1,6 +1,7 @@
 package controllers;
 
 import models.Environment;
+import models.exceptions.EndOfGameException;
 import models.figures.Eskimo;
 import models.figures.Figure;
 import models.figures.PolarBear;
@@ -142,9 +143,13 @@ public class Prototype {
                 System.out.println("Ending round...");
                 for (Figure f : Environment.getInstance().getPlayers())
                     f.step();
-                //TODO: Create Tile step() function
-                //for (Tile t : Environment.getInstance().getIceTiles())
-                  //  t.step();
+                for (Tile t : Environment.getInstance().getIceTiles()) {
+                    try {
+                        t.step();
+                    } catch (EndOfGameException e) {
+                        Environment.getInstance().winGame();
+                    }
+                }
             }
             else
                 currentPlayerID++;

@@ -38,18 +38,23 @@ abstract public class Figure {
         return tile;
     }
 
+    // TODO: 2020. 04. 16. javadoc
+
+    abstract public void step();
+
+    /**
+     * Realises a attack's effect on the figure.
+     */
+    abstract public void reactToAttack();
+
+    /**
+     * Realises a blizzard's effect on the figure.
+     */
+    abstract public void reactToStorm();
+
     public void setTile(Tile tile) {
         this.tile = tile;
     }
-
-    // TODO: 2020. 04. 16. javadoc
-    abstract public void step();
-
-    // TODO: 2020. 04. 24. javadoc
-    abstract public void reactToAttack();
-
-    // TODO: 2020. 04. 24. javadoc
-    abstract public void reactToStorm();
 
     public FallInWaterPolicy getSwimToShoreStrategy() {
         return swimToShoreStrategy;

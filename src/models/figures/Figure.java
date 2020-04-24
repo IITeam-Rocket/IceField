@@ -35,6 +35,15 @@ abstract public class Figure {
         swimToShoreStrategy.executeStrategy(this);
     }
 
+    // TODO: 2020. 04. 16. javadoc
+    abstract public void step();
+
+    // TODO: 2020. 04. 24. javadoc
+    abstract public void reactToAttack();
+
+    // TODO: 2020. 04. 24. javadoc
+    abstract public void reactToStorm();
+
     public Tile getTile() {
         return tile;
     }
@@ -42,9 +51,6 @@ abstract public class Figure {
     public void setTile(Tile tile) {
         this.tile = tile;
     }
-
-    // TODO: 2020. 04. 16. javadoc
-    abstract public void step();
 
     public FallInWaterPolicy getSwimToShoreStrategy() {
         return swimToShoreStrategy;

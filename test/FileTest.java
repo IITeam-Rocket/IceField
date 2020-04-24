@@ -38,7 +38,7 @@ public class FileTest {
         for (File f : files) System.out.println(f.getName());
         for (File f :
                 files) {
-            if (f.isDirectory() && f.getName().equals("resource")) {
+            if (f.isDirectory() && f.getName().equals("resources")) {
                 wd = f;
                 break;
             }

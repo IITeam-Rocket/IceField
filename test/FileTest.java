@@ -20,9 +20,10 @@ public class FileTest {
 
     @BeforeEach
     public void setup() {
-        System.setOut(consoleOut);
+
         wd = new File(System.clearProperty("user.dir"));
         File[] files = wd.listFiles();
+        for (File f : files) System.out.println(f.getName());
         for (File f :
                 files) {
             if (f.isDirectory() && f.getName().equals("test")) {
@@ -31,6 +32,7 @@ public class FileTest {
             }
         }
         files = wd.listFiles();
+        for (File f : files) System.out.println(f.getName());
         for (File f :
                 files) {
             if (f.isDirectory() && f.getName().equals("resource")) {
@@ -38,7 +40,7 @@ public class FileTest {
                 break;
             }
         }
-
+        for (File f : files) System.out.println(f.getName());
         FileFilter testFilter = new FileFilter() {
             @Override
             public boolean accept(File f) {
@@ -64,7 +66,7 @@ public class FileTest {
                 }
             }
         }
-
+        System.setOut(consoleOut);
     }
 
     @Test

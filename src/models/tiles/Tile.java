@@ -23,11 +23,19 @@ abstract public class Tile {
     protected ArrayList<Figure> entities = new ArrayList<>();
     protected ArrayList<Tile> neighbours = new ArrayList<>();
 
+    /**
+     * Default constructor
+     */
     public Tile() {
         this.ID = IDCounter;
         IDCounter++;
     }
 
+    /**
+     * Constructor with explicit ID
+     *
+     * @param ID the ID of the tile
+     */
     public Tile(int ID) {
         this.ID = ID;
     }
@@ -59,13 +67,8 @@ abstract public class Tile {
         //TODO
     }
 
-    /**
-     * Decreases the amount of snow on the Tile.
-     *
-     * @param quantity the amount of snow to remove
-     */
-    public void removeSnow(int quantity) {
-        // TODO
+    public static int getMaxSnowDepth() {
+        return maxSnowDepth;
     }
 
     /**
@@ -100,10 +103,6 @@ abstract public class Tile {
         return snowDepth;
     }
 
-    public void setSnowDepth(int snowDepth) {
-        this.snowDepth = snowDepth;
-    }
-
     /**
      * Returns a list of Characters currently standing
      * on the Tile.
@@ -112,10 +111,6 @@ abstract public class Tile {
      */
     public ArrayList<Figure> getEntities() {
         return entities;
-    }
-
-    public void setEntities(ArrayList<Figure> entities) {
-        this.entities = entities;
     }
 
     /**
@@ -128,10 +123,6 @@ abstract public class Tile {
         return neighbours;
     }
 
-    public void setNeighbours(ArrayList<Tile> neighbours) {
-        this.neighbours = neighbours;
-    }
-
     /**
      * Adds a Character to the list of Characters
      * currently standing on the Tile.
@@ -142,15 +133,36 @@ abstract public class Tile {
         this.entities.add(character);
     }
 
-    public static int getMaxSnowDepth() {
-        return maxSnowDepth;
-    }
-
     public static int getIDCounter() {
         return IDCounter;
     }
 
+    /**
+     * Decreases the amount of snow on the Tile
+     * by quantity. The amount of snow cannot
+     * be negative.
+     *
+     * @param quantity the amount of snow to remove
+     */
+    public void removeSnow(int quantity) {
+        snowDepth -= quantity;
+        if (snowDepth < 0)
+            snowDepth = 0;
+    }
+
+    public void setSnowDepth(int snowDepth) {
+        this.snowDepth = snowDepth;
+    }
+
     public int getID() {
         return ID;
+    }
+
+    public void setEntities(ArrayList<Figure> entities) {
+        this.entities = entities;
+    }
+
+    public void setNeighbours(ArrayList<Tile> neighbours) {
+        this.neighbours = neighbours;
     }
 }

@@ -16,7 +16,7 @@ import java.security.SecureRandomParameters;
  * @since skeleton
  * @since 2020.03.10
  */
-public class InstableIcePatch extends IcePatch implements SecureRandomParameters {
+public class InstableIcePatch extends IcePatch{
 
     // TODO: 2020. 04. 24. javadoc
     int playerCapacity;
@@ -79,12 +79,20 @@ public class InstableIcePatch extends IcePatch implements SecureRandomParameters
         return flipped;
     }
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Sets the InstableIcePatch is flipped or not.
+     *
+     * @param flipped the flipped attribute's new value
+     */
     public void setFlipped(boolean flipped) {
         this.flipped = flipped;
     }
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Sets the InstableIcePatch's playerCapacity to the parameter.
+     *
+     * @param playerCapacity the playerCapacity attribute's new value
+     */
     public void setPlayerCapacity(int playerCapacity) {
         this.playerCapacity = playerCapacity;
     }

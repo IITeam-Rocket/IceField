@@ -81,17 +81,29 @@ abstract public class IcePatch extends Tile implements Serializable {
         protectionStrategy.step();
     }
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Returns the IcePatch's buriedItem
+     *
+     * @return the buriedItem  of the IcePatch
+     */
     public Item getBuriedItem() {
         return buriedItem;
     }
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Sets the IcePatch's buriedItem to the parameter.
+     *
+     * @param buriedItem the IcePatch's new buriedItem
+     */
     public void setBuriedItem(Item buriedItem) {
         this.buriedItem = buriedItem;
     }
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Sets the IcePatch's protectionStrategy to the parameter.
+     *
+     * @param protectionStrategy the IcePatch's new protectionStrategy
+     */
     public void setProtectionStrategy(ProtectionPolicy protectionStrategy) {
         this.protectionStrategy = protectionStrategy;
     }

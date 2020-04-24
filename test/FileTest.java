@@ -22,7 +22,7 @@ public class FileTest {
 
     @Test
     public void tester() throws IOException {
-        File file = new File("setRandomOffTest");
+        File file = new File("/setRandomOffTest");
         FileInputStream fis = new FileInputStream(file);
         Prototype game = new Prototype();
         System.setIn(fis);

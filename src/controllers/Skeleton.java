@@ -27,7 +27,7 @@ public class Skeleton {
             "Make a Storm without an Igloo",
             "Make a Storm with an Igloo",
             "Unbury Food",
-            "Unb8ury DiveSuit",
+            "Unbury DiveSuit",
             "Unbury Rope",
             "Unbury Shovel",
             "Unbury Cartridge",

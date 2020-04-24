@@ -1,15 +1,20 @@
 package models.items;
 
 import models.Environment;
-import models.characters.Character;
+import models.figures.Character;
 
-import static controllers.TabController.*;
+import java.io.Serializable;
 
 /**
  * A beacon that is one part of the SignalFlare
  * needed to win the game
+ *
+ * @author Józsa György
+ * @version 2.0
+ * @since skeleton
+ * @since 2020.03.10
  */
-public class Beacon extends Item {
+public class Beacon extends Item implements Serializable {
     /**
      * Records that the beacon has been discovered.
      *
@@ -17,12 +22,6 @@ public class Beacon extends Item {
      */
     @Override
     public void uponDiscovery(Character finder) {
-        addIndent();
-        printlnWithIndents("Beacon.uponDiscovery(finder)");
-
         Environment.getInstance().recordBeacon();
-
-        printlnWithIndents("return");
-        removeIndent();
     }
 }

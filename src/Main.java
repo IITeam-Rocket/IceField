@@ -1,9 +1,11 @@
-import controllers.Skeleton;
+import controllers.Prototype;
 
 public class Main {
 
     public static void main(String[] args){
-        Skeleton skeleton = new Skeleton();
-        skeleton.run();
+        Prototype prototype = new Prototype();
+        prototype.run();
+
+
     }
 }

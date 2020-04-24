@@ -1,17 +1,22 @@
 package models.policies;
 
-
-import models.characters.Character;
+import models.figures.Character;
 import models.tiles.Tile;
 
-import static controllers.TabController.*;
+import java.io.Serializable;
 
 /**
  * A class representing the strategy of the player
  * to help a friend in need. This particular
  * strategy is to have no strategy, thus doing nothing.
+ *
+ * @author Józsa György
+ * @version 2.0
+ * @see models.policies.RescueFriendPolicy
+ * @since skeleton
+ * @since 2020.03.10
  */
-public class NoRescuePolicy implements RescueFriendPolicy {
+public class NoRescuePolicy implements RescueFriendPolicy, Serializable {
 
     /**
      * Does nothing, as there is no strategy.
@@ -21,9 +26,6 @@ public class NoRescuePolicy implements RescueFriendPolicy {
      */
     @Override
     public void executeStrategy(Character friend, Tile dest) {
-        addIndent();
-        printlnWithIndents("NoRescuePolicy.executeStrategy()");
-        printlnWithIndents("return");
-        removeIndent();
+
     }
 }

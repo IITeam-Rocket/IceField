@@ -1,13 +1,18 @@
 package models.items;
 
-import models.characters.Character;
+import models.figures.Character;
 
-import static controllers.TabController.*;
+import java.io.Serializable;
 
 /**
  * An Item that gives the finding player bodyHeat.
+ *
+ * @author Józsa György
+ * @version 2.0
+ * @since skeleton
+ * @since 2020.03.10
  */
-public class Food extends Item {
+public class Food extends Item implements Serializable {
     /**
      * gives the finding player a unit of bodyHeat.
      *
@@ -15,12 +20,6 @@ public class Food extends Item {
      */
     @Override
     public void uponDiscovery(Character finder) {
-        addIndent();
-        printlnWithIndents("Food.uponDiscovery(finder)");
-
         finder.addHeat(1);
-
-        printlnWithIndents("return");
-        removeIndent();
     }
 }

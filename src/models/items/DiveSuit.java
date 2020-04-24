@@ -1,28 +1,28 @@
 package models.items;
 
-import models.characters.Character;
-import models.policies.HasDiveSuitPolicy;
+import models.figures.Character;
+import models.policies.SwimOutPolicy;
 
-import static controllers.TabController.*;
+import java.io.Serializable;
 
 /**
  * An item that changes the finder's
  * FallInWaterPolicy.
+ *
+ * @author Józsa György
+ * @version 2.0
+ * @since skeleton
+ * @since 2020.03.10
  */
-public class DiveSuit extends Item {
+public class DiveSuit extends Item implements Serializable {
     /**
      * Changes the finder's FallInWaterPolicy to
      * an instance of HasDiveSuitPolicy.
+     *
      * @param finder the character who discovered the item
      */
     @Override
     public void uponDiscovery(Character finder) {
-        addIndent();
-        printlnWithIndents("DiveSuit.uponDiscovery(finder)");
-
-        finder.changeWaterPolicy(new HasDiveSuitPolicy());
-
-        printlnWithIndents("return");
-        removeIndent();
+        finder.changeWaterPolicy(new SwimOutPolicy());
     }
 }

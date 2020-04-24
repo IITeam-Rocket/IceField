@@ -1,61 +1,65 @@
 package models.tiles;
 
-import models.characters.Character;
 import models.exceptions.EndOfGameException;
+import models.figures.Character;
+import models.figures.Figure;
 import models.items.Item;
-import models.policies.FrostBitePolicy;
 import models.policies.NoProtectionPolicy;
+import models.policies.ProtectionPolicy;
 
-import static controllers.TabController.*;
+import java.io.Serializable;
 
 /**
  * A Tile frozen with ice on which characters
  * can stand on.
+ *
+ * @author Józsa György
+ * @version 2.0
+ * @see models.tiles.Tile
+ * @since skeleton
+ * @since 2020.03.10
  */
-abstract public class IcePatch extends Tile {
+abstract public class IcePatch extends Tile implements Serializable {
 
+    // TODO: 2020. 04. 24. javadoc
     private Item buriedItem;
-    private FrostBitePolicy frostBiteStrategy = new NoProtectionPolicy();
+    // TODO: 2020. 04. 24. javadoc
+    private ProtectionPolicy protectionStrategy = new NoProtectionPolicy();
+
+    // TODO: 2020. 04. 24. javadoc
+    public IcePatch() {
+        super();
+    }
+
+    // TODO: 2020. 04. 24. javadoc
+    public IcePatch(int ID) {
+        super(ID);
+    }
 
     /**
      * Returns the item hidden in the IcePatch.
      *
      * @param player the player who picked the item up
+     *
      * @return the buried item
      */
     public Item unBuryItem(Character player) {
-        addIndent();
-        printlnWithIndents("IcePatch.unBuryItem()");
-
-        if(snowDepth > 0){
-            printlnWithIndents("return: null");
-            removeIndent();
-            return null;
-        }
-        printlnWithIndents("return: item");
-        removeIndent();
+        //TODO
         return buriedItem;
     }
 
     /**
      * Realises the storm's effects.
+     *
+     * @throws EndOfGameException if a player freezes
+     *                            to death
      */
     @Override
-    public void reactToStorm() {
-        addIndent();
-        printlnWithIndents("IcePatch.ReactToStorm()");
-
-        addSnow(1);
-        for (Character victim : characters) {
-            try {
-                frostBiteStrategy.executeStrategy(victim);
-            } catch (EndOfGameException e) {
-                e.printStackTrace();
-            }
-        }
-
-        printlnWithIndents("return");
-        removeIndent();
+    public void reactToStorm() throws EndOfGameException {
+        if (snowDepth < maxSnowDepth)
+            addSnow(1);
+        for (Figure figure : entities)
+            figure.reactToStorm();
     }
 
     /**
@@ -63,25 +67,32 @@ abstract public class IcePatch extends Tile {
      *
      * @param strategy the new strategy
      */
-    public void changeFrostBitePolicy(FrostBitePolicy strategy) {
-        addIndent();
-        printlnWithIndents("IcePatch.ReactToStorm()");
-
-        this.frostBiteStrategy = strategy;
-
-        printlnWithIndents("return");
-        removeIndent();
+    public void changeProtectionPolicy(ProtectionPolicy strategy) {
+        if (strategy.getPriority() > protectionStrategy.getPriority())
+            protectionStrategy = strategy;
     }
 
+    /**
+     * Performs duties that must be done
+     * at the end of a turn
+     */
+    @Override
+    public void step() {
+        protectionStrategy.step();
+    }
+
+    // TODO: 2020. 04. 24. javadoc
     public Item getBuriedItem() {
         return buriedItem;
     }
 
+    // TODO: 2020. 04. 24. javadoc
     public void setBuriedItem(Item buriedItem) {
         this.buriedItem = buriedItem;
     }
 
-    public void setFrostBiteStrategy(FrostBitePolicy frostBiteStrategy) {
-        this.frostBiteStrategy = frostBiteStrategy;
+    // TODO: 2020. 04. 24. javadoc
+    public void setProtectionStrategy(ProtectionPolicy protectionStrategy) {
+        this.protectionStrategy = protectionStrategy;
     }
 }

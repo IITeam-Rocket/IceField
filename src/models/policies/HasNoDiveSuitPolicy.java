@@ -1,15 +1,22 @@
 package models.policies;
 
-import models.characters.Character;
+import models.figures.Figure;
 
-import static controllers.TabController.*;
+import java.io.Serializable;
+
 
 /**
  * A class representing the strategy of the
  * player if they fall into water. This strategy
  * is to not swim out and die.
+ *
+ * @author Józsa György
+ * @version 2.0
+ * @see models.policies.FallInWaterPolicy
+ * @since skeleton
+ * @since 2020.03.10
  */
-public class HasNoDiveSuitPolicy implements FallInWaterPolicy {
+public class HasNoDiveSuitPolicy implements FallInWaterPolicy, Serializable {
     /**
      * Executes the strategy. The strategy is to not
      * do anything and die.
@@ -17,10 +24,6 @@ public class HasNoDiveSuitPolicy implements FallInWaterPolicy {
      * @param player the player, who fell in water.
      */
     @Override
-    public void executeStrategy(Character player) {
-        addIndent();
-        printlnWithIndents("HasNoDiveSuitPolicy.executeStrategy()");
-        printlnWithIndents("return");
-        removeIndent();
+    public void executeStrategy(Figure player) {
     }
 }

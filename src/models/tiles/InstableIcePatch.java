@@ -1,44 +1,50 @@
 package models.tiles;
 
-import models.characters.Character;
+import models.figures.Figure;
 
-import static controllers.TabController.*;
+import java.security.SecureRandomParameters;
 
 /**
  * An unstable IcePatch that may hold
  * a number of people before flipping
  * over.
+ *
+ * @author Józsa György
+ * @version 2.0
+ * @see models.tiles.IcePatch
+ * @see models.tiles.Tile
+ * @since skeleton
+ * @since 2020.03.10
  */
-public class InstableIcePatch extends IcePatch {
+public class InstableIcePatch extends IcePatch implements SecureRandomParameters {
 
+    // TODO: 2020. 04. 24. javadoc
     int playerCapacity;
+    // TODO: 2020. 04. 24. jaavadoc
     boolean flipped = false;
 
+    // TODO: 2020. 04. 24. javadoc
     public InstableIcePatch(int playerCapacity) {
+        super();
+        this.playerCapacity = playerCapacity;
+    }
+
+    // TODO: 2020. 04. 24. javadoc
+    public InstableIcePatch(int ID, int playerCapacity) {
+        super(ID);
         this.playerCapacity = playerCapacity;
     }
 
     /**
      * Accepts the player who tries to move on it.
      *
-     * @param character the player to accept
+     * @param figure the player to accept
+     *
      * @return true if successful, false otherwise
      */
     @Override
-    public boolean acceptCharacter(Character character) {
-        addIndent();
-        printlnWithIndents("InstableIcePatch.acceptCharacter()");
-
-        characters.add(character);
-        if(characters.size() > playerCapacity){
-            flip();
-            for (Character var :characters) {
-                var.swimToShore();
-            }
-        }
-
-        printlnWithIndents("return: true");
-        removeIndent();
+    public boolean acceptCharacter(Figure figure) {
+        //TODO
         return true;
     }
 
@@ -50,10 +56,7 @@ public class InstableIcePatch extends IcePatch {
      */
     @Override
     public int getCapacity() {
-        addIndent();
-        printlnWithIndents("InstableIcePatch.getCapacity()");
-        printlnWithIndents("return: " + playerCapacity);
-        removeIndent();
+        //TODO
         return playerCapacity;
     }
 
@@ -63,13 +66,7 @@ public class InstableIcePatch extends IcePatch {
      * and vice versa.
      */
     public void flip() {
-        addIndent();
-        printlnWithIndents("InstableIcePatch.flip()");
-
         flipped = !flipped;
-
-        printlnWithIndents("return");
-        removeIndent();
     }
 
     /**
@@ -79,32 +76,16 @@ public class InstableIcePatch extends IcePatch {
      * @return false, if the Patch can
      */
     public boolean isFlipped() {
-        addIndent();
-        printlnWithIndents("InstableIcePatch.isFlipped()");
-        printlnWithIndents("return: "+ flipped);
-        removeIndent();
-
         return flipped;
     }
 
-    public void setPlayerCapacity(int playerCapacity) {
-
-        addIndent();
-        printlnWithIndents("InstableIcePatch.setPlayerCapacity()");
-
-        this.playerCapacity = playerCapacity;
-
-        printlnWithIndents("return");
-        removeIndent();
+    // TODO: 2020. 04. 24. javadoc
+    public void setFlipped(boolean flipped) {
+        this.flipped = flipped;
     }
 
-    public void setFlipped(boolean flipped) {
-        addIndent();
-        printlnWithIndents("InstableIcePatch.setFlipped()");
-
-        this.flipped = flipped;
-
-        printlnWithIndents("return");
-        removeIndent();
+    // TODO: 2020. 04. 24. javadoc
+    public void setPlayerCapacity(int playerCapacity) {
+        this.playerCapacity = playerCapacity;
     }
 }

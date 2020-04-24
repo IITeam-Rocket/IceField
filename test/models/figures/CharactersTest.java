@@ -1,4 +1,4 @@
-package models.characters;
+package models.figures;
 
 import models.exceptions.EndOfGameException;
 import org.junit.jupiter.api.BeforeEach;

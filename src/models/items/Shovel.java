@@ -1,14 +1,21 @@
 package models.items;
 
-import models.characters.Character;
+import models.figures.Character;
+import models.policies.ShovelPolicy;
 
-import static controllers.TabController.*;
+import java.io.Serializable;
 
 /**
  * An Item that gives the finding character
- * strength up to a unit of 2.
+ * the ability to remove 2 units of snow
+ * on clearing.
+ *
+ * @author Józsa György
+ * @version 2.0
+ * @since skeleton
+ * @since 2020.03.10
  */
-public class Shovel extends Item {
+public class Shovel extends Item implements Serializable {
     /**
      * Sets the finder player's strength to 2, if it's lower.
      *
@@ -16,12 +23,6 @@ public class Shovel extends Item {
      */
     @Override
     public void uponDiscovery(Character finder) {
-        addIndent();
-        printlnWithIndents("Shovel.uponDiscovery(finder)");
-
-        finder.setStrength(2);
-
-        printlnWithIndents("return");
-        removeIndent();
+        finder.changeClearSnowPolicy(new ShovelPolicy());
     }
 }

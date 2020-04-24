@@ -6,41 +6,42 @@ import models.figures.Figure;
 import java.io.Serializable;
 
 /**
- * The strategy of a Tile to not
- * protect its inhabitants from a
- * snow storm.
+ * The strategy of a Tile to protect
+ * the players from snow storm for one
+ * turn, but not from an attack.
  *
  * @author Józsa György
- * @version 2.0
- * @see models.policies.ProtectionPolicy
- * @since skeleton
- * @since 2020.03.10
+ * @version 1.0
+ * @since prototype
+ * @since 2020.04.14
  */
-public class NoProtectionPolicy implements ProtectionPolicy, Serializable {
+public class TentPolicy implements ProtectionPolicy, Serializable {
+
+    // TODO: 2020. 04. 24. javadoc
+    private boolean isIntact = true;
 
     /**
-     * Provides no protection against a storm,
-     * instead damages the inhabitant.
+     * Executes strategy of protecting against a storm.
      *
      * @param victim the character being exposed
      *               to the storm
      *
-     * @throws EndOfGameException If victim's body heat reaches zero.
+     * @throws EndOfGameException Signifying end of game
      * @see EndOfGameException
      */
     @Override
     public void protectAgainstStorm(Figure victim) throws EndOfGameException {
-        victim.reactToStorm();
+        if (!isIntact)
+            victim.reactToStorm();
     }
 
     /**
-     * Provides no protection against an attack,
-     * ends the game.
+     * Executes strategy of protecting against an attack.
      *
      * @param victim   the victim suffering the attack
      * @param attacker the attacker who initiates the attack
      *
-     * @throws EndOfGameException If victim is not attacker.
+     * @throws EndOfGameException Signifying end of game
      * @see EndOfGameException
      */
     @Override
@@ -50,12 +51,21 @@ public class NoProtectionPolicy implements ProtectionPolicy, Serializable {
     }
 
     /**
+     * Steps the object for aging effects.
+     */
+    @Override
+    public void step() {
+        isIntact = false;
+    }
+
+    /**
      * Returns the priority of the strategy
      *
-     * @return zero
+     * @return one if the tent is intact,
+     * zero otherwise
      */
     @Override
     public int getPriority() {
-        return 0;
+        return isIntact ? 1 : 0;
     }
 }

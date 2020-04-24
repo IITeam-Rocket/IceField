@@ -1,61 +1,74 @@
 package models.tiles;
 
-import models.characters.Character;
+import models.exceptions.EndOfGameException;
+import models.figures.Figure;
 import models.items.Item;
 
+import java.io.Serializable;
 import java.util.ArrayList;
-
-import static controllers.TabController.*;
 
 /**
  * A class representing an IceTile
  * which is a part of the IceField
+ *
+ * @author Józsa György
+ * @version 2.0
+ * @since skeleton
+ * @since 2020.03.10
  */
-abstract public class Tile {
+abstract public class Tile implements Serializable {
+    // TODO: 2020. 04. 24. javadoc
+    protected static final int maxSnowDepth = 6;
+    // TODO: 2020. 04. 24. javadoc
+    protected static int IDCounter = 0;
+    // TODO: 2020. 04. 24. javadoc
+    protected final int ID;
+    // TODO: 2020. 04. 24. javadoc
     protected int snowDepth;
-    static final int maxsnowDepth = 6;
-    protected ArrayList<Character> characters = new ArrayList<>();
+    // TODO: 2020. 04. 24. javadoc
+    protected ArrayList<Figure> entities = new ArrayList<>();
+    // TODO: 2020. 04. 24. javadoc
     protected ArrayList<Tile> neighbours = new ArrayList<>();
+
+    // TODO: 2020. 04. 24. javadoc
+    public Tile() {
+        this.ID = IDCounter;
+        IDCounter++;
+    }
+
+    // TODO: 2020. 04. 24. javadoc
+    public Tile(int ID) {
+        this.ID = ID;
+    }
 
     /**
      * Accepts the player who tries to move on it.
      *
-     * @param character the player to accept
+     * @param figure the player to accept
+     *
      * @return true if successful, false otherwise
      */
-    abstract public boolean acceptCharacter(Character character);
+    abstract public boolean acceptCharacter(Figure figure);
 
     /**
-     * Removes the character from the Tile.
+     * Removes the figure from the Tile.
      *
-     * @param character the character to remove
+     * @param figure the figure to remove
      */
-    public void removeCharacter(Character character) {
-        addIndent();
-        printlnWithIndents("Tile.removeCharacter()");
-
-        characters.remove(character);
-
-        printlnWithIndents("return");
-        removeIndent();
+    public void removeCharacter(Figure figure) {
+        entities.remove(figure);
     }
 
     /**
      * Increases the amount of snow on the Tile.
      *
      * @param quantity the amount of snow to add
+     *
+     * @return the quantity of snow that was succesfully added
      */
-    public void addSnow(int quantity) {
-        addIndent();
-        printlnWithIndents("Tile.addSnow()");
-
-        snowDepth += quantity;
-
-        if (snowDepth > maxsnowDepth)
-            snowDepth = maxsnowDepth;
-
-        printlnWithIndents("return");
-        removeIndent();
+    public int addSnow(int quantity) {
+        //TODO: Arra figyelni, hogy van maximum!!!!
+        return -1;
     }
 
     /**
@@ -64,15 +77,7 @@ abstract public class Tile {
      * @param quantity the amount of snow to remove
      */
     public void removeSnow(int quantity) {
-        addIndent();
-        printlnWithIndents("Tile.removeSnow()");
-
-        snowDepth -= quantity;
-        if (snowDepth < 0)  //Yeah, hardcoded.
-            snowDepth = 0;
-
-        printlnWithIndents("return");
-        removeIndent();
+        // TODO
     }
 
     /**
@@ -86,8 +91,11 @@ abstract public class Tile {
 
     /**
      * Realises the storm's effects.
+     *
+     * @throws EndOfGameException if a player freezes
+     *                            to death
      */
-    abstract public void reactToStorm();
+    abstract public void reactToStorm() throws EndOfGameException;
 
     /**
      * Returns the maximum number of characters the
@@ -104,11 +112,11 @@ abstract public class Tile {
      * @return the layers of snow on the Tile
      */
     public int getSnowDepth() {
-        addIndent();
-        printlnWithIndents("Tile.getSnowDepth()");
-        printlnWithIndents("return: " + snowDepth);
-        removeIndent();
         return snowDepth;
+    }
+
+    public void setSnowDepth(int snowDepth) {
+        this.snowDepth = snowDepth;
     }
 
     /**
@@ -117,12 +125,12 @@ abstract public class Tile {
      *
      * @return a list of Characters standing on the Tile
      */
-    public ArrayList<Character> getCharacters() {
-        addIndent();
-        printlnWithIndents("Tile.getCharacters()");
-        printlnWithIndents("return: ArrayList<Character>");
-        removeIndent();
-        return characters;
+    public ArrayList<Figure> getEntities() {
+        return entities;
+    }
+
+    public void setEntities(ArrayList<Figure> entities) {
+        this.entities = entities;
     }
 
     /**
@@ -132,33 +140,43 @@ abstract public class Tile {
      * @return a list of neighbouring Tiles
      */
     public ArrayList<Tile> getNeighbours() {
-        addIndent();
-        printlnWithIndents("Tile.getNeighbours()");
-        printlnWithIndents("return: ArrayList<Tile>");
-        removeIndent();
         return neighbours;
+    }
+
+    public void setNeighbours(ArrayList<Tile> neighbours) {
+        this.neighbours = neighbours;
     }
 
     /**
      * Adds a Character to the list of Characters
      * currently standing on the Tile.
      *
-     * @param character the Character to add
+     * @param figure the Figure to add
      */
-    public void addCharacter(Character character) {
-        this.characters.add(character);
+    public void addCharacter(Figure figure) {
+        this.entities.add(figure);
     }
 
+    /**
+     * Performs duties that must be done
+     * at the end of a turn.
+     *
+     * @throws EndOfGameException if a player dies.
+     */
+    abstract public void step() throws EndOfGameException;
 
-    public void setSnowDepth(int snowDepth) {
-        this.snowDepth = snowDepth;
+    // TODO: 2020. 04. 24. javadoc
+    public static int getMaxSnowDepth() {
+        return maxSnowDepth;
     }
 
-    public void setCharacters(ArrayList<Character> characters) {
-        this.characters = characters;
+    // TODO: 2020. 04. 24. javadoc
+    public static int getIDCounter() {
+        return IDCounter;
     }
 
-    public void setNeighbours(ArrayList<Tile> neighbours) {
-        this.neighbours = neighbours;
+    // TODO: 2020. 04. 24. javadoc
+    public int getID() {
+        return ID;
     }
 }

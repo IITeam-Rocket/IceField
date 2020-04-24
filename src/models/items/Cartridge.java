@@ -1,15 +1,20 @@
 package models.items;
 
 import models.Environment;
-import models.characters.Character;
+import models.figures.Character;
 
-import static controllers.TabController.*;
+import java.io.Serializable;
 
 /**
  * A cartridge that is a part of the SignalFlare
  * needed to win the game.
+ *
+ * @author Józsa György
+ * @version 2.0
+ * @since skeleton
+ * @since 2020.03.10
  */
-public class Cartridge extends Item {
+public class Cartridge extends Item implements Serializable {
     /**
      * Records that the cartridge has been discovered.
      *
@@ -17,12 +22,6 @@ public class Cartridge extends Item {
      */
     @Override
     public void uponDiscovery(Character finder) {
-        addIndent();
-        printlnWithIndents("Cartridge.uponDiscovery(finder)");
-
         Environment.getInstance().recordCartridge();
-
-        printlnWithIndents("return");
-        removeIndent();
     }
 }

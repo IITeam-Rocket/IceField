@@ -45,4 +45,14 @@ public class Researcher extends Character {
     public void step() {
         // TODO: 2020. 04. 16. implement
     }
+
+    /**
+     * Returns the base body heat of the figure
+     *
+     * @return four
+     */
+    @Override
+    public int getBaseBodyHeat() {
+        return 4;
+    }
 }

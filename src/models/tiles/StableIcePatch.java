@@ -16,10 +16,12 @@ import models.figures.Figure;
  */
 public class StableIcePatch extends IcePatch {
 
+    // TODO: 2020. 04. 24. javadoc
     public StableIcePatch() {
         super();
     }
 
+    // TODO: 2020. 04. 24. javadoc
     public StableIcePatch(int ID) {
         super(ID);
     }

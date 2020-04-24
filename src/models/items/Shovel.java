@@ -1,6 +1,7 @@
 package models.items;
 
 import models.figures.Character;
+import models.policies.ShovelPolicy;
 
 /**
  * An Item that gives the finding character
@@ -20,6 +21,6 @@ public class Shovel extends Item {
      */
     @Override
     public void uponDiscovery(Character finder) {
-        // TODO: 2020. 04. 15. implement
+        finder.changeClearSnowPolicy(new ShovelPolicy());
     }
 }

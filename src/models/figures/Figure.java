@@ -13,8 +13,9 @@ import models.tiles.Tile;
  * @since 2020.03.10
  */
 abstract public class Figure {
-
+    // TODO: 2020. 04. 24. javadoc
     protected Tile tile;
+    // TODO: 2020. 04. 24. javadoc
     protected FallInWaterPolicy swimToShoreStrategy;
 
     /**
@@ -35,16 +36,17 @@ abstract public class Figure {
         swimToShoreStrategy.executeStrategy(this);
     }
 
+    // TODO: 2020. 04. 24. javadoc
     public Tile getTile() {
         return tile;
     }
 
     // TODO: 2020. 04. 16. javadoc
-
     public void setTile(Tile tile) {
         this.tile = tile;
     }
 
+    // TODO: 2020. 04. 24. javadoc
     abstract public void step();
 
     /**
@@ -72,6 +74,7 @@ abstract public class Figure {
         return swimToShoreStrategy;
     }
 
+    // TODO: 2020. 04. 24. javadoc
     public void setSwimToShoreStrategy(FallInWaterPolicy swimToShoreStrategy) {
         this.swimToShoreStrategy = swimToShoreStrategy;
     }

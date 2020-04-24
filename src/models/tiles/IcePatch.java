@@ -19,13 +19,17 @@ import models.policies.ProtectionPolicy;
  */
 abstract public class IcePatch extends Tile {
 
+    // TODO: 2020. 04. 24. javadoc
     private Item buriedItem;
+    // TODO: 2020. 04. 24. javadoc
     private ProtectionPolicy protectionStrategy = new NoProtectionPolicy();
 
+    // TODO: 2020. 04. 24. javadoc
     public IcePatch() {
         super();
     }
 
+    // TODO: 2020. 04. 24. javadoc
     public IcePatch(int ID) {
         super(ID);
     }
@@ -75,14 +79,17 @@ abstract public class IcePatch extends Tile {
         protectionStrategy.step();
     }
 
+    // TODO: 2020. 04. 24. javadoc
     public Item getBuriedItem() {
         return buriedItem;
     }
 
+    // TODO: 2020. 04. 24. javadoc
     public void setBuriedItem(Item buriedItem) {
         this.buriedItem = buriedItem;
     }
 
+    // TODO: 2020. 04. 24. javadoc
     public void setProtectionStrategy(ProtectionPolicy protectionStrategy) {
         this.protectionStrategy = protectionStrategy;
     }

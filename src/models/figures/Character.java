@@ -18,9 +18,13 @@ import models.tiles.Tile;
  * @since 2020.03.10
  */
 public abstract class Character extends Figure {
+    // TODO: 2020. 04. 24. javadoc
     protected int bodyHeat;
+    // TODO: 2020. 04. 24. javadoc
     protected int stamina;
+    // TODO: 2020. 04. 24. javadoc
     protected RescueFriendPolicy helpFriendStrategy = new NoRescuePolicy();
+    // TODO: 2020. 04. 24. javadoc
     protected ClearSnowPolicy clearPatchStrategy = new EmptyHandPolicy();
 
 
@@ -37,7 +41,6 @@ public abstract class Character extends Figure {
      */
     public void clearPatch() {
         // TODO: 2020. 04. 15. implement
-        // TODO: 2020. 04. 15. add ClearPatchPolicy
     }
 
 
@@ -213,22 +216,27 @@ public abstract class Character extends Figure {
         ((IcePatch) tile).changeProtectionPolicy(new TentPolicy());
     }
 
+    // TODO: 2020. 04. 24. javadoc
     public void setBodyHeat(int bodyHeat) {
         this.bodyHeat = bodyHeat;
     }
 
+    // TODO: 2020. 04. 24. javadoc
     public void setStamina(int stamina) {
         this.stamina = stamina;
     }
 
+    // TODO: 2020. 04. 24. javadoc
     public void setSwimToShoreStrategy(FallInWaterPolicy swimToShoreStrategy) {
         this.swimToShoreStrategy = swimToShoreStrategy;
     }
 
+    // TODO: 2020. 04. 24. javadoc
     public void setHelpFriendStrategy(RescueFriendPolicy helpFriendStrategy) {
         this.helpFriendStrategy = helpFriendStrategy;
     }
 
+    // TODO: 2020. 04. 24. javadoc
     public void setTile(Tile tile) {
         this.tile = tile;
     }

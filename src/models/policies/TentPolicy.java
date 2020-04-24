@@ -15,6 +15,7 @@ import models.figures.Figure;
  */
 public class TentPolicy implements ProtectionPolicy {
 
+    // TODO: 2020. 04. 24. javadoc
     private boolean isIntact = true;
 
     /**

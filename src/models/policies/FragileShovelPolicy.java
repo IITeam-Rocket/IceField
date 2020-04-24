@@ -15,7 +15,7 @@ import models.tiles.Tile;
  * @since 2020.04.15
  */
 public class FragileShovelPolicy implements ClearSnowPolicy {
-
+    // TODO: 2020. 04. 24. javadoc
     private int count = 3;
 
     /**

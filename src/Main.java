@@ -1,5 +1,4 @@
 import controllers.Prototype;
-import controllers.Skeleton;
 
 public class Main {
 
@@ -7,8 +6,6 @@ public class Main {
         Prototype prototype = new Prototype();
         prototype.run();
 
-        //Skeleton skeleton = new Skeleton();
-        //skeleton.run();
-        //this is a comment
+
     }
 }

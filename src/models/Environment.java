@@ -1,7 +1,6 @@
 package models;
 
 import models.exceptions.EndOfGameException;
-import models.figures.Character;
 import models.figures.Figure;
 import models.tiles.Tile;
 
@@ -20,17 +19,23 @@ import java.util.ArrayList;
 
 public class Environment {
 
+    // TODO: 2020. 04. 24. jaavadoc
     static private final Environment instance = new Environment();
-    private ArrayList<Tile> iceTiles;
-    private ArrayList<Figure> players;
+    // TODO: 2020. 04. 24. javadoc
+    private ArrayList<Tile> iceTiles = new ArrayList<>();
+    // TODO: 2020. 04. 24. javadoc
+    private ArrayList<Figure> players = new ArrayList<>();
+    // TODO: 2020. 04. 24. javadoc
     private Figure currentPlayer;
+    // TODO: 2020. 04. 24. javadc
     private boolean beaconIsDiscovered = false;
+    // TODO: 2020. 04. 24. javadoc
     private boolean cartridgeIsDiscovered = false;
+    // TODO: 2020. 04. 24. javadoc
     private boolean gunIsDiscovered = false;
 
+    // TODO: 2020. 04. 24. javadoc
     private Environment() {
-        iceTiles = new ArrayList<Tile>();
-        players = new ArrayList<Figure>();
     }
 
     /**

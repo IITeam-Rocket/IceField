@@ -16,7 +16,9 @@ import models.figures.Figure;
  */
 public class InstableIcePatch extends IcePatch {
 
+    // TODO: 2020. 04. 24. javadoc
     int playerCapacity;
+    // TODO: 2020. 04. 24. jaavadoc
     boolean flipped = false;
 
     // TODO: 2020. 04. 24. javadoc
@@ -75,10 +77,12 @@ public class InstableIcePatch extends IcePatch {
         return flipped;
     }
 
+    // TODO: 2020. 04. 24. javadoc
     public void setFlipped(boolean flipped) {
         this.flipped = flipped;
     }
 
+    // TODO: 2020. 04. 24. javadoc
     public void setPlayerCapacity(int playerCapacity) {
         this.playerCapacity = playerCapacity;
     }

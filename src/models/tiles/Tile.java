@@ -16,18 +16,26 @@ import java.util.ArrayList;
  * @since 2020.03.10
  */
 abstract public class Tile {
+    // TODO: 2020. 04. 24. javadoc
     protected static final int maxSnowDepth = 6;
+    // TODO: 2020. 04. 24. javadoc
     protected static int IDCounter = 0;
+    // TODO: 2020. 04. 24. javadoc
     protected final int ID;
+    // TODO: 2020. 04. 24. javadoc
     protected int snowDepth;
+    // TODO: 2020. 04. 24. javadoc
     protected ArrayList<Figure> entities = new ArrayList<>();
+    // TODO: 2020. 04. 24. javadoc
     protected ArrayList<Tile> neighbours = new ArrayList<>();
 
+    // TODO: 2020. 04. 24. javadoc
     public Tile() {
         this.ID = IDCounter;
         IDCounter++;
     }
 
+    // TODO: 2020. 04. 24. javadoc
     public Tile(int ID) {
         this.ID = ID;
     }
@@ -156,14 +164,17 @@ abstract public class Tile {
      */
     abstract public void step() throws EndOfGameException;
 
+    // TODO: 2020. 04. 24. javadoc
     public static int getMaxSnowDepth() {
         return maxSnowDepth;
     }
 
+    // TODO: 2020. 04. 24. javadoc
     public static int getIDCounter() {
         return IDCounter;
     }
 
+    // TODO: 2020. 04. 24. javadoc
     public int getID() {
         return ID;
     }

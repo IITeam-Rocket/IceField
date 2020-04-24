@@ -14,12 +14,15 @@ import models.figures.Figure;
  */
 public class Hole extends Tile {
 
+    // TODO: 2020. 04. 24. javadoc
     private boolean isDiscovered = false;
 
+    // TODO: 2020. 04. 24. javadoc
     public Hole() {
         super();
     }
 
+    // TODO: 2020. 04. 24. javadoc
     public Hole(int ID) {
         super(ID);
     }
@@ -79,10 +82,12 @@ public class Hole extends Tile {
             throw new EndOfGameException("A player has drowned!");
     }
 
+    // TODO: 2020. 04. 24. javadoc
     public boolean isDiscovered() {
         return isDiscovered;
     }
 
+    // TODO: 2020. 04. 24. javadoc
     public void setDiscovered(boolean discovered) {
         isDiscovered = discovered;
     }

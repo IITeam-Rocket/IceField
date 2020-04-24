@@ -66,6 +66,15 @@ abstract public class IcePatch extends Tile {
             protectionStrategy = strategy;
     }
 
+    /**
+     * Performs duties that must be done
+     * at the end of a turn
+     */
+    @Override
+    public void step() {
+        protectionStrategy.step();
+    }
+
     public Item getBuriedItem() {
         return buriedItem;
     }

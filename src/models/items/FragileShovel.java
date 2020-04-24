@@ -1,6 +1,7 @@
 package models.items;
 
 import models.figures.Character;
+import models.policies.FragileShovelPolicy;
 
 public class FragileShovel extends Item {
     /**
@@ -11,6 +12,6 @@ public class FragileShovel extends Item {
      */
     @Override
     public void uponDiscovery(Character finder) {
-        // TODO: 2020. 04. 24. implement
+        finder.changeClearSnowPolicy(new FragileShovelPolicy());
     }
 }

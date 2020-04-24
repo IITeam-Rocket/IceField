@@ -1,5 +1,6 @@
 package models.tiles;
 
+import models.exceptions.EndOfGameException;
 import models.figures.Character;
 import models.figures.Figure;
 import models.items.Item;
@@ -43,9 +44,12 @@ abstract public class IcePatch extends Tile {
 
     /**
      * Realises the storm's effects.
+     *
+     * @throws EndOfGameException if a player freezes
+     *                            to death
      */
     @Override
-    public void reactToStorm() {
+    public void reactToStorm() throws EndOfGameException {
         if (snowDepth < maxSnowDepth)
             snowDepth++;
         for (Figure figure : entities)

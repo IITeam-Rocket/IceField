@@ -2,8 +2,6 @@ package models.tiles;
 
 import models.figures.Figure;
 
-import java.util.Random;
-
 /**
  * A tile with no solid platform.
  *
@@ -41,10 +39,11 @@ public class Hole extends Tile {
 
     /**
      * Realises the storm's effects.
+     *
      */
     @Override
     public void reactToStorm() {
-        //TODO
+        // TODO: 2020. 04. 24. implement
     }
 
     /**

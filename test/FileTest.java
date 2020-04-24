@@ -3,6 +3,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ArgumentsSource;
+import testenv.IntArgumentsProvider;
 import testenv.hackOStream;
 
 import java.io.*;
@@ -69,6 +72,13 @@ public class FileTest {
             }
         }
         System.setOut(consoleOut);
+    }
+
+
+    @ParameterizedTest
+    @ArgumentsSource(IntArgumentsProvider.class)
+    void test(int arg) {
+        System.out.println(arg);
     }
 
     @Test

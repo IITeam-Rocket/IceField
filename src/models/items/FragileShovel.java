@@ -3,7 +3,18 @@ package models.items;
 import models.figures.Character;
 import models.policies.FragileShovelPolicy;
 
-// TODO: 2020. 04. 24. javadoc
+/**
+ * A class representing a fragile shovel
+ * that can be used to clear 2 units of
+ * snow from a tile. It however will break
+ * upon its third use.
+ *
+ * @author Józsa György
+ * @version 2.0
+ * @see models.items.Item
+ * @since prototype
+ * @since 2020.04.24
+ */
 public class FragileShovel extends Item {
     /**
      * Changes the strategy of the finder to clear an

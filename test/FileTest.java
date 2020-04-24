@@ -48,14 +48,14 @@ public class FileTest {
         FileFilter testFilter = new FileFilter() {
             @Override
             public boolean accept(File f) {
-                return f.getName().endsWith("Test.txt");
+                return f.getName().endsWith("Test");
             }
         };
 
         FileFilter expectedFilter = new FileFilter() {
             @Override
             public boolean accept(File f) {
-                return f.getName().endsWith("Expected.txt");
+                return f.getName().endsWith("Expected");
             }
         };
 

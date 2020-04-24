@@ -57,6 +57,22 @@ abstract public class IcePatch extends Tile {
         ///TODO
     }
 
+    /**
+     * Buries an item in the Tile
+     *
+     * @param item the item to bury
+     *
+     * @return true if the item was stored,
+     * false otherwise
+     */
+    @Override
+    public boolean storeItem(Item item) {
+        if (buriedItem != null)
+            return false;
+        buriedItem = item;
+        return true;
+    }
+
     public Item getBuriedItem() {
         return buriedItem;
     }

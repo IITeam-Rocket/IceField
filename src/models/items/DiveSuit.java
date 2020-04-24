@@ -3,6 +3,8 @@ package models.items;
 import models.figures.Character;
 import models.policies.SwimOutPolicy;
 
+import java.io.Serializable;
+
 /**
  * An item that changes the finder's
  * FallInWaterPolicy.
@@ -12,7 +14,7 @@ import models.policies.SwimOutPolicy;
  * @since skeleton
  * @since 2020.03.10
  */
-public class DiveSuit extends Item {
+public class DiveSuit extends Item implements Serializable {
     /**
      * Changes the finder's FallInWaterPolicy to
      * an instance of HasDiveSuitPolicy.

@@ -3,6 +3,8 @@ package models.policies;
 import models.exceptions.EndOfGameException;
 import models.figures.Figure;
 
+import java.io.Serializable;
+
 /**
  * The strategy of a Tile to protect
  * the players from snow storm for one
@@ -13,8 +15,9 @@ import models.figures.Figure;
  * @since prototype
  * @since 2020.04.14
  */
-public class TentPolicy implements ProtectionPolicy {
+public class TentPolicy implements ProtectionPolicy, Serializable {
 
+    // TODO: 2020. 04. 24. javadoc
     private boolean isIntact = true;
 
     /**
@@ -28,9 +31,8 @@ public class TentPolicy implements ProtectionPolicy {
      */
     @Override
     public void protectAgainstStorm(Figure victim) throws EndOfGameException {
-        if (!isIntact) {
-            //TODO figura vagy karakter legyen?
-        }
+        if (!isIntact)
+            victim.reactToStorm();
     }
 
     /**
@@ -54,5 +56,16 @@ public class TentPolicy implements ProtectionPolicy {
     @Override
     public void step() {
         isIntact = false;
+    }
+
+    /**
+     * Returns the priority of the strategy
+     *
+     * @return one if the tent is intact,
+     * zero otherwise
+     */
+    @Override
+    public int getPriority() {
+        return isIntact ? 1 : 0;
     }
 }

@@ -2,6 +2,8 @@ package models.tiles;
 
 import models.figures.Figure;
 
+import java.security.SecureRandomParameters;
+
 /**
  * An unstable IcePatch that may hold
  * a number of people before flipping
@@ -14,16 +16,20 @@ import models.figures.Figure;
  * @since skeleton
  * @since 2020.03.10
  */
-public class InstableIcePatch extends IcePatch {
+public class InstableIcePatch extends IcePatch implements SecureRandomParameters {
 
+    // TODO: 2020. 04. 24. javadoc
     int playerCapacity;
+    // TODO: 2020. 04. 24. jaavadoc
     boolean flipped = false;
 
+    // TODO: 2020. 04. 24. javadoc
     public InstableIcePatch(int playerCapacity) {
         super();
         this.playerCapacity = playerCapacity;
     }
 
+    // TODO: 2020. 04. 24. javadoc
     public InstableIcePatch(int ID, int playerCapacity) {
         super(ID);
         this.playerCapacity = playerCapacity;
@@ -73,10 +79,12 @@ public class InstableIcePatch extends IcePatch {
         return flipped;
     }
 
+    // TODO: 2020. 04. 24. javadoc
     public void setFlipped(boolean flipped) {
         this.flipped = flipped;
     }
 
+    // TODO: 2020. 04. 24. javadoc
     public void setPlayerCapacity(int playerCapacity) {
         this.playerCapacity = playerCapacity;
     }

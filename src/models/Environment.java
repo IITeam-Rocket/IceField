@@ -1,9 +1,9 @@
 package models;
 
-import models.exceptions.EndOfGameException;
-import models.figures.Character;
+import models.figures.Figure;
 import models.tiles.Tile;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -17,16 +17,24 @@ import java.util.ArrayList;
  * @since 2020.03.10
  */
 
-public class Environment {
+public class Environment implements Serializable {
 
+    // TODO: 2020. 04. 24. jaavadoc
     static private final Environment instance = new Environment();
-    private ArrayList<Tile> iceTiles;
-    private ArrayList<Character> players;
-    private Character currentPlayer;
+    // TODO: 2020. 04. 24. javadoc
+    private ArrayList<Tile> iceTiles = new ArrayList<>();
+    // TODO: 2020. 04. 24. javadoc
+    private ArrayList<Figure> players = new ArrayList<>();
+    // TODO: 2020. 04. 24. javadoc
+    private Figure currentPlayer;
+    // TODO: 2020. 04. 24. javadc
     private boolean beaconIsDiscovered = false;
+    // TODO: 2020. 04. 24. javadoc
     private boolean cartridgeIsDiscovered = false;
+    // TODO: 2020. 04. 24. javadoc
     private boolean gunIsDiscovered = false;
 
+    // TODO: 2020. 04. 24. javadoc
     private Environment() {
     }
 
@@ -107,15 +115,15 @@ public class Environment {
     }
 
     /**
-     * Return a list of Characters in the game
+     * Return a list of Figures in the game
      *
      * @return the list of players
      */
-    public ArrayList<Character> getPlayers() {
+    public ArrayList<Figure> getPlayers() {
         return players;
     }
 
-    public void setPlayers(ArrayList<Character> players) {
+    public void setPlayers(ArrayList<Figure> players) {
         this.players = players;
     }
 
@@ -124,11 +132,11 @@ public class Environment {
      *
      * @return the current player
      */
-    public Character getCurrentPlayer() {
+    public Figure getCurrentPlayer() {
         return currentPlayer;
     }
 
-    public void setCurrentPlayer(Character currentPlayer) {
+    public void setCurrentPlayer(Figure currentPlayer) {
         this.currentPlayer = currentPlayer;
     }
 
@@ -179,10 +187,8 @@ public class Environment {
 
     /**
      * Plays the losing game sequence.
-     *
-     * @throws EndOfGameException always
      */
-    public void gameOver() throws EndOfGameException {
+    public void gameOver() {
         // TODO: 2020. 04. 15. implement
     }
 }

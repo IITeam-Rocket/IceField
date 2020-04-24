@@ -2,6 +2,8 @@ package models.tiles;
 
 import models.figures.Figure;
 
+import java.io.Serializable;
+
 /**
  * An IcePatch that is stable, meaning
  * it may support an indefinite number of
@@ -14,12 +16,14 @@ import models.figures.Figure;
  * @since skeleton
  * @since 2020.03.10
  */
-public class StableIcePatch extends IcePatch {
+public class StableIcePatch extends IcePatch implements Serializable {
 
+    // TODO: 2020. 04. 24. javadoc
     public StableIcePatch() {
         super();
     }
 
+    // TODO: 2020. 04. 24. javadoc
     public StableIcePatch(int ID) {
         super(ID);
     }

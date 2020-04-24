@@ -2,6 +2,8 @@ package models.figures;
 
 import models.tiles.Tile;
 
+import java.io.Serializable;
+
 /**
  * A character with the ability to analyze
  * the surrounding tiles' capacity to hold
@@ -14,7 +16,7 @@ import models.tiles.Tile;
  * @since skeleton
  * @since 2020.03.10
  */
-public class Researcher extends Character {
+public class Researcher extends Character implements Serializable {
 
     // TODO: 2020. 04. 15. javadoc
     public Researcher() {
@@ -44,5 +46,15 @@ public class Researcher extends Character {
     @Override
     public void step() {
         // TODO: 2020. 04. 16. implement
+    }
+
+    /**
+     * Returns the base body heat of the figure
+     *
+     * @return four
+     */
+    @Override
+    public int getBaseBodyHeat() {
+        return 4;
     }
 }

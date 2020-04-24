@@ -2,6 +2,8 @@ package models.policies;
 
 import models.tiles.Tile;
 
+import java.io.Serializable;
+
 /**
  * Represents a strategy for clearing two
  * units of snow from a tile for the first
@@ -14,8 +16,8 @@ import models.tiles.Tile;
  * @since prototype
  * @since 2020.04.15
  */
-public class FragileShovelPolicy implements ClearSnowPolicy {
-
+public class FragileShovelPolicy implements ClearSnowPolicy, Serializable {
+    // TODO: 2020. 04. 24. javadoc
     private int count = 3;
 
     /**

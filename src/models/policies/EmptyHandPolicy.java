@@ -2,6 +2,8 @@ package models.policies;
 
 import models.tiles.Tile;
 
+import java.io.Serializable;
+
 /**
  * Represents a strategy for clearing a unit
  * of snow from a tile.
@@ -12,7 +14,7 @@ import models.tiles.Tile;
  * @since prototype
  * @since 2020.04.15
  */
-public class EmptyHandPolicy implements ClearSnowPolicy {
+public class EmptyHandPolicy implements ClearSnowPolicy, Serializable {
 
     /**
      * Returns the priority of the strategy,

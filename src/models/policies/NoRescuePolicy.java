@@ -3,6 +3,8 @@ package models.policies;
 import models.figures.Character;
 import models.tiles.Tile;
 
+import java.io.Serializable;
+
 /**
  * A class representing the strategy of the player
  * to help a friend in need. This particular
@@ -14,7 +16,7 @@ import models.tiles.Tile;
  * @since skeleton
  * @since 2020.03.10
  */
-public class NoRescuePolicy implements RescueFriendPolicy {
+public class NoRescuePolicy implements RescueFriendPolicy, Serializable {
 
     /**
      * Does nothing, as there is no strategy.

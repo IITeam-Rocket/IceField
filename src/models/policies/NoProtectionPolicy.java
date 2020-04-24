@@ -3,6 +3,8 @@ package models.policies;
 import models.exceptions.EndOfGameException;
 import models.figures.Figure;
 
+import java.io.Serializable;
+
 /**
  * The strategy of a Tile to not
  * protect its inhabitants from a
@@ -14,7 +16,7 @@ import models.figures.Figure;
  * @since skeleton
  * @since 2020.03.10
  */
-public class NoProtectionPolicy implements ProtectionPolicy {
+public class NoProtectionPolicy implements ProtectionPolicy, Serializable {
 
     /**
      * Provides no protection against a storm,
@@ -24,10 +26,11 @@ public class NoProtectionPolicy implements ProtectionPolicy {
      *               to the storm
      *
      * @throws EndOfGameException If victim's body heat reaches zero.
+     * @see EndOfGameException
      */
     @Override
     public void protectAgainstStorm(Figure victim) throws EndOfGameException {
-        //TODO: figure or character?
+        victim.reactToStorm();
     }
 
     /**
@@ -44,5 +47,15 @@ public class NoProtectionPolicy implements ProtectionPolicy {
     public void protectAgainstAttack(Figure victim, Figure attacker) throws EndOfGameException {
         if (victim != attacker)
             throw new EndOfGameException("A character has been mauled!");
+    }
+
+    /**
+     * Returns the priority of the strategy
+     *
+     * @return zero
+     */
+    @Override
+    public int getPriority() {
+        return 0;
     }
 }

@@ -1,9 +1,10 @@
 package models.tiles;
 
-import models.figures.Character;
+import models.exceptions.EndOfGameException;
 import models.figures.Figure;
 import models.items.Item;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -15,19 +16,27 @@ import java.util.ArrayList;
  * @since skeleton
  * @since 2020.03.10
  */
-abstract public class Tile {
+abstract public class Tile implements Serializable {
+    // TODO: 2020. 04. 24. javadoc
     protected static final int maxSnowDepth = 6;
+    // TODO: 2020. 04. 24. javadoc
     protected static int IDCounter = 0;
+    // TODO: 2020. 04. 24. javadoc
     protected final int ID;
+    // TODO: 2020. 04. 24. javadoc
     protected int snowDepth;
+    // TODO: 2020. 04. 24. javadoc
     protected ArrayList<Figure> entities = new ArrayList<>();
+    // TODO: 2020. 04. 24. javadoc
     protected ArrayList<Tile> neighbours = new ArrayList<>();
 
+    // TODO: 2020. 04. 24. javadoc
     public Tile() {
         this.ID = IDCounter;
         IDCounter++;
     }
 
+    // TODO: 2020. 04. 24. javadoc
     public Tile(int ID) {
         this.ID = ID;
     }
@@ -54,9 +63,12 @@ abstract public class Tile {
      * Increases the amount of snow on the Tile.
      *
      * @param quantity the amount of snow to add
+     *
+     * @return the quantity of snow that was succesfully added
      */
-    public void addSnow(int quantity) {
-        //TODO
+    public int addSnow(int quantity) {
+        //TODO: Arra figyelni, hogy van maximum!!!!
+        return -1;
     }
 
     /**
@@ -79,8 +91,11 @@ abstract public class Tile {
 
     /**
      * Realises the storm's effects.
+     *
+     * @throws EndOfGameException if a player freezes
+     *                            to death
      */
-    abstract public void reactToStorm();
+    abstract public void reactToStorm() throws EndOfGameException;
 
     /**
      * Returns the maximum number of characters the
@@ -136,20 +151,31 @@ abstract public class Tile {
      * Adds a Character to the list of Characters
      * currently standing on the Tile.
      *
-     * @param character the Character to add
+     * @param figure the Figure to add
      */
-    public void addCharacter(Character character) {
-        this.entities.add(character);
+    public void addCharacter(Figure figure) {
+        this.entities.add(figure);
     }
 
+    /**
+     * Performs duties that must be done
+     * at the end of a turn.
+     *
+     * @throws EndOfGameException if a player dies.
+     */
+    abstract public void step() throws EndOfGameException;
+
+    // TODO: 2020. 04. 24. javadoc
     public static int getMaxSnowDepth() {
         return maxSnowDepth;
     }
 
+    // TODO: 2020. 04. 24. javadoc
     public static int getIDCounter() {
         return IDCounter;
     }
 
+    // TODO: 2020. 04. 24. javadoc
     public int getID() {
         return ID;
     }

@@ -1,6 +1,9 @@
 package models.items;
 
 import models.figures.Character;
+import models.policies.ShovelPolicy;
+
+import java.io.Serializable;
 
 /**
  * An Item that gives the finding character
@@ -12,7 +15,7 @@ import models.figures.Character;
  * @since skeleton
  * @since 2020.03.10
  */
-public class Shovel extends Item {
+public class Shovel extends Item implements Serializable {
     /**
      * Sets the finder player's strength to 2, if it's lower.
      *
@@ -20,6 +23,6 @@ public class Shovel extends Item {
      */
     @Override
     public void uponDiscovery(Character finder) {
-        // TODO: 2020. 04. 15. implement
+        finder.changeClearSnowPolicy(new ShovelPolicy());
     }
 }

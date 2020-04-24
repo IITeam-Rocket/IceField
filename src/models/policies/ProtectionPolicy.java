@@ -42,4 +42,11 @@ public interface ProtectionPolicy {
      */
     default void step() {
     }
+
+    /**
+     * Returns the priority of the strategy
+     *
+     * @return the priority
+     */
+    int getPriority();
 }

@@ -1,7 +1,8 @@
 package models.policies;
 
-import models.exceptions.EndOfGameException;
 import models.figures.Figure;
+
+import java.io.Serializable;
 
 /**
  * The strategy of a Tile to protect
@@ -14,19 +15,17 @@ import models.figures.Figure;
  * @since skeleton
  * @since 2020.03.10
  */
-public class IglooPolicy implements ProtectionPolicy {
+public class IglooPolicy implements ProtectionPolicy, Serializable {
 
     /**
      * Executes strategy of protecting against a storm.
      *
      * @param victim the character being exposed
      *               to the storm
-     *
-     * @throws EndOfGameException Never
-     * @see EndOfGameException
      */
     @Override
-    public void protectAgainstStorm(Figure victim) throws EndOfGameException {
+    public void protectAgainstStorm(Figure victim) {
+        //Empty
     }
 
     /**
@@ -34,11 +33,19 @@ public class IglooPolicy implements ProtectionPolicy {
      *
      * @param victim   the victim suffering the attack
      * @param attacker the attacker who initiates the attack
-     *
-     * @throws EndOfGameException Never
-     * @see EndOfGameException
      */
     @Override
-    public void protectAgainstAttack(Figure victim, Figure attacker) throws EndOfGameException {
+    public void protectAgainstAttack(Figure victim, Figure attacker) {
+        //Empty
+    }
+
+    /**
+     * Returns the priority of the strategy
+     *
+     * @return 2
+     */
+    @Override
+    public int getPriority() {
+        return 2;
     }
 }

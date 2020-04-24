@@ -1,8 +1,9 @@
 package models.tiles;
 
+import models.exceptions.EndOfGameException;
 import models.figures.Figure;
 
-import java.util.Random;
+import java.io.Serializable;
 
 /**
  * A tile with no solid platform.
@@ -13,14 +14,17 @@ import java.util.Random;
  * @since skeleton
  * @since 2020.03.10
  */
-public class Hole extends Tile {
+public class Hole extends Tile implements Serializable {
 
+    // TODO: 2020. 04. 24. javadoc
     private boolean isDiscovered = false;
 
+    // TODO: 2020. 04. 24. javadoc
     public Hole() {
         super();
     }
 
+    // TODO: 2020. 04. 24. javadoc
     public Hole(int ID) {
         super(ID);
     }
@@ -41,10 +45,11 @@ public class Hole extends Tile {
 
     /**
      * Realises the storm's effects.
+     *
      */
     @Override
     public void reactToStorm() {
-        //TODO
+        // TODO: 2020. 04. 24. implement
     }
 
     /**
@@ -67,10 +72,24 @@ public class Hole extends Tile {
         isDiscovered = true;
     }
 
+    /**
+     * Performs duties that must be done
+     * at the end of a turn
+     *
+     * @throws EndOfGameException if it contains players
+     */
+    @Override
+    public void step() throws EndOfGameException {
+        if (entities.size() > 0)
+            throw new EndOfGameException("A player has drowned!");
+    }
+
+    // TODO: 2020. 04. 24. javadoc
     public boolean isDiscovered() {
         return isDiscovered;
     }
 
+    // TODO: 2020. 04. 24. javadoc
     public void setDiscovered(boolean discovered) {
         isDiscovered = discovered;
     }

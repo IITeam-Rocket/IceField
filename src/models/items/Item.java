@@ -2,6 +2,8 @@ package models.items;
 
 import models.figures.Character;
 
+import java.io.Serializable;
+
 /**
  * A class representing a hidden item in the IcePatch.
  * Upon digging it out, it gives the discoverer a bonus.
@@ -11,7 +13,7 @@ import models.figures.Character;
  * @since skeleton
  * @since 2020.03.10
  */
-public abstract class Item {
+public abstract class Item implements Serializable {
     /**
      * upon discovery, has some effect on the game.
      *

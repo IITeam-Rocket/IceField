@@ -3,12 +3,11 @@ package models.figures;
 import models.Environment;
 import models.exceptions.EndOfGameException;
 import models.items.Item;
-import models.policies.FallInWaterPolicy;
-import models.policies.HasNoDiveSuitPolicy;
-import models.policies.NoRescuePolicy;
-import models.policies.RescueFriendPolicy;
+import models.policies.*;
 import models.tiles.IcePatch;
 import models.tiles.Tile;
+
+import java.io.Serializable;
 
 
 /**
@@ -20,17 +19,21 @@ import models.tiles.Tile;
  * @since skeleton
  * @since 2020.03.10
  */
-public abstract class Character extends Figure {
+public abstract class Character extends Figure implements Serializable {
+    // TODO: 2020. 04. 24. javadoc
     protected int bodyHeat;
+    // TODO: 2020. 04. 24. javadoc
     protected int stamina;
-    protected RescueFriendPolicy helpFriendStrategy;
+    // TODO: 2020. 04. 24. javadoc
+    protected RescueFriendPolicy helpFriendStrategy = new NoRescuePolicy();
+    // TODO: 2020. 04. 24. javadoc
+    protected ClearSnowPolicy clearPatchStrategy = new EmptyHandPolicy();
 
 
     // TODO: 2020. 04. 15. javadoc 
     protected Character(int bodyHeat, int stamina) {
         this.bodyHeat = bodyHeat;
         this.stamina = stamina;
-        helpFriendStrategy = new NoRescuePolicy();
         swimToShoreStrategy = new HasNoDiveSuitPolicy();
     }
 
@@ -40,7 +43,6 @@ public abstract class Character extends Figure {
      */
     public void clearPatch() {
         // TODO: 2020. 04. 15. implement
-        // TODO: 2020. 04. 15. add ClearPatchPolicy
     }
 
 
@@ -79,7 +81,7 @@ public abstract class Character extends Figure {
             throw new IllegalArgumentException("Must not be negative");
         bodyHeat -= quantity;
         if (bodyHeat <= 0)
-            Environment.getInstance().gameOver();
+            throw new EndOfGameException("A player has frozen to death!");
     }
 
     /**
@@ -130,16 +132,23 @@ public abstract class Character extends Figure {
     }
 
     /**
+     * Changes the player's strategy to clear
+     * snow.
+     *
+     * @param strategy the new strategy
+     */
+    public void changeClearSnowPolicy(ClearSnowPolicy strategy) {
+        if (strategy.getPriority() >= clearPatchStrategy.getPriority())
+            clearPatchStrategy = strategy;
+    }
+
+    /**
      * Returns the body-heat of the character.
      *
      * @return the bodyHeat of the character
      */
     public int getBodyHeat() {
         return bodyHeat;
-    }
-
-    public void setBodyHeat(int bodyHeat) {
-        this.bodyHeat = bodyHeat;
     }
 
     /**
@@ -152,10 +161,6 @@ public abstract class Character extends Figure {
         return stamina;
     }
 
-    public void setStamina(int stamina) {
-        this.stamina = stamina;
-    }
-
     /**
      * Returns the character's strategy in the event of
      * rescuing a friend.
@@ -164,10 +169,6 @@ public abstract class Character extends Figure {
      */
     public RescueFriendPolicy getHelpFriendStrategy() {
         return helpFriendStrategy;
-    }
-
-    public void setHelpFriendStrategy(RescueFriendPolicy helpFriendStrategy) {
-        this.helpFriendStrategy = helpFriendStrategy;
     }
 
     /**
@@ -179,10 +180,6 @@ public abstract class Character extends Figure {
         return swimToShoreStrategy;
     }
 
-    public void setSwimToShoreStrategy(FallInWaterPolicy swimToShoreStrategy) {
-        this.swimToShoreStrategy = swimToShoreStrategy;
-    }
-
     /**
      * Returns the Tile the character is currently standing on.
      *
@@ -192,6 +189,56 @@ public abstract class Character extends Figure {
         return tile;
     }
 
+    /**
+     * Realises a attack's effect on the figure.
+     *
+     * @throws EndOfGameException always
+     */
+    @Override
+    public void reactToAttack() throws EndOfGameException {
+        throw new EndOfGameException("A player has been attacked!");
+    }
+
+    /**
+     * Realises a blizzard's effect on the figure.
+     *
+     * @throws EndOfGameException if character's
+     *                            body heat reaches zero.
+     */
+    @Override
+    public void reactToStorm() throws EndOfGameException {
+        removeHeat(1);
+    }
+
+    /**
+     * Changes the tile's ProtectionPolicy to
+     * a new instance of TentPolicy.
+     */
+    public void buildTent() {
+        ((IcePatch) tile).changeProtectionPolicy(new TentPolicy());
+    }
+
+    // TODO: 2020. 04. 24. javadoc
+    public void setBodyHeat(int bodyHeat) {
+        this.bodyHeat = bodyHeat;
+    }
+
+    // TODO: 2020. 04. 24. javadoc
+    public void setStamina(int stamina) {
+        this.stamina = stamina;
+    }
+
+    // TODO: 2020. 04. 24. javadoc
+    public void setSwimToShoreStrategy(FallInWaterPolicy swimToShoreStrategy) {
+        this.swimToShoreStrategy = swimToShoreStrategy;
+    }
+
+    // TODO: 2020. 04. 24. javadoc
+    public void setHelpFriendStrategy(RescueFriendPolicy helpFriendStrategy) {
+        this.helpFriendStrategy = helpFriendStrategy;
+    }
+
+    // TODO: 2020. 04. 24. javadoc
     public void setTile(Tile tile) {
         this.tile = tile;
     }

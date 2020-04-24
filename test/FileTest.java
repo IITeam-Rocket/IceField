@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.*;
 import java.util.Map;
+import java.util.TreeMap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -20,7 +21,7 @@ public class FileTest {
 
     @BeforeEach
     public void setup() {
-
+        testEnv = new TreeMap<File, File>();
         wd = new File(System.clearProperty("user.dir"));
         File[] files = wd.listFiles();
         System.out.println("\n\n\n\tWorking dir");
@@ -63,9 +64,8 @@ public class FileTest {
         File[] expected = wd.listFiles(expectedFilter);
 
         for (File f : testfiles) {
-            String testname = f.getName().split(".")[0];
             for (File v : expected) {
-                if (v.getName().startsWith(testname)) {
+                if (v.getName().startsWith(f.getName())) {
                     testEnv.put(f, v);
                 }
             }

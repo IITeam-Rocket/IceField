@@ -191,7 +191,7 @@ public abstract class Character extends Figure {
      */
     @Override
     public void reactToAttack() throws EndOfGameException {
-        throw new EndOfGameException("A player has been attacked!")
+        throw new EndOfGameException("A player has been attacked!");
     }
 
     /**

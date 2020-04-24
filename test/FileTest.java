@@ -23,6 +23,7 @@ public class FileTest {
 
         wd = new File(System.clearProperty("user.dir"));
         File[] files = wd.listFiles();
+        System.out.println("\n\n\n\tWorking dir");
         for (File f : files) System.out.println(f.getName());
         for (File f :
                 files) {
@@ -32,6 +33,8 @@ public class FileTest {
             }
         }
         files = wd.listFiles();
+
+        System.out.println("\n\n\n\tIn test");
         for (File f : files) System.out.println(f.getName());
         for (File f :
                 files) {
@@ -40,6 +43,7 @@ public class FileTest {
                 break;
             }
         }
+        System.out.println("\n\n\n\tIn resource");
         for (File f : files) System.out.println(f.getName());
         FileFilter testFilter = new FileFilter() {
             @Override

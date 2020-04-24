@@ -1,6 +1,7 @@
 package controllers;
 
 import models.Environment;
+import models.exceptions.EndOfGameException;
 import models.figures.Eskimo;
 import models.figures.Figure;
 import models.figures.PolarBear;
@@ -140,16 +141,20 @@ public class Prototype {
                 currentPlayerID = 0;
                 //TODO: End round
                 System.out.println("Ending round...");
-                for (Figure f : Environment.getInstance().getPlayers())
-                    f.step();
-                //TODO: Create Tile step() function
-                //for (Tile t : Environment.getInstance().getIceTiles())
-                  //  t.step();
+                for (Tile t : Environment.getInstance().getIceTiles()) {
+                    try {
+                        t.step();
+                    } catch (EndOfGameException e) {
+                        Environment.getInstance().winGame();
+                    }
+                }
             }
             else
                 currentPlayerID++;
 
             Environment.getInstance().setCurrentPlayer(Environment.getInstance().getPlayers().get(currentPlayerID));
+
+            Environment.getInstance().getCurrentPlayer().step();
         }
 
         //TODO: Implement PolearBear Stuff, when random is on and when random is off
@@ -164,8 +169,9 @@ public class Prototype {
             return;
         }
 
+        Tile currentTile = Environment.getInstance().getCurrentPlayer().getTile();
+
         if(!checkParamNumNoErrorMessage(lineParts, 1)) {
-            Tile currentTile = Environment.getInstance().getCurrentPlayer().getTile();
             System.out.print("neighbours: ");
             for(Tile tile : currentTile.getNeighbours()) {
                 System.out.print(tile.getID() + " ");
@@ -173,43 +179,105 @@ public class Prototype {
             System.out.println();
         }
         else {
+            int tileID;
 
+            try {
+                tileID = Integer.parseInt(lineParts[1]);
+            }
+            catch (NumberFormatException e) {
+                invalidParameter("move", lineParts[1]);
+                return;
+            }
+
+            for(Tile tile : currentTile.getNeighbours()) {
+                if(tile.getID() == tileID) {
+                    Environment.getInstance().getCurrentPlayer().moveTo(tile);
+                    System.out.println("move character to " + tileID + ": successful");
+                    return;
+                }
+            }
+
+            System.out.println("move character to " + tileID + ": unsuccessful");
+            System.out.println("The current Tile has no neighbour with the ID " + tileID);
         }
     }
 
     private void command_unbury(String[] lineParts) {
+        if(Environment.getInstance().getCurrentPlayer() == null) {
+            System.out.println("There is no Figure selected, please use the \"nextcharacter\" command before the first unbury!");
+            return;
+        }
 
+        //TODO: Tudni kéne milyen karakterrel van dolgunk a medve nem fog kiásni dolgokat
+        //Environment.getInstance().getCurrentPlayer().retrieveItem();
     }
 
     private void command_clearsnow(String[] lineParts) {
         if(!checkParamNum(lineParts, 1))
             return;
+
+        if(Environment.getInstance().getCurrentPlayer() == null) {
+            System.out.println("There is no Figure selected, please use the \"nextcharacter\" command before the first unbury!");
+            return;
+        }
+
+        //TODO: Tudni kéne milyen karakterrel van dolgunk a medve havat lapátolni
     }
 
     private void command_simulateweather(String[] lineParts) {
-
+        Environment.getInstance().makeStorm();
+        System.out.println("weather simulated");
     }
 
     private void command_rescue(String[] lineParts) {
         if(!checkParamNum(lineParts, 1))
             return;
+
+        if(Environment.getInstance().getCurrentPlayer() == null) {
+            System.out.println("There is no Figure selected, please use the \"nextcharacter\" command before the first rescue!");
+            return;
+        }
+
+        //TODO: Tudni kéne milyen karakterrel van dolgunk a medve havat lapátolni
     }
 
     private void command_craftsignalflare(String[] lineParts) {
+        if(Environment.getInstance().getCurrentPlayer() == null) {
+            System.out.println("There is no Figure selected, please use the \"nextcharacter\" command before the first craftsignalflare!");
+            return;
+        }
 
+        //TODO: Tudni kéne milyen karakterrel van dolgunk a medve havat lapátolni
     }
 
     private void command_buildiglu(String[] lineParts) {
+        if(Environment.getInstance().getCurrentPlayer() == null) {
+            System.out.println("There is no Figure selected, please use the \"nextcharacter\" command before the first buildiglu!");
+            return;
+        }
 
+        //TODO: Tudni kéne milyen karakterrel van dolgunk a medve havat lapátolni
     }
 
     private void command_buildtent(String[] lineParts) {
+        if(Environment.getInstance().getCurrentPlayer() == null) {
+            System.out.println("There is no Figure selected, please use the \"nextcharacter\" command before the first buildtent!");
+            return;
+        }
 
+        //TODO: Tudni kéne milyen karakterrel van dolgunk a medve havat lapátolni
     }
 
     private void command_analyzetile(String[] lineParts) {
         if(!checkParamNum(lineParts, 1))
             return;
+
+        if(Environment.getInstance().getCurrentPlayer() == null) {
+            System.out.println("There is no Figure selected, please use the \"nextcharacter\" command before the first analyzetile!");
+            return;
+        }
+
+        //TODO: Tudni kéne milyen karakterrel van dolgunk a medve havat lapátolni
     }
 
     private void command_addtile(String[] lineParts) {
@@ -353,8 +421,7 @@ public class Prototype {
                     icePatch.setBuriedItem(new Rope());
                     break;
                 case 3:
-                    //TODO: Create a FragileShovel class
-                    //icePatch.setBuriedItem(new FragileShovel());
+                    icePatch.setBuriedItem(new FragileShovel());
                     break;
                 case 4:
                     icePatch.setBuriedItem(new Shovel());
@@ -372,8 +439,7 @@ public class Prototype {
                     icePatch.setBuriedItem(new Cartridge());
                     break;
                 case 9:
-                    //TODO: Create Tent class
-                    //icePatch.setBuriedItem(new Tent());
+                    icePatch.setBuriedItem(new Tent());
                     break;
                 default:
                     System.out.println("Item ID must be between with 1 and 9!");

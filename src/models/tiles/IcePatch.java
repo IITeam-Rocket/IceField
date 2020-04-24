@@ -51,7 +51,7 @@ abstract public class IcePatch extends Tile {
     @Override
     public void reactToStorm() throws EndOfGameException {
         if (snowDepth < maxSnowDepth)
-            snowDepth++;
+            addSnow(1);
         for (Figure figure : entities)
             figure.reactToStorm();
     }
@@ -64,6 +64,15 @@ abstract public class IcePatch extends Tile {
     public void changeProtectionPolicy(ProtectionPolicy strategy) {
         if (strategy.getPriority() > protectionStrategy.getPriority())
             protectionStrategy = strategy;
+    }
+
+    /**
+     * Performs duties that must be done
+     * at the end of a turn
+     */
+    @Override
+    public void step() {
+        protectionStrategy.step();
     }
 
     public Item getBuriedItem() {

@@ -1,5 +1,6 @@
 package models.tiles;
 
+import models.exceptions.EndOfGameException;
 import models.figures.Figure;
 
 /**
@@ -64,6 +65,18 @@ public class Hole extends Tile {
      */
     public void reveal() {
         isDiscovered = true;
+    }
+
+    /**
+     * Performs duties that must be done
+     * at the end of a turn
+     *
+     * @throws EndOfGameException if it contains players
+     */
+    @Override
+    public void step() throws EndOfGameException {
+        if (entities.size() > 0)
+            throw new EndOfGameException("A player has drowned!");
     }
 
     public boolean isDiscovered() {

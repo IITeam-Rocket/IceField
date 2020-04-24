@@ -1,8 +1,6 @@
 package models.tiles;
 
 import models.exceptions.EndOfGameException;
-import jdk.jshell.spi.ExecutionControl;
-import models.figures.Character;
 import models.figures.Figure;
 import models.items.Item;
 
@@ -149,6 +147,14 @@ abstract public class Tile {
     public void addCharacter(Figure figure) {
         this.entities.add(figure);
     }
+
+    /**
+     * Performs duties that must be done
+     * at the end of a turn.
+     *
+     * @throws EndOfGameException if a player dies.
+     */
+    abstract public void step() throws EndOfGameException;
 
     public static int getMaxSnowDepth() {
         return maxSnowDepth;

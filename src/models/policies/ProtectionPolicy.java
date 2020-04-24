@@ -42,4 +42,7 @@ public interface ProtectionPolicy {
      */
     default void step() {
     }
+
+    // TODO: 2020. 04. 24. javadoc
+    int getPriority();
 }

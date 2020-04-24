@@ -53,8 +53,8 @@ abstract public class IcePatch extends Tile {
      *
      * @param strategy the new strategy
      */
-    public void changeFrostBitePolicy(ProtectionPolicy strategy) {
-        ///TODO
+    public void changeProtectionPolicy(ProtectionPolicy strategy) {
+
     }
 
     public Item getBuriedItem() {

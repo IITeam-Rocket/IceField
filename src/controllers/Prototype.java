@@ -141,8 +141,6 @@ public class Prototype {
                 currentPlayerID = 0;
                 //TODO: End round
                 System.out.println("Ending round...");
-                for (Figure f : Environment.getInstance().getPlayers())
-                    f.step();
                 for (Tile t : Environment.getInstance().getIceTiles()) {
                     try {
                         t.step();
@@ -155,6 +153,8 @@ public class Prototype {
                 currentPlayerID++;
 
             Environment.getInstance().setCurrentPlayer(Environment.getInstance().getPlayers().get(currentPlayerID));
+
+            Environment.getInstance().getCurrentPlayer().step();
         }
 
         //TODO: Implement PolearBear Stuff, when random is on and when random is off

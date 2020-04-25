@@ -55,7 +55,8 @@ jobs:
       - name: Tesing shit
         run: mvn -B test --file pom.xml
       - name: Building test report
-        run: mkdir reporting-zip
+        run: mvn site --file pom.xml
+      - run: mkdir reporting-zip
       - name: Create Zip File
         run: powershell Compress-Archive target reporting-zip\Report.zip
       - name: Upload report artifacts

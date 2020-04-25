@@ -29,12 +29,12 @@ public abstract class Character extends Figure implements Serializable {
      */
     protected int stamina;
     /**
-     * The help friend strategy of this character with default value NoRescuePolicy.
+     * The help friend strategy of this character.
      * It shows the behavior of the character when another character falls in water.
      */
     protected RescueFriendPolicy helpFriendStrategy = new NoRescuePolicy();
     /**
-     * The clear patch strategy of this character with default value EmptyHandPolicy.
+     * The clear patch strategy of this character.
      * It indicates the number of snow that the character can clear in one step.
      */
     protected ClearSnowPolicy clearPatchStrategy = new EmptyHandPolicy();
@@ -57,7 +57,6 @@ public abstract class Character extends Figure implements Serializable {
      * the player stands on.
      */
     public void clearPatch() {
-        // TODO: 2020. 04. 15. implement
         clearPatchStrategy.clear(tile);
     }
 

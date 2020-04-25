@@ -26,7 +26,6 @@ public class PolarBear extends Figure implements Serializable {
         Tile destination = tile.getNeighbours().get(idx);
 
         moveTo(destination);
-
         // TODO: 2020. 04. 16. attack tile
     }
 

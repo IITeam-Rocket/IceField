@@ -123,6 +123,17 @@ abstract public class Tile implements Serializable {
     abstract public void reactToStorm() throws EndOfGameException;
 
     /**
+     * Realises the polar bear's effects.
+     *
+     * @throws EndOfGameException on player death
+     */
+    public void reactToAttack() throws EndOfGameException {
+        //TODO 2020.04.25 implement
+        IcePatch i = (IcePatch)this;
+
+    }
+
+    /**
      * Returns the maximum number of characters the
      * Tile can hold at one time.
      *

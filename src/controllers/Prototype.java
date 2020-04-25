@@ -34,10 +34,12 @@ public class Prototype {
 
     public Prototype() {
         isDev = false;
+        Environment.getInstance().reset();
     }
 
     public Prototype(boolean dev) {
         isDev = dev;
+        Environment.getInstance().reset();
     }
     /**
      * Prints the info about the creators of the program

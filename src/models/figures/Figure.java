@@ -38,12 +38,20 @@ abstract public class Figure implements Serializable {
         swimToShoreStrategy.executeStrategy(this);
     }
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Returns the Tile the figure is currently standing on.
+     *
+     * @return the Tile the figure is on
+     */
     public Tile getTile() {
         return tile;
     }
 
-    // TODO: 2020. 04. 16. javadoc
+    /**
+     * Sets the figure's tile to the parameter.
+     *
+     * @param tile the figure's new tile
+     */
     public void setTile(Tile tile) {
         this.tile = tile;
     }
@@ -76,7 +84,11 @@ abstract public class Figure implements Serializable {
         return swimToShoreStrategy;
     }
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Sets the figure's swimToShoreStrategy to the parameter.
+     *
+     * @param swimToShoreStrategy the figure's new swimToShoreStrategy
+     */
     public void setSwimToShoreStrategy(FallInWaterPolicy swimToShoreStrategy) {
         this.swimToShoreStrategy = swimToShoreStrategy;
     }

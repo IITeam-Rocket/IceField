@@ -1,4 +1,5 @@
 import controllers.Prototype;
+import models.exceptions.EndOfGameException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
@@ -30,7 +31,7 @@ public class FileTest {
 
     @ParameterizedTest(name = "{index} => {0}")
     @ArgumentsSource(FileMapArgumentsProvider.class)
-    public void tester(Map.Entry<File, File> entry) throws IOException {
+    public void tester(Map.Entry<File, File> entry) throws IOException, EndOfGameException {
         File testInputFile = entry.getKey();
         File testExpectedOutput = entry.getValue();
         String testFilename = testInputFile.getName();

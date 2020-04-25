@@ -3,6 +3,7 @@ package controllers;
 import models.Environment;
 import models.exceptions.EndOfGameException;
 import models.figures.Eskimo;
+import models.figures.Figure;
 import models.figures.PolarBear;
 import models.figures.Researcher;
 import models.items.*;
@@ -267,8 +268,16 @@ public class Prototype {
             return;
         }
 
-        //TODO: Tudni kéne milyen karakterrel van dolgunk a medve nem fog kiásni dolgokat
-        //Environment.getInstance().getCurrentPlayer().retrieveItem();
+        Figure figure = Environment.getInstance().getCurrentPlayer();
+
+        if(figure.getBaseBodyHeat() == -1)
+            System.out.println("The polarbear can't unbury!");
+        else if(figure.getBaseBodyHeat() == 4)
+            ((Researcher)figure).retrieveItem();
+        else if(figure.getBaseBodyHeat() == 5)
+            ((Eskimo)figure).retrieveItem();
+        else
+            System.out.println("Unknown Figure Type!");
     }
 
     /**
@@ -277,15 +286,21 @@ public class Prototype {
      * @param lineParts The line's parts which should be interpreted, split at every space delim
      */
     private void command_clearsnow(String[] lineParts) {
-        if(!checkParamNum(lineParts, 1))
-            return;
-
         if(Environment.getInstance().getCurrentPlayer() == null) {
-            System.out.println("There is no Figure selected, please use the \"nextcharacter\" command before the first unbury!");
+            System.out.println("There is no Figure selected, please use the \"nextcharacter\" command before the first clearsnow!");
             return;
         }
 
-        //TODO: Tudni kéne milyen karakterrel van dolgunk a medve havat lapátolni
+        Figure figure = Environment.getInstance().getCurrentPlayer();
+
+        if(figure.getBaseBodyHeat() == -1)
+            System.out.println("The polarbear can't clearsnow!");
+        else if(figure.getBaseBodyHeat() == 4)
+            ((Researcher)figure).clearPatch();
+        else if(figure.getBaseBodyHeat() == 5)
+            ((Eskimo)figure).clearPatch();
+        else
+            System.out.println("Unknown Figure Type!");
     }
 
     /**
@@ -312,7 +327,61 @@ public class Prototype {
             return;
         }
 
-        //TODO: Tudni kéne milyen karakterrel van dolgunk a medve havat lapátolni
+        Figure figure = Environment.getInstance().getCurrentPlayer();
+
+        int tileID;
+
+        try {
+            tileID = Integer.parseInt(lineParts[1]);
+        }
+        catch (NumberFormatException e) {
+            invalidParameter("rescue", lineParts[1]);
+            return;
+        }
+
+        if(Environment.getInstance().getIceTiles().size() - 1 < tileID || tileID < 0) {
+            System.out.println("Tile ID must be between 0 and the maximum ID of " + (Environment.getInstance().getIceTiles().size() - 1));
+            return;
+        }
+
+        boolean found = false;
+
+        Figure characterToRescue = null;
+
+        for(Tile tile : Environment.getInstance().getIceTiles()) {
+            if (tile.getID() == tileID) {
+                found = true;
+                if(tile.getEntities().size() == 0) {
+                    System.out.println("There are no characters on this tile!");
+                    return;
+                }
+
+                boolean nonPolarBear = false;
+                for(Figure f : tile.getEntities()) {
+                    if(f.getBaseBodyHeat() != -1) {
+                        nonPolarBear = true;
+                        characterToRescue = f;
+                        break;
+                    }
+                }
+
+                if(!nonPolarBear) {
+                    System.out.println("There are no non polarbear characters on this tile!");
+                    return;
+                }
+
+                break;
+            }
+        }
+
+        if(figure.getBaseBodyHeat() == -1)
+            System.out.println("The polarbear can't rescue!");
+        else if(figure.getBaseBodyHeat() == 4)
+            ((Researcher)figure).rescueFriend((models.figures.Character) characterToRescue);
+        else if(figure.getBaseBodyHeat() == 5)
+            ((Eskimo)figure).rescueFriend((models.figures.Character) characterToRescue);
+        else
+            System.out.println("Unknown Figure!");
     }
 
     /**
@@ -323,6 +392,21 @@ public class Prototype {
     private void command_craftsignalflare(String[] lineParts) {
         if(Environment.getInstance().getCurrentPlayer() == null) {
             System.out.println("There is no Figure selected, please use the \"nextcharacter\" command before the first craftsignalflare!");
+            return;
+        }
+
+        if(!Environment.getInstance().isBeaconIsDiscovered() || !Environment.getInstance().isGunIsDiscovered() || !Environment.getInstance().isCartridgeIsDiscovered())
+            System.out.print("Cant't craft Signal Flare, ");
+
+        if(!Environment.getInstance().isBeaconIsDiscovered())
+            System.out.print("beacon ");
+        if(!Environment.getInstance().isGunIsDiscovered())
+            System.out.print("gun ");
+        if(!Environment.getInstance().isCartridgeIsDiscovered())
+            System.out.print("cartridge ");
+
+        if(!Environment.getInstance().isBeaconIsDiscovered() || !Environment.getInstance().isGunIsDiscovered() || !Environment.getInstance().isCartridgeIsDiscovered()) {
+            System.out.println(" missing!");
             return;
         }
 

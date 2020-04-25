@@ -1,5 +1,6 @@
 package models.figures;
 
+import models.exceptions.EndOfGameException;
 import models.tiles.Tile;
 
 import java.io.Serializable;
@@ -47,9 +48,13 @@ public class Researcher extends Character implements Serializable {
         //System.out.println("capacity: " + target.getCapacity());
     }
 
-    // TODO: 2020. 04. 16. javadoc
+    /**
+     * TODO: description
+     *
+     * @throws EndOfGameException if the Researcher dies.
+     */
     @Override
-    public void step() {
+    public void step() throws EndOfGameException {
         System.out.println("researcher");
         System.out.println("bodyheat: " + bodyHeat);
         System.out.println("stamina: " + stamina);

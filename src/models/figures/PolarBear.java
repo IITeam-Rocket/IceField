@@ -1,11 +1,8 @@
 package models.figures;
 
+import controllers.RandomController;
 import models.exceptions.EndOfGameException;
 import models.tiles.IcePatch;
-import models.exceptions.EndOfGameException;
-import models.tiles.IcePatch;
-import controllers.RandomController;
-import controllers.RandomController;
 import models.tiles.Tile;
 
 import java.io.Serializable;
@@ -24,11 +21,17 @@ import java.util.Random;
  */
 public class PolarBear extends Figure implements Serializable {
 
-    // TODO: 2020. 04. 16. javadoc
+    /**
+     * If the randomness is on, the PolarBear will move to
+     * a random neighbouring tile. If is off, it will move
+     * to a given tile.
+     *
+     * @throws EndOfGameException if a main character dies.
+     */
     @Override
-    public void step() throws EndOfGameException{
-        if(RandomController.getRandom()) {
-            if(tile.getNeighbours() == null || tile.getNeighbours().size() == 0)
+    public void step() throws EndOfGameException {
+        if (RandomController.getRandom()) {
+            if (tile.getNeighbours() == null || tile.getNeighbours().size() == 0)
                 System.out.println("No tiles available to move to");
             else {
                 Random random = new Random();

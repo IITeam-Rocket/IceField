@@ -1,5 +1,6 @@
 package models.figures;
 
+import models.exceptions.EndOfGameException;
 import models.policies.IglooPolicy;
 import models.tiles.IcePatch;
 import models.tiles.Tile;
@@ -45,9 +46,13 @@ public class Eskimo extends Character implements Serializable {
             ((IcePatch) tile).changeProtectionPolicy(new IglooPolicy());
     }
 
-    // TODO: 2020. 04. 16. javadoc
+    /**
+     * TODO: description
+     *
+     * @throws EndOfGameException if the Eskimo dies.
+     */
     @Override
-    public void step() {
+    public void step() throws EndOfGameException {
         System.out.println("eskimo");
         System.out.println("bodyheat: " + bodyHeat);
         System.out.println("stamina: " + stamina);

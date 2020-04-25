@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class Environment implements Serializable {
 
-    // TODO: 2020. 04. 24. jaavadoc
+    // TODO: 2020. 04. 24. javadoc
     static private final Environment instance = new Environment();
     // TODO: 2020. 04. 24. javadoc
     private ArrayList<Tile> iceTiles = new ArrayList<>();
@@ -27,7 +27,7 @@ public class Environment implements Serializable {
     private ArrayList<Figure> players = new ArrayList<>();
     // TODO: 2020. 04. 24. javadoc
     private Figure currentPlayer;
-    // TODO: 2020. 04. 24. javadc
+    // TODO: 2020. 04. 24. javadoc
     private boolean beaconIsDiscovered = false;
     // TODO: 2020. 04. 24. javadoc
     private boolean cartridgeIsDiscovered = false;

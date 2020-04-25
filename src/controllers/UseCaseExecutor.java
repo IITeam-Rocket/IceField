@@ -1,6 +1,7 @@
 package controllers;
 
 import models.Environment;
+import models.exceptions.EndOfGameException;
 import models.figures.Character;
 import models.figures.Eskimo;
 import models.figures.Figure;
@@ -249,7 +250,7 @@ public class UseCaseExecutor {
     /**
      * Sets up and executes the makeStormWithoutIglu use case.
      */
-    public static void makeStormWithoutIglu() {
+    public static void makeStormWithoutIglu() throws EndOfGameException {
         System.out.println("Usecase: MakeStormWithoutIglu");
 
         Environment environment = setUpStorm(new NoProtectionPolicy());
@@ -260,7 +261,7 @@ public class UseCaseExecutor {
     /**
      * Sets up and executes the makeStormWithIglu use case.
      */
-    public static void makeStormWithIglu() {
+    public static void makeStormWithIglu() throws EndOfGameException {
         System.out.println("Usecase: MakeStormWithIglu");
 
         Environment environment = setUpStorm(new IglooPolicy());

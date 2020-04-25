@@ -127,9 +127,8 @@ abstract public class IcePatch extends Tile implements Serializable {
      * @throws EndOfGameException on player death
      */
     public void reactToAttack(Figure attacker) throws EndOfGameException {
-        //TODO 2020.04.25 implement
-        for (Figure f: entities) {
-            protectionStrategy.protectAgainstAttack(attacker, f);
+        for (Figure victim: entities) {
+            protectionStrategy.protectAgainstAttack(attacker, victim);
         }
     }
 }

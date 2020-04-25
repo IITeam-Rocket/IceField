@@ -176,7 +176,7 @@ public class Prototype {
      *
      * @param lineParts The line's parts which should be interpreted, split at every space delim
      */
-    private void command_nextcharacter(String[] lineParts) {
+    private void command_nextcharacter(String[] lineParts) throws EndOfGameException {
         if(Environment.getInstance().getPlayers().size() == 0) {
             System.out.println("There are currently no characters!");
             return;
@@ -308,7 +308,7 @@ public class Prototype {
      *
      * @param lineParts The line's parts which should be interpreted, split at every space delim
      */
-    private void command_simulateweather(String[] lineParts) {
+    private void command_simulateweather(String[] lineParts) throws EndOfGameException {
         Environment.getInstance().makeStorm();
         System.out.println("weather simulated");
     }
@@ -843,7 +843,7 @@ public class Prototype {
      *
      * @param line The line which should be interpreted
      */
-    private void interpret(String line) {
+    private void interpret(String line) throws EndOfGameException {
         String[] lineSegments = line.split(" ");
         if(lineSegments.length == 0) {
             invalidCommand("No command entered!");
@@ -926,8 +926,7 @@ public class Prototype {
     /**
      * Runs the prototype
      */
-    public void run()
-    {
+    public void run() throws EndOfGameException {
         if (!isDev)
             printInfo();
 

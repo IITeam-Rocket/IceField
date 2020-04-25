@@ -17,7 +17,9 @@ import java.io.Serializable;
  * @since 2020.04.15
  */
 public class FragileShovelPolicy implements ClearSnowPolicy, Serializable {
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * The number of the times this fragile shovel can be used.
+     */
     private int count = 3;
 
     /**

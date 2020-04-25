@@ -21,17 +21,28 @@ import java.io.Serializable;
  */
 abstract public class IcePatch extends Tile implements Serializable {
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * The buried item on the IcePatch.
+     */
     private Item buriedItem;
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * The IcePatch's protection strategy with default value NoProtectionPolicy.
+     */
     private ProtectionPolicy protectionStrategy = new NoProtectionPolicy();
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Creates a new IcePatch.
+     */
     public IcePatch() {
         super();
     }
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Creates a new IcePatch with the given ID.
+     * The ID should be unique.
+     *
+     * @param ID the new IcePatch's unique ID
+     */
     public IcePatch(int ID) {
         super(ID);
     }
@@ -44,7 +55,8 @@ abstract public class IcePatch extends Tile implements Serializable {
      * @return the buried item
      */
     public Item unBuryItem(Character player) {
-        //TODO
+        if(snowDepth > 0)
+            return null;
         return buriedItem;
     }
 

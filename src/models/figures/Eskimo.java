@@ -18,12 +18,16 @@ import java.io.Serializable;
  */
 public class Eskimo extends Character implements Serializable {
 
-    // TODO: 2020. 04. 15. javadoc
+    /**
+     * Creates a new eskimo with 5 body heat and 4 stamina.
+     */
     public Eskimo() {
         super(5, 4);
     }
 
-    // TODO: 2020. 04. 15. javadoc
+    /**
+     * Creates a new eskimo with the given tile and with 5 body heat and 4 stamina.
+     */
     public Eskimo(Tile starting) {
         super(5, 4);
         this.tile = starting;

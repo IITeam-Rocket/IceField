@@ -2,9 +2,7 @@ package controllers;
 
 import models.Environment;
 import models.exceptions.EndOfGameException;
-import models.figures.Eskimo;
-import models.figures.PolarBear;
-import models.figures.Researcher;
+import models.figures.*;
 import models.items.*;
 import models.tiles.*;
 

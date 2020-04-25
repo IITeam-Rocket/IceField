@@ -180,6 +180,7 @@ abstract public class Tile implements Serializable {
      */
     public void addCharacter(Figure figure) {
         this.entities.add(figure);
+        figure.setTile(this);
     }
 
     /**

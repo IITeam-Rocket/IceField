@@ -164,7 +164,7 @@ public class Prototype {
             System.out.println("set random: on");
         }
         else if(lineParts[1].equals("off")) {
-            RandomController.setRandom(true);
+            RandomController.setRandom(false);
             System.out.println("set random: off");
         }
         else
@@ -185,6 +185,8 @@ public class Prototype {
         if(Environment.getInstance().getCurrentPlayer() == null) {
             Environment.getInstance().setCurrentPlayer(Environment.getInstance().getPlayers().get(0));
             currentPlayerID = 0;
+
+            Environment.getInstance().getCurrentPlayer().step();
         }
         else {
             if (currentPlayerID == Environment.getInstance().getPlayers().size() - 1) {
@@ -455,7 +457,7 @@ public class Prototype {
         Figure figure = Environment.getInstance().getCurrentPlayer();
 
         //TODO: Tudni kéne van-e nála sátor
-        
+
         if(figure.getBaseBodyHeat() == -1)
             System.out.println("The polarbear can't build an iglu!");
         else if(figure.getBaseBodyHeat() == 4){
@@ -488,7 +490,50 @@ public class Prototype {
             return;
         }
 
-        //TODO: Tudni kéne milyen karakterrel van dolgunk a medve havat lapátolni
+        Figure figure = Environment.getInstance().getCurrentPlayer();
+
+        int tileID;
+
+        try {
+            tileID = Integer.parseInt(lineParts[1]);
+        }
+        catch (NumberFormatException e) {
+            invalidParameter("analyzetile", lineParts[1]);
+            return;
+        }
+
+        if(Environment.getInstance().getIceTiles().size() - 1 < tileID || tileID < 0) {
+            System.out.println("Tile ID must be between 0 and the maximum ID of " + (Environment.getInstance().getIceTiles().size() - 1));
+            return;
+        }
+
+        Tile tileToAnalyze = null;
+
+        boolean found = false;
+
+        for(Tile tile : figure.getTile().getNeighbours()) {
+            if (tile.getID() == tileID) {
+                found = true;
+                tileToAnalyze = tile;
+                break;
+            }
+        }
+
+        if (!found) {
+            System.out.println("Tile with ID " + tileID + " isn't a neighbour of the tile, the character is currently on!");
+            return;
+        }
+
+        if(figure.getBaseBodyHeat() == -1)
+            System.out.println("The polarbear can't analyze a tile!");
+        else if(figure.getBaseBodyHeat() == 4) {
+            ((Researcher) figure).useSpecial(tileToAnalyze);
+            System.out.println("capacity: " + tileToAnalyze.getCapacity());
+        }
+        else if(figure.getBaseBodyHeat() == 5)
+            System.out.println("The eskimo can't analyze a tile!");
+        else
+            System.out.println("Unknown Figure!");
     }
 
     /**
@@ -717,20 +762,25 @@ public class Prototype {
 
             IcePatch icePatch = (IcePatch) tile;
 
+            Figure figure;
+
             switch (characterID){
                 case 1:
-                    icePatch.addCharacter(new Eskimo());
+                    figure = new Eskimo();
                     break;
                 case 2:
-                    icePatch.addCharacter(new Researcher());
+                    figure = new Researcher();
                     break;
                 case 3:
-                    icePatch.addCharacter(new PolarBear());
+                    figure = new PolarBear();
                     break;
                 default:
                     System.out.println("Character ID must be between with 1 and 3!");
                     return;
             }
+
+            icePatch.addCharacter(figure);
+            Environment.getInstance().getPlayers().add(figure);
 
             System.out.println("character added: " + tileID + ", " + characterID);
         }

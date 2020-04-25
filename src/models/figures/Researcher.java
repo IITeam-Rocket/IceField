@@ -44,6 +44,7 @@ public class Researcher extends Character implements Serializable {
     public void useSpecial(Tile target) {
         ///TODO implement useSpecial()
         target.getCapacity();
+        //System.out.println("capacity: " + target.getCapacity());
     }
 
     // TODO: 2020. 04. 16. javadoc

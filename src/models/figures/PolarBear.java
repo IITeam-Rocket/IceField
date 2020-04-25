@@ -1,5 +1,7 @@
 package models.figures;
 
+import models.exceptions.EndOfGameException;
+import models.tiles.IcePatch;
 import models.tiles.Tile;
 
 import java.io.Serializable;
@@ -20,13 +22,14 @@ public class PolarBear extends Figure implements Serializable {
 
     // TODO: 2020. 04. 16. javadoc
     @Override
-    public void step() {
+    public void step() throws EndOfGameException {
         Random random = new Random();
         int idx = random.nextInt(tile.getNeighbours().size());
         Tile destination = tile.getNeighbours().get(idx);
 
         moveTo(destination);
         // TODO: 2020. 04. 16. attack tile
+        ((IcePatch) destination).reactToAttack(this);
     }
 
     /**

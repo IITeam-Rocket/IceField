@@ -62,7 +62,7 @@ abstract public class Figure implements Serializable {
     }
 
     // TODO: 2020. 04. 24. javadoc
-    abstract public void step();
+    abstract public void step() throws EndOfGameException;
 
     /**
      * Realises a attack's effect on the figure.

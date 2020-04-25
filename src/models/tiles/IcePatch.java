@@ -119,4 +119,17 @@ abstract public class IcePatch extends Tile implements Serializable {
     public void setProtectionStrategy(ProtectionPolicy protectionStrategy) {
         this.protectionStrategy = protectionStrategy;
     }
+
+
+    /**
+     * Realises the polar bear's effects.
+     *
+     * @throws EndOfGameException on player death
+     */
+    public void reactToAttack(Figure attacker) throws EndOfGameException {
+        //TODO 2020.04.25 implement
+        for (Figure f: entities) {
+            protectionStrategy.protectAgainstAttack(attacker, f);
+        }
+    }
 }

@@ -35,7 +35,7 @@ public class FileTest {
 
     @ParameterizedTest(name = "{index} => {0}")
     @ArgumentsSource(FileMapArgumentsProvider.class)
-    public void tester(Map.Entry<File, File> entry) throws IOException {
+    public void tester(Map.Entry<File, File> entry) throws IOException, EndOfGameException {
         File testInputFile = entry.getKey();
         File testExpectedOutput = entry.getValue();
         String testFilename = testInputFile.getName();
@@ -44,12 +44,7 @@ public class FileTest {
         FileInputStream fis = new FileInputStream(testInputFile);
         System.setIn(fis);
 
-        //TODO: Valaki rakott vele egy throw EndOfGameException-t pls fix, csak ráraktam egy try-catch-et
-        try {
-            game.run();
-        } catch (EndOfGameException e) {
-            e.printStackTrace();
-        }
+        game.run();
         FileInputStream efis = new FileInputStream(testExpectedOutput);
         InputStreamReader isr = new InputStreamReader(efis);
         BufferedReader br = new BufferedReader(isr);

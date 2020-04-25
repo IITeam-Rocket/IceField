@@ -16,6 +16,7 @@ import java.io.Serializable;
  * @since skeleton
  * @since 2020.03.10
  */
+
 public class InstableIcePatch extends IcePatch implements Serializable {
 
     // TODO: 2020. 04. 24. javadoc
@@ -79,12 +80,20 @@ public class InstableIcePatch extends IcePatch implements Serializable {
         return flipped;
     }
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Sets the InstableIcePatch is flipped or not.
+     *
+     * @param flipped the flipped attribute's new value
+     */
     public void setFlipped(boolean flipped) {
         this.flipped = flipped;
     }
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Sets the InstableIcePatch's playerCapacity to the parameter.
+     *
+     * @param playerCapacity the playerCapacity attribute's new value
+     */
     public void setPlayerCapacity(int playerCapacity) {
         this.playerCapacity = playerCapacity;
     }

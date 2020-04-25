@@ -218,27 +218,47 @@ public abstract class Character extends Figure implements Serializable {
         ((IcePatch) tile).changeProtectionPolicy(new TentPolicy());
     }
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Sets the character's bodyHeat to the parameter.
+     *
+     * @param bodyHeat the character's new bodyHeat
+     */
     public void setBodyHeat(int bodyHeat) {
         this.bodyHeat = bodyHeat;
     }
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Sets the character's stamina to the parameter.
+     *
+     * @param stamina the character's new stamina
+     */
     public void setStamina(int stamina) {
         this.stamina = stamina;
     }
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Sets the character's swimToShoreStrategy to the parameter.
+     *
+     * @param swimToShoreStrategy the character's new swimToShoreStrategy
+     */
     public void setSwimToShoreStrategy(FallInWaterPolicy swimToShoreStrategy) {
         this.swimToShoreStrategy = swimToShoreStrategy;
     }
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Sets the character's helpFriendStrategy to the parameter.
+     *
+     * @param helpFriendStrategy the character's new helpFriendStrategy
+     */
     public void setHelpFriendStrategy(RescueFriendPolicy helpFriendStrategy) {
         this.helpFriendStrategy = helpFriendStrategy;
     }
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Sets the character's tile to the parameter.
+     *
+     * @param tile the character's new tile
+     */
     public void setTile(Tile tile) {
         this.tile = tile;
     }

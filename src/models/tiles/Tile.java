@@ -165,17 +165,29 @@ abstract public class Tile implements Serializable {
      */
     abstract public void step() throws EndOfGameException;
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Returns the possible maximum snow depth on a tile
+     *
+     * @return the maximum snow depth
+     */
     public static int getMaxSnowDepth() {
         return maxSnowDepth;
     }
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Returns the next unique Tile ID in row
+     *
+     * @return the next ID
+     */
     public static int getIDCounter() {
         return IDCounter;
     }
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Returns the Tile's unique ID
+     *
+     * @return the Tile's ID
+     */
     public int getID() {
         return ID;
     }

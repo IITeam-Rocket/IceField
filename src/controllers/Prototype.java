@@ -193,7 +193,10 @@ public class Prototype {
                     try {
                         t.step();
                     } catch (EndOfGameException e) {
-                        Environment.getInstance().winGame();
+                        if(e.getMessage().equals("Win"))
+                            Environment.getInstance().winGame();
+                        else
+                            Environment.getInstance().gameOver();
                     }
                 }
             }
@@ -368,6 +371,11 @@ public class Prototype {
 
                 break;
             }
+        }
+
+        if(!found) {
+            System.out.println("The tile with ID " + tileID + " doesn't neighbour the tile, the character is on!");
+            return;
         }
 
         if(figure.getBaseBodyHeat() == -1)

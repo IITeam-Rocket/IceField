@@ -50,4 +50,17 @@ public class FragileShovelPolicy implements ClearSnowPolicy, Serializable {
         target.removeSnow(quantity);
         count--;
     }
+
+    /**
+     * Converts the name of the strategy to String so we can use it to print it
+     *
+     * @return The name of the Strategy
+     */
+    @Override
+    public String toString() {
+        if(count > 0)
+            return "FragileShovelPolicy";
+        else
+            return "EmptyHandPolicy";
+    }
 }

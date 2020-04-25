@@ -34,4 +34,14 @@ public class HasRopePolicy implements RescueFriendPolicy, Serializable {
         source.removeCharacter(friend);
 
     }
+
+    /**
+     * Converts the name of the strategy to String so we can use it to print it
+     *
+     * @return The name of the Strategy
+     */
+    @Override
+    public String toString() {
+        return "HasRopePolicy";
+    }
 }

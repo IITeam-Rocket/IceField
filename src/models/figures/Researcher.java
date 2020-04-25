@@ -50,6 +50,14 @@ public class Researcher extends Character implements Serializable {
     // TODO: 2020. 04. 16. javadoc
     @Override
     public void step() {
+        System.out.println("researcher");
+        System.out.println("bodyheat: " + bodyHeat);
+        System.out.println("stamina: " + stamina);
+        System.out.println("clearPatchStrategy: " + clearPatchStrategy.toString());
+        System.out.println("helpFriendStrategy: " + helpFriendStrategy.toString());
+        System.out.println("swimToShoreStrategy: " + swimToShoreStrategy.toString());
+        System.out.println("tile: " + tile.getID());
+
         // TODO: 2020. 04. 16. implement
     }
 

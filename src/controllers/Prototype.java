@@ -2,7 +2,10 @@ package controllers;
 
 import models.Environment;
 import models.exceptions.EndOfGameException;
-import models.figures.*;
+import models.figures.Eskimo;
+import models.figures.Figure;
+import models.figures.PolarBear;
+import models.figures.Researcher;
 import models.items.*;
 import models.tiles.*;
 
@@ -12,7 +15,14 @@ import java.io.PrintStream;
 import java.util.Scanner;
 
 /**
- *  A class which controls the Prototype version and it's main purpose is to interpret console commands and give feedback
+ * A class which controls the Prototype version
+ * and it's main purpose is to interpret console
+ * commands and give feedback
+ *
+ * @author Kovács Marcell
+ * @version 1.0
+ * @since prototype
+ * @since 2020.04.24
  */
 public class Prototype {
     private Scanner in;
@@ -20,7 +30,7 @@ public class Prototype {
     private boolean running;
     private PrintStream console;
     private int currentPlayerID;
-    private boolean isDev;
+    private final boolean isDev;
 
     public Prototype() {
         isDev = false;

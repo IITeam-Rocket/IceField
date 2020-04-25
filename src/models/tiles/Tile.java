@@ -122,6 +122,7 @@ abstract public class Tile implements Serializable {
      */
     abstract public void reactToStorm() throws EndOfGameException;
 
+
     /**
      * Returns the maximum number of characters the
      * Tile can hold at one time.

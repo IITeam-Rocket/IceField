@@ -1,5 +1,6 @@
 package models;
 
+import models.exceptions.EndOfGameException;
 import models.figures.Figure;
 import models.tiles.Tile;
 
@@ -159,8 +160,13 @@ public class Environment implements Serializable {
      * Initiates a storm that fills the Tiles with snow,
      * and takes the Characters' body-heat.
      */
-    public void makeStorm() {
-        // TODO: 2020. 04. 15. implement
+    public void makeStorm() throws EndOfGameException {
+        // TODO: 2020. 04. 25. check
+        ArrayList<Tile> target = getRandomTiles();
+        for (Tile t: target) {
+            t.addSnow(1);
+            t.reactToStorm();
+        }
     }
 
     /**
@@ -170,7 +176,7 @@ public class Environment implements Serializable {
      */
     public ArrayList<Tile> getRandomTiles() {
         // TODO: 2020. 04. 25. check
-        ArrayList<Tile> randomTiles = new ArrayList<Tile>();
+        ArrayList<Tile> randomTiles = new ArrayList();
         Random rand = new Random();
         int numberOfRandomTiles = rand.nextInt(iceTiles.size());
         while(randomTiles.size() != numberOfRandomTiles){

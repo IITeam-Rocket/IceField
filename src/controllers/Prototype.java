@@ -3,7 +3,6 @@ package controllers;
 import models.Environment;
 import models.exceptions.EndOfGameException;
 import models.figures.Eskimo;
-import models.figures.Figure;
 import models.figures.PolarBear;
 import models.figures.Researcher;
 import models.items.*;
@@ -976,6 +975,7 @@ public class Prototype {
     /**
      * Runs the prototype
      */
+
     public void run() throws EndOfGameException {
         if (!isDev)
             printInfo();

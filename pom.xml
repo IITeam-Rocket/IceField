@@ -152,6 +152,9 @@
                             <goals>
                                 <goal>report</goal>
                             </goals>
+                            <configuration>
+                                <outputDirectory>${project.basedir}/target/JaCoCo-report</outputDirectory>
+                            </configuration>
                         </execution>
                     </executions>
                 </plugin>
@@ -175,7 +178,7 @@
     </dependencies>
 
     <reporting>
-        <outputDirectory>${project.build.directory}/site</outputDirectory>
+        <outputDirectory>${project.basedir}/target/report</outputDirectory>
     </reporting>
 
     <profiles>

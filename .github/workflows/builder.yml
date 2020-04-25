@@ -19,7 +19,7 @@ jobs:
       run: mvn -B validate --file pom.xml
 
   build:
-    needs: Testing
+    needs: validate
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2

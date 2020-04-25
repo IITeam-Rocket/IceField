@@ -180,7 +180,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-report-plugin</artifactId>
-                    <version>3.0.0</version>
+                    <version>3.0.0-M4</version>
                 </plugin>
             </plugins>
 
@@ -200,6 +200,12 @@
             <version>5.6.0-M1</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>3.0.0-M4</version>
+            <type>maven-plugin</type>
+        </dependency>
     </dependencies>
 
     <reporting>
@@ -212,7 +218,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-report-plugin</artifactId>
-                <version>3.0.0</version>
+                <version>3.0.0-M4</version>
             </plugin>
         </plugins>
     </reporting>

@@ -17,7 +17,9 @@ import java.io.Serializable;
  */
 public class TentPolicy implements ProtectionPolicy, Serializable {
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Shows the state of the tent.
+     */
     private boolean isIntact = true;
 
     /**

@@ -3,17 +3,14 @@ package controllers;
 import models.Environment;
 import models.exceptions.EndOfGameException;
 import models.figures.Eskimo;
-import models.figures.Figure;
 import models.figures.PolarBear;
 import models.figures.Researcher;
 import models.items.*;
-import models.policies.FragileShovelPolicy;
 import models.tiles.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -25,7 +22,15 @@ public class Prototype {
     private boolean running;
     private PrintStream console;
     private int currentPlayerID;
+    private boolean isDev;
 
+    public Prototype() {
+        isDev = false;
+    }
+
+    public Prototype(boolean dev) {
+        isDev = dev;
+    }
     /**
      * Prints the info about the creators of the program
      */
@@ -804,7 +809,8 @@ public class Prototype {
      */
     public void run()
     {
-        printInfo();
+        if (!isDev)
+            printInfo();
 
         in = new Scanner(System.in);
         file = false;

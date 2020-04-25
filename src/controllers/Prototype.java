@@ -132,7 +132,8 @@ public class Prototype {
         if(!checkParamNum(lineParts, 1))
             return;
 
-        //TODO: Legyen minden szerializálható
+        if(Environment.serializeRead(lineParts[1]))
+            System.out.println("loaded: " + lineParts[1]);
     }
 
     /**
@@ -144,7 +145,8 @@ public class Prototype {
         if(!checkParamNum(lineParts, 1))
             return;
 
-        //TODO: Legyen minden szerializálható
+        if(Environment.serializeWrite(lineParts[1]))
+            System.out.println("saved: " + lineParts[1]);
     }
 
     /**

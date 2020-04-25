@@ -184,6 +184,15 @@ abstract public class Tile implements Serializable {
     }
 
     /**
+     * Sets the next unique Tile ID in row
+     *
+     * @param idCounter the next ID
+     */
+    public static void setIDCounter(int idCounter) {
+        IDCounter =  idCounter;
+    }
+
+    /**
      * Returns the Tile's unique ID
      *
      * @return the Tile's ID

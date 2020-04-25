@@ -3,7 +3,7 @@ package models;
 import models.figures.Figure;
 import models.tiles.Tile;
 
-import java.io.Serializable;
+import java.io.*;
 import java.util.ArrayList;
 
 /**
@@ -45,6 +45,77 @@ public class Environment implements Serializable {
      */
     static public Environment getInstance() {
         return instance;
+    }
+
+    /**
+     * Writes the instance object to the given path using serialization
+     *
+     * @param path The path where the object should be written serialized
+     * @return Return whether or not the serialization was a success
+     */
+    public static boolean serializeWrite(String path) {
+        try {
+            FileOutputStream f = new FileOutputStream(path);
+            ObjectOutputStream out = new ObjectOutputStream(f);
+            out.writeObject(instance);
+            out.close();
+            return true;
+        } catch (IOException ex) {
+            System.out.println("Couldn't save with serialization! File " + path + " doesn't exist!");
+            return false;
+        }
+    }
+
+    /**
+     * Reads the instance object from the given path using serialization
+     *
+     * @param path The path where the object should be read from serialized
+     * @return Return whether or not the serialization was a success
+     */
+    public static boolean serializeRead(String path) {
+        try {
+            FileInputStream f = new FileInputStream(path);
+            ObjectInputStream in = new ObjectInputStream(f);
+            Environment env = (Environment)in.readObject();
+
+            Tile.setIDCounter(env.getIceTiles().size());
+
+            instance.reset();
+
+            instance.setIceTiles(env.getIceTiles());
+            instance.setPlayers(env.getPlayers());
+            instance.setCurrentPlayer(env.getCurrentPlayer());
+
+            if(env.isBeaconIsDiscovered())
+                instance.recordBeacon();
+            if(env.isCartridgeIsDiscovered())
+                instance.recordCartridge();
+            if(env.isGunIsDiscovered())
+                instance.recordGun();
+
+            in.close();
+
+            return true;
+        } catch(IOException ex) {
+            System.out.println("Couldn't load with serialization! File " + path + " doesn't exist or doesn't contain the correct data!");
+            return  false;
+        } catch(ClassNotFoundException ex) {
+            System.out.println("Couldn't save with serialization! ClassNotFound");
+            return false;
+        }
+    }
+
+    /**
+     * Resets the content of the current Environment class
+     */
+    private void reset()
+    {
+        iceTiles = new ArrayList<>();
+        players = new ArrayList<>();
+        currentPlayer = null;
+        beaconIsDiscovered = false;
+        cartridgeIsDiscovered = false;
+        gunIsDiscovered = false;
     }
 
     /**

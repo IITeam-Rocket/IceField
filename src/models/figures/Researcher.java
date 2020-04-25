@@ -63,7 +63,7 @@ public class Researcher extends Character implements Serializable {
         System.out.println("swimToShoreStrategy: " + swimToShoreStrategy.toString());
         System.out.println("tile: " + tile.getID());
 
-        // TODO: 2020. 04. 16. implement
+        //TODO Ha meghal?
     }
 
     /**

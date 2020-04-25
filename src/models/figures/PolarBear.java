@@ -28,12 +28,16 @@ public class PolarBear extends Figure implements Serializable {
     @Override
     public void step() throws EndOfGameException{
         if(RandomController.getRandom()) {
-            Random random = new Random();
-            int idx = random.nextInt(tile.getNeighbours().size());
-            Tile destination = tile.getNeighbours().get(idx);
+            if(tile.getNeighbours() == null || tile.getNeighbours().size() == 0)
+                System.out.println("No tiles available to move to");
+            else {
+                Random random = new Random();
+                int idx = random.nextInt(tile.getNeighbours().size());
+                Tile destination = tile.getNeighbours().get(idx);
 
-            moveTo(destination);
-            ((IcePatch) tile).reactToAttack(this);
+                moveTo(destination);
+                ((IcePatch) tile).reactToAttack(this);
+            }
         }
         else {
             System.out.println("polarbear");

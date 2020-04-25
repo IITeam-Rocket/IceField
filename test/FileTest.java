@@ -1,4 +1,5 @@
 import controllers.Prototype;
+import models.exceptions.EndOfGameException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
@@ -43,7 +44,12 @@ public class FileTest {
         FileInputStream fis = new FileInputStream(testInputFile);
         System.setIn(fis);
 
-        game.run();
+        //TODO: Valaki rakott vele egy throw EndOfGameException-t pls fix, csak ráraktam egy try-catch-et
+        try {
+            game.run();
+        } catch (EndOfGameException e) {
+            e.printStackTrace();
+        }
         FileInputStream efis = new FileInputStream(testExpectedOutput);
         InputStreamReader isr = new InputStreamReader(efis);
         BufferedReader br = new BufferedReader(isr);

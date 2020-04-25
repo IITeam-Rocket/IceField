@@ -395,22 +395,22 @@ public class Prototype {
             return;
         }
 
-        if(!Environment.getInstance().isBeaconIsDiscovered() || !Environment.getInstance().isGunIsDiscovered() || !Environment.getInstance().isCartridgeIsDiscovered())
-            System.out.print("Cant't craft Signal Flare, ");
-
-        if(!Environment.getInstance().isBeaconIsDiscovered())
-            System.out.print("beacon ");
-        if(!Environment.getInstance().isGunIsDiscovered())
-            System.out.print("gun ");
-        if(!Environment.getInstance().isCartridgeIsDiscovered())
-            System.out.print("cartridge ");
-
         if(!Environment.getInstance().isBeaconIsDiscovered() || !Environment.getInstance().isGunIsDiscovered() || !Environment.getInstance().isCartridgeIsDiscovered()) {
-            System.out.println(" missing!");
+            System.out.println("at least one part is missing");
             return;
         }
 
-        //TODO: Tudni kéne milyen karakterrel van dolgunk a medve havat lapátolni
+        //TODO: Bizotsítani, hogy egy mezőn vannak akiknél vannak az alkatrészek
+        Figure figure = Environment.getInstance().getCurrentPlayer();
+
+        if(figure.getBaseBodyHeat() == -1)
+            System.out.println("The polarbear can't craft!");
+        else if(figure.getBaseBodyHeat() == 4 || figure.getBaseBodyHeat() == 5) {
+            System.out.println("signal flare crafted");
+            Environment.getInstance().winGame();
+        }
+        else
+            System.out.println("Unknown Figure!");
     }
 
     /**
@@ -424,7 +424,21 @@ public class Prototype {
             return;
         }
 
-        //TODO: Tudni kéne milyen karakterrel van dolgunk a medve havat lapátolni
+        Figure figure = Environment.getInstance().getCurrentPlayer();
+
+        if(figure.getBaseBodyHeat() == -1)
+            System.out.println("The polarbear can't build an iglu!");
+        else if(figure.getBaseBodyHeat() == 4)
+            System.out.println("The researcher can't build an iglu!");
+        else if(figure.getBaseBodyHeat() == 5) {
+            ((Eskimo) figure).useSpecial(figure.getTile());
+            System.out.println("build iglu: successful");
+            return;
+        }
+        else
+            System.out.println("Unknown Figure!");
+
+        System.out.println("build iglu: unsuccessful");
     }
 
     /**
@@ -438,7 +452,26 @@ public class Prototype {
             return;
         }
 
-        //TODO: Tudni kéne milyen karakterrel van dolgunk a medve havat lapátolni
+        Figure figure = Environment.getInstance().getCurrentPlayer();
+
+        //TODO: Tudni kéne van-e nála sátor
+        
+        if(figure.getBaseBodyHeat() == -1)
+            System.out.println("The polarbear can't build an iglu!");
+        else if(figure.getBaseBodyHeat() == 4){
+            ((Researcher) figure).buildTent();
+            System.out.println("build tent: successful");
+            return;
+        }
+        else if(figure.getBaseBodyHeat() == 5) {
+            ((Eskimo) figure).buildTent();
+            System.out.println("build tent: successful");
+            return;
+        }
+        else
+            System.out.println("Unknown Figure!");
+
+        System.out.println("build tent: unsuccessful");
     }
 
     /**

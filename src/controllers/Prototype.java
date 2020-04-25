@@ -841,7 +841,8 @@ public class Prototype {
      */
     private void command_reset(String[] lineParts) {
         Environment.getInstance().reset();
-        System.out.println("Game Reseted!");
+        if(!isDev)
+            System.out.println("Game Reseted!");
     }
 
     /**

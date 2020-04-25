@@ -98,8 +98,8 @@ public class Prototype {
         }
 
         try {
-            System.out.println("set input: " + lineParts[1]);
             in = new Scanner(new File(lineParts[1]));
+            System.out.println("set input: " + lineParts[1]);
         } catch (FileNotFoundException e) {
             System.out.println("File " + lineParts[1] + " doesn't exist!");
         }
@@ -986,7 +986,6 @@ public class Prototype {
     /**
      * Runs the prototype
      */
-
     public void run() throws EndOfGameException {
         if (!isDev)
             printInfo();

@@ -188,7 +188,6 @@ public class Prototype {
         else {
             if (currentPlayerID == Environment.getInstance().getPlayers().size() - 1) {
                 currentPlayerID = 0;
-                //TODO: End round
                 System.out.println("Ending round...");
                 for (Tile t : Environment.getInstance().getIceTiles()) {
                     try {
@@ -206,10 +205,8 @@ public class Prototype {
             Environment.getInstance().getCurrentPlayer().step();
         }
 
-        //TODO: Implement PolearBear Stuff, when random is on and when random is off
-
-        //TODO: Implement logic
-
+        if(Environment.getInstance().getCurrentPlayer().getBaseBodyHeat() == -1 && RandomController.getRandom())
+            command_nextcharacter(lineParts);
     }
 
     /**
@@ -452,8 +449,6 @@ public class Prototype {
         }
 
         Figure figure = Environment.getInstance().getCurrentPlayer();
-
-        //TODO: Tudni kéne van-e nála sátor
 
         if(figure.getBaseBodyHeat() == -1)
             System.out.println("The polarbear can't build an iglu!");

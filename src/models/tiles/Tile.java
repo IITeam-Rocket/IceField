@@ -17,26 +17,45 @@ import java.util.ArrayList;
  * @since 2020.03.10
  */
 abstract public class Tile implements Serializable {
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * The maximum possible snow depth on a Tile.
+     */
     protected static final int maxSnowDepth = 6;
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * The next unique ID.
+     */
     protected static int IDCounter = 0;
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * The Tile's unique ID.
+     */
     protected final int ID;
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * The actual snow depth on the Tile.
+     */
     protected int snowDepth;
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Contains the Figures who stands on the Tile.
+     */
     protected ArrayList<Figure> entities = new ArrayList<>();
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Contains the neighbours of the Tile.
+     */
     protected ArrayList<Tile> neighbours = new ArrayList<>();
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Creates a new Tile.
+     */
     public Tile() {
         this.ID = IDCounter;
         IDCounter++;
     }
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Creates a new Tile with the given ID.
+     * The ID should be unique.
+     *
+     * @param ID the new Tile's unique ID.
+     */
     public Tile(int ID) {
         this.ID = ID;
     }
@@ -64,11 +83,14 @@ abstract public class Tile implements Serializable {
      *
      * @param quantity the amount of snow to add
      *
-     * @return the quantity of snow that was succesfully added
+     * @return the quantity of snow that was successfully added
      */
     public int addSnow(int quantity) {
-        //TODO: Arra figyelni, hogy van maximum!!!!
-        return -1;
+        int oldSnowDepth = snowDepth;
+        snowDepth += quantity;
+        if(snowDepth > maxSnowDepth)
+            snowDepth = maxSnowDepth;
+        return snowDepth - oldSnowDepth;
     }
 
     /**
@@ -77,7 +99,10 @@ abstract public class Tile implements Serializable {
      * @param quantity the amount of snow to remove
      */
     public void removeSnow(int quantity) {
-        // TODO
+        if(snowDepth <= quantity)
+            snowDepth = 0;
+        else
+            snowDepth -= quantity;
     }
 
     /**
@@ -96,6 +121,7 @@ abstract public class Tile implements Serializable {
      *                            to death
      */
     abstract public void reactToStorm() throws EndOfGameException;
+
 
     /**
      * Returns the maximum number of characters the
@@ -165,17 +191,38 @@ abstract public class Tile implements Serializable {
      */
     abstract public void step() throws EndOfGameException;
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Returns the possible maximum snow depth on a tile
+     *
+     * @return the maximum snow depth
+     */
     public static int getMaxSnowDepth() {
         return maxSnowDepth;
     }
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Returns the next unique Tile ID in row
+     *
+     * @return the next ID
+     */
     public static int getIDCounter() {
         return IDCounter;
     }
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Sets the next unique Tile ID in row
+     *
+     * @param idCounter the next ID
+     */
+    public static void setIDCounter(int idCounter) {
+        IDCounter =  idCounter;
+    }
+
+    /**
+     * Returns the Tile's unique ID
+     *
+     * @return the Tile's ID
+     */
     public int getID() {
         return ID;
     }

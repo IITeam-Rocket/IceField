@@ -21,17 +21,28 @@ import java.io.Serializable;
  */
 abstract public class IcePatch extends Tile implements Serializable {
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * The buried item on the IcePatch.
+     */
     private Item buriedItem;
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * The IcePatch's protection strategy with default value NoProtectionPolicy.
+     */
     private ProtectionPolicy protectionStrategy = new NoProtectionPolicy();
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Creates a new IcePatch.
+     */
     public IcePatch() {
         super();
     }
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Creates a new IcePatch with the given ID.
+     * The ID should be unique.
+     *
+     * @param ID the new IcePatch's unique ID
+     */
     public IcePatch(int ID) {
         super(ID);
     }
@@ -44,7 +55,8 @@ abstract public class IcePatch extends Tile implements Serializable {
      * @return the buried item
      */
     public Item unBuryItem(Character player) {
-        //TODO
+        if(snowDepth > 0)
+            return null;
         return buriedItem;
     }
 
@@ -81,18 +93,43 @@ abstract public class IcePatch extends Tile implements Serializable {
         protectionStrategy.step();
     }
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Returns the IcePatch's buriedItem
+     *
+     * @return the buriedItem  of the IcePatch
+     */
     public Item getBuriedItem() {
         return buriedItem;
     }
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Sets the IcePatch's buriedItem to the parameter.
+     *
+     * @param buriedItem the IcePatch's new buriedItem
+     */
     public void setBuriedItem(Item buriedItem) {
         this.buriedItem = buriedItem;
     }
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Sets the IcePatch's protectionStrategy to the parameter.
+     *
+     * @param protectionStrategy the IcePatch's new protectionStrategy
+     */
     public void setProtectionStrategy(ProtectionPolicy protectionStrategy) {
         this.protectionStrategy = protectionStrategy;
+    }
+
+
+    /**
+     * Realises the polar bear's effects.
+     *
+     * @throws EndOfGameException on player death
+     */
+    public void reactToAttack(Figure attacker) throws EndOfGameException {
+        //TODO 2020.04.25 implement
+        for (Figure f: entities) {
+            protectionStrategy.protectAgainstAttack(attacker, f);
+        }
     }
 }

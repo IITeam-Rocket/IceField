@@ -2,7 +2,7 @@ package models.tiles;
 
 import models.figures.Figure;
 
-import java.security.SecureRandomParameters;
+import java.io.Serializable;
 
 /**
  * An unstable IcePatch that may hold
@@ -16,20 +16,34 @@ import java.security.SecureRandomParameters;
  * @since skeleton
  * @since 2020.03.10
  */
-public class InstableIcePatch extends IcePatch implements SecureRandomParameters {
 
-    // TODO: 2020. 04. 24. javadoc
+public class InstableIcePatch extends IcePatch implements Serializable {
+
+    /**
+     * The capacity of this InstableIcePatch.
+     */
     int playerCapacity;
-    // TODO: 2020. 04. 24. jaavadoc
+    /**
+     * The state of the InstableIcePatch with the default value: false.
+     */
     boolean flipped = false;
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Creates a new InstableIcePatch with the given playerCapacity.
+     *
+     * @param playerCapacity the new InstableIcePatch's capacity
+     */
     public InstableIcePatch(int playerCapacity) {
         super();
         this.playerCapacity = playerCapacity;
     }
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Creates a new InstableIcePatch with the given playerCapacity and with the given ID.
+     *
+     * @param playerCapacity the new InstableIcePatch's capacity.
+     * @param ID the new InstableIcePatch's unique ID.
+     */
     public InstableIcePatch(int ID, int playerCapacity) {
         super(ID);
         this.playerCapacity = playerCapacity;
@@ -44,7 +58,15 @@ public class InstableIcePatch extends IcePatch implements SecureRandomParameters
      */
     @Override
     public boolean acceptCharacter(Figure figure) {
-        //TODO
+        if(flipped)
+            return false;
+        addCharacter(figure);
+        if(entities.size() > playerCapacity) {
+            flip();
+            for (Figure f : entities) {
+                f.swimToShore();
+            }
+        }
         return true;
     }
 
@@ -56,7 +78,6 @@ public class InstableIcePatch extends IcePatch implements SecureRandomParameters
      */
     @Override
     public int getCapacity() {
-        //TODO
         return playerCapacity;
     }
 
@@ -79,12 +100,20 @@ public class InstableIcePatch extends IcePatch implements SecureRandomParameters
         return flipped;
     }
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Sets the InstableIcePatch is flipped or not.
+     *
+     * @param flipped the flipped attribute's new value
+     */
     public void setFlipped(boolean flipped) {
         this.flipped = flipped;
     }
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Sets the InstableIcePatch's playerCapacity to the parameter.
+     *
+     * @param playerCapacity the playerCapacity attribute's new value
+     */
     public void setPlayerCapacity(int playerCapacity) {
         this.playerCapacity = playerCapacity;
     }

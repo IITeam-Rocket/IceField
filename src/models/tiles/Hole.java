@@ -16,15 +16,22 @@ import java.io.Serializable;
  */
 public class Hole extends Tile implements Serializable {
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * The state of this hole. If it is true someone discovered the hole.
+     */
     private boolean isDiscovered = false;
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Creates a new Hole.
+     */
     public Hole() {
         super();
     }
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Creates a new Hole with the given ID.
+     * The ID should be unique.
+     */
     public Hole(int ID) {
         super(ID);
     }
@@ -39,8 +46,12 @@ public class Hole extends Tile implements Serializable {
      */
     @Override
     public boolean acceptCharacter(Figure figure) {
-        //TODO
-        return false;
+        if(isDiscovered)
+            return false;
+        reveal();
+        addCharacter(figure);
+        figure.swimToShore();
+        return true;
     }
 
     /**
@@ -84,12 +95,18 @@ public class Hole extends Tile implements Serializable {
             throw new EndOfGameException("A player has drowned!");
     }
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Returns the state of this Hole.
+     * @return this Hole is discovered or not.
+     */
     public boolean isDiscovered() {
         return isDiscovered;
     }
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Sets the isDiscovered attribute to the given value.
+     * @param discovered the new value of the isDiscovered attribute.
+     */
     public void setDiscovered(boolean discovered) {
         isDiscovered = discovered;
     }

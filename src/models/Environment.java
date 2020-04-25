@@ -159,14 +159,15 @@ public class Environment implements Serializable {
     /**
      * Initiates a storm that fills the Tiles with snow,
      * and takes the Characters' body-heat.
+     *
+     * @throws EndOfGameException if a player character
+     *                            dies
+     * @see EndOfGameException
      */
     public void makeStorm() throws EndOfGameException {
-        // TODO: 2020. 04. 25. check
         ArrayList<Tile> target = getRandomTiles();
-        for (Tile t: target) {
-            t.addSnow(1);
+        for (Tile t : target)
             t.reactToStorm();
-        }
     }
 
     /**
@@ -176,7 +177,7 @@ public class Environment implements Serializable {
      */
     public ArrayList<Tile> getRandomTiles() {
         // TODO: 2020. 04. 25. check
-        ArrayList<Tile> randomTiles = new ArrayList();
+        ArrayList<Tile> randomTiles = new ArrayList<>();
         Random rand = new Random();
         int numberOfRandomTiles = rand.nextInt(iceTiles.size());
         while(randomTiles.size() != numberOfRandomTiles){
@@ -186,13 +187,6 @@ public class Environment implements Serializable {
                 randomTiles.add(nextTile);
         }
         return randomTiles;
-    }
-
-    /**
-     * Plays the winning game sequence.
-     */
-    public void winGame() {
-        // TODO: 2020. 04. 15. implement
     }
 
     /**
@@ -287,10 +281,17 @@ public class Environment implements Serializable {
     }
 
     /**
+     * Plays the winning game sequence.
+     */
+    public void winGame() {
+        System.out.println("signal flare crafted");
+    }
+
+    /**
      * Plays the losing game sequence.
      */
     public void gameOver() {
-        // TODO: 2020. 04. 15. implement
+        // Empty, mert a kimeneti nyelv ilyen...
 
     }
 }

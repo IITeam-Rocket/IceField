@@ -60,7 +60,8 @@ public class Hole extends Tile implements Serializable {
      */
     @Override
     public void reactToStorm() {
-        // TODO: 2020. 04. 24. implement
+        if (snowDepth < maxSnowDepth)
+            addSnow(1);
     }
 
     /**

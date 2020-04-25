@@ -61,7 +61,11 @@ abstract public class Figure implements Serializable {
         this.tile = tile;
     }
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Executes what the figure does in its turn.
+     *
+     * @throws EndOfGameException if a main character dies.
+     */
     abstract public void step() throws EndOfGameException;
 
     /**

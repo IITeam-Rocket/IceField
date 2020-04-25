@@ -3,21 +3,18 @@ package controllers;
 import models.Environment;
 import models.exceptions.EndOfGameException;
 import models.figures.Eskimo;
-import models.figures.Figure;
 import models.figures.PolarBear;
 import models.figures.Researcher;
 import models.items.*;
-import models.policies.FragileShovelPolicy;
 import models.tiles.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- *  A class which controls the Prototype version and it's main purpose is to interpret console commands and give feedback
+ * A class which controls the Prototype version and it's main purpose is to interpret console commands and give feedback
  */
 public class Prototype {
     private Scanner in;
@@ -46,8 +43,7 @@ public class Prototype {
     /**
      * Prints the item IDs
      */
-    private void printItems()
-    {
+    private void printItems() {
         System.out.println("1 food");
         System.out.println("2 rope");
         System.out.println("3 fragile shovel");
@@ -62,8 +58,7 @@ public class Prototype {
     /**
      * Prints the character IDs
      */
-    private void printCharacters()
-    {
+    private void printCharacters() {
         System.out.println("1 eskimo");
         System.out.println("2 researcher");
         System.out.println("3 polarbear");
@@ -75,10 +70,10 @@ public class Prototype {
      * @param lineParts The line's parts which should be interpreted, split at every space delim
      */
     private void command_input(String[] lineParts) {
-        if(!checkParamNum(lineParts, 1))
+        if (!checkParamNum(lineParts, 1))
             return;
 
-        if(lineParts[1].equals("console")) {
+        if (lineParts[1].equals("console")) {
             System.out.println("set input: console");
             in = new Scanner(System.in);
             return;
@@ -98,10 +93,10 @@ public class Prototype {
      * @param lineParts The line's parts which should be interpreted, split at every space delim
      */
     private void command_output(String[] lineParts) {
-        if(!checkParamNum(lineParts, 1))
+        if (!checkParamNum(lineParts, 1))
             return;
 
-        if(lineParts[1].equals("console")) {
+        if (lineParts[1].equals("console")) {
             System.out.println("set output: console");
             System.setOut(console);
             System.out.println("set output: console");
@@ -124,7 +119,7 @@ public class Prototype {
      * @param lineParts The line's parts which should be interpreted, split at every space delim
      */
     private void command_load(String[] lineParts) {
-        if(!checkParamNum(lineParts, 1))
+        if (!checkParamNum(lineParts, 1))
             return;
 
         //TODO: Legyen minden szerializálható
@@ -136,7 +131,7 @@ public class Prototype {
      * @param lineParts The line's parts which should be interpreted, split at every space delim
      */
     private void command_save(String[] lineParts) {
-        if(!checkParamNum(lineParts, 1))
+        if (!checkParamNum(lineParts, 1))
             return;
 
         //TODO: Legyen minden szerializálható
@@ -148,18 +143,16 @@ public class Prototype {
      * @param lineParts The line's parts which should be interpreted, split at every space delim
      */
     private void command_random(String[] lineParts) {
-        if(!checkParamNum(lineParts, 1))
+        if (!checkParamNum(lineParts, 1))
             return;
 
-        if(lineParts[1].equals("on")) {
+        if (lineParts[1].equals("on")) {
             RandomController.setRandom(true);
             System.out.println("set random: on");
-        }
-        else if(lineParts[1].equals("off")) {
+        } else if (lineParts[1].equals("off")) {
             RandomController.setRandom(true);
             System.out.println("set random: off");
-        }
-        else
+        } else
             invalidParameter("random", lineParts[1]);
     }
 
@@ -169,16 +162,15 @@ public class Prototype {
      * @param lineParts The line's parts which should be interpreted, split at every space delim
      */
     private void command_nextcharacter(String[] lineParts) {
-        if(Environment.getInstance().getPlayers().size() == 0) {
+        if (Environment.getInstance().getPlayers().size() == 0) {
             System.out.println("There are currently no characters!");
             return;
         }
 
-        if(Environment.getInstance().getCurrentPlayer() == null) {
+        if (Environment.getInstance().getCurrentPlayer() == null) {
             Environment.getInstance().setCurrentPlayer(Environment.getInstance().getPlayers().get(0));
             currentPlayerID = 0;
-        }
-        else {
+        } else {
             if (currentPlayerID == Environment.getInstance().getPlayers().size() - 1) {
                 currentPlayerID = 0;
                 //TODO: End round
@@ -190,8 +182,7 @@ public class Prototype {
                         Environment.getInstance().winGame();
                     }
                 }
-            }
-            else
+            } else
                 currentPlayerID++;
 
             Environment.getInstance().setCurrentPlayer(Environment.getInstance().getPlayers().get(currentPlayerID));
@@ -211,33 +202,31 @@ public class Prototype {
      * @param lineParts The line's parts which should be interpreted, split at every space delim
      */
     private void command_move(String[] lineParts) {
-        if(Environment.getInstance().getCurrentPlayer() == null) {
+        if (Environment.getInstance().getCurrentPlayer() == null) {
             System.out.println("There is no Figure selected, please use the \"nextcharacter\" command before the first move!");
             return;
         }
 
         Tile currentTile = Environment.getInstance().getCurrentPlayer().getTile();
 
-        if(!checkParamNumNoErrorMessage(lineParts, 1)) {
+        if (!checkParamNumNoErrorMessage(lineParts, 1)) {
             System.out.print("neighbours: ");
-            for(Tile tile : currentTile.getNeighbours()) {
+            for (Tile tile : currentTile.getNeighbours()) {
                 System.out.print(tile.getID() + " ");
             }
             System.out.println();
-        }
-        else {
+        } else {
             int tileID;
 
             try {
                 tileID = Integer.parseInt(lineParts[1]);
-            }
-            catch (NumberFormatException e) {
+            } catch (NumberFormatException e) {
                 invalidParameter("move", lineParts[1]);
                 return;
             }
 
-            for(Tile tile : currentTile.getNeighbours()) {
-                if(tile.getID() == tileID) {
+            for (Tile tile : currentTile.getNeighbours()) {
+                if (tile.getID() == tileID) {
                     Environment.getInstance().getCurrentPlayer().moveTo(tile);
                     System.out.println("move character to " + tileID + ": successful");
                     return;
@@ -255,7 +244,7 @@ public class Prototype {
      * @param lineParts The line's parts which should be interpreted, split at every space delim
      */
     private void command_unbury(String[] lineParts) {
-        if(Environment.getInstance().getCurrentPlayer() == null) {
+        if (Environment.getInstance().getCurrentPlayer() == null) {
             System.out.println("There is no Figure selected, please use the \"nextcharacter\" command before the first unbury!");
             return;
         }
@@ -270,10 +259,10 @@ public class Prototype {
      * @param lineParts The line's parts which should be interpreted, split at every space delim
      */
     private void command_clearsnow(String[] lineParts) {
-        if(!checkParamNum(lineParts, 1))
+        if (!checkParamNum(lineParts, 1))
             return;
 
-        if(Environment.getInstance().getCurrentPlayer() == null) {
+        if (Environment.getInstance().getCurrentPlayer() == null) {
             System.out.println("There is no Figure selected, please use the \"nextcharacter\" command before the first unbury!");
             return;
         }
@@ -297,10 +286,10 @@ public class Prototype {
      * @param lineParts The line's parts which should be interpreted, split at every space delim
      */
     private void command_rescue(String[] lineParts) {
-        if(!checkParamNum(lineParts, 1))
+        if (!checkParamNum(lineParts, 1))
             return;
 
-        if(Environment.getInstance().getCurrentPlayer() == null) {
+        if (Environment.getInstance().getCurrentPlayer() == null) {
             System.out.println("There is no Figure selected, please use the \"nextcharacter\" command before the first rescue!");
             return;
         }
@@ -314,7 +303,7 @@ public class Prototype {
      * @param lineParts The line's parts which should be interpreted, split at every space delim
      */
     private void command_craftsignalflare(String[] lineParts) {
-        if(Environment.getInstance().getCurrentPlayer() == null) {
+        if (Environment.getInstance().getCurrentPlayer() == null) {
             System.out.println("There is no Figure selected, please use the \"nextcharacter\" command before the first craftsignalflare!");
             return;
         }
@@ -328,7 +317,7 @@ public class Prototype {
      * @param lineParts The line's parts which should be interpreted, split at every space delim
      */
     private void command_buildiglu(String[] lineParts) {
-        if(Environment.getInstance().getCurrentPlayer() == null) {
+        if (Environment.getInstance().getCurrentPlayer() == null) {
             System.out.println("There is no Figure selected, please use the \"nextcharacter\" command before the first buildiglu!");
             return;
         }
@@ -342,7 +331,7 @@ public class Prototype {
      * @param lineParts The line's parts which should be interpreted, split at every space delim
      */
     private void command_buildtent(String[] lineParts) {
-        if(Environment.getInstance().getCurrentPlayer() == null) {
+        if (Environment.getInstance().getCurrentPlayer() == null) {
             System.out.println("There is no Figure selected, please use the \"nextcharacter\" command before the first buildtent!");
             return;
         }
@@ -356,10 +345,10 @@ public class Prototype {
      * @param lineParts The line's parts which should be interpreted, split at every space delim
      */
     private void command_analyzetile(String[] lineParts) {
-        if(!checkParamNum(lineParts, 1))
+        if (!checkParamNum(lineParts, 1))
             return;
 
-        if(Environment.getInstance().getCurrentPlayer() == null) {
+        if (Environment.getInstance().getCurrentPlayer() == null) {
             System.out.println("There is no Figure selected, please use the \"nextcharacter\" command before the first analyzetile!");
             return;
         }
@@ -373,35 +362,33 @@ public class Prototype {
      * @param lineParts The line's parts which should be interpreted, split at every space delim
      */
     private void command_addtile(String[] lineParts) {
-        if(!checkParamNum(lineParts, 1))
+        if (!checkParamNum(lineParts, 1))
             return;
 
         Tile tile;
 
-        if(lineParts[1].equals("hole"))
+        if (lineParts[1].equals("hole"))
             tile = new Hole();
-        else if(lineParts[1].equals("stable"))
+        else if (lineParts[1].equals("stable"))
             tile = new StableIcePatch();
-        else if(lineParts[1].equals("instable")) {
-            if(!checkParamNum(lineParts, 2))
+        else if (lineParts[1].equals("instable")) {
+            if (!checkParamNum(lineParts, 2))
                 return;
 
             try {
                 int capacity = Integer.parseInt(lineParts[2]);
 
-                if(capacity <= 0) {
+                if (capacity <= 0) {
                     System.out.println("Instable IcePatch capacity needs to be greater than 0!");
                     return;
                 }
 
                 tile = new InstableIcePatch(capacity);
-            }
-            catch (NumberFormatException e) {
+            } catch (NumberFormatException e) {
                 invalidParameter("addtile instable", lineParts[2]);
                 return;
             }
-        }
-        else {
+        } else {
             invalidParameter("addtile", lineParts[1]);
             return;
         }
@@ -418,33 +405,31 @@ public class Prototype {
      * @param lineParts The line's parts which should be interpreted, split at every space delim
      */
     private void command_neighbourtile(String[] lineParts) {
-        if(!checkParamNum(lineParts, 2))
+        if (!checkParamNum(lineParts, 2))
             return;
 
         int firstID, secondID;
 
         try {
             firstID = Integer.parseInt(lineParts[1]);
-        }
-        catch (NumberFormatException e) {
+        } catch (NumberFormatException e) {
             invalidParameter("neighbourtile", lineParts[1]);
             return;
         }
 
         try {
             secondID = Integer.parseInt(lineParts[2]);
-        }
-        catch (NumberFormatException e) {
+        } catch (NumberFormatException e) {
             invalidParameter("neighbourtile " + lineParts[1], lineParts[2]);
             return;
         }
 
-        if(Environment.getInstance().getIceTiles().size() - 1 < firstID || firstID < 0 || Environment.getInstance().getIceTiles().size() - 1 < secondID || secondID < 0) {
+        if (Environment.getInstance().getIceTiles().size() - 1 < firstID || firstID < 0 || Environment.getInstance().getIceTiles().size() - 1 < secondID || secondID < 0) {
             System.out.println("Tile IDs must be between 0 and the maximum ID of " + (Environment.getInstance().getIceTiles().size() - 1));
             return;
         }
 
-        if(firstID == secondID) {
+        if (firstID == secondID) {
             System.out.println("A tile can't be it's own neighbour!");
             return;
         }
@@ -452,15 +437,15 @@ public class Prototype {
         Tile firstTile = Environment.getInstance().getIceTiles().get(firstID);
         Tile secondTile = Environment.getInstance().getIceTiles().get(secondID);
 
-        for(Tile tile : firstTile.getNeighbours()) {
-            if(tile == secondTile) {
+        for (Tile tile : firstTile.getNeighbours()) {
+            if (tile == secondTile) {
                 System.out.println("These tiles are already neighbours!");
                 return;
             }
         }
 
-        for(Tile tile : secondTile.getNeighbours()) {
-            if(tile == firstTile) {
+        for (Tile tile : secondTile.getNeighbours()) {
+            if (tile == firstTile) {
                 System.out.println("These tiles are already neighbours!");
                 return;
             }
@@ -478,42 +463,39 @@ public class Prototype {
      * @param lineParts The line's parts which should be interpreted, split at every space delim
      */
     private void command_additemtotile(String[] lineParts) {
-        if(!checkParamNumNoErrorMessage(lineParts, 2)) {
+        if (!checkParamNumNoErrorMessage(lineParts, 2)) {
             printItems();
-        }
-        else {
+        } else {
             int tileID;
             int itemID;
 
             try {
                 tileID = Integer.parseInt(lineParts[1]);
-            }
-            catch (NumberFormatException e) {
+            } catch (NumberFormatException e) {
                 invalidParameter("additemtotile", lineParts[1]);
                 return;
             }
 
             try {
                 itemID = Integer.parseInt(lineParts[2]);
-            }
-            catch (NumberFormatException e) {
+            } catch (NumberFormatException e) {
                 invalidParameter("additemtotile " + lineParts[1], lineParts[2]);
                 return;
             }
 
-            if(Environment.getInstance().getIceTiles().size() - 1 < tileID || tileID < 0) {
+            if (Environment.getInstance().getIceTiles().size() - 1 < tileID || tileID < 0) {
                 System.out.println("Tile ID must be between 0 and the maximum ID of " + (Environment.getInstance().getIceTiles().size() - 1));
                 return;
             }
 
             Tile tile = Environment.getInstance().getIceTiles().get(tileID);
 
-            if(tile.getCapacity() == 0) {
+            if (tile.getCapacity() == 0) {
                 System.out.println("Items can't be placed in a hole!");
                 return;
             }
 
-            IcePatch icePatch = (IcePatch)tile;
+            IcePatch icePatch = (IcePatch) tile;
 
             switch (itemID) {
                 case 1:
@@ -558,10 +540,9 @@ public class Prototype {
      * @param lineParts The line's parts which should be interpreted, split at every space delim
      */
     private void command_addcharactertotile(String[] lineParts) {
-        if(!checkParamNumNoErrorMessage(lineParts, 2)) {
+        if (!checkParamNumNoErrorMessage(lineParts, 2)) {
             printCharacters();
-        }
-        else {
+        } else {
             int tileID;
             int characterID;
 
@@ -593,7 +574,7 @@ public class Prototype {
 
             IcePatch icePatch = (IcePatch) tile;
 
-            switch (characterID){
+            switch (characterID) {
                 case 1:
                     icePatch.addCharacter(new Eskimo());
                     break;
@@ -618,10 +599,9 @@ public class Prototype {
      * @param lineParts The line's parts which should be interpreted, split at every space delim
      */
     private void command_addsnowtotile(String[] lineParts) {
-        if(!checkParamNumNoErrorMessage(lineParts, 2)) {
+        if (!checkParamNumNoErrorMessage(lineParts, 2)) {
             printCharacters();
-        }
-        else {
+        } else {
             int tileID;
             int snowQuantity;
 
@@ -653,8 +633,9 @@ public class Prototype {
     /**
      * Checks if there are enough parameters to interpret the line, without an error message
      *
-     * @param lineParts The line's parts which should be interpreted, split at every space delim
+     * @param lineParts              The line's parts which should be interpreted, split at every space delim
      * @param paramNumWithoutCommand The number of parameters not counting the command itself
+     *
      * @return returns are there enough parameters
      */
     private boolean checkParamNumNoErrorMessage(String[] lineParts, int paramNumWithoutCommand) {
@@ -664,12 +645,13 @@ public class Prototype {
     /**
      * Checks if there are enough parameters to interpret the line, given an error message if there aren't enough
      *
-     * @param lineParts The line's parts which should be interpreted, split at every space delim
+     * @param lineParts              The line's parts which should be interpreted, split at every space delim
      * @param paramNumWithoutCommand The number of parameters not counting the command itself
+     *
      * @return returns are there enough parameters
      */
     private boolean checkParamNum(String[] lineParts, int paramNumWithoutCommand) {
-        if(lineParts.length < paramNumWithoutCommand + 1) {
+        if (lineParts.length < paramNumWithoutCommand + 1) {
             missingParameter(lineParts[0]);
             return false;
         }
@@ -689,7 +671,7 @@ public class Prototype {
      * Prints an error, that a parameter was invalid in a command
      *
      * @param command The command which was tryed to be interpreted
-     * @param param The parameter which was wrong during the interpretation
+     * @param param   The parameter which was wrong during the interpretation
      */
     private void invalidParameter(String command, String param) {
         System.out.println("Invalid parameter in " + "\"" + command + "\" command: " + param);
@@ -707,7 +689,7 @@ public class Prototype {
     /**
      * Prints an error, that the command was invalid with a bonus error message
      *
-     * @param line The line which should be interpreted
+     * @param line         The line which should be interpreted
      * @param errorMessage Error message
      */
     private void invalidCommand(String line, String errorMessage) {
@@ -721,7 +703,7 @@ public class Prototype {
      */
     private void interpret(String line) {
         String[] lineSegments = line.split(" ");
-        if(lineSegments.length == 0) {
+        if (lineSegments.length == 0) {
             invalidCommand("No command entered!");
             return;
         }
@@ -802,8 +784,7 @@ public class Prototype {
     /**
      * Runs the prototype
      */
-    public void run()
-    {
+    public void run() {
         printInfo();
 
         in = new Scanner(System.in);
@@ -811,16 +792,14 @@ public class Prototype {
         running = true;
         console = System.out;
 
-        while(running)
-        {
-            if(file && !in.hasNextLine())
-            {
+        while (running) {
+            if (file && !in.hasNextLine()) {
                 System.out.println("File input successfully run!");
                 file = false;
                 in = new Scanner(System.in);
             }
 
-            if(in.hasNextLine()) {
+            if (in.hasNextLine()) {
                 String line = in.nextLine();
                 line = line.toLowerCase();
                 interpret(line);

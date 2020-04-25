@@ -132,7 +132,8 @@ public class Prototype {
         if(!checkParamNum(lineParts, 1))
             return;
 
-        //TODO: Legyen minden szerializálható
+        if(Environment.serializeRead(lineParts[1]))
+            System.out.println("loaded: " + lineParts[1]);
     }
 
     /**
@@ -144,7 +145,8 @@ public class Prototype {
         if(!checkParamNum(lineParts, 1))
             return;
 
-        //TODO: Legyen minden szerializálható
+        if(Environment.serializeWrite(lineParts[1]))
+            System.out.println("saved: " + lineParts[1]);
     }
 
     /**
@@ -161,7 +163,7 @@ public class Prototype {
             System.out.println("set random: on");
         }
         else if(lineParts[1].equals("off")) {
-            RandomController.setRandom(true);
+            RandomController.setRandom(false);
             System.out.println("set random: off");
         }
         else
@@ -173,7 +175,7 @@ public class Prototype {
      *
      * @param lineParts The line's parts which should be interpreted, split at every space delim
      */
-    private void command_nextcharacter(String[] lineParts) {
+    private void command_nextcharacter(String[] lineParts) throws EndOfGameException {
         if(Environment.getInstance().getPlayers().size() == 0) {
             System.out.println("There are currently no characters!");
             return;
@@ -182,6 +184,8 @@ public class Prototype {
         if(Environment.getInstance().getCurrentPlayer() == null) {
             Environment.getInstance().setCurrentPlayer(Environment.getInstance().getPlayers().get(0));
             currentPlayerID = 0;
+
+            Environment.getInstance().getCurrentPlayer().step();
         }
         else {
             if (currentPlayerID == Environment.getInstance().getPlayers().size() - 1) {
@@ -265,8 +269,16 @@ public class Prototype {
             return;
         }
 
-        //TODO: Tudni kéne milyen karakterrel van dolgunk a medve nem fog kiásni dolgokat
-        //Environment.getInstance().getCurrentPlayer().retrieveItem();
+        Figure figure = Environment.getInstance().getCurrentPlayer();
+
+        if(figure.getBaseBodyHeat() == -1)
+            System.out.println("The polarbear can't unbury!");
+        else if(figure.getBaseBodyHeat() == 4)
+            ((Researcher)figure).retrieveItem();
+        else if(figure.getBaseBodyHeat() == 5)
+            ((Eskimo)figure).retrieveItem();
+        else
+            System.out.println("Unknown Figure Type!");
     }
 
     /**
@@ -275,15 +287,21 @@ public class Prototype {
      * @param lineParts The line's parts which should be interpreted, split at every space delim
      */
     private void command_clearsnow(String[] lineParts) {
-        if(!checkParamNum(lineParts, 1))
-            return;
-
         if(Environment.getInstance().getCurrentPlayer() == null) {
-            System.out.println("There is no Figure selected, please use the \"nextcharacter\" command before the first unbury!");
+            System.out.println("There is no Figure selected, please use the \"nextcharacter\" command before the first clearsnow!");
             return;
         }
 
-        //TODO: Tudni kéne milyen karakterrel van dolgunk a medve havat lapátolni
+        Figure figure = Environment.getInstance().getCurrentPlayer();
+
+        if(figure.getBaseBodyHeat() == -1)
+            System.out.println("The polarbear can't clearsnow!");
+        else if(figure.getBaseBodyHeat() == 4)
+            ((Researcher)figure).clearPatch();
+        else if(figure.getBaseBodyHeat() == 5)
+            ((Eskimo)figure).clearPatch();
+        else
+            System.out.println("Unknown Figure Type!");
     }
 
     /**
@@ -291,7 +309,7 @@ public class Prototype {
      *
      * @param lineParts The line's parts which should be interpreted, split at every space delim
      */
-    private void command_simulateweather(String[] lineParts) {
+    private void command_simulateweather(String[] lineParts) throws EndOfGameException {
         Environment.getInstance().makeStorm();
         System.out.println("weather simulated");
     }
@@ -310,7 +328,61 @@ public class Prototype {
             return;
         }
 
-        //TODO: Tudni kéne milyen karakterrel van dolgunk a medve havat lapátolni
+        Figure figure = Environment.getInstance().getCurrentPlayer();
+
+        int tileID;
+
+        try {
+            tileID = Integer.parseInt(lineParts[1]);
+        }
+        catch (NumberFormatException e) {
+            invalidParameter("rescue", lineParts[1]);
+            return;
+        }
+
+        if(Environment.getInstance().getIceTiles().size() - 1 < tileID || tileID < 0) {
+            System.out.println("Tile ID must be between 0 and the maximum ID of " + (Environment.getInstance().getIceTiles().size() - 1));
+            return;
+        }
+
+        boolean found = false;
+
+        Figure characterToRescue = null;
+
+        for(Tile tile : Environment.getInstance().getIceTiles()) {
+            if (tile.getID() == tileID) {
+                found = true;
+                if(tile.getEntities().size() == 0) {
+                    System.out.println("There are no characters on this tile!");
+                    return;
+                }
+
+                boolean nonPolarBear = false;
+                for(Figure f : tile.getEntities()) {
+                    if(f.getBaseBodyHeat() != -1) {
+                        nonPolarBear = true;
+                        characterToRescue = f;
+                        break;
+                    }
+                }
+
+                if(!nonPolarBear) {
+                    System.out.println("There are no non polarbear characters on this tile!");
+                    return;
+                }
+
+                break;
+            }
+        }
+
+        if(figure.getBaseBodyHeat() == -1)
+            System.out.println("The polarbear can't rescue!");
+        else if(figure.getBaseBodyHeat() == 4)
+            ((Researcher)figure).rescueFriend((models.figures.Character) characterToRescue);
+        else if(figure.getBaseBodyHeat() == 5)
+            ((Eskimo)figure).rescueFriend((models.figures.Character) characterToRescue);
+        else
+            System.out.println("Unknown Figure!");
     }
 
     /**
@@ -324,7 +396,22 @@ public class Prototype {
             return;
         }
 
-        //TODO: Tudni kéne milyen karakterrel van dolgunk a medve havat lapátolni
+        if(!Environment.getInstance().isBeaconIsDiscovered() || !Environment.getInstance().isGunIsDiscovered() || !Environment.getInstance().isCartridgeIsDiscovered()) {
+            System.out.println("at least one part is missing");
+            return;
+        }
+
+        //TODO: Bizotsítani, hogy egy mezőn vannak akiknél vannak az alkatrészek
+        Figure figure = Environment.getInstance().getCurrentPlayer();
+
+        if(figure.getBaseBodyHeat() == -1)
+            System.out.println("The polarbear can't craft!");
+        else if(figure.getBaseBodyHeat() == 4 || figure.getBaseBodyHeat() == 5) {
+            System.out.println("signal flare crafted");
+            Environment.getInstance().winGame();
+        }
+        else
+            System.out.println("Unknown Figure!");
     }
 
     /**
@@ -338,7 +425,21 @@ public class Prototype {
             return;
         }
 
-        //TODO: Tudni kéne milyen karakterrel van dolgunk a medve havat lapátolni
+        Figure figure = Environment.getInstance().getCurrentPlayer();
+
+        if(figure.getBaseBodyHeat() == -1)
+            System.out.println("The polarbear can't build an iglu!");
+        else if(figure.getBaseBodyHeat() == 4)
+            System.out.println("The researcher can't build an iglu!");
+        else if(figure.getBaseBodyHeat() == 5) {
+            ((Eskimo) figure).useSpecial(figure.getTile());
+            System.out.println("build iglu: successful");
+            return;
+        }
+        else
+            System.out.println("Unknown Figure!");
+
+        System.out.println("build iglu: unsuccessful");
     }
 
     /**
@@ -352,7 +453,26 @@ public class Prototype {
             return;
         }
 
-        //TODO: Tudni kéne milyen karakterrel van dolgunk a medve havat lapátolni
+        Figure figure = Environment.getInstance().getCurrentPlayer();
+
+        //TODO: Tudni kéne van-e nála sátor
+
+        if(figure.getBaseBodyHeat() == -1)
+            System.out.println("The polarbear can't build an iglu!");
+        else if(figure.getBaseBodyHeat() == 4){
+            ((Researcher) figure).buildTent();
+            System.out.println("build tent: successful");
+            return;
+        }
+        else if(figure.getBaseBodyHeat() == 5) {
+            ((Eskimo) figure).buildTent();
+            System.out.println("build tent: successful");
+            return;
+        }
+        else
+            System.out.println("Unknown Figure!");
+
+        System.out.println("build tent: unsuccessful");
     }
 
     /**
@@ -369,7 +489,50 @@ public class Prototype {
             return;
         }
 
-        //TODO: Tudni kéne milyen karakterrel van dolgunk a medve havat lapátolni
+        Figure figure = Environment.getInstance().getCurrentPlayer();
+
+        int tileID;
+
+        try {
+            tileID = Integer.parseInt(lineParts[1]);
+        }
+        catch (NumberFormatException e) {
+            invalidParameter("analyzetile", lineParts[1]);
+            return;
+        }
+
+        if(Environment.getInstance().getIceTiles().size() - 1 < tileID || tileID < 0) {
+            System.out.println("Tile ID must be between 0 and the maximum ID of " + (Environment.getInstance().getIceTiles().size() - 1));
+            return;
+        }
+
+        Tile tileToAnalyze = null;
+
+        boolean found = false;
+
+        for(Tile tile : figure.getTile().getNeighbours()) {
+            if (tile.getID() == tileID) {
+                found = true;
+                tileToAnalyze = tile;
+                break;
+            }
+        }
+
+        if (!found) {
+            System.out.println("Tile with ID " + tileID + " isn't a neighbour of the tile, the character is currently on!");
+            return;
+        }
+
+        if(figure.getBaseBodyHeat() == -1)
+            System.out.println("The polarbear can't analyze a tile!");
+        else if(figure.getBaseBodyHeat() == 4) {
+            ((Researcher) figure).useSpecial(tileToAnalyze);
+            System.out.println("capacity: " + tileToAnalyze.getCapacity());
+        }
+        else if(figure.getBaseBodyHeat() == 5)
+            System.out.println("The eskimo can't analyze a tile!");
+        else
+            System.out.println("Unknown Figure!");
     }
 
     /**
@@ -598,20 +761,25 @@ public class Prototype {
 
             IcePatch icePatch = (IcePatch) tile;
 
+            Figure figure;
+
             switch (characterID){
                 case 1:
-                    icePatch.addCharacter(new Eskimo());
+                    figure = new Eskimo();
                     break;
                 case 2:
-                    icePatch.addCharacter(new Researcher());
+                    figure = new Researcher();
                     break;
                 case 3:
-                    icePatch.addCharacter(new PolarBear());
+                    figure = new PolarBear();
                     break;
                 default:
                     System.out.println("Character ID must be between with 1 and 3!");
                     return;
             }
+
+            icePatch.addCharacter(figure);
+            Environment.getInstance().getPlayers().add(figure);
 
             System.out.println("character added: " + tileID + ", " + characterID);
         }
@@ -724,7 +892,7 @@ public class Prototype {
      *
      * @param line The line which should be interpreted
      */
-    private void interpret(String line) {
+    private void interpret(String line) throws EndOfGameException {
         String[] lineSegments = line.split(" ");
         if(lineSegments.length == 0) {
             invalidCommand("No command entered!");
@@ -807,8 +975,8 @@ public class Prototype {
     /**
      * Runs the prototype
      */
-    public void run()
-    {
+
+    public void run() throws EndOfGameException {
         if (!isDev)
             printInfo();
 

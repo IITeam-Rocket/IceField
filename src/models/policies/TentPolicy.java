@@ -17,7 +17,9 @@ import java.io.Serializable;
  */
 public class TentPolicy implements ProtectionPolicy, Serializable {
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Shows the state of the tent.
+     */
     private boolean isIntact = true;
 
     /**
@@ -67,5 +69,15 @@ public class TentPolicy implements ProtectionPolicy, Serializable {
     @Override
     public int getPriority() {
         return isIntact ? 1 : 0;
+    }
+
+    /**
+     * Converts the name of the strategy to String so we can use it to print it
+     *
+     * @return The name of the Strategy
+     */
+    @Override
+    public String toString() {
+        return "TentPolicy";
     }
 }

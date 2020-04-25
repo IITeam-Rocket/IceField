@@ -20,17 +20,32 @@ import java.io.Serializable;
  * @since 2020.03.10
  */
 public abstract class Character extends Figure implements Serializable {
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * The body heat of this character. It shows the number of the lives the character has.
+     */
     protected int bodyHeat;
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * The stamina of this character. It shows the number of the moves the character can do in this round.
+     */
     protected int stamina;
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * The help friend strategy of this character.
+     * It shows the behavior of the character when another character falls in water.
+     */
     protected RescueFriendPolicy helpFriendStrategy = new NoRescuePolicy();
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * The clear patch strategy of this character.
+     * It indicates the number of snow that the character can clear in one step.
+     */
     protected ClearSnowPolicy clearPatchStrategy = new EmptyHandPolicy();
 
 
-    // TODO: 2020. 04. 15. javadoc 
+    /**
+     * Creates a new Character with the given body heat and stamina.
+     *
+     * @param bodyHeat the value of the new character's body heat
+     * @param stamina the value of the new character's stamina
+     */
     protected Character(int bodyHeat, int stamina) {
         this.bodyHeat = bodyHeat;
         this.stamina = stamina;
@@ -42,7 +57,7 @@ public abstract class Character extends Figure implements Serializable {
      * the player stands on.
      */
     public void clearPatch() {
-        // TODO: 2020. 04. 15. implement
+        clearPatchStrategy.clear(tile);
     }
 
 

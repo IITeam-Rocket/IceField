@@ -38,4 +38,14 @@ public class ShovelPolicy implements ClearSnowPolicy, Serializable {
     public void clear(Tile target) {
         target.removeSnow(2);
     }
+
+    /**
+     * Converts the name of the strategy to String so we can use it to print it
+     *
+     * @return The name of the Strategy
+     */
+    @Override
+    public String toString() {
+        return "ShovelPolicy";
+    }
 }

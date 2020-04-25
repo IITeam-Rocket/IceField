@@ -17,7 +17,9 @@ import java.io.Serializable;
  * @since 2020.04.15
  */
 public class FragileShovelPolicy implements ClearSnowPolicy, Serializable {
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * The number of the times this fragile shovel can be used.
+     */
     private int count = 3;
 
     /**
@@ -47,5 +49,18 @@ public class FragileShovelPolicy implements ClearSnowPolicy, Serializable {
         int quantity = count > 0 ? 2 : 1;
         target.removeSnow(quantity);
         count--;
+    }
+
+    /**
+     * Converts the name of the strategy to String so we can use it to print it
+     *
+     * @return The name of the Strategy
+     */
+    @Override
+    public String toString() {
+        if(count > 0)
+            return "FragileShovelPolicy";
+        else
+            return "EmptyHandPolicy";
     }
 }

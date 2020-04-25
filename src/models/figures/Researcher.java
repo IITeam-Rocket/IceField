@@ -18,12 +18,16 @@ import java.io.Serializable;
  */
 public class Researcher extends Character implements Serializable {
 
-    // TODO: 2020. 04. 15. javadoc
+    /**
+     * Creates a new eskimo with 4 body heat and 4 stamina.
+     */
     public Researcher() {
         super(4, 4);
     }
 
-    // TODO: 2020. 04. 15. javadoc
+    /**
+     * Creates a new eskimo with the given tile and with 4 body heat and 4 stamina.
+     */
     public Researcher(Tile starting) {
         super(4, 4);
         this.tile = starting;
@@ -40,11 +44,20 @@ public class Researcher extends Character implements Serializable {
     public void useSpecial(Tile target) {
         ///TODO implement useSpecial()
         target.getCapacity();
+        //System.out.println("capacity: " + target.getCapacity());
     }
 
     // TODO: 2020. 04. 16. javadoc
     @Override
     public void step() {
+        System.out.println("researcher");
+        System.out.println("bodyheat: " + bodyHeat);
+        System.out.println("stamina: " + stamina);
+        System.out.println("clearPatchStrategy: " + clearPatchStrategy.toString());
+        System.out.println("helpFriendStrategy: " + helpFriendStrategy.toString());
+        System.out.println("swimToShoreStrategy: " + swimToShoreStrategy.toString());
+        System.out.println("tile: " + tile.getID());
+
         // TODO: 2020. 04. 16. implement
     }
 

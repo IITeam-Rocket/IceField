@@ -18,12 +18,18 @@ import java.io.Serializable;
  */
 public class StableIcePatch extends IcePatch implements Serializable {
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Creates a new StableIcePatch.
+     */
     public StableIcePatch() {
         super();
     }
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Creates a new StableIcePatch with the given unique ID.
+     *
+     * @param ID the new StableIcePatch's unique ID.
+     */
     public StableIcePatch(int ID) {
         super(ID);
     }
@@ -37,7 +43,7 @@ public class StableIcePatch extends IcePatch implements Serializable {
      */
     @Override
     public boolean acceptCharacter(Figure figure) {
-        //TODO
+        addCharacter(figure);
         return true;
     }
 

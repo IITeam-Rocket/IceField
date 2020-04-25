@@ -1,5 +1,7 @@
 package controllers;
 
+import models.exceptions.EndOfGameException;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -75,7 +77,7 @@ public class Skeleton {
      *
      * @param selectedItem the menu item the player has selected.
      */
-    private void executeSelected(int selectedItem) {
+    private void executeSelected(int selectedItem) throws EndOfGameException {
         switch (selectedItem) {
             case 1:
                 UseCaseExecutor.moveCharacterToStable();
@@ -158,7 +160,7 @@ public class Skeleton {
      * Executes the Skeleton program used to
      * test the work-in-progress game.
      */
-    public void run() {
+    public void run() throws EndOfGameException {
         printInfo();
         printMenu();
 

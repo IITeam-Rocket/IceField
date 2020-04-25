@@ -1,10 +1,12 @@
 package models;
 
+import models.exceptions.EndOfGameException;
 import models.figures.Figure;
 import models.tiles.Tile;
 
-import java.io.Serializable;
+import java.io.*;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Singleton class representing the Environment and the Game
@@ -19,22 +21,36 @@ import java.util.ArrayList;
 
 public class Environment implements Serializable {
 
-    // TODO: 2020. 04. 24. jaavadoc
+    // TODO: 2020. 04. 24. javadoc
     static private final Environment instance = new Environment();
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Contains the Tile's of the game.
+     */
     private ArrayList<Tile> iceTiles = new ArrayList<>();
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Contains the Figure's of the game.
+     */
     private ArrayList<Figure> players = new ArrayList<>();
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * The player, who is currently on turn.
+     */
     private Figure currentPlayer;
-    // TODO: 2020. 04. 24. javadc
+    /**
+     * Shows that the beacon is discovered or not.
+     */
     private boolean beaconIsDiscovered = false;
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Shows that the cartridge is discovered or not.
+     */
     private boolean cartridgeIsDiscovered = false;
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Shows that the gun is discovered or not.
+     */
     private boolean gunIsDiscovered = false;
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Creates a new Environment.
+     */
     private Environment() {
     }
 
@@ -45,6 +61,77 @@ public class Environment implements Serializable {
      */
     static public Environment getInstance() {
         return instance;
+    }
+
+    /**
+     * Writes the instance object to the given path using serialization
+     *
+     * @param path The path where the object should be written serialized
+     * @return Return whether or not the serialization was a success
+     */
+    public static boolean serializeWrite(String path) {
+        try {
+            FileOutputStream f = new FileOutputStream(path);
+            ObjectOutputStream out = new ObjectOutputStream(f);
+            out.writeObject(instance);
+            out.close();
+            return true;
+        } catch (IOException ex) {
+            System.out.println("Couldn't save with serialization! File " + path + " doesn't exist!");
+            return false;
+        }
+    }
+
+    /**
+     * Reads the instance object from the given path using serialization
+     *
+     * @param path The path where the object should be read from serialized
+     * @return Return whether or not the serialization was a success
+     */
+    public static boolean serializeRead(String path) {
+        try {
+            FileInputStream f = new FileInputStream(path);
+            ObjectInputStream in = new ObjectInputStream(f);
+            Environment env = (Environment)in.readObject();
+
+            Tile.setIDCounter(env.getIceTiles().size());
+
+            instance.reset();
+
+            instance.setIceTiles(env.getIceTiles());
+            instance.setPlayers(env.getPlayers());
+            instance.setCurrentPlayer(env.getCurrentPlayer());
+
+            if(env.isBeaconIsDiscovered())
+                instance.recordBeacon();
+            if(env.isCartridgeIsDiscovered())
+                instance.recordCartridge();
+            if(env.isGunIsDiscovered())
+                instance.recordGun();
+
+            in.close();
+
+            return true;
+        } catch(IOException ex) {
+            System.out.println("Couldn't load with serialization! File " + path + " doesn't exist or doesn't contain the correct data!");
+            return  false;
+        } catch(ClassNotFoundException ex) {
+            System.out.println("Couldn't save with serialization! ClassNotFound");
+            return false;
+        }
+    }
+
+    /**
+     * Resets the content of the current Environment class
+     */
+    private void reset()
+    {
+        iceTiles = new ArrayList<>();
+        players = new ArrayList<>();
+        currentPlayer = null;
+        beaconIsDiscovered = false;
+        cartridgeIsDiscovered = false;
+        gunIsDiscovered = false;
     }
 
     /**
@@ -73,8 +160,13 @@ public class Environment implements Serializable {
      * Initiates a storm that fills the Tiles with snow,
      * and takes the Characters' body-heat.
      */
-    public void makeStorm() {
-        // TODO: 2020. 04. 15. implement
+    public void makeStorm() throws EndOfGameException {
+        // TODO: 2020. 04. 25. check
+        ArrayList<Tile> target = getRandomTiles();
+        for (Tile t: target) {
+            t.addSnow(1);
+            t.reactToStorm();
+        }
     }
 
     /**
@@ -83,8 +175,17 @@ public class Environment implements Serializable {
      * @return a random set of tiles.
      */
     public ArrayList<Tile> getRandomTiles() {
-        // TODO: 2020. 04. 15. implement
-        return null;
+        // TODO: 2020. 04. 25. check
+        ArrayList<Tile> randomTiles = new ArrayList();
+        Random rand = new Random();
+        int numberOfRandomTiles = rand.nextInt(iceTiles.size());
+        while(randomTiles.size() != numberOfRandomTiles){
+            int nextID = rand.nextInt(iceTiles.size());
+            Tile nextTile = iceTiles.get(nextID);
+            if(!randomTiles.contains(nextTile))
+                randomTiles.add(nextTile);
+        }
+        return randomTiles;
     }
 
     /**

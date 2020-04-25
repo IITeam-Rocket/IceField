@@ -19,18 +19,31 @@ import java.io.Serializable;
 
 public class InstableIcePatch extends IcePatch implements Serializable {
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * The capacity of this InstableIcePatch.
+     */
     int playerCapacity;
-    // TODO: 2020. 04. 24. jaavadoc
+    /**
+     * The state of the InstableIcePatch with the default value: false.
+     */
     boolean flipped = false;
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Creates a new InstableIcePatch with the given playerCapacity.
+     *
+     * @param playerCapacity the new InstableIcePatch's capacity
+     */
     public InstableIcePatch(int playerCapacity) {
         super();
         this.playerCapacity = playerCapacity;
     }
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Creates a new InstableIcePatch with the given playerCapacity and with the given ID.
+     *
+     * @param playerCapacity the new InstableIcePatch's capacity.
+     * @param ID the new InstableIcePatch's unique ID.
+     */
     public InstableIcePatch(int ID, int playerCapacity) {
         super(ID);
         this.playerCapacity = playerCapacity;
@@ -45,7 +58,15 @@ public class InstableIcePatch extends IcePatch implements Serializable {
      */
     @Override
     public boolean acceptCharacter(Figure figure) {
-        //TODO
+        if(flipped)
+            return false;
+        addCharacter(figure);
+        if(entities.size() > playerCapacity) {
+            flip();
+            for (Figure f : entities) {
+                f.swimToShore();
+            }
+        }
         return true;
     }
 
@@ -57,7 +78,6 @@ public class InstableIcePatch extends IcePatch implements Serializable {
      */
     @Override
     public int getCapacity() {
-        //TODO
         return playerCapacity;
     }
 

@@ -26,4 +26,14 @@ public class HasNoDiveSuitPolicy implements FallInWaterPolicy, Serializable {
     @Override
     public void executeStrategy(Figure player) {
     }
+
+    /**
+     * Converts the name of the strategy to String so we can use it to print it
+     *
+     * @return The name of the Strategy
+     */
+    @Override
+    public String toString() {
+        return "HasNoDiveSuitPolicy";
+    }
 }

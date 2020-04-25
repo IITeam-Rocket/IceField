@@ -2,7 +2,7 @@ package models.tiles;
 
 import models.figures.Figure;
 
-import java.security.SecureRandomParameters;
+import java.io.Serializable;
 
 /**
  * An unstable IcePatch that may hold
@@ -16,7 +16,8 @@ import java.security.SecureRandomParameters;
  * @since skeleton
  * @since 2020.03.10
  */
-public class InstableIcePatch extends IcePatch{
+
+public class InstableIcePatch extends IcePatch implements Serializable {
 
     // TODO: 2020. 04. 24. javadoc
     int playerCapacity;

@@ -835,6 +835,16 @@ public class Prototype {
     }
 
     /**
+     * Interprets the command reset
+     *
+     * @param lineParts The line's parts which should be interpreted, split at every space delim
+     */
+    private void command_reset(String[] lineParts) {
+        Environment.getInstance().reset();
+        System.out.println("Game Reseted!");
+    }
+
+    /**
      * Checks if there are enough parameters to interpret the line, without an error message
      *
      * @param lineParts The line's parts which should be interpreted, split at every space delim
@@ -970,6 +980,9 @@ public class Prototype {
                 break;
             case "addsnowtotile":
                 command_addsnowtotile(lineSegments);
+                break;
+            case "reset":
+                command_reset(lineSegments);
                 break;
             case "exit":
                 running = false;

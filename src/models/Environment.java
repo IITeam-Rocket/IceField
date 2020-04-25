@@ -124,7 +124,7 @@ public class Environment implements Serializable {
     /**
      * Resets the content of the current Environment class
      */
-    private void reset()
+    public void reset()
     {
         iceTiles = new ArrayList<>();
         players = new ArrayList<>();
@@ -132,6 +132,7 @@ public class Environment implements Serializable {
         beaconIsDiscovered = false;
         cartridgeIsDiscovered = false;
         gunIsDiscovered = false;
+        Tile.setIDCounter(0);
     }
 
     /**

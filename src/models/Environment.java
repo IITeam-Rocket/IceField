@@ -5,6 +5,7 @@ import models.tiles.Tile;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Singleton class representing the Environment and the Game
@@ -21,20 +22,34 @@ public class Environment implements Serializable {
 
     // TODO: 2020. 04. 24. javadoc
     static private final Environment instance = new Environment();
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Contains the Tile's of the game.
+     */
     private ArrayList<Tile> iceTiles = new ArrayList<>();
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Contains the Figure's of the game.
+     */
     private ArrayList<Figure> players = new ArrayList<>();
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * The player, who is currently on turn.
+     */
     private Figure currentPlayer;
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Shows that the beacon is discovered or not.
+     */
     private boolean beaconIsDiscovered = false;
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Shows that the cartridge is discovered or not.
+     */
     private boolean cartridgeIsDiscovered = false;
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Shows that the gun is discovered or not.
+     */
     private boolean gunIsDiscovered = false;
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * Creates a new Environment.
+     */
     private Environment() {
     }
 
@@ -154,8 +169,17 @@ public class Environment implements Serializable {
      * @return a random set of tiles.
      */
     public ArrayList<Tile> getRandomTiles() {
-        // TODO: 2020. 04. 15. implement
-        return null;
+        // TODO: 2020. 04. 25. check
+        ArrayList<Tile> randomTiles = new ArrayList<Tile>();
+        Random rand = new Random();
+        int numberOfRandomTiles = rand.nextInt(iceTiles.size());
+        while(randomTiles.size() != numberOfRandomTiles){
+            int nextID = rand.nextInt(iceTiles.size());
+            Tile nextTile = iceTiles.get(nextID);
+            if(!randomTiles.contains(nextTile))
+                randomTiles.add(nextTile);
+        }
+        return randomTiles;
     }
 
     /**

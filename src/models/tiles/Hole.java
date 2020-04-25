@@ -46,8 +46,12 @@ public class Hole extends Tile implements Serializable {
      */
     @Override
     public boolean acceptCharacter(Figure figure) {
-        //TODO
-        return false;
+        if(isDiscovered)
+            return false;
+        reveal();
+        addCharacter(figure);
+        figure.swimToShore();
+        return true;
     }
 
     /**

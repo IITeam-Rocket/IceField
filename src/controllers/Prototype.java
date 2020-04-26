@@ -332,8 +332,19 @@ public class Prototype {
      * @param lineParts The line's parts which should be interpreted, split at every space delim
      */
     private void command_simulateweather(String[] lineParts) throws EndOfGameException {
-        Environment.getInstance().makeStorm();
-        System.out.println("weather simulated");
+        try {
+            System.out.println("weather simulated");
+            Environment.getInstance().makeStorm();
+        } catch (EndOfGameException e) {
+            if(e.getMessage().equals("Win")) {
+                System.out.println(e.getMessage());
+                Environment.getInstance().winGame();
+            }
+            else {
+                System.out.println(e.getMessage());
+                Environment.getInstance().gameOver();
+            }
+        }
     }
 
     /**

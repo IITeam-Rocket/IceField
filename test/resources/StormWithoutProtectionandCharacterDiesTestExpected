@@ -35,5 +35,5 @@ helpFriendStrategy: NoRescuePolicy
 swimToShoreStrategy: HasNoDiveSuitPolicy
 tile: 0
 weather simulated
-Researcher bodyheat reaches 0, researcher dies!
+A player has frozen to death!
 Game over!

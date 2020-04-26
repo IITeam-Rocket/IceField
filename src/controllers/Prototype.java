@@ -242,8 +242,8 @@ public class Prototype {
 
         if(!checkParamNumNoErrorMessage(lineParts, 1)) {
             System.out.print("neighbours: ");
-            for(Tile tile : currentTile.getNeighbours()) {
-                System.out.print(tile.getID() + " ");
+            for(int i = 0; i < currentTile.getNeighbours().size(); i++) {
+                System.out.print(currentTile.getNeighbours().get(i).getID() + (currentTile.getNeighbours().size() - 1 == i ? "" : " "));
             }
             System.out.println();
         }
@@ -277,6 +277,11 @@ public class Prototype {
      * @param lineParts The line's parts which should be interpreted, split at every space delim
      */
     private void command_unbury(String[] lineParts) {
+        if(lineParts.length != 1) {
+            System.out.println("IllegalArgumentException");
+            return;
+        }
+
         if(Environment.getInstance().getCurrentPlayer() == null) {
             System.out.println("There is no Figure selected, please use the \"nextcharacter\" command before the first unbury!");
             return;

@@ -333,8 +333,8 @@ public class Prototype {
      */
     private void command_simulateweather(String[] lineParts) throws EndOfGameException {
         try {
-            Environment.getInstance().makeStorm();
             System.out.println("weather simulated");
+            Environment.getInstance().makeStorm();
         } catch (EndOfGameException e) {
             if(e.getMessage().equals("Win")) {
                 System.out.println(e.getMessage());

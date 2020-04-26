@@ -92,5 +92,4 @@ clearPatchStrategy: EmptyHandPolicy
 helpFriendStrategy: NoRescuePolicy
 swimToShoreStrategy: HasNoDiveSuitPolicy
 tile: 5
-rescue 4
 friend rescue: unsuccessful

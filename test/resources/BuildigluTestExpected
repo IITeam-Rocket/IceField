@@ -84,4 +84,4 @@ clearPatchStrategy: EmptyHandPolicy
 helpFriendStrategy: NoRescuePolicy
 swimToShoreStrategy: HasNoDiveSuitPolicy
 tile: 3
-Iglu built on tile 3!
+build iglu: successful

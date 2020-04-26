@@ -71,7 +71,7 @@ abstract public class IcePatch extends Tile implements Serializable {
         if (snowDepth < maxSnowDepth)
             addSnow(1);
         for (Figure figure : entities)
-            figure.reactToStorm();
+            protectionStrategy.protectAgainstStorm(figure);
     }
 
     /**

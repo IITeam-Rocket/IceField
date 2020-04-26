@@ -4,7 +4,6 @@ additemtotile 0 9
 addcharactertotile 0 2
 nextcharacter
 unbury
-buildtent
 simulateweather
 nextcharacter
 simulateweather

@@ -22,6 +22,6 @@ bodyheat: 4
 stamina: 4
 clearPatchStrategy: EmptyHandPolicy
 helpFriendStrategy: NoRescuePolicy
-swimToShoreStrategy: HasNoDivesuitPolicy
+swimToShoreStrategy: HasNoDiveSuitPolicy
 tile: 0
 cleared snow: 1 unit(s)

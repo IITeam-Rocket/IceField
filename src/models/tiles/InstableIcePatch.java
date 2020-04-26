@@ -86,9 +86,7 @@ public class InstableIcePatch extends IcePatch implements Serializable {
      * behaviour from stable to hole
      * and vice versa.
      */
-    public void flip() {
-        flipped = !flipped;
-    }
+    public void flip() { flipped = !flipped;}
 
     /**
      * Returns whether the Patch is unfit for

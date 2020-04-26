@@ -103,7 +103,7 @@ public class Hole extends Tile implements Serializable {
      */
     @Override
     public void reactToAttack(Figure attacker) {
-        //Empty
+       //Empty
     }
 
     /**

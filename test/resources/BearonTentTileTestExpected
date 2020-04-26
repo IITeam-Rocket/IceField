@@ -1,0 +1,25 @@
+set random: off
+tile added
+type: stable
+ID: 0
+tile added
+type: stable
+ID: 1
+neighbours: 0, 1
+item added: 0, 9
+character added: 0, 2
+character added: 1, 3
+researcher
+bodyheat: 4
+stamina: 4
+clearPatchStrategy: EmptyHandPolicy
+helpFriendStrategy: NoRescuePolicy
+swimToShoreStrategy: HasNoDiveSuitPolicy
+tile: 0
+unburied item: 9
+build tent: successful
+polarbear
+tile: 1
+move character to 0: successful
+Polarbear attacks researcher on tile 0, researcher dies! 
+Game over!

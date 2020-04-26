@@ -1,0 +1,31 @@
+set random: off
+tile added
+type: stable
+ID: 0
+item added: 0, 9
+character added: 0, 2
+researcher
+bodyheat: 4
+stamina: 4
+clearPatchStrategy: EmptyHandPolicy
+helpFriendStrategy: NoRescuePolicy
+swimToShoreStrategy: HasNoDiveSuitPolicy
+tile: 0
+unburied item: 9
+build tent: successful
+weather simulated
+researcher
+bodyheat: 4
+stamina: 4
+clearPatchStrategy: EmptyHandPolicy
+helpFriendStrategy: NoRescuePolicy
+swimToShoreStrategy: HasNoDiveSuitPolicy
+tile: 0
+weather simulated
+researcher
+bodyheat: 3
+stamina: 4
+clearPatchStrategy: EmptyHandPolicy
+helpFriendStrategy: NoRescuePolicy
+swimToShoreStrategy: HasNoDiveSuitPolicy
+tile: 0

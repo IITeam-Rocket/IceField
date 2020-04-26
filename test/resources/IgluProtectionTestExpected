@@ -1,0 +1,29 @@
+set random: off
+tile added
+type: stable
+ID: 0
+character added: 0, 1
+eskimo
+bodyheat: 5
+stamina: 4
+clearPatchStrategy: EmptyHandPolicy
+helpFriendStrategy: NoRescuePolicy
+swimToShoreStrategy: HasNoDiveSuitPolicy
+tile: 0
+build iglu: successful
+weather simulated
+eskimo
+bodyheat: 5
+stamina: 4
+clearPatchStrategy: EmptyHandPolicy
+helpFriendStrategy: NoRescuePolicy
+swimToShoreStrategy: HasNoDiveSuitPolicy
+tile: 0
+weather simulated
+eskimo
+bodyheat: 5
+stamina: 4
+clearPatchStrategy: EmptyHandPolicy
+helpFriendStrategy: NoRescuePolicy
+swimToShoreStrategy: HasNoDiveSuitPolicy
+tile: 0

@@ -23,6 +23,7 @@ public class Tent extends Item implements Serializable {
      */
     @Override
     public void uponDiscovery(Character finder) {
+        System.out.println("unburied item: 9");
         finder.buildTent();
     }
 }

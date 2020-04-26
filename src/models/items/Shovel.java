@@ -23,6 +23,7 @@ public class Shovel extends Item implements Serializable {
      */
     @Override
     public void uponDiscovery(Character finder) {
+        System.out.println("unburied item: 4");
         finder.changeClearSnowPolicy(new ShovelPolicy());
     }
 }

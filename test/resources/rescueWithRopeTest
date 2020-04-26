@@ -55,5 +55,5 @@ nextcharacter
 move 4
 nextcharacter
 unbury
-rescue  4
+rescue 4
 quit

@@ -23,6 +23,7 @@ public class Rope extends Item implements Serializable {
      */
     @Override
     public void uponDiscovery(Character finder) {
+        System.out.println("unburied item: 2");
         finder.changeRescuePolicy(new HasRopePolicy());
     }
 }

@@ -26,6 +26,7 @@ public class FragileShovel extends Item implements Serializable {
      */
     @Override
     public void uponDiscovery(Character finder) {
+        System.out.println("unburied item: 3");
         finder.changeClearSnowPolicy(new FragileShovelPolicy());
     }
 }

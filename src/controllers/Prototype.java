@@ -245,7 +245,7 @@ public class Prototype {
             for(int i = 0; i < currentTile.getNeighbours().size(); i++) {
                 System.out.print(currentTile.getNeighbours().get(i).getID() + (currentTile.getNeighbours().size() - 1 == i ? "" : " "));
             }
-            System.out.println();
+            //System.out.println();
         }
         else {
             int tileID;

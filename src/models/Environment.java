@@ -181,6 +181,8 @@ public class Environment implements Serializable {
         ArrayList<Tile> randomTiles = new ArrayList<>();
         Random rand = new Random();
         int numberOfRandomTiles = rand.nextInt(iceTiles.size());
+        if(iceTiles.size() == 1)
+            numberOfRandomTiles = 1;
         while(randomTiles.size() != numberOfRandomTiles){
             int nextID = rand.nextInt(iceTiles.size());
             Tile nextTile = iceTiles.get(nextID);

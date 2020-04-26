@@ -12,7 +12,6 @@ helpFriendStrategy: NoRescuePolicy
 swimToShoreStrategy: HasNoDiveSuitPolicy
 tile: 0
 unburied item: 9
-build tent: successful
 weather simulated
 researcher
 bodyheat: 4

@@ -1,6 +1,7 @@
 package models.figures;
 
 import models.exceptions.EndOfGameException;
+import models.tiles.InstableIcePatch;
 import models.tiles.Tile;
 
 import java.io.Serializable;
@@ -60,9 +61,9 @@ public class Researcher extends Character implements Serializable {
      */
     @Override
     public void step() throws EndOfGameException {
-        if(tile.getCapacity() == 0){
+        if(tile.getCapacity() == 0 || (tile.getCapacity() != -1 && ((InstableIcePatch)tile).isFlipped())){
             System.out.println("Researcher remains in water at the end of the turn, researcher dies!");
-            System.out.println("Game over!");
+            throw new EndOfGameException("Researcher remains in water at the end of the turn, researcher dies!");
         }
         stamina = 4;
         System.out.println("researcher");

@@ -292,7 +292,6 @@ public class Environment implements Serializable {
      * Plays the losing game sequence.
      */
     public void gameOver() {
-        // Empty, mert a kimeneti nyelv ilyen...
-
+        System.out.println("Game over!");
     }
 }

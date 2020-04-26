@@ -1,0 +1,14 @@
+random off
+addtile stable
+additemtotile 0 3
+addcharactertotile 0 2
+nextcharacter
+unbury
+addsnowtotile 0 6
+clearsnow
+clearsnow
+clearsnow
+addsnowtotile 0 6
+nextcharacter
+clearsnow
+quit

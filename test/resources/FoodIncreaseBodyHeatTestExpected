@@ -1,0 +1,21 @@
+set random: off
+tile added
+type: stable
+ID: 0
+character added: 0, 2
+item added: 0, 1
+researcher
+bodyheat: 4
+stamina: 4
+clearPatchStrategy: EmptyHandPolicy
+helpFriendStrategy: NoRescuePolicy
+swimToShoreStrategy: HasNoDiveSuitPolicy
+tile: 0
+unburied item: 1
+researcher
+bodyheat: 5
+stamina: 4
+clearPatchStrategy: EmptyHandPolicy
+helpFriendStrategy: NoRescuePolicy
+swimToShoreStrategy: HasNoDivesuitPolicy
+tile: 0

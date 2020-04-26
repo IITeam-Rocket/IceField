@@ -1,0 +1,12 @@
+random off
+addtile stable
+addcharactertotile 0 2
+nextcharacter
+simulateweather
+nextcharacter
+simulateweather
+nextcharacter
+simulateweather
+nextcharacter
+simulateweather
+quit

@@ -1,0 +1,8 @@
+random off
+addtile stable
+addcharactertotile 0 2
+additemtotile 0 1
+nextcharacter
+unbury
+nextcharacter
+quit

@@ -1,0 +1,15 @@
+tile added
+type: instable
+ID: 0
+tile added
+type: instable
+ID: 1
+tile added
+type: stable
+ID: 2
+tile added
+type: hole
+ID: 3
+neighbours: 0, 1
+neighbours: 1, 2
+neighbours: 2, 3

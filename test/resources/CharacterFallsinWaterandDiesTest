@@ -1,0 +1,9 @@
+random off
+addtile stable
+addcharactertotile 0 2
+addtile hole
+neighbourtile 0 1
+nextcharacter
+move 1
+nextcharacter
+quit

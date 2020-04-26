@@ -77,4 +77,4 @@ snow added: 12, 2
 set random: off
 polarbear
 tile: 1
-neighbours: 0 2 8 9
+neighbours: 0 2 9 8

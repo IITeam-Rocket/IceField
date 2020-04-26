@@ -2,7 +2,7 @@ package models.figures;
 
 import controllers.RandomController;
 import models.exceptions.EndOfGameException;
-import models.tiles.IcePatch;
+import models.policies.SwimOutPolicy;
 import models.tiles.Tile;
 
 import java.io.Serializable;
@@ -20,6 +20,10 @@ import java.util.Random;
  * @since 2020.04.16
  */
 public class PolarBear extends Figure implements Serializable {
+
+    public PolarBear() {
+        swimToShoreStrategy = new SwimOutPolicy();
+    }
 
     /**
      * If the randomness is on, the PolarBear will move to
@@ -39,13 +43,25 @@ public class PolarBear extends Figure implements Serializable {
                 Tile destination = tile.getNeighbours().get(idx);
 
                 moveTo(destination);
-                ((IcePatch) tile).reactToAttack(this);
             }
-        }
-        else {
+        } else {
             System.out.println("polarbear");
             System.out.println("tile: " + tile.getID());
         }
+    }
+
+    /**
+     * Moves the player to the destination Tile.
+     *
+     * @param destination the destination to move to
+     *
+     * @throws EndOfGameException if the bear kills a player
+     * @see EndOfGameException
+     */
+    @Override
+    public void moveTo(Tile destination) throws EndOfGameException {
+        super.moveTo(destination);
+        tile.reactToAttack(this);
     }
 
     /**

@@ -84,4 +84,4 @@ clearPatchStrategy: EmptyHandPolicy
 helpFriendStrategy: NoRescuePolicy
 swimToShoreStrategy: HasNoDiveSuitPolicy
 tile: 3
-IllegalArguementException
+IllegalArgumentException

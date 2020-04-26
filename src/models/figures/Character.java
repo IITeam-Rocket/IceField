@@ -57,7 +57,11 @@ public abstract class Character extends Figure implements Serializable {
      * the player stands on.
      */
     public void clearPatch() {
-        clearPatchStrategy.clear(tile);
+        if (stamina > 0) {
+            clearPatchStrategy.clear(tile);
+            stamina--;
+        } else
+            System.out.println("Not enough stamina!");
     }
 
 
@@ -65,11 +69,14 @@ public abstract class Character extends Figure implements Serializable {
      * Retrieves the item hidden in the current Tile.
      */
     public void retrieveItem() {
-        IcePatch p = (IcePatch) this.tile;
-        Item find = p.unBuryItem(this);
+        if (stamina > 0) {
+            IcePatch p = (IcePatch) this.tile;
+            Item find = p.unBuryItem(this);
 
-        if (find != null)
-            find.uponDiscovery(this);
+            if (find != null)
+                find.uponDiscovery(this);
+        } else
+            System.out.println("Not enough stamina!");
     }
 
     /**
@@ -105,7 +112,10 @@ public abstract class Character extends Figure implements Serializable {
      * the game, otherwise nothing happens.
      */
     public void craftSignalFlare() {
-        Environment.getInstance().winGame();
+        if (stamina > 0)
+            Environment.getInstance().winGame();
+        else
+            System.out.println("Not enough stamina!");
     }
 
     /**
@@ -115,7 +125,10 @@ public abstract class Character extends Figure implements Serializable {
      * @param friend the victim to rescue
      */
     public void rescueFriend(Character friend) {
-        helpFriendStrategy.executeStrategy(friend, tile);
+        if (stamina > 0)
+            helpFriendStrategy.executeStrategy(friend, tile);
+        else
+            System.out.println("Not enough stamina!");
     }
 
     /**

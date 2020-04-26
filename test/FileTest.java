@@ -6,16 +6,12 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 import testenv.FileMapArgumentsProvider;
-
-import org.junit.jupiter.api.Test;
-
 import testenv.hackOStream;
 
 import java.io.*;
 import java.util.Map;
-import java.util.TreeMap;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 @Tag("Integration")
 public class FileTest {
@@ -55,7 +51,9 @@ public class FileTest {
 
             if (expectedLine == null) break;
 
-            assertEquals(expectedLine, actualLine, String.format("Error in testfile: %s expected output file: %s", testFilename, testExpectedFilename));
+            assertNotNull(actualLine, "actualLine is null, expected: " + expectedLine);
+
+            assertEquals(expectedLine.trim(), actualLine.trim(), String.format("Error in testfile: %s expected output file: %s", testFilename, testExpectedFilename));
         }
     }
 

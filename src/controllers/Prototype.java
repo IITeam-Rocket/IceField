@@ -264,7 +264,7 @@ public class Prototype {
                     try {
                         Environment.getInstance().getCurrentPlayer().moveTo(tile);
                     } catch (EndOfGameException e) {
-                        System.out.println(e.getMessage());
+                        //System.out.println(e.getMessage());
                         Environment.getInstance().gameOver();
                     }
                     return;

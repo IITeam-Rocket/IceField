@@ -92,7 +92,6 @@ helpFriendStrategy: NoRescuePolicy
 swimToShoreStrategy: HasNoDiveSuitPolicy
 tile: 5
 move character to 6: successful
-2 characters fell in the water on tile 6!
 researcher
 bodyheat: 4
 stamina: 4
@@ -100,4 +99,5 @@ clearPatchStrategy: EmptyHandPolicy
 helpFriendStrategy: NoRescuePolicy
 swimToShoreStrategy: HasNoDiveSuitPolicy
 tile: 6
+Researcher remains in water at the end of the turn, researcher dies!
 Game over!

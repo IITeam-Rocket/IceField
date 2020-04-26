@@ -813,6 +813,7 @@ public class Prototype {
             }
 
             icePatch.addCharacter(figure);
+            figure.setTile(icePatch);
             Environment.getInstance().getPlayers().add(figure);
 
             System.out.println("character added: " + tileID + ", " + characterID);

@@ -2,6 +2,7 @@ package models.figures;
 
 import controllers.RandomController;
 import models.exceptions.EndOfGameException;
+import models.policies.SwimOutPolicy;
 import models.tiles.IcePatch;
 import models.tiles.Tile;
 
@@ -20,6 +21,10 @@ import java.util.Random;
  * @since 2020.04.16
  */
 public class PolarBear extends Figure implements Serializable {
+
+    public PolarBear() {
+        swimToShoreStrategy = new SwimOutPolicy();
+    }
 
     /**
      * If the randomness is on, the PolarBear will move to

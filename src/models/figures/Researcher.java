@@ -61,6 +61,7 @@ public class Researcher extends Character implements Serializable {
             System.out.println("Researcher remains in water at the end of the turn, researcher dies!");
             System.out.println("Game over!");
         }
+        stamina = 4;
         System.out.println("researcher");
         System.out.println("bodyheat: " + bodyHeat);
         System.out.println("stamina: " + stamina);

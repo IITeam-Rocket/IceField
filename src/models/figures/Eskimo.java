@@ -58,7 +58,6 @@ public class Eskimo extends Character implements Serializable {
     @Override
     public void step() throws EndOfGameException {
         if(tile.getCapacity() == 0 || (tile.getCapacity() != -1 && ((InstableIcePatch)tile).isFlipped())){
-            System.out.println("Eskimo remains in water at the end of the turn, researcher dies!");
             throw new EndOfGameException("Eskimo remains in water at the end of the turn, researcher dies!");
         }
         stamina = 4;

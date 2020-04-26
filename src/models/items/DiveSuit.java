@@ -23,6 +23,7 @@ public class DiveSuit extends Item implements Serializable {
      */
     @Override
     public void uponDiscovery(Character finder) {
+        System.out.println("unburied item: 5");
         finder.changeWaterPolicy(new SwimOutPolicy());
     }
 }

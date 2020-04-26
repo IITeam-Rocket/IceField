@@ -20,6 +20,7 @@ public class Food extends Item implements Serializable {
      */
     @Override
     public void uponDiscovery(Character finder) {
+        System.out.println("unburied item: 1");
         finder.addHeat(1);
     }
 }

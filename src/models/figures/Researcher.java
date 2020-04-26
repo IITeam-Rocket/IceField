@@ -58,7 +58,7 @@ public class Researcher extends Character implements Serializable {
     @Override
     public void step() throws EndOfGameException {
         if(tile.getCapacity() == 0){
-            System.out.println("Researcher reamins in water at the end of the turn, researcher dies!");
+            System.out.println("Researcher remains in water at the end of the turn, researcher dies!");
             System.out.println("Game over!");
         }
         System.out.println("researcher");

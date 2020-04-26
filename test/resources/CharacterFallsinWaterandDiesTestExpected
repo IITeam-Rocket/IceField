@@ -15,5 +15,5 @@ helpFriendStrategy: NoRescuePolicy
 swimToShoreStrategy: HasNoDiveSuitPolicy
 tile: 0
 move character to 1: successful
-Researcher reamins in water at the end of the turn, researcher dies!
+Researcher remains in water at the end of the turn, researcher dies!
 Game over!

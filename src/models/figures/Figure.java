@@ -35,6 +35,7 @@ abstract public class Figure implements Serializable {
      */
     public void moveTo(Tile destination) throws EndOfGameException {
         if (destination.acceptCharacter(this)) {
+            System.out.println("move character to " + destination.getID() + ": successful");
             tile.removeCharacter(this);
         }
     }

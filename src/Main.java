@@ -1,5 +1,4 @@
 import controllers.Prototype;
-import controllers.Skeleton;
 import models.exceptions.EndOfGameException;
 
 public class Main {
@@ -11,9 +10,5 @@ public class Main {
       } catch (EndOfGameException e) {
           e.printStackTrace();
       }
-
-      //Skeleton skeleton = new Skeleton();
-        //skeleton.run();
-        //this is a comment
     }
 }

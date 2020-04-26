@@ -260,7 +260,12 @@ public class Prototype {
 
             for(Tile tile : currentTile.getNeighbours()) {
                 if(tile.getID() == tileID) {
-                    Environment.getInstance().getCurrentPlayer().moveTo(tile);
+                    try {
+                        Environment.getInstance().getCurrentPlayer().moveTo(tile);
+                    } catch (EndOfGameException e) {
+                        System.out.println(e.getMessage());
+                        Environment.getInstance().gameOver();
+                    }
                     System.out.println("move character to " + tileID + ": successful");
                     return;
                 }

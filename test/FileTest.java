@@ -11,7 +11,7 @@ import testenv.hackOStream;
 import java.io.*;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 @Tag("Integration")
 public class FileTest {
@@ -50,6 +50,8 @@ public class FileTest {
             String actualLine = consoleOut.ReadLine();
 
             if (expectedLine == null) break;
+
+            assertNotNull(actualLine, "actualLine is null, expected: " + expectedLine);
 
             assertEquals(expectedLine.trim(), actualLine.trim(), String.format("Error in testfile: %s expected output file: %s", testFilename, testExpectedFilename));
         }

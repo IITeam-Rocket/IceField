@@ -200,15 +200,18 @@ public class Prototype {
         else {
             if (currentPlayerID == Environment.getInstance().getPlayers().size() - 1) {
                 currentPlayerID = 0;
-                System.out.println("Ending round...");
                 for (Tile t : Environment.getInstance().getIceTiles()) {
                     try {
                         t.step();
                     } catch (EndOfGameException e) {
-                        if(e.getMessage().equals("Win"))
+                        if(e.getMessage().equals("Win")) {
+                            System.out.println(e.getMessage());
                             Environment.getInstance().winGame();
-                        else
+                        }
+                        else {
+                            System.out.println(e.getMessage());
                             Environment.getInstance().gameOver();
+                        }
                     }
                 }
             }
@@ -363,7 +366,7 @@ public class Prototype {
             if (tile.getID() == tileID) {
                 found = true;
                 if(tile.getEntities().size() == 0) {
-                    System.out.println("There are no characters on this tile!");
+                    System.out.println("friend rescue: unsuccessful");
                     return;
                 }
 

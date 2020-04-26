@@ -53,5 +53,5 @@ nextcharacter
 nextcharacter
 move 4
 nextcharacter
-rescue  4
+rescue 4
 quit

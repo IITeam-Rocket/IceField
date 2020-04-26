@@ -77,7 +77,7 @@ public class Environment implements Serializable {
             out.close();
             return true;
         } catch (IOException ex) {
-            System.out.println("Couldn't save with serialization! File " + path + " doesn't exist!");
+            System.out.println("File " + path + " doesn't exist!");
             return false;
         }
     }

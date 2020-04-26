@@ -85,4 +85,3 @@ helpFriendStrategy: NoRescuePolicy
 swimToShoreStrategy: HasNoDiveSuitPolicy
 tile: 3
 friend rescue: unsuccessful
-

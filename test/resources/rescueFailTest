@@ -51,5 +51,5 @@ addsnowtotile 12 2
 random off
 nextcharacter
 nextcharacter
-rescue  4
+rescue 4
 quit

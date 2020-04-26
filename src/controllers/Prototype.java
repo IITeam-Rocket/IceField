@@ -266,7 +266,6 @@ public class Prototype {
                         System.out.println(e.getMessage());
                         Environment.getInstance().gameOver();
                     }
-                    System.out.println("move character to " + tileID + ": successful");
                     return;
                 }
             }

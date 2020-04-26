@@ -29,8 +29,11 @@ abstract public class Figure implements Serializable {
      * Moves the player to the destination Tile.
      *
      * @param destination the destination to move to
+     *
+     * @throws EndOfGameException if a player dies
+     * @see EndOfGameException
      */
-    public void moveTo(Tile destination) {
+    public void moveTo(Tile destination) throws EndOfGameException {
         if (destination.acceptCharacter(this)) {
             tile.removeCharacter(this);
         }

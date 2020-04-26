@@ -231,4 +231,14 @@ abstract public class Tile implements Serializable {
     public int getID() {
         return ID;
     }
+
+    /**
+     * Executes the tile's strategy when under attack
+     *
+     * @param attacker the attacking entity
+     *
+     * @throws EndOfGameException if a player dies in the process
+     * @see EndOfGameException
+     */
+    abstract public void reactToAttack(Figure attacker) throws EndOfGameException;
 }

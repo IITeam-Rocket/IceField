@@ -97,7 +97,18 @@ public class Hole extends Tile implements Serializable {
     }
 
     /**
+     * Upon attack, does nothing
+     *
+     * @param attacker the attacking entity
+     */
+    @Override
+    public void reactToAttack(Figure attacker) {
+        //Empty
+    }
+
+    /**
      * Returns the state of this Hole.
+     *
      * @return this Hole is discovered or not.
      */
     public boolean isDiscovered() {

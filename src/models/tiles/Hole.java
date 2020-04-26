@@ -69,7 +69,7 @@ public class Hole extends Tile implements Serializable {
      * Tile can hold at one time, which is zero.
      * It also reveals the hole.
      *
-     * @return 0
+     * @return zero
      */
     @Override
     public int getCapacity() {

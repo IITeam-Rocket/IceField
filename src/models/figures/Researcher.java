@@ -43,8 +43,11 @@ public class Researcher extends Character implements Serializable {
      */
     @Override
     public void useSpecial(Tile target) {
-        int capacity = target.getCapacity();
-        System.out.println("capacity: " + capacity);
+        if (stamina > 0) {
+            target.getCapacity();
+            //System.out.println("capacity: " + target.getCapacity());
+        } else
+            System.out.println("Not enough stamina!");
     }
 
     /**
@@ -63,6 +66,8 @@ public class Researcher extends Character implements Serializable {
         System.out.println("tile: " + tile.getID());
 
         //TODO Ha meghal?
+
+        stamina = 4;
     }
 
     /**

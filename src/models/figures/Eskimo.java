@@ -42,8 +42,11 @@ public class Eskimo extends Character implements Serializable {
      */
     @Override
     public void useSpecial(Tile target) {
-        if (target == tile)
-            ((IcePatch) tile).changeProtectionPolicy(new IglooPolicy());
+        if (stamina > 0) {
+            if (target == tile)
+                ((IcePatch) tile).changeProtectionPolicy(new IglooPolicy());
+        } else
+            System.out.println("Not enough stamina!");
     }
 
     /**
@@ -62,6 +65,8 @@ public class Eskimo extends Character implements Serializable {
         System.out.println("tile: " + tile.getID());
 
         //TODO Ha meghal?
+
+        stamina = 4;
     }
 
     /**

@@ -287,7 +287,10 @@ public class Environment implements Serializable {
      * Plays the winning game sequence.
      */
     public void winGame() {
-        System.out.println("signal flare crafted");
+        if(gunIsDiscovered && beaconIsDiscovered && cartridgeIsDiscovered)
+            System.out.println("signal flare crafted");
+        else
+            System.out.println("at least one part is missing");
     }
 
     /**

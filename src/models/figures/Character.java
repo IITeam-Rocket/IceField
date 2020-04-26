@@ -61,7 +61,7 @@ public abstract class Character extends Figure implements Serializable {
             clearPatchStrategy.clear(tile);
             stamina--;
         } else
-            System.out.println("Not enough stamina!");
+            System.out.println("Not Enough Stamina available to complete this action!");
     }
 
 
@@ -76,7 +76,7 @@ public abstract class Character extends Figure implements Serializable {
             if (find != null)
                 find.uponDiscovery(this);
         } else
-            System.out.println("Not enough stamina!");
+            System.out.println("Not Enough Stamina available to complete this action!");
     }
 
     /**
@@ -115,7 +115,7 @@ public abstract class Character extends Figure implements Serializable {
         if (stamina > 0)
             Environment.getInstance().winGame();
         else
-            System.out.println("Not enough stamina!");
+            System.out.println("Not Enough Stamina available to complete this action!");
     }
 
     /**
@@ -128,7 +128,7 @@ public abstract class Character extends Figure implements Serializable {
         if (stamina > 0)
             helpFriendStrategy.executeStrategy(friend, tile);
         else
-            System.out.println("Not enough stamina!");
+            System.out.println("Not Enough Stamina available to complete this action!");
     }
 
     /**
@@ -289,5 +289,26 @@ public abstract class Character extends Figure implements Serializable {
      */
     public void setTile(Tile tile) {
         this.tile = tile;
+    }
+
+    /**
+     * Moves the player to the destination Tile.
+     *
+     * @param destination the destination to move to
+     *
+     * @throws EndOfGameException if a player dies
+     * @see EndOfGameException
+     */
+    @Override
+    public void moveTo(Tile destination) throws EndOfGameException{
+        if(stamina == 0) {
+            System.out.println("Not Enough Stamina available to complete this action!");
+            return;
+        }
+        if (destination.acceptCharacter(this)) {
+            System.out.println("move character to " + destination.getID() + ": successful");
+            tile.removeCharacter(this);
+            stamina--;
+        }
     }
 }

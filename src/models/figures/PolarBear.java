@@ -55,12 +55,16 @@ public class PolarBear extends Figure implements Serializable {
      *
      * @param destination the destination to move to
      *
-     * @throws EndOfGameException if the bear kills a player
+     * @throws EndOfGameException if a player dies
      * @see EndOfGameException
      */
     @Override
-    public void moveTo(Tile destination) throws EndOfGameException {
-        super.moveTo(destination);
+    public void moveTo(Tile destination) throws EndOfGameException{
+
+        if (destination.acceptCharacter(this)) {
+            System.out.println("move character to " + destination.getID() + ": successful");
+            tile.removeCharacter(this);
+        }
         tile.reactToAttack(this);
     }
 

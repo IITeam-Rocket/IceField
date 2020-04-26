@@ -33,12 +33,7 @@ abstract public class Figure implements Serializable {
      * @throws EndOfGameException if a player dies
      * @see EndOfGameException
      */
-    public void moveTo(Tile destination) throws EndOfGameException {
-        if (destination.acceptCharacter(this)) {
-            System.out.println("move character to " + destination.getID() + ": successful");
-            tile.removeCharacter(this);
-        }
-    }
+    abstract public void moveTo(Tile destination) throws EndOfGameException;
 
     /**
      * Executes the FallInWaterStrategy to avoid death.

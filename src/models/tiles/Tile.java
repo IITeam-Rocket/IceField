@@ -99,10 +99,14 @@ abstract public class Tile implements Serializable {
      * @param quantity the amount of snow to remove
      */
     public void removeSnow(int quantity) {
-        if(snowDepth <= quantity)
+        if(snowDepth <= quantity) {
+            System.out.println("cleared snow: " + snowDepth + " unit(s)");
             snowDepth = 0;
-        else
+        }
+        else {
+            System.out.println("cleared snow: " + quantity + " unit(s)");
             snowDepth -= quantity;
+        }
     }
 
     /**

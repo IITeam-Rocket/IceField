@@ -2,6 +2,7 @@ package controllers;
 
 import models.Environment;
 import models.exceptions.EndOfGameException;
+import models.figures.Character;
 import models.figures.Eskimo;
 import models.figures.Figure;
 import models.figures.PolarBear;
@@ -434,10 +435,6 @@ public class Prototype {
             return;
         }
 
-        if(!Environment.getInstance().isBeaconIsDiscovered() || !Environment.getInstance().isGunIsDiscovered() || !Environment.getInstance().isCartridgeIsDiscovered()) {
-            System.out.println("at least one part is missing");
-            return;
-        }
 
         //TODO: Bizotsítani, hogy egy mezőn vannak akiknél vannak az alkatrészek
         Figure figure = Environment.getInstance().getCurrentPlayer();
@@ -445,8 +442,7 @@ public class Prototype {
         if(figure.getBaseBodyHeat() == -1)
             System.out.println("The polarbear can't craft!");
         else if(figure.getBaseBodyHeat() == 4 || figure.getBaseBodyHeat() == 5) {
-            System.out.println("signal flare crafted");
-            Environment.getInstance().winGame();
+            ((Character)figure).craftSignalFlare();
         }
         else
             System.out.println("Unknown Figure!");
@@ -542,28 +538,19 @@ public class Prototype {
             return;
         }
 
-        Tile tileToAnalyze = null;
-
-        boolean found = false;
-
-        for(Tile tile : figure.getTile().getNeighbours()) {
-            if (tile.getID() == tileID) {
-                found = true;
-                tileToAnalyze = tile;
-                break;
-            }
-        }
-
-        if (!found) {
-            System.out.println("Tile with ID " + tileID + " isn't a neighbour of the tile, the character is currently on!");
-            return;
-        }
 
         if(figure.getBaseBodyHeat() == -1)
             System.out.println("The polarbear can't analyze a tile!");
         else if(figure.getBaseBodyHeat() == 4) {
+            Tile tileToAnalyze = null;
+            for(Tile tile : Environment.getInstance().getIceTiles()) {
+                if (tile.getID() == tileID) {
+                    tileToAnalyze = tile;
+                    break;
+                }
+            }
             ((Researcher) figure).useSpecial(tileToAnalyze);
-            System.out.println("capacity: " + tileToAnalyze.getCapacity());
+            //System.out.println("capacity: " + tileToAnalyze.getCapacity());
         }
         else if(figure.getBaseBodyHeat() == 5)
             System.out.println("The eskimo can't analyze a tile!");

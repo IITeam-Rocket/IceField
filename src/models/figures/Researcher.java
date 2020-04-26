@@ -44,10 +44,13 @@ public class Researcher extends Character implements Serializable {
     @Override
     public void useSpecial(Tile target) {
         if (stamina > 0) {
-            target.getCapacity();
-            //System.out.println("capacity: " + target.getCapacity());
+            if(!tile.getNeighbours().contains(target)) {
+                System.out.println("Tile with ID " + target.getID() + " isn't a neighbour of the tile, the character is currently on!");
+                return;
+            }
+            System.out.println("capacity: " + target.getCapacity());
         } else
-            System.out.println("Not enough stamina!");
+            System.out.println("Not Enough Stamina available to complete this action!");
     }
 
     /**

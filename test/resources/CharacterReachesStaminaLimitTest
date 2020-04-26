@@ -11,9 +11,7 @@ move 0
 move 1
 unbury
 clearsnow
-rescue
+rescue 0
 craftsignalflare
-buildiglu
-biuldtent
-analyzetile
+analyzetile 0
 quit

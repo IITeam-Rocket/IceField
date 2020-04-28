@@ -30,10 +30,10 @@ public class SwimOutPolicy implements FallInWaterPolicy, Serializable {
         ArrayList<Tile> neighbourtiles = source.getNeighbours();
 
         for (Tile t : neighbourtiles) {
-            if (t.acceptCharacter(player))
+            if (t.acceptFigure(player))
                 break;
         }
-        source.removeCharacter(player);
+        source.removeFigure(player);
     }
 
     /**

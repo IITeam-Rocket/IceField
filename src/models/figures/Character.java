@@ -301,13 +301,13 @@ public abstract class Character extends Figure implements Serializable {
      */
     @Override
     public void moveTo(Tile destination) throws EndOfGameException{
-        if(stamina == 0) {
+        if (stamina == 0) {
             System.out.println("Not Enough Stamina available to complete this action!");
             return;
         }
-        if (destination.acceptCharacter(this)) {
+        if (destination.acceptFigure(this)) {
             System.out.println("move character to " + destination.getID() + ": successful");
-            tile.removeCharacter(this);
+            tile.removeFigure(this);
             stamina--;
         }
     }

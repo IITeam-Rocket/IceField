@@ -41,7 +41,7 @@ public class Hole extends Tile implements Serializable {
      * @return true if successful, false otherwise
      */
     @Override
-    public boolean acceptCharacter(Figure figure) {
+    public boolean acceptFigure(Figure figure) {
         if (analyzed)
             return false;
         reveal();

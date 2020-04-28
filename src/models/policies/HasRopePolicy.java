@@ -29,9 +29,9 @@ public class HasRopePolicy implements RescueFriendPolicy, Serializable {
     public void executeStrategy(Character friend, Tile dest) {
 
         Tile source = friend.getTile();
-        dest.acceptCharacter(friend);
+        dest.acceptFigure(friend);
 
-        source.removeCharacter(friend);
+        source.removeFigure(friend);
 
     }
 

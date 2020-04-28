@@ -57,11 +57,11 @@ public class InstableIcePatch extends IcePatch implements Serializable {
      * @return true if successful, false otherwise
      */
     @Override
-    public boolean acceptCharacter(Figure figure) {
-        if(flipped)
+    public boolean acceptFigure(Figure figure) {
+        if (flipped)
             return false;
         addCharacter(figure);
-        if(entities.size() > playerCapacity) {
+        if (entities.size() > playerCapacity) {
             flip();
             for (Figure f : entities) {
                 f.swimToShore();

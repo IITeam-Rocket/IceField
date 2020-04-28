@@ -71,14 +71,14 @@ abstract public class Tile implements Serializable {
      *
      * @return true if successful, false otherwise
      */
-    abstract public boolean acceptCharacter(Figure figure);
+    abstract public boolean acceptFigure(Figure figure);
 
     /**
      * Removes the figure from the Tile.
      *
      * @param figure the figure to remove
      */
-    public void removeCharacter(Figure figure) {
+    public void removeFigure(Figure figure) {
         entities.remove(figure);
     }
 

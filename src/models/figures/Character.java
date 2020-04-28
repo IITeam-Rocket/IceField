@@ -297,7 +297,6 @@ public abstract class Character extends Figure implements Serializable {
      * @param destination the destination to move to
      *
      * @throws EndOfGameException if a player dies
-     * @see EndOfGameException
      */
     @Override
     public void moveTo(Tile destination) throws EndOfGameException{

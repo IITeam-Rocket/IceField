@@ -94,6 +94,21 @@ abstract public class IcePatch extends Tile implements Serializable {
     }
 
     /**
+     * Buries an item in the Tile
+     *
+     * @param item the item to bury
+     *
+     * @return true, if the item has been stored, false otherwise.
+     */
+    @Override
+    public boolean storeItem(Item item) {
+        if (buriedItem != null)
+            return false;
+        buriedItem = item;
+        return true;
+    }
+
+    /**
      * Returns the IcePatch's buriedItem
      *
      * @return the buriedItem  of the IcePatch
@@ -118,21 +133,6 @@ abstract public class IcePatch extends Tile implements Serializable {
      */
     public void setProtectionStrategy(ProtectionPolicy protectionStrategy) {
         this.protectionStrategy = protectionStrategy;
-    }
-
-    /**
-     * Buries an item in the Tile
-     *
-     * @param item the item to bury
-     *
-     * @return true, if the item has been stored, false otherwise.
-     */
-    @Override
-    public boolean storeItem(Item item) {
-        if (buriedItem != null)
-            return false;
-        buriedItem = item;
-        return true;
     }
 
     /**

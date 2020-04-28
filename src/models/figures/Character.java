@@ -295,19 +295,10 @@ public abstract class Character extends Figure implements Serializable {
      * Moves the player to the destination Tile.
      *
      * @param destination the destination to move to
-     *
-     * @throws EndOfGameException if a player dies
      */
     @Override
-    public void moveTo(Tile destination) throws EndOfGameException{
-        if (stamina == 0) {
-            System.out.println("Not Enough Stamina available to complete this action!");
-            return;
-        }
-        if (destination.acceptFigure(this)) {
-            System.out.println("move character to " + destination.getID() + ": successful");
-            tile.removeFigure(this);
-            stamina--;
-        }
+    public void moveTo(Tile destination) {
+        if (stamina == 0) return;
+        if (destination.acceptFigure(this)) stamina--;
     }
 }

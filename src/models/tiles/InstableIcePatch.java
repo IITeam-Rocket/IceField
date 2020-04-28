@@ -102,12 +102,11 @@ public class InstableIcePatch extends IcePatch implements Serializable {
     @Override
     public void step() throws EndOfGameException {
         super.step();
-        if (flipped) {
-            if (entities.size() == 0)
-                flip();
-            else
-                throw new EndOfGameException("A player has drowned!");
-        }
+        if (!flipped)
+            return;
+        if (entities.size() != 0)
+            throw new EndOfGameException("A player has drowned!");
+        flip();
     }
 
     /**

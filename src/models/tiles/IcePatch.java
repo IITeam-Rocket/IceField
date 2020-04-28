@@ -24,7 +24,7 @@ abstract public class IcePatch extends Tile implements Serializable {
     /**
      * The buried item on the IcePatch.
      */
-    private Item buriedItem;
+    private Item buriedItem = null;
     /**
      * The IcePatch's protection strategy with default value NoProtectionPolicy.
      */
@@ -120,6 +120,20 @@ abstract public class IcePatch extends Tile implements Serializable {
         this.protectionStrategy = protectionStrategy;
     }
 
+    /**
+     * Buries an item in the Tile
+     *
+     * @param item the item to bury
+     *
+     * @return true, if the item has been stored, false otherwise.
+     */
+    @Override
+    public boolean storeItem(Item item) {
+        if (buriedItem != null)
+            return false;
+        buriedItem = item;
+        return true;
+    }
 
     /**
      * Realises the polar bear's effects.
@@ -128,7 +142,7 @@ abstract public class IcePatch extends Tile implements Serializable {
      */
     @Override
     public void reactToAttack(Figure attacker) throws EndOfGameException {
-        for (Figure victim: entities) {
+        for (Figure victim : entities) {
             protectionStrategy.protectAgainstAttack(attacker, victim);
         }
     }

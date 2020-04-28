@@ -2,6 +2,7 @@ package models.tiles;
 
 import models.exceptions.EndOfGameException;
 import models.figures.Figure;
+import models.items.Item;
 
 import java.io.Serializable;
 
@@ -15,11 +16,6 @@ import java.io.Serializable;
  * @since 2020.03.10
  */
 public class Hole extends Tile implements Serializable {
-
-    /**
-     * The state of this hole. If it is true someone discovered the hole.
-     */
-    private boolean isDiscovered = false;
 
     /**
      * Creates a new Hole.
@@ -46,7 +42,7 @@ public class Hole extends Tile implements Serializable {
      */
     @Override
     public boolean acceptCharacter(Figure figure) {
-        if(isDiscovered)
+        if (analyzed)
             return false;
         reveal();
         addCharacter(figure);
@@ -56,7 +52,6 @@ public class Hole extends Tile implements Serializable {
 
     /**
      * Realises the storm's effects.
-     *
      */
     @Override
     public void reactToStorm() {
@@ -73,16 +68,9 @@ public class Hole extends Tile implements Serializable {
      */
     @Override
     public int getCapacity() {
-        reveal();
         return 0;
     }
 
-    /**
-     * Sets isDiscovered true.
-     */
-    public void reveal() {
-        isDiscovered = true;
-    }
 
     /**
      * Performs duties that must be done
@@ -107,19 +95,14 @@ public class Hole extends Tile implements Serializable {
     }
 
     /**
-     * Returns the state of this Hole.
+     * Buries an item in the Tile
      *
-     * @return this Hole is discovered or not.
+     * @param item the item to bury
+     *
+     * @return false
      */
-    public boolean isDiscovered() {
-        return isDiscovered;
-    }
-
-    /**
-     * Sets the isDiscovered attribute to the given value.
-     * @param discovered the new value of the isDiscovered attribute.
-     */
-    public void setDiscovered(boolean discovered) {
-        isDiscovered = discovered;
+    @Override
+    public boolean storeItem(Item item) {
+        return false;
     }
 }

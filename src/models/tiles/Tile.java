@@ -41,6 +41,10 @@ abstract public class Tile implements Serializable {
      * Contains the neighbours of the Tile.
      */
     protected ArrayList<Tile> neighbours = new ArrayList<>();
+    /**
+     * Stores information on whether the tile has been analyzed or not.
+     */
+    protected boolean analyzed = false;
 
     /**
      * Creates a new Tile.
@@ -113,10 +117,10 @@ abstract public class Tile implements Serializable {
      * Buries an item in the Tile
      *
      * @param item the item to bury
+     *
+     * @return true, if the item has been stored, false otherwise.
      */
-    public void storeItem(Item item) {
-        //TODO
-    }
+    abstract public boolean storeItem(Item item);
 
     /**
      * Realises the storm's effects.
@@ -125,7 +129,6 @@ abstract public class Tile implements Serializable {
      *                            to death
      */
     abstract public void reactToStorm() throws EndOfGameException;
-
 
     /**
      * Returns the maximum number of characters the
@@ -238,7 +241,20 @@ abstract public class Tile implements Serializable {
      * @param attacker the attacking entity
      *
      * @throws EndOfGameException if a player dies in the process
-     * @see EndOfGameException
      */
     abstract public void reactToAttack(Figure attacker) throws EndOfGameException;
+
+    /**
+     * @return true if the tile has been analyzed, false otherwise.
+     */
+    public boolean isAnalyzed() {
+        return analyzed;
+    }
+
+    /**
+     * Reveals the tile, so its capacity can be known.
+     */
+    public void reveal() {
+        analyzed = true;
+    }
 }

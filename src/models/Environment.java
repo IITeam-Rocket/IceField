@@ -68,6 +68,7 @@ public class Environment implements Serializable {
      * Writes the instance object to the given path using serialization
      *
      * @param path The path where the object should be written serialized
+     *
      * @return Return whether or not the serialization was a success
      */
     public static boolean serializeWrite(String path) {
@@ -87,13 +88,14 @@ public class Environment implements Serializable {
      * Reads the instance object from the given path using serialization
      *
      * @param path The path where the object should be read from serialized
+     *
      * @return Return whether or not the serialization was a success
      */
     public static boolean serializeRead(String path) {
         try {
             FileInputStream f = new FileInputStream(path);
             ObjectInputStream in = new ObjectInputStream(f);
-            Environment env = (Environment)in.readObject();
+            Environment env = (Environment) in.readObject();
 
             Tile.setIDCounter(env.getIceTiles().size());
 
@@ -103,20 +105,20 @@ public class Environment implements Serializable {
             instance.setPlayers(env.getPlayers());
             instance.setCurrentPlayer(env.getCurrentPlayer());
 
-            if(env.isBeaconIsDiscovered())
+            if (env.isBeaconIsDiscovered())
                 instance.recordBeacon();
-            if(env.isCartridgeIsDiscovered())
+            if (env.isCartridgeIsDiscovered())
                 instance.recordCartridge();
-            if(env.isGunIsDiscovered())
+            if (env.isGunIsDiscovered())
                 instance.recordGun();
 
             in.close();
 
             return true;
-        } catch(IOException ex) {
+        } catch (IOException ex) {
             System.out.println("Couldn't load with serialization! File " + path + " doesn't exist or doesn't contain the correct data!");
-            return  false;
-        } catch(ClassNotFoundException ex) {
+            return false;
+        } catch (ClassNotFoundException ex) {
             System.out.println("Couldn't save with serialization! ClassNotFound");
             return false;
         }
@@ -125,8 +127,7 @@ public class Environment implements Serializable {
     /**
      * Resets the content of the current Environment class
      */
-    public void reset()
-    {
+    public void reset() {
         iceTiles = new ArrayList<>();
         players = new ArrayList<>();
         currentPlayer = null;
@@ -141,7 +142,6 @@ public class Environment implements Serializable {
      */
     public void recordBeacon() {
         this.beaconIsDiscovered = true;
-
     }
 
     /**
@@ -164,7 +164,6 @@ public class Environment implements Serializable {
      *
      * @throws EndOfGameException if a player character
      *                            dies
-     * @see EndOfGameException
      */
     public void makeStorm() throws EndOfGameException {
         ArrayList<Tile> target = getRandomTiles();
@@ -178,26 +177,18 @@ public class Environment implements Serializable {
      * @return a random set of tiles.
      */
     public ArrayList<Tile> getRandomTiles() {
-        // TODO: 2020. 04. 25. check
         ArrayList<Tile> randomTiles = new ArrayList<>();
         Random rand = new Random();
         int numberOfRandomTiles = rand.nextInt(iceTiles.size());
-        if(iceTiles.size() == 1)
+        if (iceTiles.size() == 1)
             numberOfRandomTiles = 1;
-        while(randomTiles.size() != numberOfRandomTiles){
+        while (randomTiles.size() != numberOfRandomTiles) {
             int nextID = rand.nextInt(iceTiles.size());
             Tile nextTile = iceTiles.get(nextID);
-            if(!randomTiles.contains(nextTile))
+            if (!randomTiles.contains(nextTile))
                 randomTiles.add(nextTile);
         }
         return randomTiles;
-    }
-
-    /**
-     * Controls the entire game-play.
-     */
-    public void playGame() {
-        // TODO: 2020. 04. 15. implement
     }
 
     /**
@@ -288,7 +279,7 @@ public class Environment implements Serializable {
      * Plays the winning game sequence.
      */
     public void winGame() {
-        if(gunIsDiscovered && beaconIsDiscovered && cartridgeIsDiscovered)
+        if (gunIsDiscovered && beaconIsDiscovered && cartridgeIsDiscovered)
             System.out.println("signal flare crafted");
         else
             System.out.println("at least one part is missing");

@@ -14,8 +14,10 @@ import java.io.Serializable;
  * Represents a playable character of the game.
  *
  * @author Józsa György
- * @version 2.0
+ * @version 3.0
  * @see models.figures.Figure
+ * @see models.Subject
+ * @see java.io.Serializable
  * @since skeleton
  * @since 2020.03.10
  */
@@ -44,7 +46,7 @@ public abstract class Character extends Figure implements Serializable {
      * Creates a new Character with the given body heat and stamina.
      *
      * @param bodyHeat the value of the new character's body heat
-     * @param stamina the value of the new character's stamina
+     * @param stamina  the value of the new character's stamina
      */
     protected Character(int bodyHeat, int stamina) {
         this.bodyHeat = bodyHeat;
@@ -180,6 +182,15 @@ public abstract class Character extends Figure implements Serializable {
     }
 
     /**
+     * Sets the character's bodyHeat to the parameter.
+     *
+     * @param bodyHeat the character's new bodyHeat
+     */
+    public void setBodyHeat(int bodyHeat) {
+        this.bodyHeat = bodyHeat;
+    }
+
+    /**
      * Returns the stamina of the character.
      *
      * @return the number of actions the character
@@ -187,6 +198,15 @@ public abstract class Character extends Figure implements Serializable {
      */
     public int getStamina() {
         return stamina;
+    }
+
+    /**
+     * Sets the character's stamina to the parameter.
+     *
+     * @param stamina the character's new stamina
+     */
+    public void setStamina(int stamina) {
+        this.stamina = stamina;
     }
 
     /**
@@ -200,6 +220,15 @@ public abstract class Character extends Figure implements Serializable {
     }
 
     /**
+     * Sets the character's helpFriendStrategy to the parameter.
+     *
+     * @param helpFriendStrategy the character's new helpFriendStrategy
+     */
+    public void setHelpFriendStrategy(RescueFriendPolicy helpFriendStrategy) {
+        this.helpFriendStrategy = helpFriendStrategy;
+    }
+
+    /**
      * Returns the character's strategy of getting out of water.
      *
      * @return the character's strategy of getting out of water
@@ -209,12 +238,30 @@ public abstract class Character extends Figure implements Serializable {
     }
 
     /**
+     * Sets the character's swimToShoreStrategy to the parameter.
+     *
+     * @param swimToShoreStrategy the character's new swimToShoreStrategy
+     */
+    public void setSwimToShoreStrategy(FallInWaterPolicy swimToShoreStrategy) {
+        this.swimToShoreStrategy = swimToShoreStrategy;
+    }
+
+    /**
      * Returns the Tile the character is currently standing on.
      *
      * @return the Tile the character is on
      */
     public Tile getTile() {
         return tile;
+    }
+
+    /**
+     * Sets the character's tile to the parameter.
+     *
+     * @param tile the character's new tile
+     */
+    public void setTile(Tile tile) {
+        this.tile = tile;
     }
 
     /**
@@ -244,51 +291,6 @@ public abstract class Character extends Figure implements Serializable {
      */
     public void buildTent() {
         ((IcePatch) tile).changeProtectionPolicy(new TentPolicy());
-    }
-
-    /**
-     * Sets the character's bodyHeat to the parameter.
-     *
-     * @param bodyHeat the character's new bodyHeat
-     */
-    public void setBodyHeat(int bodyHeat) {
-        this.bodyHeat = bodyHeat;
-    }
-
-    /**
-     * Sets the character's stamina to the parameter.
-     *
-     * @param stamina the character's new stamina
-     */
-    public void setStamina(int stamina) {
-        this.stamina = stamina;
-    }
-
-    /**
-     * Sets the character's swimToShoreStrategy to the parameter.
-     *
-     * @param swimToShoreStrategy the character's new swimToShoreStrategy
-     */
-    public void setSwimToShoreStrategy(FallInWaterPolicy swimToShoreStrategy) {
-        this.swimToShoreStrategy = swimToShoreStrategy;
-    }
-
-    /**
-     * Sets the character's helpFriendStrategy to the parameter.
-     *
-     * @param helpFriendStrategy the character's new helpFriendStrategy
-     */
-    public void setHelpFriendStrategy(RescueFriendPolicy helpFriendStrategy) {
-        this.helpFriendStrategy = helpFriendStrategy;
-    }
-
-    /**
-     * Sets the character's tile to the parameter.
-     *
-     * @param tile the character's new tile
-     */
-    public void setTile(Tile tile) {
-        this.tile = tile;
     }
 
     /**

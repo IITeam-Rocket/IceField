@@ -12,8 +12,10 @@ import java.io.Serializable;
  * it attacks every figure on the tile.
  *
  * @author Józsa György
- * @version 1.0
+ * @version 2.0
  * @see models.figures.Figure
+ * @see models.Subject
+ * @see java.io.Serializable
  * @since prototype
  * @since 2020.04.16
  */

@@ -13,7 +13,7 @@ import java.util.Random;
  * It contains the environmental state such as the relationship between Tiles and making a storm.
  *
  * @author Józsa György
- * @version 2.0
+ * @version 3.0
  * @since skeleton
  * @since 2020.03.10
  */

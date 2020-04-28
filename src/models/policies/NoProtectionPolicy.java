@@ -11,7 +11,7 @@ import java.io.Serializable;
  * snow storm.
  *
  * @author Józsa György
- * @version 2.0
+ * @version 3.0
  * @see models.policies.ProtectionPolicy
  * @since skeleton
  * @since 2020.03.10

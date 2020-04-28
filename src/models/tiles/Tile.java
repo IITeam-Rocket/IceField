@@ -1,5 +1,6 @@
 package models.tiles;
 
+import models.Subject;
 import models.exceptions.EndOfGameException;
 import models.figures.Figure;
 import models.items.Item;
@@ -12,11 +13,13 @@ import java.util.ArrayList;
  * which is a part of the IceField
  *
  * @author Józsa György
- * @version 2.0
+ * @version 3.0
+ * @see models.Subject
+ * @see java.io.Serializable
  * @since skeleton
  * @since 2020.03.10
  */
-abstract public class Tile implements Serializable {
+abstract public class Tile extends Subject implements Serializable {
     /**
      * The maximum possible snow depth on a Tile.
      */
@@ -65,6 +68,33 @@ abstract public class Tile implements Serializable {
     }
 
     /**
+     * Returns the possible maximum snow depth on a tile
+     *
+     * @return the maximum snow depth
+     */
+    public static int getMaxSnowDepth() {
+        return maxSnowDepth;
+    }
+
+    /**
+     * Returns the next unique Tile ID in row
+     *
+     * @return the next ID
+     */
+    public static int getIDCounter() {
+        return IDCounter;
+    }
+
+    /**
+     * Sets the next unique Tile ID in row
+     *
+     * @param idCounter the next ID
+     */
+    public static void setIDCounter(int idCounter) {
+        IDCounter = idCounter;
+    }
+
+    /**
      * Accepts the player who tries to move on it.
      *
      * @param figure the player to accept
@@ -92,7 +122,7 @@ abstract public class Tile implements Serializable {
     public int addSnow(int quantity) {
         int oldSnowDepth = snowDepth;
         snowDepth += quantity;
-        if(snowDepth > maxSnowDepth)
+        if (snowDepth > maxSnowDepth)
             snowDepth = maxSnowDepth;
         return snowDepth - oldSnowDepth;
     }
@@ -103,11 +133,10 @@ abstract public class Tile implements Serializable {
      * @param quantity the amount of snow to remove
      */
     public void removeSnow(int quantity) {
-        if(snowDepth <= quantity) {
+        if (snowDepth <= quantity) {
             System.out.println("cleared snow: " + snowDepth + " unit(s)");
             snowDepth = 0;
-        }
-        else {
+        } else {
             System.out.println("cleared snow: " + quantity + " unit(s)");
             snowDepth -= quantity;
         }
@@ -198,33 +227,6 @@ abstract public class Tile implements Serializable {
      * @throws EndOfGameException if a player dies.
      */
     abstract public void step() throws EndOfGameException;
-
-    /**
-     * Returns the possible maximum snow depth on a tile
-     *
-     * @return the maximum snow depth
-     */
-    public static int getMaxSnowDepth() {
-        return maxSnowDepth;
-    }
-
-    /**
-     * Returns the next unique Tile ID in row
-     *
-     * @return the next ID
-     */
-    public static int getIDCounter() {
-        return IDCounter;
-    }
-
-    /**
-     * Sets the next unique Tile ID in row
-     *
-     * @param idCounter the next ID
-     */
-    public static void setIDCounter(int idCounter) {
-        IDCounter =  idCounter;
-    }
 
     /**
      * Returns the Tile's unique ID

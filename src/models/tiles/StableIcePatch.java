@@ -10,9 +10,11 @@ import java.io.Serializable;
  * characters.
  *
  * @author Józsa György
- * @version 2.0
+ * @version 3.0
  * @see models.tiles.IcePatch
  * @see models.tiles.Tile
+ * @see java.io.Serializable
+ * @see models.Subject
  * @since skeleton
  * @since 2020.03.10
  */

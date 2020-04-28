@@ -10,9 +10,11 @@ import java.io.Serializable;
  * players.
  *
  * @author Józsa György
- * @version 2.0
+ * @version 3.0
  * @see models.figures.Character
  * @see models.figures.Figure
+ * @see models.Subject
+ * @see java.io.Serializable
  * @since skeleton
  * @since 2020.03.10
  */
@@ -49,7 +51,6 @@ public class Researcher extends Character implements Serializable {
             stamina--;
         }
     }
-
 
 
     /**

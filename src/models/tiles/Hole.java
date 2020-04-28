@@ -10,8 +10,10 @@ import java.io.Serializable;
  * A tile with no solid platform.
  *
  * @author Józsa György
- * @version 2.0
+ * @version 3.0
  * @see models.tiles.Tile
+ * @see models.Subject
+ * @see java.io.Serializable
  * @since skeleton
  * @since 2020.03.10
  */
@@ -92,7 +94,7 @@ public class Hole extends Tile implements Serializable {
      */
     @Override
     public void reactToAttack(Figure attacker) {
-       //Empty
+        //Empty
     }
 
     /**

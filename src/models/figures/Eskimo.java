@@ -10,9 +10,11 @@ import java.io.Serializable;
  * A character with the ability to build Igloos
  *
  * @author Józsa György
- * @version 2.0
+ * @version 3.0
  * @see models.figures.Figure
  * @see models.figures.Character
+ * @see models.Subject
+ * @see java.io.Serializable
  * @since skeleton
  * @since 2020.03.10
  */

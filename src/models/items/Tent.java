@@ -10,7 +10,7 @@ import java.io.Serializable;
  * protection from blizzards.
  *
  * @author Józsa György
- * @version 2.0
+ * @version 3.0
  * @see models.items.Item
  * @since prototype
  * @since 2020.04.24

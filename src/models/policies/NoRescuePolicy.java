@@ -11,7 +11,7 @@ import java.io.Serializable;
  * strategy is to have no strategy, thus doing nothing.
  *
  * @author Józsa György
- * @version 2.0
+ * @version 3.0
  * @see models.policies.RescueFriendPolicy
  * @since skeleton
  * @since 2020.03.10

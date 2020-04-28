@@ -14,8 +14,10 @@ import java.io.Serializable;
  * can stand on.
  *
  * @author Józsa György
- * @version 2.0
+ * @version 3.0
  * @see models.tiles.Tile
+ * @see models.Subject
+ * @see java.io.Serializable
  * @since skeleton
  * @since 2020.03.10
  */
@@ -55,7 +57,7 @@ abstract public class IcePatch extends Tile implements Serializable {
      * @return the buried item
      */
     public Item unBuryItem(Character player) {
-        if(snowDepth > 0)
+        if (snowDepth > 0)
             return null;
         return buriedItem;
     }

@@ -11,7 +11,7 @@ import java.io.Serializable;
  * turn, but not from an attack.
  *
  * @author Józsa György
- * @version 1.0
+ * @version 2.0
  * @since prototype
  * @since 2020.04.14
  */

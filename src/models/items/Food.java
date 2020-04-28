@@ -8,7 +8,7 @@ import java.io.Serializable;
  * An Item that gives the finding player bodyHeat.
  *
  * @author Józsa György
- * @version 2.0
+ * @version 3.0
  * @since skeleton
  * @since 2020.03.10
  */

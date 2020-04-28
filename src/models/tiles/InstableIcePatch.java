@@ -11,9 +11,11 @@ import java.io.Serializable;
  * over.
  *
  * @author Józsa György
- * @version 2.0
+ * @version 3.0
  * @see models.tiles.IcePatch
  * @see models.tiles.Tile
+ * @see models.Subject
+ * @see java.io.Serializable
  * @since skeleton
  * @since 2020.03.10
  */
@@ -43,7 +45,7 @@ public class InstableIcePatch extends IcePatch implements Serializable {
      * Creates a new InstableIcePatch with the given playerCapacity and with the given ID.
      *
      * @param playerCapacity the new InstableIcePatch's capacity.
-     * @param ID the new InstableIcePatch's unique ID.
+     * @param ID             the new InstableIcePatch's unique ID.
      */
     public InstableIcePatch(int ID, int playerCapacity) {
         super(ID);

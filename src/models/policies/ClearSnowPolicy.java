@@ -7,7 +7,7 @@ import models.tiles.Tile;
  * from a tile.
  *
  * @author Józsa György
- * @version 1.0
+ * @version 2.0
  * @since prototype
  * @since 2020.04.15
  */

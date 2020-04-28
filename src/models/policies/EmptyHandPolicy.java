@@ -9,7 +9,7 @@ import java.io.Serializable;
  * of snow from a tile.
  *
  * @author Józsa György
- * @version 1.0
+ * @version 2.0
  * @see models.policies.ClearSnowPolicy
  * @since prototype
  * @since 2020.04.15

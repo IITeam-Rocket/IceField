@@ -12,7 +12,7 @@ import java.io.Serializable;
  * upon its third use.
  *
  * @author Józsa György
- * @version 2.0
+ * @version 3.0
  * @see models.items.Item
  * @since prototype
  * @since 2020.04.24

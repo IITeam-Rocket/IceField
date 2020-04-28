@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * neighbouring Tile.
  *
  * @author Józsa György
- * @version 2.0
+ * @version 3.0
  * @see models.policies.FallInWaterPolicy
  * @since skeleton
  * @since 2020.03.10

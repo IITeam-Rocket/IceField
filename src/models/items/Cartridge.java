@@ -10,7 +10,7 @@ import java.io.Serializable;
  * needed to win the game.
  *
  * @author Józsa György
- * @version 2.0
+ * @version 3.0
  * @since skeleton
  * @since 2020.03.10
  */

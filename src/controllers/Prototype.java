@@ -193,7 +193,6 @@ public class Prototype {
             Environment.getInstance().setCurrentPlayer(Environment.getInstance().getPlayers().get(0));
             currentPlayerID = 0;
 
-            Environment.getInstance().getCurrentPlayer().step();
         }
         else {
             if (currentPlayerID == Environment.getInstance().getPlayers().size() - 1) {
@@ -217,19 +216,6 @@ public class Prototype {
                 currentPlayerID++;
 
             Environment.getInstance().setCurrentPlayer(Environment.getInstance().getPlayers().get(currentPlayerID));
-
-            try {
-                Environment.getInstance().getCurrentPlayer().step();
-            } catch (EndOfGameException e) {
-                if(e.getMessage().equals("Win")) {
-                    System.out.println(e.getMessage());
-                    Environment.getInstance().winGame();
-                }
-                else {
-                    System.out.println(e.getMessage());
-                    Environment.getInstance().gameOver();
-                }
-            }
         }
 
         if(Environment.getInstance().getCurrentPlayer().getBaseBodyHeat() == -1 && RandomController.getRandom())

@@ -3,10 +3,7 @@ package controllers;
 import models.Environment;
 import models.exceptions.EndOfGameException;
 import models.figures.Character;
-import models.figures.Eskimo;
-import models.figures.Figure;
-import models.figures.PolarBear;
-import models.figures.Researcher;
+import models.figures.*;
 import models.items.*;
 import models.tiles.*;
 
@@ -575,37 +572,39 @@ public class Prototype {
      * @param lineParts The line's parts which should be interpreted, split at every space delim
      */
     private void command_addtile(String[] lineParts) {
-        if(!checkParamNum(lineParts, 1))
+        if (!checkParamNum(lineParts, 1))
             return;
 
         Tile tile;
 
-        if(lineParts[1].equals("hole"))
-            tile = new Hole();
-        else if(lineParts[1].equals("stable"))
-            tile = new StableIcePatch();
-        else if(lineParts[1].equals("instable")) {
-            if(!checkParamNum(lineParts, 2))
-                return;
+        switch (lineParts[1]) {
+            case "hole":
+                tile = new Hole();
+                break;
+            case "stable":
+                tile = new StableIcePatch();
+                break;
+            case "instable":
+                if (!checkParamNum(lineParts, 2))
+                    return;
 
-            try {
-                int capacity = Integer.parseInt(lineParts[2]);
+                try {
+                    int capacity = Integer.parseInt(lineParts[2]);
 
-                if(capacity <= 0) {
-                    System.out.println("Instable IcePatch capacity needs to be greater than 0!");
+                    if (capacity <= 0) {
+                        System.out.println("Instable IcePatch capacity needs to be greater than 0!");
+                        return;
+                    }
+
+                    tile = new InstableIcePatch(capacity);
+                } catch (NumberFormatException e) {
+                    invalidParameter("addtile instable", lineParts[2]);
                     return;
                 }
-
-                tile = new InstableIcePatch(capacity);
-            }
-            catch (NumberFormatException e) {
-                invalidParameter("addtile instable", lineParts[2]);
+                break;
+            default:
+                invalidParameter("addtile", lineParts[1]);
                 return;
-            }
-        }
-        else {
-            invalidParameter("addtile", lineParts[1]);
-            return;
         }
         System.out.println("tile added");
         System.out.println("type: " + lineParts[1]);
@@ -1010,8 +1009,6 @@ public class Prototype {
                 command_reset(lineSegments);
                 break;
             case "exit":
-                running = false;
-                break;
             case "quit":
                 running = false;
                 break;

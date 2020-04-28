@@ -43,19 +43,9 @@ public class FileMapArgumentsProvider implements ArgumentsProvider {
                 break;
             }
         }
-        FileFilter testFilter = new FileFilter() {
-            @Override
-            public boolean accept(File f) {
-                return f.getName().endsWith("Test");
-            }
-        };
+        FileFilter testFilter = f -> f.getName().endsWith("Test");
 
-        FileFilter expectedFilter = new FileFilter() {
-            @Override
-            public boolean accept(File f) {
-                return f.getName().endsWith("Expected");
-            }
-        };
+        FileFilter expectedFilter = f -> f.getName().endsWith("Expected");
 
         File[] testfiles = wd.listFiles(testFilter);
         File[] expected = wd.listFiles(expectedFilter);

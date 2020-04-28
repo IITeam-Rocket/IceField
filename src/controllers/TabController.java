@@ -5,7 +5,7 @@ package controllers;
  * for readable output.
  */
 public class TabController {
-    private static TabController instance = new TabController();
+    private static final TabController instance = new TabController();
     private static int indentCount = 0;
 
     /**

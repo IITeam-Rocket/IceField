@@ -6,7 +6,7 @@ import java.io.PrintStream;
 import java.util.ArrayDeque;
 
 public class hackOStream extends PrintStream {
-    private ArrayDeque<String> lines;
+    private final ArrayDeque<String> lines;
 
     public hackOStream() throws IOException {
         super(File.createTempFile("logtmp-", ".txt"));

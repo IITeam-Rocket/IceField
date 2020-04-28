@@ -1,9 +1,7 @@
 package models.figures;
 
-import models.exceptions.EndOfGameException;
 import models.policies.IglooPolicy;
 import models.tiles.IcePatch;
-import models.tiles.InstableIcePatch;
 import models.tiles.Tile;
 
 import java.io.Serializable;
@@ -48,30 +46,6 @@ public class Eskimo extends Character implements Serializable {
                 ((IcePatch) tile).changeProtectionPolicy(new IglooPolicy());
         } else
             System.out.println("Not Enough Stamina available to complete this action!");
-    }
-
-    /**
-     * TODO: description
-     *
-     * @throws EndOfGameException if the Eskimo dies.
-     */
-    @Override
-    public void step() throws EndOfGameException {
-        if(tile.getCapacity() == 0 || (tile.getCapacity() != -1 && ((InstableIcePatch)tile).isFlipped())){
-            throw new EndOfGameException("Eskimo remains in water at the end of the turn, researcher dies!");
-        }
-        stamina = 4;
-        System.out.println("eskimo");
-        System.out.println("bodyheat: " + bodyHeat);
-        System.out.println("stamina: " + stamina);
-        System.out.println("clearPatchStrategy: " + clearPatchStrategy.toString());
-        System.out.println("helpFriendStrategy: " + helpFriendStrategy.toString());
-        System.out.println("swimToShoreStrategy: " + swimToShoreStrategy.toString());
-        System.out.println("tile: " + tile.getID());
-
-        //TODO Ha meghal?
-
-        stamina = 4;
     }
 
     /**

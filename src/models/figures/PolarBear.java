@@ -1,12 +1,10 @@
 package models.figures;
 
-import controllers.RandomController;
 import models.exceptions.EndOfGameException;
 import models.policies.SwimOutPolicy;
 import models.tiles.Tile;
 
 import java.io.Serializable;
-import java.util.Random;
 
 /**
  * Represents a polar bear that wanders
@@ -23,31 +21,6 @@ public class PolarBear extends Figure implements Serializable {
 
     public PolarBear() {
         swimToShoreStrategy = new SwimOutPolicy();
-    }
-
-    /**
-     * If the randomness is on, the PolarBear will move to
-     * a random neighbouring tile. If is off, it will move
-     * to a given tile.
-     *
-     * @throws EndOfGameException if a main character dies.
-     */
-    @Override
-    public void step() throws EndOfGameException {
-        if (RandomController.getRandom()) {
-            if (tile.getNeighbours() == null || tile.getNeighbours().size() == 0)
-                System.out.println("No tiles available to move to");
-            else {
-                Random random = new Random();
-                int idx = random.nextInt(tile.getNeighbours().size());
-                Tile destination = tile.getNeighbours().get(idx);
-
-                moveTo(destination);
-            }
-        } else {
-            System.out.println("polarbear");
-            System.out.println("tile: " + tile.getID());
-        }
     }
 
     /**

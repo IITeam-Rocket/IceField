@@ -61,13 +61,6 @@ abstract public class Figure implements Serializable {
     }
 
     /**
-     * Executes what the figure does in its turn.
-     *
-     * @throws EndOfGameException if a main character dies.
-     */
-    abstract public void step() throws EndOfGameException;
-
-    /**
      * Realises a attack's effect on the figure.
      *
      * @throws EndOfGameException on player death

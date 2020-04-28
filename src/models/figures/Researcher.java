@@ -1,7 +1,5 @@
 package models.figures;
 
-import models.exceptions.EndOfGameException;
-import models.tiles.InstableIcePatch;
 import models.tiles.Tile;
 
 import java.io.Serializable;
@@ -44,39 +42,15 @@ public class Researcher extends Character implements Serializable {
      */
     @Override
     public void useSpecial(Tile target) {
-        if (stamina > 0) {
-            if(!tile.getNeighbours().contains(target)) {
-                System.out.println("Tile with ID " + target.getID() + " isn't a neighbour of the tile, the character is currently on!");
-                return;
-            }
-            System.out.println("capacity: " + target.getCapacity());
-        } else
-            System.out.println("Not Enough Stamina available to complete this action!");
-    }
-
-    /**
-     * TODO: description
-     *
-     * @throws EndOfGameException if the Researcher dies.
-     */
-    @Override
-    public void step() throws EndOfGameException {
-        if(tile.getCapacity() == 0 || (tile.getCapacity() != -1 && ((InstableIcePatch)tile).isFlipped())){
-            throw new EndOfGameException("Researcher remains in water at the end of the turn, researcher dies!");
+        if (stamina <= 0)
+            return;
+        if (tile.getNeighbours().contains(target)) {
+            target.reveal();
+            stamina--;
         }
-        stamina = 4;
-        System.out.println("researcher");
-        System.out.println("bodyheat: " + bodyHeat);
-        System.out.println("stamina: " + stamina);
-        System.out.println("clearPatchStrategy: " + clearPatchStrategy.toString());
-        System.out.println("helpFriendStrategy: " + helpFriendStrategy.toString());
-        System.out.println("swimToShoreStrategy: " + swimToShoreStrategy.toString());
-        System.out.println("tile: " + tile.getID());
-
-        //TODO Ha meghal?
-
-        stamina = 4;
     }
+
+
 
     /**
      * Returns the base body heat of the figure

@@ -46,6 +46,8 @@ public class Hole extends Tile implements Serializable {
             return false;
         reveal();
         addCharacter(figure);
+        figure.removeFromTile(figure.getTile());
+        figure.setTile(this);
         figure.swimToShore();
         return true;
     }

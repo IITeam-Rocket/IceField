@@ -89,7 +89,7 @@ abstract public class IcePatch extends Tile implements Serializable {
      * at the end of a turn
      */
     @Override
-    public void step() {
+    public void step() throws EndOfGameException {
         protectionStrategy.step();
     }
 

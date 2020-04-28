@@ -1,5 +1,6 @@
 package models.tiles;
 
+import models.exceptions.EndOfGameException;
 import models.figures.Figure;
 
 import java.io.Serializable;
@@ -61,6 +62,8 @@ public class InstableIcePatch extends IcePatch implements Serializable {
         if (flipped)
             return false;
         addCharacter(figure);
+        figure.removeFromTile(figure.getTile());
+        figure.setTile(this);
         if (entities.size() > playerCapacity) {
             flip();
             for (Figure f : entities) {
@@ -86,7 +89,26 @@ public class InstableIcePatch extends IcePatch implements Serializable {
      * behaviour from stable to hole
      * and vice versa.
      */
-    public void flip() { flipped = !flipped;}
+    public void flip() {
+        flipped = !flipped;
+    }
+
+    /**
+     * Performs duties that must be done
+     * at the end of a turn
+     *
+     * @throws EndOfGameException if the patch is flipped and a player was left in the water.
+     */
+    @Override
+    public void step() throws EndOfGameException {
+        super.step();
+        if (flipped) {
+            if (entities.size() == 0)
+                flip();
+            else
+                throw new EndOfGameException("A player has drowned!");
+        }
+    }
 
     /**
      * Returns whether the Patch is unfit for

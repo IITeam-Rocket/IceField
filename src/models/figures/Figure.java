@@ -31,7 +31,6 @@ abstract public class Figure implements Serializable {
      * @param destination the destination to move to
      *
      * @throws EndOfGameException if a player dies
-     * @see EndOfGameException
      */
     abstract public void moveTo(Tile destination) throws EndOfGameException;
 
@@ -92,5 +91,14 @@ abstract public class Figure implements Serializable {
      */
     public void setSwimToShoreStrategy(FallInWaterPolicy swimToShoreStrategy) {
         this.swimToShoreStrategy = swimToShoreStrategy;
+    }
+
+    /**
+     * Removes the figure from the list of figures standing on tile
+     *
+     * @param tile the tile to remove the figure from
+     */
+    public void removeFromTile(Tile tile) {
+        tile.removeFigure(this);
     }
 }

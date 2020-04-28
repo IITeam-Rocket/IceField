@@ -7,7 +7,7 @@ import java.util.List;
  * A class representing an observed entity.
  *
  * @author Józsa György
- * @version 3.0
+ * @version 1.0
  * @since graphical
  * @since 2020.04.28.
  */

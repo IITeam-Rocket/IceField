@@ -43,7 +43,7 @@ public class StableIcePatch extends IcePatch implements Serializable {
      */
     @Override
     public boolean acceptFigure(Figure figure) {
-        addCharacter(figure);
+        moveFigureToThisTile(figure);
         return true;
     }
 

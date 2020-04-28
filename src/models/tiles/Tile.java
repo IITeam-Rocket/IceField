@@ -257,4 +257,15 @@ abstract public class Tile implements Serializable {
     public void reveal() {
         analyzed = true;
     }
+
+    /**
+     * Moves the figure to this tile.
+     *
+     * @param figure the figure to move
+     */
+    protected void moveFigureToThisTile(Figure figure) {
+        addCharacter(figure);
+        figure.removeFromTile(figure.getTile());
+        figure.setTile(this);
+    }
 }

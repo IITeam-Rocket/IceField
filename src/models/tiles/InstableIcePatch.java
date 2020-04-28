@@ -61,9 +61,7 @@ public class InstableIcePatch extends IcePatch implements Serializable {
     public boolean acceptFigure(Figure figure) {
         if (flipped)
             return false;
-        addCharacter(figure);
-        figure.removeFromTile(figure.getTile());
-        figure.setTile(this);
+        moveFigureToThisTile(figure);
         if (entities.size() > playerCapacity) {
             flip();
             for (Figure f : entities) {

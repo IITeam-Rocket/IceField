@@ -21,7 +21,9 @@ import java.util.Random;
 
 public class Environment implements Serializable {
 
-    // TODO: 2020. 04. 24. javadoc
+    /**
+     * The only live instance of the class.
+     */
     static private final Environment instance = new Environment();
     /**
      * Contains the Tile's of the game.

@@ -1,5 +1,6 @@
 package models.figures;
 
+import models.Subject;
 import models.exceptions.EndOfGameException;
 import models.policies.FallInWaterPolicy;
 import models.tiles.Tile;
@@ -11,10 +12,11 @@ import java.io.Serializable;
  *
  * @author Józsa György
  * @version 1.0
+ * @see models.Subject
  * @since prototype
  * @since 2020.03.10
  */
-abstract public class Figure implements Serializable {
+abstract public class Figure extends Subject implements Serializable {
     /**
      * The first and last name actual tile of this figure.
      */

@@ -9,9 +9,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * Singleton class representing the Environment and the Game
- * It controls the gameplay with the environmental state
- * such as the relationship between Tiles and making a storm.
+ * Singleton class representing the Environment.
+ * It contains the environmental state such as the relationship between Tiles and making a storm.
  *
  * @author Józsa György
  * @version 2.0

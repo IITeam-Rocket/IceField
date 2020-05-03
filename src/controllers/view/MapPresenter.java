@@ -25,7 +25,13 @@ public class MapPresenter implements Observer {
      */
     @Override
     public void update() {
+        tiles.forEach(t -> {
+            t.draw();
+            tiles.forEach(t_neighbour -> t.isNeighbour(t_neighbour));
+            //TODO what now?
+        });
 
+        figures.forEach(f -> f.draw(getXCoord(f), getYCoord(f)));
     }
 
     public int getXCoord(FigurePresenter figure) {

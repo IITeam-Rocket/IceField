@@ -303,4 +303,13 @@ public abstract class Character extends Figure implements Serializable {
         if (stamina == 0) return;
         if (destination.acceptFigure(this)) stamina--;
     }
+
+    /**
+     * Returns the instance's ClearSnowPolicy
+     *
+     * @return clearPatchStrategy
+     */
+    public ClearSnowPolicy getclearPatchStrategy() {
+        return this.clearPatchStrategy;
+    }
 }

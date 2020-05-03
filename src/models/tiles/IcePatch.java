@@ -138,6 +138,16 @@ abstract public class IcePatch extends Tile implements Serializable {
     }
 
     /**
+     * Returns the instance's protectionStrategy
+     *
+     * @return The IcePatch's ProtectionStrategy
+     */
+    public ProtectionPolicy getProtectionStrategy() {
+        return this.protectionStrategy;
+    }
+
+
+    /**
      * Realises the polar bear's effects.
      *
      * @throws EndOfGameException on player death

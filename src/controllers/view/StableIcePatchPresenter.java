@@ -1,5 +1,6 @@
 package controllers.view;
 
+import models.policies.ProtectionPolicy;
 import models.tiles.StableIcePatch;
 
 public class StableIcePatchPresenter extends TilePresenter {
@@ -11,7 +12,9 @@ public class StableIcePatchPresenter extends TilePresenter {
 
     @Override
     public void draw() {
-        //TODO implement draw()
-        super.draw();
+        int snowDepth = icePatch.getSnowDepth();
+        ProtectionPolicy po = icePatch.getProtectionStrategy();
+
+        //TODO implement further
     }
 }

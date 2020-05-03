@@ -1,5 +1,6 @@
 package controllers.view;
 
+import models.policies.ProtectionPolicy;
 import models.tiles.InstableIcePatch;
 
 public class InstableIcePatchPresenter extends TilePresenter {
@@ -11,7 +12,11 @@ public class InstableIcePatchPresenter extends TilePresenter {
 
     @Override
     public void draw() {
-        //TODO implement draw()
-        super.draw();
+        int snowDepth = icePatch.getSnowDepth();
+        ProtectionPolicy po = icePatch.getProtectionStrategy();
+        int capacity = icePatch.getCapacity();
+        boolean flipped = icePatch.isFlipped();
+
+        //TODO implement further
     }
 }

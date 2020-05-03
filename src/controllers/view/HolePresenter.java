@@ -1,9 +1,19 @@
 package controllers.view;
 
+import models.tiles.Hole;
+
 public class HolePresenter extends TilePresenter {
+    private Hole hole;
+
+    public HolePresenter(Hole hole) {
+        this.hole = hole;
+    }
+
     @Override
     public void draw() {
-        //TODO implement draw()
-        super.draw();
+        int snowDepth = hole.getSnowDepth();
+        boolean isDicovered = hole.isAnalyzed();
+
+        //TODO implement further
     }
 }

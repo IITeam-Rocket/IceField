@@ -1,14 +1,11 @@
-import controllers.Prototype;
-import models.exceptions.EndOfGameException;
+import controllers.game.Game;
 
 public class Main {
 
   public static void main(String[] args) {
-        Prototype prototype = new Prototype();
-      try {
-          prototype.run();
-      } catch (EndOfGameException e) {
-          e.printStackTrace();
-      }
+      Game game = new Game();
+
+      game.PlayGame();
+
     }
 }

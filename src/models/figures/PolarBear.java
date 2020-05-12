@@ -44,7 +44,7 @@ public class PolarBear extends Figure implements Serializable {
      */
     @Override
     public void reactToAttack() {
-
+        //Empty
     }
 
     /**
@@ -52,7 +52,7 @@ public class PolarBear extends Figure implements Serializable {
      */
     @Override
     public void reactToStorm() {
-
+        //Empty
     }
 
     /**

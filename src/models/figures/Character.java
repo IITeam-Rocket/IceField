@@ -25,7 +25,7 @@ public abstract class Character extends Figure implements Serializable {
     /**
      * The stamina of this character. It shows the number of the moves the character can do in this round.
      */
-    int stamina;
+    protected int stamina;
     /**
      * The body heat of this character. It shows the number of the lives the character has.
      */
@@ -127,8 +127,11 @@ public abstract class Character extends Figure implements Serializable {
      * @param friend the victim to rescue
      */
     public void rescueFriend(Character friend) {
-        if (stamina > 0)
+        if (stamina > 0) {
             helpFriendStrategy.executeStrategy(friend, tile);
+            if (!helpFriendStrategy.toString().equals(new NoRescuePolicy().toString()))
+                --stamina;
+        }
         else
             System.out.println("Not Enough Stamina available to complete this action!");
     }
@@ -291,6 +294,7 @@ public abstract class Character extends Figure implements Serializable {
      */
     public void buildTent() {
         ((IcePatch) tile).changeProtectionPolicy(new TentPolicy());
+        --stamina;
     }
 
     /**

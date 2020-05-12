@@ -19,7 +19,7 @@ public class Game {
 
     private CommandInterpreter cip = new CommandInterpreter(this);
 
-    private void InitializeObservers() {
+    private void initializeObservers() {
         ArrayList<Tile> tiles = environment.getIceTiles();
         ArrayList<Figure> figures = environment.getPlayers();
 
@@ -36,14 +36,14 @@ public class Game {
         });
     }
 
-    public void PlayGame() {
-        InitializeObservers();
+    public void playGame() {
+        initializeObservers();
 
         while (running) {
             if (in.hasNextLine()) {
                 String line = in.nextLine();
 
-                cip.Interpret(line);
+                cip.interpret(line);
             }
         }
     }
@@ -64,7 +64,7 @@ public class Game {
         return in;
     }
 
-    public void EndGame() {
+    public void endGame() {
         this.running = false;
     }
 }

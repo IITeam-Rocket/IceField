@@ -35,8 +35,10 @@ public class CraftSignalFlateCommand implements Command {
             case 5:
                 if (onTheSamePage())
                     ((models.figures.Character) currentPlayer).craftSignalFlare();
+                break;
             default:
                 game.getOutput().println("Unknown Figure!");
+                break;
         }
     }
 
@@ -47,7 +49,9 @@ public class CraftSignalFlateCommand implements Command {
      */
     private boolean onTheSamePage() {
 
-        boolean gun, cartridge, beacon;
+        boolean gun;
+        boolean cartridge;
+        boolean beacon;
         gun = Environment.getInstance().isGunIsDiscovered();
         cartridge = Environment.getInstance().isCartridgeIsDiscovered();
         beacon = Environment.getInstance().isBeaconIsDiscovered();

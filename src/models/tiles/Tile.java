@@ -23,7 +23,7 @@ abstract public class Tile extends Subject implements Serializable {
     /**
      * The maximum possible snow depth on a Tile.
      */
-    static final int maxSnowDepth = 6;
+    protected static final int maxSnowDepth = 6;
     /**
      * The next unique ID.
      */
@@ -35,15 +35,15 @@ abstract public class Tile extends Subject implements Serializable {
     /**
      * The actual snow depth on the Tile.
      */
-    int snowDepth;
-    /**
-     * Contains the Figures who stands on the Tile.
-     */
-    ArrayList<Figure> entities = new ArrayList<>();
+    protected int snowDepth;
     /**
      * Stores information on whether the tile has been analyzed or not.
      */
-    boolean analyzed = false;
+    protected boolean analyzed = false;
+    /**
+     * Contains the Figures who stands on the Tile.
+     */
+    private ArrayList<Figure> entities = new ArrayList<>();
     /**
      * Contains the neighbours of the Tile.
      */

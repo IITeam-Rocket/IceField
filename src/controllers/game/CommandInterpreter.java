@@ -16,7 +16,7 @@ class CommandInterpreter {
         return parts.length > 1;
     }
 
-    public void Interpret(String line) {
+    public void interpret(String line) {
         if (line.length() == 0) {
             game.getOutput().println("No command to interpret");
             return;
@@ -96,7 +96,7 @@ class CommandInterpreter {
                 break;
             case "exit":
             case "quit":
-                game.EndGame();
+                game.endGame();
                 return;
             default:
                 command = new InvalidCommand();

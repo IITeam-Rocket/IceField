@@ -49,6 +49,12 @@ public class Environment implements Serializable {
      */
     private boolean gunIsDiscovered = false;
 
+    private Tile beaconLocation = null;
+
+    private Tile cartidgeLocation = null;
+
+    private Tile gunLocation = null;
+
     /**
      * Creates a new Environment.
      */
@@ -106,11 +112,14 @@ public class Environment implements Serializable {
             instance.setCurrentPlayer(env.getCurrentPlayer());
 
             if (env.isBeaconIsDiscovered())
-                instance.recordBeacon();
+                instance.recordBeacon(env.getBeaconLocation());
+
             if (env.isCartridgeIsDiscovered())
-                instance.recordCartridge();
+                instance.recordCartridge(env.getCartidgeLocation());
+
             if (env.isGunIsDiscovered())
-                instance.recordGun();
+                instance.recordGun(env.getGunLocation());
+
 
             in.close();
 
@@ -140,22 +149,25 @@ public class Environment implements Serializable {
     /**
      * Records the discovery of Beacon.
      */
-    public void recordBeacon() {
+    public void recordBeacon(Tile tile) {
         this.beaconIsDiscovered = true;
+        setBeaconLocation(tile);
     }
 
     /**
      * Records the discovery of Cartridge.
      */
-    public void recordCartridge() {
+    public void recordCartridge(Tile tile) {
         this.cartridgeIsDiscovered = true;
+        setCartidgeLocation(tile);
     }
 
     /**
      * Records the discovery of Gun.
      */
-    public void recordGun() {
+    public void recordGun(Tile tile) {
         this.gunIsDiscovered = true;
+        setGunLocation(tile);
     }
 
     /**
@@ -200,7 +212,7 @@ public class Environment implements Serializable {
         return iceTiles;
     }
 
-    public void setIceTiles(ArrayList<Tile> iceTiles) {
+    protected void setIceTiles(ArrayList<Tile> iceTiles) {
         this.iceTiles = iceTiles;
     }
 
@@ -213,7 +225,7 @@ public class Environment implements Serializable {
         return players;
     }
 
-    public void setPlayers(ArrayList<Figure> players) {
+    protected void setPlayers(ArrayList<Figure> players) {
         this.players = players;
     }
 
@@ -241,8 +253,16 @@ public class Environment implements Serializable {
         return beaconIsDiscovered;
     }
 
-    public void setBeaconIsDiscovered(boolean beaconIsDiscovered) {
+    protected void setBeaconIsDiscovered(boolean beaconIsDiscovered) {
         this.beaconIsDiscovered = beaconIsDiscovered;
+    }
+
+    public Tile getBeaconLocation() {
+        return beaconLocation;
+    }
+
+    private void setBeaconLocation(Tile tile) {
+        beaconLocation = tile;
     }
 
     /**
@@ -256,8 +276,16 @@ public class Environment implements Serializable {
         return cartridgeIsDiscovered;
     }
 
-    public void setCartridgeIsDiscovered(boolean cartridgeIsDiscovered) {
+    protected void setCartridgeIsDiscovered(boolean cartridgeIsDiscovered) {
         this.cartridgeIsDiscovered = cartridgeIsDiscovered;
+    }
+
+    public Tile getCartidgeLocation() {
+        return cartidgeLocation;
+    }
+
+    private void setCartidgeLocation(Tile tile) {
+        cartidgeLocation = tile;
     }
 
     /**
@@ -271,8 +299,16 @@ public class Environment implements Serializable {
         return gunIsDiscovered;
     }
 
-    public void setGunIsDiscovered(boolean gunIsDiscovered) {
+    protected void setGunIsDiscovered(boolean gunIsDiscovered) {
         this.gunIsDiscovered = gunIsDiscovered;
+    }
+
+    public Tile getGunLocation() {
+        return gunLocation;
+    }
+
+    private void setGunLocation(Tile tile) {
+        gunLocation = tile;
     }
 
     /**

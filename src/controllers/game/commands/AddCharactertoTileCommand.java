@@ -1,0 +1,83 @@
+package controllers.game.commands;
+
+import controllers.game.Game;
+import models.Environment;
+import models.figures.Eskimo;
+import models.figures.Figure;
+import models.figures.PolarBear;
+import models.figures.Researcher;
+import models.tiles.IcePatch;
+import models.tiles.Tile;
+
+/**
+ * A command to add a new character to a tile.
+ *
+ * @author Ábrahám Dániel
+ */
+public class AddCharactertoTileCommand implements Command {
+    /**
+     * Command execution's logic.
+     *
+     * @param game The game object that is currently running
+     * @param args Command arguments
+     */
+    @Override
+    public void execute(Game game, String[] args) {
+        if (args.length != 2) {
+            //TODO printCharacters()
+            return;
+        } else {
+            int tileID = Integer.MIN_VALUE;
+            int characterID = Integer.MIN_VALUE;
+
+            try {
+                tileID = Integer.parseInt(args[0]);
+            } catch (NumberFormatException e) {
+                game.getOutput().println("Error!");
+            }
+
+            try {
+                characterID = Integer.parseInt(args[1]);
+            } catch (NumberFormatException e) {
+                game.getOutput().println("Error!");
+            }
+
+            if (tileID < 0 || Environment.getInstance().getIceTiles().size() - 1 < tileID) {
+                game.getOutput().println("Tile ID must be between 0 and the maximum ID of " + (Environment.getInstance().getIceTiles().size() - 1));
+                return;
+            }
+
+            Tile tile = Environment.getInstance().getIceTiles().get(tileID);
+
+            if (tile.getCapacity() == 0) {
+                game.getOutput().println("Characters can't be placed in a hole!");
+                return;
+            }
+
+            IcePatch patch = (IcePatch) tile;
+
+            Figure figure;
+
+            switch (characterID) {
+                case 1:
+                    figure = new Eskimo();
+                    break;
+                case 2:
+                    figure = new Researcher();
+                    break;
+                case 3:
+                    figure = new PolarBear();
+                    break;
+                default:
+                    game.getOutput().println("Character ID mush be between 1 and 3!");
+                    return;
+            }
+
+            patch.addCharacter(figure);
+            figure.setTile(patch);
+            Environment.getInstance().getPlayers().add(figure);
+
+            game.getOutput().println("character added: " + tileID + ", " + characterID);
+        }
+    }
+}

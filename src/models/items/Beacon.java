@@ -23,6 +23,6 @@ public class Beacon extends Item implements Serializable {
     @Override
     public void uponDiscovery(Character finder) {
         System.out.println("unburied item: 6");
-        Environment.getInstance().recordBeacon();
+        Environment.getInstance().recordBeacon(finder.getTile());
     }
 }

@@ -23,6 +23,6 @@ public class Cartridge extends Item implements Serializable {
     @Override
     public void uponDiscovery(Character finder) {
         System.out.println("unburied item: 8");
-        Environment.getInstance().recordCartridge();
+        Environment.getInstance().recordCartridge(finder.getTile());
     }
 }

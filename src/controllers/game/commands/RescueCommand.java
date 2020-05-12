@@ -9,13 +9,13 @@ import models.tiles.Tile;
 public class RescueCommand implements Command {
     @Override
     public void execute(Game game, String[] args) {
-        if (args.length != 1) {
+        if (args.length != 1) { //2
             return;
         }
 
         Figure f = Environment.getInstance().getCurrentPlayer();
 
-        if (f == null) {
+        if (f == null) { //*2
             game.getOutput().println("There is no Figure selected, please use the \"nextcharacter\" command before the first rescue!");
             return;
         }
@@ -50,6 +50,7 @@ public class RescueCommand implements Command {
         switch (f.getBaseBodyHeat()) {
             case -1:
                 game.getOutput().println("The polarbear can't rescue!");
+                break;
             case 4:
             case 5:
                 ((Character) f).rescueFriend(characterToRescue);
@@ -61,14 +62,13 @@ public class RescueCommand implements Command {
     }
 
     private Tile findTilebyID(int ID) {
-        Tile ret = null;
         for (Tile tile : Environment.getInstance().getCurrentPlayer().getTile().getNeighbours()) {
             if (tile.getID() == ID) {
-                ret = tile;
+                return tile;
             }
         }
 
-        return ret;
+        return null;
     }
 
     private Character findFriendonTile(Tile base) {

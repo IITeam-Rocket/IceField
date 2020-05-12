@@ -8,7 +8,7 @@ public class SaveCommand implements Command {
     public void execute(Game game, String[] args) {
         if (args.length == 1) {
             if (Environment.serializeWrite(args[0])) {
-                game.getOutput().println(String.format("saved: {0}", args[0]));
+                game.getOutput().println(String.format("saved: %s", args[0]));
             }
         }
     }

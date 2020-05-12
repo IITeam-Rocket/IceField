@@ -4,7 +4,7 @@ import models.policies.ProtectionPolicy;
 import models.tiles.StableIcePatch;
 
 public class StableIcePatchPresenter extends TilePresenter {
-    private StableIcePatch icePatch;
+    private final StableIcePatch icePatch;
 
     public StableIcePatchPresenter(StableIcePatch icePatch) {
         this.icePatch = icePatch;

@@ -3,7 +3,7 @@ package controllers.view;
 import models.figures.PolarBear;
 
 public class PolarBearPresenter extends FigurePresenter {
-    private PolarBear bear;
+    private final PolarBear bear;
 
     public PolarBearPresenter(PolarBear bear) {
         this.bear = bear;

@@ -23,36 +23,36 @@ abstract public class Tile extends Subject implements Serializable {
     /**
      * The maximum possible snow depth on a Tile.
      */
-    protected static final int maxSnowDepth = 6;
+    static final int maxSnowDepth = 6;
     /**
      * The next unique ID.
      */
-    protected static int IDCounter = 0;
+    private static int IDCounter = 0;
     /**
      * The Tile's unique ID.
      */
-    protected final int ID;
+    private final int ID;
     /**
      * The actual snow depth on the Tile.
      */
-    protected int snowDepth;
+    int snowDepth;
     /**
      * Contains the Figures who stands on the Tile.
      */
-    protected ArrayList<Figure> entities = new ArrayList<>();
-    /**
-     * Contains the neighbours of the Tile.
-     */
-    protected ArrayList<Tile> neighbours = new ArrayList<>();
+    ArrayList<Figure> entities = new ArrayList<>();
     /**
      * Stores information on whether the tile has been analyzed or not.
      */
-    protected boolean analyzed = false;
+    boolean analyzed = false;
+    /**
+     * Contains the neighbours of the Tile.
+     */
+    private ArrayList<Tile> neighbours = new ArrayList<>();
 
     /**
      * Creates a new Tile.
      */
-    public Tile() {
+    Tile() {
         this.ID = IDCounter;
         IDCounter++;
     }
@@ -63,7 +63,7 @@ abstract public class Tile extends Subject implements Serializable {
      *
      * @param ID the new Tile's unique ID.
      */
-    public Tile(int ID) {
+    Tile(int ID) {
         this.ID = ID;
     }
 
@@ -265,7 +265,7 @@ abstract public class Tile extends Subject implements Serializable {
      *
      * @param figure the figure to move
      */
-    protected void moveFigureToThisTile(Figure figure) {
+    void moveFigureToThisTile(Figure figure) {
         addCharacter(figure);
         figure.removeFromTile(figure.getTile());
         figure.setTile(this);

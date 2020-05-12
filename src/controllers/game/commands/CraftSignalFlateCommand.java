@@ -45,7 +45,7 @@ public class CraftSignalFlateCommand implements Command {
      *
      * @return returns true is requirements fulfilled, otherwise return false.
      */
-    boolean onTheSamePage() {
+    private boolean onTheSamePage() {
 
         boolean gun, cartridge, beacon;
         gun = Environment.getInstance().isGunIsDiscovered();
@@ -57,9 +57,7 @@ public class CraftSignalFlateCommand implements Command {
             Tile Tcartridge = Environment.getInstance().getCartidgeLocation();
             Tile Tbeacon = Environment.getInstance().getBeaconLocation();
 
-            if (Tgun.equals(Tcartridge) && Tgun.equals(Tbeacon)) {
-                return true;
-            }
+            return Tgun.equals(Tcartridge) && Tgun.equals(Tbeacon);
         }
 
         return false;

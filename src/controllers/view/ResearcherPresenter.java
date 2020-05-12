@@ -7,7 +7,7 @@ import models.policies.RescueFriendPolicy;
 import models.tiles.Tile;
 
 public class ResearcherPresenter extends FigurePresenter {
-    private Researcher researcher;
+    private final Researcher researcher;
 
     public ResearcherPresenter(Researcher researcher) {
         this.researcher = researcher;

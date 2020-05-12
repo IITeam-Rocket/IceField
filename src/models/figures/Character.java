@@ -23,23 +23,23 @@ import java.io.Serializable;
  */
 public abstract class Character extends Figure implements Serializable {
     /**
-     * The body heat of this character. It shows the number of the lives the character has.
-     */
-    protected int bodyHeat;
-    /**
      * The stamina of this character. It shows the number of the moves the character can do in this round.
      */
-    protected int stamina;
+    int stamina;
+    /**
+     * The body heat of this character. It shows the number of the lives the character has.
+     */
+    private int bodyHeat;
     /**
      * The help friend strategy of this character.
      * It shows the behavior of the character when another character falls in water.
      */
-    protected RescueFriendPolicy helpFriendStrategy = new NoRescuePolicy();
+    private RescueFriendPolicy helpFriendStrategy = new NoRescuePolicy();
     /**
      * The clear patch strategy of this character.
      * It indicates the number of snow that the character can clear in one step.
      */
-    protected ClearSnowPolicy clearPatchStrategy = new EmptyHandPolicy();
+    private ClearSnowPolicy clearPatchStrategy = new EmptyHandPolicy();
 
 
     /**
@@ -48,7 +48,7 @@ public abstract class Character extends Figure implements Serializable {
      * @param bodyHeat the value of the new character's body heat
      * @param stamina  the value of the new character's stamina
      */
-    protected Character(int bodyHeat, int stamina) {
+    Character(int bodyHeat, int stamina) {
         this.bodyHeat = bodyHeat;
         this.stamina = stamina;
         swimToShoreStrategy = new HasNoDiveSuitPolicy();
@@ -100,7 +100,7 @@ public abstract class Character extends Figure implements Serializable {
      *
      * @param quantity the amount of heat
      */
-    public void removeHeat(int quantity) throws IllegalArgumentException, EndOfGameException {
+    private void removeHeat(int quantity) throws IllegalArgumentException, EndOfGameException {
         if (quantity < 1)
             throw new IllegalArgumentException("Must not be negative");
         bodyHeat -= quantity;

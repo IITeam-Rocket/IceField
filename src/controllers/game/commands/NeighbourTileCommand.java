@@ -17,8 +17,8 @@ public class NeighbourTileCommand implements Command {
         if (args.length != 2)
             return;
 
-        int firstID = Integer.MIN_VALUE;
-        int secondID = Integer.MIN_VALUE;
+        int firstID;
+        int secondID;
 
         try {
             firstID = Integer.parseInt(args[0]);

@@ -3,9 +3,10 @@ package controllers.game;
 import controllers.game.commands.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
-public class CommandInterpreter {
-    private Game game;
+class CommandInterpreter {
+    private final Game game;
 
     public CommandInterpreter(Game game) {
         this.game = game;
@@ -25,10 +26,7 @@ public class CommandInterpreter {
         String cmd = parts[0];
         String[] args = {};
         if (hasArgs(parts)) {
-            ArrayList<String> a = new ArrayList<>();
-            for (int i = 1; i < parts.length; i++) {
-                a.add(parts[i]);
-            }
+            ArrayList<String> a = new ArrayList<>(Arrays.asList(parts).subList(1, parts.length));
 
             args = a.toArray(new String[]{});
         }
@@ -67,29 +65,39 @@ public class CommandInterpreter {
                 command = new RescueCommand();
                 break;
             case "craftsignalflare":
-
+                command = new CraftSignalFlateCommand();
                 break;
             case "buildiglu":
+                command = new BuildIgluCommand();
                 break;
             case "buildtent":
+                command = new BuildTentCommand();
                 break;
             case "analyzetile":
+                command = new AnalizeTileCommand();
                 break;
             case "addtile":
+                command = new AddTileCommand();
                 break;
             case "neighbourtile":
+                command = new NeighbourTileCommand();
                 break;
             case "additemtotile":
+                command = new AddItemtoTileCommand();
                 break;
             case "addcharactertotile":
+                command = new AddCharactertoTileCommand();
                 break;
             case "addsnowtotile":
+                command = new AddSnowtoTileCommand();
                 break;
             case "reset":
+                command = new ResetCommand();
                 break;
             case "exit":
             case "quit":
-                break;
+                game.EndGame();
+                return;
             default:
                 command = new InvalidCommand();
                 break;

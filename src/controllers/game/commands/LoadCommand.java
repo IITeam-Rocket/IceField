@@ -10,7 +10,7 @@ public class LoadCommand implements Command {
             return;
         }
         if (Environment.serializeRead(args[0])) {
-            game.getOutput().println(String.format("loaded: {0}", args[0]));
+            game.getOutput().println(String.format("loaded: %s", args[0]));
         }
     }
 }

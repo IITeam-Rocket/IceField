@@ -7,7 +7,7 @@ import models.policies.RescueFriendPolicy;
 import models.tiles.Tile;
 
 public class EskimoPresenter extends FigurePresenter {
-    private Eskimo eskimo;
+    private final Eskimo eskimo;
 
     public EskimoPresenter(Eskimo eskimo) {
         this.eskimo = eskimo;

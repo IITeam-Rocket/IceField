@@ -20,8 +20,8 @@ public class AddSnowtoTileCommand implements Command {
         if (args.length != 2) {
             //TODO printTiles()
         } else {
-            int tileID = Integer.MIN_VALUE;
-            int snowQuantity = Integer.MIN_VALUE;
+            int tileID;
+            int snowQuantity;
 
             try {
                 tileID = Integer.parseInt(args[0]);

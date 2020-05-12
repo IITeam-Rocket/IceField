@@ -188,7 +188,7 @@ public class Environment implements Serializable {
      *
      * @return a random set of tiles.
      */
-    public ArrayList<Tile> getRandomTiles() {
+    private ArrayList<Tile> getRandomTiles() {
         ArrayList<Tile> randomTiles = new ArrayList<>();
         Random rand = new Random();
         int numberOfRandomTiles = rand.nextInt(iceTiles.size());
@@ -212,7 +212,7 @@ public class Environment implements Serializable {
         return iceTiles;
     }
 
-    protected void setIceTiles(ArrayList<Tile> iceTiles) {
+    private void setIceTiles(ArrayList<Tile> iceTiles) {
         this.iceTiles = iceTiles;
     }
 
@@ -225,7 +225,7 @@ public class Environment implements Serializable {
         return players;
     }
 
-    protected void setPlayers(ArrayList<Figure> players) {
+    private void setPlayers(ArrayList<Figure> players) {
         this.players = players;
     }
 

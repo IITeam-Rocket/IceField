@@ -18,7 +18,7 @@ public class MoveCommand implements Command {
         if (args.length == 0) {
             game.getOutput().println("neigbours: ");
             StringBuilder sb = new StringBuilder();
-            currentTile.getNeighbours().forEach(t -> sb.append(String.format("{0} ", t.getID())));
+            currentTile.getNeighbours().forEach(t -> sb.append(String.format("%d ", t.getID())));
             game.getOutput().println(sb.toString().trim());
         } else if (args.length == 1) {
             int tileID;
@@ -41,8 +41,8 @@ public class MoveCommand implements Command {
                 }
             }
 
-            game.getOutput().println(String.format("move character to {0}: unsuccessful", tileID));
-            game.getOutput().println(String.format("The current Tile has no neighbor with the ID {0}", tileID));
+            game.getOutput().println(String.format("move character to %d: unsuccessful", tileID));
+            game.getOutput().println(String.format("The current Tile has no neighbor with the ID %d", tileID));
         }
     }
 }

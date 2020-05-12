@@ -25,11 +25,11 @@ public class InstableIcePatch extends IcePatch implements Serializable {
     /**
      * The capacity of this InstableIcePatch.
      */
-    int playerCapacity;
+    private int playerCapacity;
     /**
      * The state of the InstableIcePatch with the default value: false.
      */
-    boolean flipped = false;
+    private boolean flipped = false;
 
     /**
      * Creates a new InstableIcePatch with the given playerCapacity.
@@ -89,7 +89,7 @@ public class InstableIcePatch extends IcePatch implements Serializable {
      * behaviour from stable to hole
      * and vice versa.
      */
-    public void flip() {
+    private void flip() {
         flipped = !flipped;
     }
 

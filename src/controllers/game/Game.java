@@ -10,14 +10,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Game {
-    final MapPresenter mp = MapPresenter.getInstance();
-    Environment environment = Environment.getInstance();
+    private final MapPresenter mp = MapPresenter.getInstance();
+    private Environment environment = Environment.getInstance();
 
     private PrintStream os = System.out;
     private Scanner in = new Scanner(System.in);
     private boolean running = true;
 
-    CommandInterpreter cip = new CommandInterpreter(this);
+    private CommandInterpreter cip = new CommandInterpreter(this);
 
     private void InitializeObservers() {
         ArrayList<Tile> tiles = environment.getIceTiles();
@@ -62,5 +62,9 @@ public class Game {
 
     public Scanner getInput() {
         return in;
+    }
+
+    public void EndGame() {
+        this.running = false;
     }
 }

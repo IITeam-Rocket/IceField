@@ -48,7 +48,7 @@ public class AddTileCommand implements Command {
      * @param capacity Capacity of an InstableIcePatch
      * @return Return a new Tile instance.
      */
-    Tile getTilebyName(String name, int capacity) {
+    private Tile getTilebyName(String name, int capacity) {
         switch (name) {
             case "hole":
                 return new Hole();

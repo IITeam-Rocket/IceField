@@ -3,7 +3,7 @@ package controllers.view;
 import models.tiles.Hole;
 
 public class HolePresenter extends TilePresenter {
-    private Hole hole;
+    private final Hole hole;
 
     public HolePresenter(Hole hole) {
         this.hole = hole;

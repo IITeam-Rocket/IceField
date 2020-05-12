@@ -20,11 +20,11 @@ public class OutputCommand implements Command {
         }
 
         try {
-            game.getOutput().println(String.format("set output: {0}", args[0]));
+            game.getOutput().println(String.format("set output: %s", args[0]));
             game.changeOutput(new PrintStream(new File(args[0])));
-            game.getOutput().println(String.format("set output: {0}", args[0]));
+            game.getOutput().println(String.format("set output: %s", args[0]));
         } catch (FileNotFoundException e) {
-            game.getOutput().println(String.format("File {0} does not exist!", args[0]));
+            game.getOutput().println(String.format("File %s does not exist!", args[0]));
         }
     }
 }

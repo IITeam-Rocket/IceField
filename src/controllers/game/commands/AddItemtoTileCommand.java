@@ -72,7 +72,7 @@ public class AddItemtoTileCommand implements Command {
      * @param ID itemID.
      * @return return a new item instance based on the ID.
      */
-    Item getItemfromID(int ID) {
+    private Item getItemfromID(int ID) {
         switch (ID) {
             case 1:
                 return new Food();

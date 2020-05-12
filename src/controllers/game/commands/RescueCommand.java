@@ -2,9 +2,8 @@ package controllers.game.commands;
 
 import controllers.game.Game;
 import models.Environment;
-import models.figures.Eskimo;
+import models.figures.Character;
 import models.figures.Figure;
-import models.figures.Researcher;
 import models.tiles.Tile;
 
 public class RescueCommand implements Command {
@@ -14,12 +13,12 @@ public class RescueCommand implements Command {
             return;
         }
 
-        if (Environment.getInstance().getCurrentPlayer() == null) {
+        Figure f = Environment.getInstance().getCurrentPlayer();
+
+        if (f == null) {
             game.getOutput().println("There is no Figure selected, please use the \"nextcharacter\" command before the first rescue!");
             return;
         }
-
-        Figure f = Environment.getInstance().getCurrentPlayer();
 
         int tileID;
         try {
@@ -30,53 +29,55 @@ public class RescueCommand implements Command {
         }
 
         if (Environment.getInstance().getIceTiles().size() - 1 < tileID || tileID < 0) {
-            game.getOutput().println("Tile ID must be between 0 and the maximum ID of " +
-                    (Environment.getInstance().getIceTiles().size() - 1));
+            game.getOutput().println(String.format("Tile ID must be between 0 and the maximum ID of %s",
+                    (Environment.getInstance().getIceTiles().size() - 1)));
             return;
         }
 
-        boolean found = false;
-        Figure characterToRescue = null;
+        Tile basetile = findTilebyID(tileID);
 
-        for (Tile tile : Environment.getInstance().getIceTiles()) {
-            if (tile.getID() == tileID) {
-                found = true;
-                if (tile.getEntities().size() == 0) {
-                    game.getOutput().println("friend rescue: unsuccessful");
-                    return;
-                }
+        if (basetile == null) {
+            game.getOutput().println(String.format("The tile with ID %d doesn't neighbour the tile, the character is on!", tileID));
+            return;
+        }
+        Character characterToRescue = findFriendonTile(basetile);
 
-                boolean nonPolarBear = false;
-                for (Figure fi : tile.getEntities()) {
-                    if (fi.getBaseBodyHeat() != -1) {
-                        nonPolarBear = true;
-                        characterToRescue = fi;
-                        break;
-                    }
-                }
+        if (characterToRescue == null) {
+            game.getOutput().println("friend rescue: unsuccessful");
+            return;
+        }
 
-                if (!nonPolarBear) {
-                    game.getOutput().println("There are no non polarbear characters on this tile!");
-                    return;
-                }
-
+        switch (f.getBaseBodyHeat()) {
+            case -1:
+                game.getOutput().println("The polarbear can't rescue!");
+            case 4:
+            case 5:
+                ((Character) f).rescueFriend(characterToRescue);
                 break;
+            default:
+                game.getOutput().println("Unknown Figure!");
+                break;
+        }
+    }
+
+    private Tile findTilebyID(int ID) {
+        Tile ret = null;
+        for (Tile tile : Environment.getInstance().getCurrentPlayer().getTile().getNeighbours()) {
+            if (tile.getID() == ID) {
+                ret = tile;
             }
         }
 
-        if (!found) {
-            game.getOutput().println("The tile with ID " + tileID + " doesn't neighbour the tile, the character is on!");
-            return;
+        return ret;
+    }
+
+    private Character findFriendonTile(Tile base) {
+        for (Figure figure : base.getEntities()) {
+            if (figure.getBaseBodyHeat() != 1) {
+                return (Character) figure;
+            }
         }
 
-        if (f.getBaseBodyHeat() == -1)
-            game.getOutput().println("The polarbear can't rescue!");
-        else if (f.getBaseBodyHeat() == 4)
-            ((Researcher) f).rescueFriend((models.figures.Character) characterToRescue);
-        else if (f.getBaseBodyHeat() == 5)
-            ((Eskimo) f).rescueFriend((models.figures.Character) characterToRescue);
-        else
-            game.getOutput().println("Unknown Figure!");
-
+        return null;
     }
 }

@@ -1,6 +1,7 @@
 package controllers.game.commands;
 
 import controllers.game.Game;
+import controllers.game.GameJFrame;
 import models.Environment;
 import models.figures.Character;
 import models.figures.Figure;
@@ -25,7 +26,7 @@ public class RescueCommand implements Command {
         Figure f = Environment.getInstance().getCurrentPlayer();
 
         if (f == null) { //*2
-            game.getOutput().println("There is no Figure selected, please use the \"nextcharacter\" command before the first rescue!");
+            GameJFrame.getInstance().OutputToTextBox("There is no Figure selected, please use the \"nextcharacter\" command before the first rescue!");
             return;
         }
 
@@ -33,12 +34,12 @@ public class RescueCommand implements Command {
         try {
             tileID = Integer.parseInt(args[0]);
         } catch (NumberFormatException e) {
-            //TODO invalid parameter
+            GameJFrame.getInstance().OutputToTextBox("Invalid parameter!");
             return;
         }
 
         if (Environment.getInstance().getIceTiles().size() - 1 < tileID || tileID < 0) {
-            game.getOutput().println(String.format("Tile ID must be between 0 and the maximum ID of %s",
+            GameJFrame.getInstance().OutputToTextBox(String.format("Tile ID must be between 0 and the maximum ID of %s",
                     (Environment.getInstance().getIceTiles().size() - 1)));
             return;
         }
@@ -46,26 +47,26 @@ public class RescueCommand implements Command {
         Tile basetile = findTilebyID(tileID);
 
         if (basetile == null) {
-            game.getOutput().println(String.format("The tile with ID %d doesn't neighbour the tile, the character is on!", tileID));
+            GameJFrame.getInstance().OutputToTextBox(String.format("The tile with ID %d doesn't neighbour the tile, the character is on!", tileID));
             return;
         }
         Character characterToRescue = findFriendonTile(basetile);
 
         if (characterToRescue == null) {
-            game.getOutput().println("friend rescue: unsuccessful");
+            GameJFrame.getInstance().OutputToTextBox("friend rescue: unsuccessful");
             return;
         }
 
         switch (f.getBaseBodyHeat()) {
             case -1:
-                game.getOutput().println("The polarbear can't rescue!");
+                GameJFrame.getInstance().OutputToTextBox("The polarbear can't rescue!");
                 break;
             case 4:
             case 5:
                 ((Character) f).rescueFriend(characterToRescue);
                 break;
             default:
-                game.getOutput().println("Unknown Figure!");
+                GameJFrame.getInstance().OutputToTextBox("Unknown Figure!");
                 break;
         }
     }

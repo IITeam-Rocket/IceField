@@ -1,6 +1,7 @@
 package controllers.game.commands;
 
 import controllers.game.Game;
+import controllers.game.GameJFrame;
 import controllers.view.MapPresenter;
 
 import java.io.File;
@@ -21,7 +22,7 @@ public class InputCommand implements Command {
     @Override
     public void execute() {
         if (args.length == 0) {
-            game.getOutput().println("Invalid Arguments");
+            GameJFrame.getInstance().OutputToTextBox("Invalid Arguments");
             return;
         }
 
@@ -35,7 +36,7 @@ public class InputCommand implements Command {
         try {
             game.changeInput(new Scanner(new File(args[0])));
         } catch (FileNotFoundException e) {
-            game.getOutput().println(String.format("File %s does not exist!", args[0]));
+            GameJFrame.getInstance().OutputToTextBox(String.format("File %s does not exist!", args[0]));
         }
     }
 }

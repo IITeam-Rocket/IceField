@@ -1,6 +1,7 @@
 package controllers.game.commands;
 
 import controllers.game.Game;
+import controllers.game.GameJFrame;
 import models.Environment;
 import models.figures.Figure;
 import models.figures.Researcher;
@@ -32,7 +33,7 @@ public class AnalizeTileCommand implements Command {
             return;
 
         if (Environment.getInstance().getCurrentPlayer() == null) {
-            game.getOutput().println("There is no Figure currently selected, please use the \"nextcharacter\" command before!");
+            GameJFrame.getInstance().OutputToTextBox("There is no Figure currently selected, please use the \"nextcharacter\" command before!");
             return;
         }
         Figure figure = Environment.getInstance().getCurrentPlayer();

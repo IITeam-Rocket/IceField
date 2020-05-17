@@ -39,8 +39,11 @@ public class EskimoPresenter extends FigurePresenter {
         RescueFriendPolicy rescueFriendPolicy = eskimo.getHelpFriendStrategy();
         FallInWaterPolicy swimOutPolicy = eskimo.getSwimToShoreStrategy();
         Tile tile = eskimo.getTile();
-
-        //MapPresenter.getInstance().getXCoord(this)
-        //TODO implement further
+        if (Environment.getInstance().getCurrentPlayer() != null) {
+            if (Environment.getInstance().getCurrentPlayer().equals(eskimo)) {
+                GameJFrame.getInstance().OutputToTextBox(String.format("eskimo\n\nbodyheat: %d\nstamina: %d\nclearPatchStrategy: %s\nhelpFriendStrategy: %s\nswimToShoreStrategy: %s\ntile: %d",
+                        bodyHeat, stamina, clearSnowPolicy.toString(), rescueFriendPolicy.toString(), swimOutPolicy.toString(), tile.getID()));
+            }
+        }
     }
 }

@@ -1,6 +1,7 @@
 package controllers.game.commands;
 
 import controllers.game.Game;
+import controllers.game.GameJFrame;
 import models.Environment;
 import models.figures.Figure;
 import models.tiles.Tile;
@@ -30,13 +31,13 @@ public class CraftSignalFlateCommand implements Command {
         Figure currentPlayer = Environment.getInstance().getCurrentPlayer();
 
         if (currentPlayer == null) {
-            game.getOutput().println("There is no Figure currently selected!");
+            GameJFrame.getInstance().OutputToTextBox("There is no Figure currently selected!");
             return;
         }
 
         switch (currentPlayer.getBaseBodyHeat()) {
             case -1:
-                game.getOutput().println("A polar bear cannot craft!");
+                GameJFrame.getInstance().OutputToTextBox("A polar bear cannot craft!");
                 break;
             case 4:
             case 5:
@@ -44,7 +45,7 @@ public class CraftSignalFlateCommand implements Command {
                     ((models.figures.Character) currentPlayer).craftSignalFlare();
                 break;
             default:
-                game.getOutput().println("Unknown Figure!");
+                GameJFrame.getInstance().OutputToTextBox("Unknown Figure!");
                 break;
         }
     }

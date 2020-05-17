@@ -1,6 +1,7 @@
 package controllers.game.commands;
 
 import controllers.game.Game;
+import controllers.game.GameJFrame;
 import controllers.view.*;
 import models.Environment;
 import models.tiles.Hole;
@@ -38,7 +39,7 @@ public class AddTileCommand implements Command {
                 capacity = Integer.parseInt(args[3]);
             } catch (NumberFormatException e) {
                 //TODO
-                game.getOutput().println(e.getStackTrace().toString());
+                GameJFrame.getInstance().OutputToTextBox(e.getStackTrace().toString());
             }
         }
         else if (args.length == 3) {
@@ -47,7 +48,7 @@ public class AddTileCommand implements Command {
                 y = Integer.parseInt(args[2]);
             } catch (NumberFormatException e) {
                 //TODO
-                game.getOutput().println(e.getStackTrace().toString());
+                GameJFrame.getInstance().OutputToTextBox(e.getStackTrace().toString());
             }
         }
 
@@ -76,12 +77,12 @@ public class AddTileCommand implements Command {
         }
 
         if (t == null || presenter == null) {
-            game.getOutput().println("Error!");
+            GameJFrame.getInstance().OutputToTextBox("Error!");
         }
 
         Environment.getInstance().getIceTiles().add(t);
         MapPresenter.getInstance().addTilePresenter(presenter);
 
-        game.getOutput().println("tile added\ntype: " + args[0] + "\nID: " + t.getID());
+        GameJFrame.getInstance().OutputToTextBox("tile added\ntype: " + args[0] + "\nID: " + t.getID());
     }
 }

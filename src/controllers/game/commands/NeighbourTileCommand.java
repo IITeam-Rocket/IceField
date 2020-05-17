@@ -1,6 +1,7 @@
 package controllers.game.commands;
 
 import controllers.game.Game;
+import controllers.game.GameJFrame;
 import models.Environment;
 import models.tiles.Tile;
 
@@ -30,7 +31,7 @@ public class NeighbourTileCommand implements Command {
             firstID = Integer.parseInt(args[0]);
         } catch (NumberFormatException e) {
             //TODO
-            game.getOutput().println("Error");
+            GameJFrame.getInstance().OutputToTextBox("Error");
             return;
         }
 
@@ -38,7 +39,7 @@ public class NeighbourTileCommand implements Command {
             secondID = Integer.parseInt(args[1]);
         } catch (NumberFormatException e) {
             //TODO
-            game.getOutput().println("Error");
+            GameJFrame.getInstance().OutputToTextBox("Error");
             return;
         }
 
@@ -46,12 +47,12 @@ public class NeighbourTileCommand implements Command {
                 firstID < 0 ||
                 Environment.getInstance().getIceTiles().size() - 1 < secondID ||
                 secondID < 0) {
-            game.getOutput().println("Tile IDs must be between 0 and the maximum ID of " + (Environment.getInstance().getIceTiles().size() - 1));
+            GameJFrame.getInstance().OutputToTextBox("Tile IDs must be between 0 and the maximum ID of " + (Environment.getInstance().getIceTiles().size() - 1));
             return;
         }
 
         if (firstID == secondID) {
-            game.getOutput().println("A tile can't be it's own neighbour!");
+            GameJFrame.getInstance().OutputToTextBox("A tile can't be it's own neighbour!");
             return;
         }
 
@@ -60,14 +61,14 @@ public class NeighbourTileCommand implements Command {
 
         tile1.getNeighbours().forEach(tile -> {
             if (tile.equals(tile2)) {
-                game.getOutput().println("These tiles are already neighbours!");
+                GameJFrame.getInstance().OutputToTextBox("These tiles are already neighbours!");
                 return;
             }
         });
 
         tile2.getNeighbours().forEach(tile -> {
             if (tile.equals(tile1)) {
-                game.getOutput().println("These tiles are already neighbours!");
+                GameJFrame.getInstance().OutputToTextBox("These tiles are already neighbours!");
                 return;
             }
         });
@@ -75,6 +76,6 @@ public class NeighbourTileCommand implements Command {
         tile1.getNeighbours().add(tile2);
         tile2.getNeighbours().add(tile1);
 
-        game.getOutput().println("neighbours: " + firstID + ", " + secondID);
+        GameJFrame.getInstance().OutputToTextBox("neighbours: " + firstID + ", " + secondID);
     }
 }

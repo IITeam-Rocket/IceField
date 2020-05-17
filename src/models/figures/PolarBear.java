@@ -1,5 +1,6 @@
 package models.figures;
 
+import controllers.view.MapPresenter;
 import models.exceptions.EndOfGameException;
 import models.policies.SwimOutPolicy;
 import models.tiles.Tile;
@@ -53,6 +54,14 @@ public class PolarBear extends Figure implements Serializable {
     @Override
     public void reactToStorm() {
         //Empty
+    }
+
+    /**
+     * Helper method to initialize observers
+     */
+    @Override
+    void initObservers() {
+        register(MapPresenter.getInstance());
     }
 
     /**

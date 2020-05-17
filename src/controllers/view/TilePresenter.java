@@ -5,6 +5,8 @@ import models.tiles.Tile;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 
 abstract public class TilePresenter {
@@ -17,6 +19,13 @@ abstract public class TilePresenter {
         this.y = y;
 
         button = new JButton();
+
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                GameJFrame.getInstance().setActiveTile(getTile());
+            }
+        });
 
         button.setBounds(x, y, 60, 60);
         button.setVisible(true);

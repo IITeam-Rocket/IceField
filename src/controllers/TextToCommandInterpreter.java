@@ -63,10 +63,10 @@ public class TextToCommandInterpreter {
                 command = new UnburyCommand(args);
                 break;
             case "clearsnow":
-                command = new ClearSnowCommand(game, args);
+                command = new ClearSnowCommand();
                 break;
             case "simulateweather":
-                command = new SimulateWeatherCommand(game);
+                command = new SimulateWeatherCommand();
                 break;
             case "rescue":
                 command = new RescueCommand(game, args);
@@ -75,7 +75,7 @@ public class TextToCommandInterpreter {
                 command = new CraftSignalFlareCommand();
                 break;
             case "buildiglu":
-                command = new BuildIgluCommand(game, args);
+                command = new BuildIgluCommand();
                 break;
             case "buildtent":
                 command = new BuildTentCommand();
@@ -106,7 +106,7 @@ public class TextToCommandInterpreter {
                 if (bodyheat == 4) {
                     command = new AnalyzeTileCommand(game, args);
                 } else if (bodyheat == 5) {
-                    command = new BuildIgluCommand(game, args);
+                    command = new BuildIgluCommand();
                 }
             case "exit":
             case "quit":

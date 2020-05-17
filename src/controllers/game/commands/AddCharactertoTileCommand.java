@@ -93,7 +93,6 @@ public class AddCharactertoTileCommand implements Command {
             Environment.getInstance().getPlayers().add(figure);
             MapPresenter.getInstance().addFigurePresenter(presenter);
 
-            MapPresenter.getInstance().update();
             game.getOutput().println("character added: " + tileID + ", " + characterID);
         }
     }

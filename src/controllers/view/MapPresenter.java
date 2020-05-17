@@ -40,6 +40,9 @@ public class MapPresenter implements Observer, Serializable {
 
     public void setTiles(List<TilePresenter> tiles) {
         this.tiles = tiles;
+
+        for(int i = 0; i < tiles.size(); i++)
+            tiles.get(i).init();
     }
 
     public FigurePresenter findFigure(Figure figure) {
@@ -51,6 +54,9 @@ public class MapPresenter implements Observer, Serializable {
     }
 
     public void reset() {
+        for(int i = 0; i < tiles.size(); i++)
+            tiles.get(i).destory();
+
         figures.clear();
         tiles.clear();
     }

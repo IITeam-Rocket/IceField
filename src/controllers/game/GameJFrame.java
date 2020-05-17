@@ -10,8 +10,9 @@ public class GameJFrame extends JFrame {
     }
 
     void initComonents() {
-        JButton b = new JButton("click");
-        b.addMouseListener(new MouseHandler());
+        JButton b = new JButton("");
+        b.setBounds(130, 100, 60, 60);
+        b.addActionListener(new MouseHandler());
         this.add(b);
         this.setSize(800, 600);
         this.setLayout(null);

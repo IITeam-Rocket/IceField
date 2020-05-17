@@ -262,6 +262,16 @@ public class GameJFrame extends JFrame {
 
 
         special.setVisible(true);
+        special.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (activeTile != null) {
+                    game.useSpecial(activeTile);
+                    activeTile = null;
+                }
+                //TODO valami dialog ablak
+            }
+        });
         commandPanel.add(special);
 
         text.setVisible(true);

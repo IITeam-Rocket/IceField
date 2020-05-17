@@ -15,11 +15,19 @@ import java.io.Serializable;
 public class ResearcherPresenter extends FigurePresenter implements Serializable {
     private final Researcher researcher;
 
+    /**
+     * Constructor
+     * @param researcher The Researcher to present
+     */
     public ResearcherPresenter(Researcher researcher) {
         super();
         this.researcher = researcher;
     }
 
+    /**
+     * Get the Image to Draw
+     * @return ImageIcon
+     */
     @Override
     public ImageIcon getImage() {
         if(Environment.getInstance().getCurrentPlayer() == researcher)
@@ -28,9 +36,18 @@ public class ResearcherPresenter extends FigurePresenter implements Serializable
             return GameJFrame.getInstance().getTexture("researcher");
     }
 
+    /**
+     * Get Figure
+     * @return Figure
+     */
     @Override
     public Figure getFigure() { return researcher; }
 
+    /**
+     * Draw
+     * @param x where X
+     * @param y where Y
+     */
     @Override
     public void draw(int x, int y) {
         super.draw(x, y);

@@ -15,6 +15,11 @@ abstract public class TilePresenter implements Serializable {
     protected final int y;
     protected JButton button;
 
+    /**
+     * Constructor
+     * @param x where X
+     * @param y where Y
+     */
     public TilePresenter(int x, int y) {
         this.x = x;
         this.y = y;
@@ -37,6 +42,9 @@ abstract public class TilePresenter implements Serializable {
         GameJFrame.getInstance().add(button);
     }
 
+    /**
+     * Initialize
+     */
     public void init() {
         GameJFrame.getInstance().add(button);
 
@@ -53,10 +61,21 @@ abstract public class TilePresenter implements Serializable {
         GameJFrame.getInstance().repaint();
     }
 
+    /**
+     * Destroy
+     */
     public void destroy() {
         GameJFrame.getInstance().remove(button);
     }
 
+    /**
+     * Put the second image on the first one with an offset.
+     * @param tile First ImageIcon
+     * @param player Second ImageIcon
+     * @param x_offset x offset
+     * @param y_offset y offset
+     * @return ImageIcon combined
+     */
     protected ImageIcon combineImage(ImageIcon tile, ImageIcon player, int x_offset, int y_offset)
     {
         int m_iconWidth = tile.getIconWidth();
@@ -71,6 +90,11 @@ abstract public class TilePresenter implements Serializable {
         return new ImageIcon(m_buffer);
     }
 
+    /**
+     * Get the next figure's X
+     * @param num figure num
+     * @return next X
+     */
     protected int getFigureX(int num) {
         switch (num) {
             case 0:
@@ -96,6 +120,11 @@ abstract public class TilePresenter implements Serializable {
         }
     }
 
+    /**
+     * Get the next figure's Y
+     * @param num figure num
+     * @return next Y
+     */
     protected int getFigureY(int num) {
         switch (num) {
             case 0:
@@ -121,6 +150,11 @@ abstract public class TilePresenter implements Serializable {
         }
     }
 
+    /**
+     * Draw Figures
+     * @param base Base Tile ImageIcon
+     * @param tile Tile where we look for Figures
+     */
     protected void drawFigures(ImageIcon base, Tile tile) {
         ImageIcon resultImage = base;
 
@@ -134,16 +168,36 @@ abstract public class TilePresenter implements Serializable {
         button.setIcon(resultImage);
     }
 
+    /**
+     * Draw
+     */
     public void draw() { }
 
+    /**
+     * Check if the TilePresenter's Tile whether is a neighbour of the current Tile
+     * @param tile TilePresenter to test
+     * @return Boolean result
+     */
     abstract public boolean isNeighbour(TilePresenter tile);
 
+    /**
+     * Get Tile
+     * @return Tile
+     */
     abstract public Tile getTile();
 
+    /**
+     * Get X
+     * @return X
+     */
     public int getX() {
         return x;
     }
 
+    /**
+     * Get Y
+     * @return Y
+     */
     public int getY() {
         return y;
     }

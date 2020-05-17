@@ -344,4 +344,9 @@ public class GameJFrame extends JFrame {
     public void showEndGameDialog() {
         EndGameDialog dialog = new EndGameDialog(this, "End Game");
     }
+
+    public void showWinGameDialog() {
+        EndGameDialog dialog = new EndGameDialog(this, "Game Won");
+    }
+
 }

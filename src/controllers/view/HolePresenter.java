@@ -13,6 +13,12 @@ import java.util.ArrayList;
 public class HolePresenter extends TilePresenter implements Serializable {
     private final Hole hole;
 
+    /**
+     * Constructor
+     * @param hole Hole to present
+     * @param x where X
+     * @param y where Y
+     */
     public HolePresenter(Hole hole, int x, int y) {
         super(x, y);
         this.hole = hole;
@@ -24,6 +30,9 @@ public class HolePresenter extends TilePresenter implements Serializable {
         draw();
     }
 
+    /**
+     * Draw
+     */
     @Override
     public void draw() {
         int snowDepth = hole.getSnowDepth();
@@ -45,14 +54,20 @@ public class HolePresenter extends TilePresenter implements Serializable {
         super.drawFigures(base, hole);
     }
 
-
-
-
+    /**
+     * Check if the TilePresenter's Tile whether is a neighbour of the current Tile
+     * @param tile TilePresenter to test
+     * @return Boolean result
+     */
     @Override
     public boolean isNeighbour(TilePresenter tile) {
         return hole.getNeighbours().contains(tile.getTile());
     }
 
+    /**
+     * Get Tile
+     * @return Tile
+     */
     @Override
     public Tile getTile() {
         return hole;

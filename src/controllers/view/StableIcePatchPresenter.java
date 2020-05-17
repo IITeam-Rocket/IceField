@@ -10,6 +10,12 @@ import java.io.Serializable;
 public class StableIcePatchPresenter extends TilePresenter implements Serializable {
     private final StableIcePatch icePatch;
 
+    /**
+     * Constructor
+     * @param icePatch StableIcePatch to present
+     * @param x where X
+     * @param y where Y
+     */
     public StableIcePatchPresenter(StableIcePatch icePatch, int x, int y) {
         super(x, y);
         this.icePatch = icePatch;
@@ -21,6 +27,9 @@ public class StableIcePatchPresenter extends TilePresenter implements Serializab
         draw();
     }
 
+    /**
+     * Draw
+     */
     @Override
     public void draw() {
         int snowDepth = icePatch.getSnowDepth();
@@ -45,11 +54,20 @@ public class StableIcePatchPresenter extends TilePresenter implements Serializab
         super.drawFigures(base, icePatch);
     }
 
+    /**
+     * Check if the TilePresenter's Tile whether is a neighbour of the current Tile
+     * @param tile TilePresenter to test
+     * @return Boolean result
+     */
     @Override
     public boolean isNeighbour(TilePresenter tile) {
         return icePatch.getNeighbours().contains(tile.getTile());
     }
 
+    /**
+     * Get Tile
+     * @return Tile
+     */
     @Override
     public Tile getTile() {
         return icePatch;

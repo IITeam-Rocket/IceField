@@ -116,20 +116,16 @@ public class Game {
     public void Move(Tile t) {
         commandInterpreter.interpret(cip.interpreter(String.format("move %d", t.getID())));
     }
-
-    public void Rescue(Tile t) {
-        commandInterpreter.interpret(cip.interpreter(String.format("rescue %d", t.getID())));
-    }
+    
     /**
      * Do a rescue using the commands
      * @param t Tile to rescue from
      */
-    public void Rescue(Tile t){commandInterpreter.interpret(cip.interpter(String.format("rescue %d", t.getID())));}
+    public void Rescue(Tile t){commandInterpreter.interpret(cip.interpreter(String.format("rescue %d", t.getID())));}
 
     /**
      * Craft the signalflare using commands
      */
-    public void CraftSignalFlare() { commandInterpreter.interpret(cip.interpter("craftsignalflare")); }
     public void CraftSignalFlare() {
         commandInterpreter.interpret(cip.interpreter("craftsignalflare"));
     }

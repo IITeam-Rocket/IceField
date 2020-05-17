@@ -43,7 +43,9 @@ public class EndGameDialog extends JDialog {
     }
 
     private void initComponents() {
-        this.add(contentPane);
+        itemLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
+        buttonOK.addActionListener(e -> onOK());
         contentPane.setLayout(new GridLayout(2, 1));
         contentPane.add(labelPanel);
         contentPane.add(buttonPanel);
@@ -52,9 +54,8 @@ public class EndGameDialog extends JDialog {
         labelPanel.add(foundLabel);
         foundLabel.setHorizontalAlignment(SwingConstants.CENTER);
         labelPanel.add(itemLabel);
-        itemLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
-        buttonOK.addActionListener(e -> onOK());
+        this.add(contentPane);
         setVisible(true);
         setLocationRelativeTo(getOwner());
     }

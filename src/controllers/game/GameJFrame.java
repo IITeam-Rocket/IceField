@@ -1,5 +1,6 @@
 package controllers.game;
 
+import controllers.RandomController;
 import controllers.view.MapPresenter;
 import models.tiles.Tile;
 
@@ -100,11 +101,11 @@ public class GameJFrame extends JFrame {
         MapTextures.put("researcher_active", new ImageIcon("resources/researcher_active.png"));
 
 
-
-}
+    }
 
     public void OutputToTextBox(String text) {
         this.text.setText(text);
+        this.text.grabFocus();
     }
 
     public ImageIcon getTexture(String key)
@@ -162,6 +163,18 @@ public class GameJFrame extends JFrame {
         commandPanel.add(randomness);
 
         random.setVisible(true);
+        random.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                game.random();
+                if (RandomController.getRandom()) {
+                    random.setText("Random on");
+
+                } else {
+                    random.setText("Random off");
+                }
+            }
+        });
         commandPanel.add(random);
 
         weather.setVisible(true);
@@ -192,9 +205,24 @@ public class GameJFrame extends JFrame {
         commandPanel.add(move);
 
         unbury.setVisible(true);
+        unbury.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                game.Unbury();
+            }
+        });
         commandPanel.add(unbury);
 
         snow.setVisible(true);
+        snow.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (activeTile != null) {
+                    game.clearSnow(activeTile);
+                    activeTile = null;
+                }
+            }
+        });
         commandPanel.add(snow);
 
         rescue.setVisible(true);

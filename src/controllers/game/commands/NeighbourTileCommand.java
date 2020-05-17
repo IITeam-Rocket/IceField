@@ -10,6 +10,12 @@ public class NeighbourTileCommand implements Command {
     private Game game;
     private String[] args;
 
+    /**
+     * Constructor
+     *
+     * @param _game The Game Object
+     * @param _args Command Arguments
+     */
     public NeighbourTileCommand(Game _game, String[] _args) {
         game = _game;
         args = _args;

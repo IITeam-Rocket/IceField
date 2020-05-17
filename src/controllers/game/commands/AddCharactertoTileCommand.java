@@ -21,6 +21,12 @@ public class AddCharactertoTileCommand implements Command {
     private Game game;
     private String[] args;
 
+    /**
+     * Constructor
+     *
+     * @param _game The Game Object
+     * @param _args Command Arguments
+     */
     public AddCharactertoTileCommand(Game _game, String[] _args) {
         game = _game;
         args = _args;

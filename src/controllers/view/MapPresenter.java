@@ -2,6 +2,7 @@ package controllers.view;
 
 import controllers.game.GameJFrame;
 import models.Observer;
+import models.figures.Figure;
 
 import java.awt.*;
 import java.awt.geom.Line2D;
@@ -23,6 +24,14 @@ public class MapPresenter implements Observer  {
         return instance;
     }
 
+    public FigurePresenter findFigure(Figure figure) {
+        for(int i = 0; i < figures.size(); i++) {
+            if(figures.get(i).getFigure() == figure)
+                return figures.get(i);
+        }
+        return null;
+    }
+
     /**
      * Updates the object.
      */
@@ -41,8 +50,6 @@ public class MapPresenter implements Observer  {
             tiles.forEach(t -> {
                 t.button.grabFocus();
             });
-
-            figures.forEach(f -> f.button.grabFocus());
         }
         catch (Exception e) { }
     }

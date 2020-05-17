@@ -33,17 +33,19 @@ public class InstableIcePatchPresenter extends TilePresenter {
 
         String Protection = new String("");
 
+        ImageIcon base;
+
         if(!flipped) {
             if (protpririty == 2)
                 Protection = "_iglu";
             else if (protpririty == 1)
                 Protection = "_tent";
 
-            button.setIcon(GameJFrame.getInstance().getTexture("stable_" + String.valueOf(snowDepth) + Protection));
+            base = GameJFrame.getInstance().getTexture("stable_" + String.valueOf(snowDepth) + Protection);
         }
         else
         {
-            button.setIcon(GameJFrame.getInstance().getTexture("water"));
+            base = GameJFrame.getInstance().getTexture("water");
         }
 
         if(analyzed)
@@ -53,7 +55,7 @@ public class InstableIcePatchPresenter extends TilePresenter {
 
         //SwingUtilities.updateComponentTreeUI(GameJFrame.getInstance());
 
-
+        super.drawFigures(base, icePatch);
 
         //TODO implement further
     }

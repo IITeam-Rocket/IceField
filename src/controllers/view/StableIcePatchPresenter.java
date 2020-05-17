@@ -34,13 +34,16 @@ public class StableIcePatchPresenter extends TilePresenter {
         else if(protpririty == 1)
             Protection = "_tent";
 
-        button.setIcon(GameJFrame.getInstance().getTexture("stable_" + String.valueOf(snowDepth) + Protection));
+        ImageIcon base;
+
+        base = GameJFrame.getInstance().getTexture("stable_" + String.valueOf(snowDepth) + Protection);
 
         if(analyzed)
             button.setText("-1");
         else
             button.setText("");
 
+        super.drawFigures(base, icePatch);
         //SwingUtilities.updateComponentTreeUI(GameJFrame.getInstance());
 
 

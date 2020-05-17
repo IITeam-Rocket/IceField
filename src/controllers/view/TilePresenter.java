@@ -41,6 +41,19 @@ abstract public class TilePresenter {
         return new ImageIcon(m_buffer);
     }
 
+    protected void drawFigures(ImageIcon base, Tile tile) {
+        ImageIcon resultImage = base;
+
+        for(int i = 0; i < tile.getEntities().size(); i++) {
+            FigurePresenter figurePresenter = MapPresenter.getInstance().findFigure(tile.getEntities().get(i));
+            if(figurePresenter != null) {
+                resultImage = combineImage(resultImage, figurePresenter.getImage(), 0, 0);
+            }
+        }
+
+        button.setIcon(resultImage);
+    }
+
     public void draw() {
         // TODO implement draw()
     }

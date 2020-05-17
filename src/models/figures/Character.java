@@ -1,5 +1,6 @@
 package models.figures;
 
+import controllers.game.GameJFrame;
 import models.Environment;
 import models.exceptions.EndOfGameException;
 import models.items.Item;
@@ -63,7 +64,7 @@ public abstract class Character extends Figure implements Serializable {
             clearPatchStrategy.clear(tile);
             stamina--;
         } else
-            System.out.println("Not Enough Stamina available to complete this action!");
+            GameJFrame.getInstance().OutputToTextBox("Not Enough Stamina available to complete this action!");
     }
 
 
@@ -78,7 +79,7 @@ public abstract class Character extends Figure implements Serializable {
             if (find != null)
                 find.uponDiscovery(this);
         } else
-            System.out.println("Not Enough Stamina available to complete this action!");
+            GameJFrame.getInstance().OutputToTextBox("Not Enough Stamina available to complete this action!");
     }
 
     /**
@@ -117,7 +118,7 @@ public abstract class Character extends Figure implements Serializable {
         if (stamina > 0)
             Environment.getInstance().winGame();
         else
-            System.out.println("Not Enough Stamina available to complete this action!");
+            GameJFrame.getInstance().OutputToTextBox("Not Enough Stamina available to complete this action!");
     }
 
     /**
@@ -133,7 +134,7 @@ public abstract class Character extends Figure implements Serializable {
                 --stamina;
         }
         else
-            System.out.println("Not Enough Stamina available to complete this action!");
+            GameJFrame.getInstance().OutputToTextBox("Not Enough Stamina available to complete this action!");
         notifyObservers();
     }
 

@@ -3,7 +3,13 @@ package controllers.view;
 import models.tiles.Tile;
 
 abstract public class TilePresenter {
-    private int x, y;
+    private final int x;
+    private final int y;
+
+    public TilePresenter(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
 
     public void draw() {
         // TODO implement draw()

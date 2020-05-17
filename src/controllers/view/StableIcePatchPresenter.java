@@ -7,7 +7,8 @@ import models.tiles.Tile;
 public class StableIcePatchPresenter extends TilePresenter {
     private final StableIcePatch icePatch;
 
-    public StableIcePatchPresenter(StableIcePatch icePatch) {
+    public StableIcePatchPresenter(StableIcePatch icePatch, int x, int y) {
+        super(x, y);
         this.icePatch = icePatch;
     }
 

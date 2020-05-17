@@ -6,7 +6,8 @@ import models.tiles.Tile;
 public class HolePresenter extends TilePresenter {
     private final Hole hole;
 
-    public HolePresenter(Hole hole) {
+    public HolePresenter(Hole hole, int x, int y) {
+        super(x, y);
         this.hole = hole;
     }
 

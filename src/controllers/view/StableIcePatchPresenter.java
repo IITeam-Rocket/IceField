@@ -21,7 +21,7 @@ public class StableIcePatchPresenter extends TilePresenter {
         int snowDepth = icePatch.getSnowDepth();
         ProtectionPolicy po = icePatch.getProtectionStrategy();
 
-        button.setPreferredSize(new Dimension(60, 60));
+        button.setBounds(x, y, 60, 60);
         button.setIcon(GameJFrame.getInstance().getTexture("stable"));
         button.setVisible(true);
 

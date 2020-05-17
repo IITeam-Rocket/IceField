@@ -19,7 +19,7 @@ public class HolePresenter extends TilePresenter {
         int snowDepth = hole.getSnowDepth();
         boolean isDiscovered = hole.isAnalyzed();
 
-        button.setPreferredSize(new Dimension(60, 60));
+        button.setBounds(x, y, 60, 60);
         button.setIcon(GameJFrame.getInstance().getTexture("stable"));
         button.setVisible(true);
 

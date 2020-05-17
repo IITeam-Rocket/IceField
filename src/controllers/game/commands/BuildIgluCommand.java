@@ -30,7 +30,7 @@ public class BuildIgluCommand implements Command {
         Figure figure = Environment.getInstance().getCurrentPlayer();
 
         if (figure == null) {
-            GameJFrame.getInstance().OutputToTextBox("There is no Figure selected, please use the \"nextcharacter\" command before the first buildiglu!");
+            GameJFrame.getInstance().OutputToTextBox("There is no Figure selected, please use the\n \"nextcharacter\" command before the first buildiglu!");
             return;
         }
 

@@ -136,7 +136,7 @@ public class Environment implements Serializable {
 
             return true;
         } catch (IOException ex) {
-            GameJFrame.getInstance().OutputToTextBox("Couldn't load with serialization! File " + path + " doesn't exist or doesn't contain the correct data!");
+            GameJFrame.getInstance().OutputToTextBox("Couldn't load with serialization!\nFile " + path + " doesn't exist or doesn't contain the correct data!");
             return false;
         } catch (ClassNotFoundException ex) {
             GameJFrame.getInstance().OutputToTextBox("Couldn't save with serialization! ClassNotFound");

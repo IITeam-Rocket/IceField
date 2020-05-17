@@ -37,7 +37,7 @@ public class RescueCommand implements Command {
         Figure f = Environment.getInstance().getCurrentPlayer();
 
         if (f == null) { //*2
-            GameJFrame.getInstance().OutputToTextBox("There is no Figure selected, please use the \"nextcharacter\" command before the first rescue!");
+            GameJFrame.getInstance().OutputToTextBox("There is no Figure selected, please use the\n \"nextcharacter\" command before the first rescue!");
             MapPresenter.getInstance().update();
             return;
         }

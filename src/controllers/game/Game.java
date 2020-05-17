@@ -1,6 +1,7 @@
 package controllers.game;
 
 import controllers.TextToCommandInterpeter;
+import controllers.game.commands.Command;
 import controllers.view.MapPresenter;
 import models.Environment;
 import models.figures.Figure;

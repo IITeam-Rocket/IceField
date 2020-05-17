@@ -1,5 +1,6 @@
 package models.items;
 
+import controllers.game.GameJFrame;
 import models.figures.Character;
 import models.policies.FragileShovelPolicy;
 
@@ -28,6 +29,7 @@ public class FragileShovel extends Item implements Serializable {
     public void uponDiscovery(Character finder) {
         System.out.println("unburied item: 3");
         finder.changeClearSnowPolicy(new FragileShovelPolicy());
+        GameJFrame.getInstance().showItemDialog(this.toString());
     }
 
     /**

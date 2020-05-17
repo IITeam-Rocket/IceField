@@ -183,8 +183,10 @@ public class GameJFrame extends JFrame {
         move.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                game.Move(activeTile);
-                activeTile = null;
+                if (activeTile != null) {
+                    game.Move(activeTile);
+                    activeTile = null;
+                }
             }
         });
         commandPanel.add(move);
@@ -248,5 +250,13 @@ public class GameJFrame extends JFrame {
 
     public static GameJFrame getInstance() {
         return instance;
+    }
+
+    public void showItemDialog(String itemName) {
+        ItemDialog dialog = new ItemDialog(this, itemName);
+    }
+
+    public void showEndGameDialog() {
+        EndGameDialog dialog = new EndGameDialog(this, "End Game");
     }
 }

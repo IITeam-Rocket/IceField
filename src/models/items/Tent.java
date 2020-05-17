@@ -1,5 +1,6 @@
 package models.items;
 
+import controllers.game.GameJFrame;
 import models.figures.Character;
 
 import java.io.Serializable;
@@ -25,6 +26,7 @@ public class Tent extends Item implements Serializable {
     public void uponDiscovery(Character finder) {
         System.out.println("unburied item: 9");
         finder.buildTent();
+        GameJFrame.getInstance().showItemDialog(this.toString());
     }
 
     /**

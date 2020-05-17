@@ -1,5 +1,6 @@
 package models.items;
 
+import controllers.game.GameJFrame;
 import models.Environment;
 import models.figures.Character;
 
@@ -24,6 +25,7 @@ public class Beacon extends Item implements Serializable {
     public void uponDiscovery(Character finder) {
         System.out.println("unburied item: 6");
         Environment.getInstance().recordBeacon(finder.getTile());
+        GameJFrame.getInstance().showItemDialog(this.toString());
     }
 
     /**

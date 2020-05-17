@@ -1,5 +1,6 @@
 package models.items;
 
+import controllers.game.GameJFrame;
 import models.Environment;
 import models.figures.Character;
 
@@ -24,6 +25,7 @@ public class Gun extends Item implements Serializable {
     public void uponDiscovery(Character finder) {
         System.out.println("unburied item: 7");
         Environment.getInstance().recordGun(finder.getTile());
+        GameJFrame.getInstance().showItemDialog(this.toString());
     }
 
     /**

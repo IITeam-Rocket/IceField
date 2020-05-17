@@ -1,5 +1,6 @@
 package models.items;
 
+import controllers.game.GameJFrame;
 import models.figures.Character;
 import models.policies.SwimOutPolicy;
 
@@ -25,6 +26,7 @@ public class DiveSuit extends Item implements Serializable {
     public void uponDiscovery(Character finder) {
         System.out.println("unburied item: 5");
         finder.changeWaterPolicy(new SwimOutPolicy());
+        GameJFrame.getInstance().showItemDialog(this.toString());
     }
 
     /**

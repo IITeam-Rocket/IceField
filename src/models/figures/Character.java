@@ -295,7 +295,6 @@ public abstract class Character extends Figure implements Serializable {
      */
     public void buildTent() {
         ((IcePatch) tile).changeProtectionPolicy(new TentPolicy());
-        --stamina;
     }
 
     /**
@@ -306,7 +305,10 @@ public abstract class Character extends Figure implements Serializable {
     @Override
     public void moveTo(Tile destination) {
         if (stamina == 0) return;
-        if (destination.acceptFigure(this)) stamina--;
+        if (destination.acceptFigure(this)) {
+            stamina--;
+            notifyObservers();
+        }
     }
 
     /**

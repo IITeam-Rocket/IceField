@@ -1,5 +1,6 @@
 package models.items;
 
+import controllers.game.GameJFrame;
 import models.figures.Character;
 import models.policies.ShovelPolicy;
 
@@ -25,6 +26,7 @@ public class Shovel extends Item implements Serializable {
     public void uponDiscovery(Character finder) {
         System.out.println("unburied item: 4");
         finder.changeClearSnowPolicy(new ShovelPolicy());
+        GameJFrame.getInstance().showItemDialog(this.toString());
     }
 
     /**

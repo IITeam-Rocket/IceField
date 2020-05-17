@@ -217,7 +217,7 @@ abstract public class Tile extends Subject implements Serializable {
      */
     public void addCharacter(Figure figure) {
         this.entities.add(figure);
-        figure.setTile(this);
+        //figure.setTile(this);
     }
 
     /**

@@ -29,14 +29,25 @@ public class GameJFrame extends JFrame {
 
     private Tile activeTile = null;
 
+    /**
+     * Get the Game Object
+     * @return current Game object
+     */
     public Game getGame() {
         return game;
     }
 
+    /**
+     * Set active Tile
+     * @param t Tile to set as active
+     */
     public void setActiveTile(Tile t) {
         activeTile = t;
     }
 
+    /**
+     * Private constructor this is a Singleton class
+     */
     private GameJFrame() {
         this.setContentPane(new JPanel() {
             public void paintComponent(Graphics g) {
@@ -49,30 +60,58 @@ public class GameJFrame extends JFrame {
         initComponents();
 
         this.addWindowListener(new WindowAdapter() {
+            /**
+             * Window event
+             * @param e Event to process
+             */
             public void windowOpened(WindowEvent e) {
                 repaint();
             }
 
+            /**
+             * Window event
+             * @param e Event to process
+             */
             public void windowIconified(WindowEvent e) {
                 repaint();
             }
 
+            /**
+             * Window event
+             * @param e Event to process
+             */
             public void windowDeiconified(WindowEvent e) {
                 repaint();
             }
 
+            /**
+             * Window event
+             * @param e Event to process
+             */
             public void windowActivated(WindowEvent e) {
                 repaint();
             }
 
+            /**
+             * Window event
+             * @param e Event to process
+             */
             public void windowDeactivated(WindowEvent e) {
                 repaint();
             }
 
+            /**
+             * Window event
+             * @param e Event to process
+             */
             public void windowStateChanged(WindowEvent e) {
                 repaint();
             }
 
+            /**
+             * Window event
+             * @param e Event to process
+             */
             public void windowGainedFocus(WindowEvent e) {
                 repaint();
             }
@@ -83,6 +122,9 @@ public class GameJFrame extends JFrame {
         this.setLocationRelativeTo(null);
     }
 
+    /**
+     * Initialize textures
+     */
     public void initTextures() {
 
         for(int i = 0; i < 7; i++)
@@ -102,11 +144,19 @@ public class GameJFrame extends JFrame {
         MapTextures.put("researcher_active", new ImageIcon("resources/researcher_active.png"));
     }
 
+    /**
+     * Set the character out info on the screen
+     * @param text Text to set it to
+     */
     public void CharacterOutInfo(String text) {
         this.text.setText(text);
         this.text.grabFocus();
     }
 
+    /**
+     * Set the output info on the screen
+     * @param text Text to set it to
+     */
     public void OutputToTextBox(String text) {
         this.debug.setText(text);
         this.debug.grabFocus();
@@ -131,10 +181,19 @@ public class GameJFrame extends JFrame {
     private final JButton move = new JButton("Move");
     private final JButton next = new JButton("Next Character");
 
-    public ImageIcon getTexture(String key) {
+    /**
+     * Get texture
+     * @param key Kex to get Texture with
+     * @return The found Texture
+     */
+    public ImageIcon getTexture(String key)
+    {
         return MapTextures.get(key);
     }
 
+    /**
+     * Initialize the components
+     */
     void initComponents() {
         this.setResizable(false);
         this.setSize(930, 600);
@@ -153,6 +212,10 @@ public class GameJFrame extends JFrame {
 
         load.setVisible(true);
         load.addActionListener(new ActionListener() {
+            /**
+             * Process action
+             * @param e Action to process
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 Environment.serializeRead(textBox.getText());
@@ -162,6 +225,10 @@ public class GameJFrame extends JFrame {
 
         save.setVisible(true);
         save.addActionListener(new ActionListener() {
+            /**
+             * Process action
+             * @param e Action to process
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 Environment.serializeWrite(textBox.getText());
@@ -174,6 +241,10 @@ public class GameJFrame extends JFrame {
 
         random.setVisible(true);
         random.addActionListener(new ActionListener() {
+            /**
+             * Process action
+             * @param e Action to process
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 game.random();
@@ -188,6 +259,10 @@ public class GameJFrame extends JFrame {
         weather.setVisible(true);
         weather.setEnabled(false);
         weather.addActionListener(new ActionListener() {
+            /**
+             * Process action
+             * @param e Action to process
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 game.simulateWeather();
@@ -200,6 +275,10 @@ public class GameJFrame extends JFrame {
 
         next.setVisible(true);
         next.addActionListener(new ActionListener() {
+            /**
+             * Process action
+             * @param e Action to process
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 game.NextCharacter();
@@ -209,6 +288,10 @@ public class GameJFrame extends JFrame {
 
         move.setVisible(true);
         move.addActionListener(new ActionListener() {
+            /**
+             * Process action
+             * @param e Action to process
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (activeTile != null) {
@@ -221,6 +304,10 @@ public class GameJFrame extends JFrame {
 
         unbury.setVisible(true);
         unbury.addActionListener(new ActionListener() {
+            /**
+             * Process action
+             * @param e Action to process
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 game.Unbury();
@@ -230,6 +317,10 @@ public class GameJFrame extends JFrame {
 
         snow.setVisible(true);
         snow.addActionListener(new ActionListener() {
+            /**
+             * Process action
+             * @param e Action to process
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 game.clearSnow(activeTile);
@@ -239,6 +330,10 @@ public class GameJFrame extends JFrame {
 
         rescue.setVisible(true);
         rescue.addActionListener(new ActionListener() {
+            /**
+             * Process action
+             * @param e Action to process
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (activeTile != null) {
@@ -252,6 +347,10 @@ public class GameJFrame extends JFrame {
         craft.setVisible(true);
         commandPanel.add(craft);
         craft.addActionListener(new ActionListener() {
+            /**
+             * Process action
+             * @param e Action to process
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 game.CraftSignalFlare();
@@ -263,6 +362,10 @@ public class GameJFrame extends JFrame {
 
         special.setVisible(true);
         special.addActionListener(new ActionListener() {
+            /**
+             * Process action
+             * @param e Action to process
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (activeTile != null) {
@@ -287,6 +390,9 @@ public class GameJFrame extends JFrame {
         RandomController.addListener(x -> weather.setEnabled(!x));
     }
 
+    /**
+     * Create the background
+     */
     public void createBackground() {
 
         image = new BufferedImage(800, 600, BufferedImage.TYPE_INT_ARGB);
@@ -298,6 +404,10 @@ public class GameJFrame extends JFrame {
         MapPresenter.getInstance().paint(graph);
     }
 
+    /**
+     * Paint the screen
+     * @param g Graphics to use to draw
+     */
     public void paint(Graphics g) {
 
         io.setBounds(10, 10, 20, 15);
@@ -330,18 +440,32 @@ public class GameJFrame extends JFrame {
         super.paint(g);
     }
 
+    /**
+     * Singleton instance
+     * @return Get the instance
+     */
     public static GameJFrame getInstance() {
         return instance;
     }
 
+    /**
+     * Show an item dialog
+     * @param itemName Name of the Item
+     */
     public void showItemDialog(String itemName) {
         ItemDialog dialog = new ItemDialog(this, itemName);
     }
 
+    /**
+     * Show end game dialog
+     */
     public void showEndGameDialog() {
         EndGameDialog dialog = new EndGameDialog(this, "End Game");
     }
 
+    /**
+     * Show win game dialog
+     */
     public void showWinGameDialog() {
         EndGameDialog dialog = new EndGameDialog(this, "Game Won");
     }

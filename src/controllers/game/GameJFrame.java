@@ -277,11 +277,14 @@ public class GameJFrame extends JFrame {
         commandPanel.add(special);
 
         text.setVisible(true);
+        text.setEditable(false);
         commandPanel.add(text);
 
         debug.setVisible(true);
+        debug.setEditable(false);
         commandPanel.add(debug);
         team.setVisible(true);
+        team.setEditable(false);
         commandPanel.add(team);
 
         RandomController.addListener(x -> weather.setEnabled(!x));

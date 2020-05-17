@@ -2,6 +2,7 @@ package controllers.game;
 
 import controllers.RandomController;
 import controllers.view.MapPresenter;
+import models.Environment;
 import models.tiles.Tile;
 
 import javax.swing.*;
@@ -148,13 +149,19 @@ public class GameJFrame extends JFrame {
         commandPanel.add(textbox);
 
         load.setVisible(true);
+        load.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Environment.serializeRead(textbox.getText());
+            }
+        });
         commandPanel.add(load);
 
         save.setVisible(true);
         save.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                Environment.serializeWrite(textbox.getText());
             }
         });
         commandPanel.add(save);

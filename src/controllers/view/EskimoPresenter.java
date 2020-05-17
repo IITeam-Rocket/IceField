@@ -10,8 +10,9 @@ import models.policies.RescueFriendPolicy;
 import models.tiles.Tile;
 
 import javax.swing.*;
+import java.io.Serializable;
 
-public class EskimoPresenter extends FigurePresenter {
+public class EskimoPresenter extends FigurePresenter implements Serializable {
     private final Eskimo eskimo;
 
     public EskimoPresenter(Eskimo eskimo) {

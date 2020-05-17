@@ -10,8 +10,9 @@ import models.policies.RescueFriendPolicy;
 import models.tiles.Tile;
 
 import javax.swing.*;
+import java.io.Serializable;
 
-public class ResearcherPresenter extends FigurePresenter {
+public class ResearcherPresenter extends FigurePresenter implements Serializable {
     private final Researcher researcher;
 
     public ResearcherPresenter(Researcher researcher) {

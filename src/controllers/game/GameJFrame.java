@@ -219,6 +219,7 @@ public class GameJFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Environment.serializeRead(textBox.getText());
+                repaint();
             }
         });
         commandPanel.add(load);
@@ -232,6 +233,7 @@ public class GameJFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Environment.serializeWrite(textBox.getText());
+                repaint();
             }
         });
         commandPanel.add(save);
@@ -252,6 +254,7 @@ public class GameJFrame extends JFrame {
                     random.setText("Random On");
                 else if(random.getText().equals("Random On"))
                     random.setText("Random Off");
+                repaint();
             }
         });
         commandPanel.add(random);
@@ -266,6 +269,7 @@ public class GameJFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 game.simulateWeather();
+                repaint();
             }
         });
         commandPanel.add(weather);
@@ -282,6 +286,7 @@ public class GameJFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 game.NextCharacter();
+                repaint();
             }
         });
         commandPanel.add(next);
@@ -298,6 +303,7 @@ public class GameJFrame extends JFrame {
                     game.Move(activeTile);
                     activeTile = null;
                 }
+                repaint();
             }
         });
         commandPanel.add(move);
@@ -311,6 +317,7 @@ public class GameJFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 game.Unbury();
+                repaint();
             }
         });
         commandPanel.add(unbury);
@@ -324,6 +331,7 @@ public class GameJFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 game.clearSnow(activeTile);
+                repaint();
             }
         });
         commandPanel.add(snow);
@@ -340,6 +348,7 @@ public class GameJFrame extends JFrame {
                     game.Rescue(activeTile);
                     activeTile = null;
                 }
+                repaint();
             }
         });
         commandPanel.add(rescue);
@@ -355,9 +364,9 @@ public class GameJFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 game.CraftSignalFlare();
                 activeTile = null;
-                }
+                repaint();
             }
-        );
+        });
 
 
         special.setVisible(true);
@@ -372,6 +381,7 @@ public class GameJFrame extends JFrame {
                     game.useSpecial(activeTile);
                     activeTile = null;
                 }
+                repaint();
             }
         });
         commandPanel.add(special);

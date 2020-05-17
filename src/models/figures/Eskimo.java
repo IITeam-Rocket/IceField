@@ -59,6 +59,7 @@ public class Eskimo extends Character implements Serializable {
             if (target == tile) {
                 ((IcePatch) tile).changeProtectionPolicy(new IglooPolicy());
                 --stamina;
+                notifyObservers();
             }
         } else
             System.out.println("Not Enough Stamina available to complete this action!");

@@ -38,6 +38,7 @@ public class EndGameDialog extends JDialog {
         super(owner, title);
         initComponents();
         pack();
+        owner.setEnabled(false);
         this.setMinimumSize(new Dimension(200, 150));
     }
 

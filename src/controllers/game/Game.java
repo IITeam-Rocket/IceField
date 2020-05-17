@@ -99,7 +99,7 @@ public class Game {
     /**
      * Next character
      */
-    public void NextCharacter() {
+    public void nextCharacter() {
         GameJFrame.getInstance().OutputToTextBox("");
         commandInterpreter.interpret(cip.interpreter("nextcharacter"));
     }
@@ -108,7 +108,7 @@ public class Game {
      * Do a move using commands
      * @param t Tile to move to
      */
-    public void Move(Tile t) {
+    public void move(Tile t) {
         commandInterpreter.interpret(cip.interpreter(String.format("move %d", t.getID())));
     }
 
@@ -116,19 +116,21 @@ public class Game {
      * Do a rescue using the commands
      * @param t Tile to rescue from
      */
-    public void Rescue(Tile t){commandInterpreter.interpret(cip.interpreter(String.format("rescue %d", t.getID())));}
+    public void rescue(Tile t) {
+        commandInterpreter.interpret(cip.interpreter(String.format("rescue %d", t.getID())));
+    }
 
     /**
      * Craft the signalflare using commands
      */
-    public void CraftSignalFlare() {
+    public void craftSignalFlare() {
         commandInterpreter.interpret(cip.interpreter("craftsignalflare"));
     }
 
     /**
-     * Unbury using the commands
+     * unBury using the commands
      */
-    public void Unbury() {
+    public void unBury() {
         commandInterpreter.interpret(cip.interpreter("unbury"));
     }
 

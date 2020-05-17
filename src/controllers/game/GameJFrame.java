@@ -37,10 +37,10 @@ public class GameJFrame extends JFrame {
     private final JLabel gameplay = new JLabel("Gameplay:");
     private final JButton special = new JButton("Use Special Ability");
     private final JButton craft = new JButton("Craft Signal Flare");
-    private final JButton rescue = new JButton("Rescue");
+    private final JButton rescue = new JButton("rescue");
     private final JButton snow = new JButton("Clear Snow");
-    private final JButton unbury = new JButton("Unbury");
-    private final JButton move = new JButton("Move");
+    private final JButton unbury = new JButton("unBury");
+    private final JButton move = new JButton("move");
     private final JButton next = new JButton("Next Character");
 
     private Tile activeTile = null;
@@ -244,7 +244,8 @@ public class GameJFrame extends JFrame {
         commandPanel.add(gameplay);
 
         next.setVisible(true);
-        next.addActionListener(e -> {game.NextCharacter();
+        next.addActionListener(e -> {
+            game.nextCharacter();
                     MapPresenter.getInstance().update();
         });
         commandPanel.add(next);
@@ -252,7 +253,7 @@ public class GameJFrame extends JFrame {
         move.setVisible(true);
         move.addActionListener(e -> {
             if (activeTile != null) {
-                game.Move(activeTile);
+                game.move(activeTile);
                 activeTile = null;
             }
         });
@@ -260,7 +261,7 @@ public class GameJFrame extends JFrame {
 
         unbury.setVisible(true);
         unbury.addActionListener(e -> {
-            game.Unbury();
+            game.unBury();
             MapPresenter.getInstance().update();
         });
         commandPanel.add(unbury);
@@ -275,7 +276,7 @@ public class GameJFrame extends JFrame {
         rescue.setVisible(true);
         rescue.addActionListener(e -> {
             if (activeTile != null) {
-                game.Rescue(activeTile);
+                game.rescue(activeTile);
                 activeTile = null;
             }
             MapPresenter.getInstance().update();
@@ -285,7 +286,7 @@ public class GameJFrame extends JFrame {
         craft.setVisible(true);
         commandPanel.add(craft);
         craft.addActionListener(e -> {
-                    game.CraftSignalFlare();
+            game.craftSignalFlare();
                     activeTile = null;
                     MapPresenter.getInstance().update();
                 }

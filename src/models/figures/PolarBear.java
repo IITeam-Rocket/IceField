@@ -37,7 +37,7 @@ public class PolarBear extends Figure implements Serializable {
     @Override
     public void moveTo(Tile destination) throws EndOfGameException{
         if (destination.acceptFigure(this))
-            System.out.println("Move character to " + destination.getID() + ": successful");
+            System.out.println("move character to " + destination.getID() + ": successful");
         tile.reactToAttack(this);
     }
 

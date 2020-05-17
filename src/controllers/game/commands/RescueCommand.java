@@ -9,14 +9,14 @@ import models.tiles.Tile;
 
 public class RescueCommand implements Command {
 
-    private Game game;
-    private String[] args;
+    private final Game game;
+    private final String[] args;
 
     public RescueCommand(Game _game, String[] _args) {
         game = _game;
         args = _args;
     }
-    
+
     @Override
     public void execute() {
         if (args.length != 1) { //2
@@ -59,7 +59,7 @@ public class RescueCommand implements Command {
 
         switch (f.getBaseBodyHeat()) {
             case -1:
-                GameJFrame.getInstance().OutputToTextBox("The polarbear can't rescue!");
+                GameJFrame.getInstance().OutputToTextBox("The polar bear can't rescue!");
                 break;
             case 4:
             case 5:

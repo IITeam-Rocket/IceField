@@ -106,6 +106,5 @@ public class Game {
         } else {
             commandInterpreter.interpret(cip.interpter("random on"));
         }
-
     }
 }

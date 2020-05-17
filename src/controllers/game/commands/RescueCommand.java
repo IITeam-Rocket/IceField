@@ -2,6 +2,7 @@ package controllers.game.commands;
 
 import controllers.game.Game;
 import controllers.game.GameJFrame;
+import controllers.view.MapPresenter;
 import models.Environment;
 import models.figures.Character;
 import models.figures.Figure;
@@ -27,6 +28,7 @@ public class RescueCommand implements Command {
 
         if (f == null) { //*2
             GameJFrame.getInstance().OutputToTextBox("There is no Figure selected, please use the \"nextcharacter\" command before the first rescue!");
+            MapPresenter.getInstance().update();
             return;
         }
 
@@ -35,12 +37,14 @@ public class RescueCommand implements Command {
             tileID = Integer.parseInt(args[0]);
         } catch (NumberFormatException e) {
             GameJFrame.getInstance().OutputToTextBox("Invalid parameter!");
+            MapPresenter.getInstance().update();
             return;
         }
 
         if (Environment.getInstance().getIceTiles().size() - 1 < tileID || tileID < 0) {
             GameJFrame.getInstance().OutputToTextBox(String.format("Tile ID must be between 0 and the maximum ID of %s",
                     (Environment.getInstance().getIceTiles().size() - 1)));
+            MapPresenter.getInstance().update();
             return;
         }
 
@@ -48,12 +52,14 @@ public class RescueCommand implements Command {
 
         if (basetile == null) {
             GameJFrame.getInstance().OutputToTextBox(String.format("The tile with ID %d doesn't neighbour the tile, the character is on!", tileID));
+            MapPresenter.getInstance().update();
             return;
         }
         Character characterToRescue = findFriendonTile(basetile);
 
         if (characterToRescue == null) {
             GameJFrame.getInstance().OutputToTextBox("friend rescue: unsuccessful");
+            MapPresenter.getInstance().update();
             return;
         }
 
@@ -69,6 +75,8 @@ public class RescueCommand implements Command {
                 GameJFrame.getInstance().OutputToTextBox("Unknown Figure!");
                 break;
         }
+
+        MapPresenter.getInstance().update();
     }
 
     private Tile findTilebyID(int ID) {

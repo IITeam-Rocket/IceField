@@ -1,6 +1,7 @@
 package controllers.game.commands;
 
 import controllers.game.Game;
+import controllers.view.MapPresenter;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -25,6 +26,7 @@ public class InputCommand implements Command {
         }
 
         if (args[0].equals("console")) {
+            MapPresenter.getInstance().update();
             System.out.println("set input: console");
             game.changeInput(new Scanner(System.in));
             return;

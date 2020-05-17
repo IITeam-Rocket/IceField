@@ -54,7 +54,6 @@ public class AddSnowtoTileCommand implements Command {
 
             int result = Environment.getInstance().getIceTiles().get(tileID).addSnow(snowQuantity);
 
-            MapPresenter.getInstance().update();
             game.getOutput().println("snow added: " + tileID + ", " + result);
         }
     }

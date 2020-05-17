@@ -198,6 +198,15 @@ public class GameJFrame extends JFrame {
         commandPanel.add(snow);
 
         rescue.setVisible(true);
+        rescue.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (activeTile != null) {
+                    game.Rescue(activeTile);
+                    activeTile = null;
+                }
+            }
+        });
         commandPanel.add(rescue);
 
         craft.setVisible(true);

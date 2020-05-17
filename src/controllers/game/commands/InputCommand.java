@@ -24,7 +24,7 @@ public class InputCommand implements Command {
             return;
         }
 
-        if (args[1].equals("console")) {
+        if (args[0].equals("console")) {
             System.out.println("set input: console");
             game.changeInput(new Scanner(System.in));
             return;

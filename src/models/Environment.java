@@ -334,9 +334,23 @@ public class Environment implements Serializable {
      */
     public void winGame() {
         if (gunIsDiscovered && beaconIsDiscovered && cartridgeIsDiscovered) {
-            GameJFrame.getInstance().OutputToTextBox("Signal flare crafted");
-            GameJFrame.getInstance().getGame().endGame();
-            GameJFrame.getInstance().showWinGameDialog();
+            Tile tile = null;
+            boolean win = true;
+            for (Figure figure: players) {
+                if(figure.getBaseBodyHeat() != -1){
+                    if(tile == null)
+                        tile = figure.getTile();
+                    else if(tile != figure.getTile())
+                        win = false;
+                }
+            }
+            if(win) {
+                GameJFrame.getInstance().OutputToTextBox("Signal flare crafted");
+                GameJFrame.getInstance().getGame().endGame();
+                GameJFrame.getInstance().showWinGameDialog();
+            }
+            else
+                GameJFrame.getInstance().OutputToTextBox("The characters aren't on the same tile!");
         }
         else
             GameJFrame.getInstance().OutputToTextBox("At least one part is missing");

@@ -7,8 +7,6 @@ import models.tiles.Tile;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
@@ -211,167 +209,78 @@ public class GameJFrame extends JFrame {
         commandPanel.add(textBox);
 
         load.setVisible(true);
-        load.addActionListener(new ActionListener() {
-            /**
-             * Process action
-             * @param e Action to process
-             */
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Environment.serializeRead(textBox.getText());
-            }
-        });
+        load.addActionListener(e -> Environment.serializeRead(textBox.getText()));
         commandPanel.add(load);
 
         save.setVisible(true);
-        save.addActionListener(new ActionListener() {
-            /**
-             * Process action
-             * @param e Action to process
-             */
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Environment.serializeWrite(textBox.getText());
-            }
-        });
+        save.addActionListener(e -> Environment.serializeWrite(textBox.getText()));
         commandPanel.add(save);
 
         randomness.setVisible(true);
         commandPanel.add(randomness);
 
         random.setVisible(true);
-        random.addActionListener(new ActionListener() {
-            /**
-             * Process action
-             * @param e Action to process
-             */
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                game.random();
-                if(random.getText().equals("Random Off"))
-                    random.setText("Random On");
-                else if(random.getText().equals("Random On"))
-                    random.setText("Random Off");
-            }
+        random.addActionListener(e -> {
+            game.random();
+            if (random.getText().equals("Random Off"))
+                random.setText("Random On");
+            else if (random.getText().equals("Random On"))
+                random.setText("Random Off");
         });
         commandPanel.add(random);
 
         weather.setVisible(true);
         weather.setEnabled(false);
-        weather.addActionListener(new ActionListener() {
-            /**
-             * Process action
-             * @param e Action to process
-             */
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                game.simulateWeather();
-            }
-        });
+        weather.addActionListener(e -> game.simulateWeather());
         commandPanel.add(weather);
 
         gameplay.setVisible(true);
         commandPanel.add(gameplay);
 
         next.setVisible(true);
-        next.addActionListener(new ActionListener() {
-            /**
-             * Process action
-             * @param e Action to process
-             */
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                game.NextCharacter();
-            }
-        });
+        next.addActionListener(e -> game.NextCharacter());
         commandPanel.add(next);
 
         move.setVisible(true);
-        move.addActionListener(new ActionListener() {
-            /**
-             * Process action
-             * @param e Action to process
-             */
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (activeTile != null) {
-                    game.Move(activeTile);
-                    activeTile = null;
-                }
+        move.addActionListener(e -> {
+            if (activeTile != null) {
+                game.Move(activeTile);
+                activeTile = null;
             }
         });
         commandPanel.add(move);
 
         unbury.setVisible(true);
-        unbury.addActionListener(new ActionListener() {
-            /**
-             * Process action
-             * @param e Action to process
-             */
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                game.Unbury();
-            }
-        });
+        unbury.addActionListener(e -> game.Unbury());
         commandPanel.add(unbury);
 
         snow.setVisible(true);
-        snow.addActionListener(new ActionListener() {
-            /**
-             * Process action
-             * @param e Action to process
-             */
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                game.clearSnow(activeTile);
-            }
-        });
+        snow.addActionListener(e -> game.clearSnow(activeTile));
         commandPanel.add(snow);
 
         rescue.setVisible(true);
-        rescue.addActionListener(new ActionListener() {
-            /**
-             * Process action
-             * @param e Action to process
-             */
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (activeTile != null) {
-                    game.Rescue(activeTile);
-                    activeTile = null;
-                }
+        rescue.addActionListener(e -> {
+            if (activeTile != null) {
+                game.Rescue(activeTile);
+                activeTile = null;
             }
         });
         commandPanel.add(rescue);
 
         craft.setVisible(true);
         commandPanel.add(craft);
-        craft.addActionListener(new ActionListener() {
-            /**
-             * Process action
-             * @param e Action to process
-             */
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                game.CraftSignalFlare();
-                activeTile = null;
+        craft.addActionListener(e -> {
+                    game.CraftSignalFlare();
+                    activeTile = null;
                 }
-            }
         );
 
 
         special.setVisible(true);
-        special.addActionListener(new ActionListener() {
-            /**
-             * Process action
-             * @param e Action to process
-             */
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (activeTile != null) {
-                    game.useSpecial(activeTile);
-                    activeTile = null;
-                }
+        special.addActionListener(e -> {
+            if (activeTile != null) {
+                game.useSpecial(activeTile);
+                activeTile = null;
             }
         });
         commandPanel.add(special);

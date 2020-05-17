@@ -63,8 +63,7 @@ public class MapPresenter implements Observer, Serializable {
     public void setTiles(List<TilePresenter> tiles) {
         this.tiles = tiles;
 
-        for(int i = 0; i < tiles.size(); i++)
-            tiles.get(i).init();
+        for (TilePresenter tile : tiles) tile.init();
 
         update();
     }
@@ -75,9 +74,9 @@ public class MapPresenter implements Observer, Serializable {
      * @return FigurePresenter of found Figure
      */
     public FigurePresenter findFigure(Figure figure) {
-        for(int i = 0; i < figures.size(); i++) {
-            if(figures.get(i).getFigure() == figure)
-                return figures.get(i);
+        for (FigurePresenter figurePresenter : figures) {
+            if (figurePresenter.getFigure() == figure)
+                return figurePresenter;
         }
         return null;
     }
@@ -86,8 +85,7 @@ public class MapPresenter implements Observer, Serializable {
      * Reset
      */
     public void reset() {
-        for(int i = 0; i < tiles.size(); i++)
-            tiles.get(i).destroy();
+        for (TilePresenter tile : tiles) tile.destroy();
 
         figures.clear();
         tiles.clear();
@@ -98,11 +96,9 @@ public class MapPresenter implements Observer, Serializable {
      */
     @Override
     public void update() {
-        for(int i = 0; i < tiles.size(); i++)
-            tiles.get(i).draw();
+        for (TilePresenter tile : tiles) tile.draw();
 
-        for(int i = 0; i < figures.size(); i++)
-            figures.get(i).draw(getXCoord(figures.get(i)), getYCoord(figures.get(i)));
+        for (FigurePresenter figure : figures) figure.draw(getXCoord(figure), getYCoord(figure));
 
         GameJFrame.getInstance().repaint();
     }
@@ -116,9 +112,9 @@ public class MapPresenter implements Observer, Serializable {
         Graphics2D g2 = (Graphics2D) g;
 
         for(int i = 0; i < tiles.size(); i++) {
-            for(int j = 0; j < tiles.size(); j++) {
-                if (tiles.get(i).isNeighbour(tiles.get(j))) {
-                    Line2D lin = new Line2D.Float(tiles.get(i).x, tiles.get(i).y, tiles.get(j).x, tiles.get(j).y);
+            for (TilePresenter tile : tiles) {
+                if (tiles.get(i).isNeighbour(tile)) {
+                    Line2D lin = new Line2D.Float(tiles.get(i).x, tiles.get(i).y, tile.x, tile.y);
                     g2.draw(lin);
                 }
             }
@@ -131,10 +127,10 @@ public class MapPresenter implements Observer, Serializable {
      * @return found X
      */
     public int getXCoord(FigurePresenter figure) {
-        for(int i = 0; i < tiles.size(); i++) {
-            for(int j = 0; j < tiles.get(i).getTile().getEntities().size(); j++) {
-                if(tiles.get(i).getTile().getEntities().get(j) == figure.getFigure())
-                    return tiles.get(i).x;
+        for (TilePresenter tile : tiles) {
+            for (int j = 0; j < tile.getTile().getEntities().size(); j++) {
+                if (tile.getTile().getEntities().get(j) == figure.getFigure())
+                    return tile.x;
             }
         }
 
@@ -147,10 +143,10 @@ public class MapPresenter implements Observer, Serializable {
      * @return found Y
      */
     public int getYCoord(FigurePresenter figure) {
-        for(int i = 0; i < tiles.size(); i++) {
-            for(int j = 0; j < tiles.get(i).getTile().getEntities().size(); j++) {
-                if(tiles.get(i).getTile().getEntities().get(j) == figure.getFigure())
-                    return tiles.get(i).y;
+        for (TilePresenter tile : tiles) {
+            for (int j = 0; j < tile.getTile().getEntities().size(); j++) {
+                if (tile.getTile().getEntities().get(j) == figure.getFigure())
+                    return tile.y;
             }
         }
 

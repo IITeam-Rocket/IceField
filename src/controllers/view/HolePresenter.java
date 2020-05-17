@@ -4,7 +4,10 @@ import controllers.game.GameJFrame;
 import models.tiles.Hole;
 import models.tiles.Tile;
 
+import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 public class HolePresenter extends TilePresenter {
     private final Hole hole;
@@ -36,10 +39,11 @@ public class HolePresenter extends TilePresenter {
             button.setText("0");
         }
 
+            //TODO implement further
+        }
 
 
-        //TODO implement further
-    }
+
 
     @Override
     public boolean isNeighbour(TilePresenter tile) {

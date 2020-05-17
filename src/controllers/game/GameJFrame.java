@@ -82,7 +82,7 @@ public class GameJFrame extends JFrame {
 
 
 
-    }
+}
 
     public ImageIcon getTexture(String key)
     {

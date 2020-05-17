@@ -1,5 +1,6 @@
 package controllers.view;
 
+import controllers.game.Game;
 import controllers.game.GameJFrame;
 import models.Observer;
 import models.figures.Figure;
@@ -37,21 +38,13 @@ public class MapPresenter implements Observer  {
      */
     @Override
     public void update() {
-        tiles.forEach(t -> {
-            t.draw();
-        });
+        for(int i = 0; i < tiles.size(); i++)
+            tiles.get(i).draw();
 
-        figures.forEach(f -> f.draw(getXCoord(f), getYCoord(f)));
+        for(int i = 0; i < figures.size(); i++)
+            figures.get(i).draw(getXCoord(figures.get(i)), getYCoord(figures.get(i)));
+        
         GameJFrame.getInstance().repaint();
-    }
-
-    public void afterDraw() {
-        try {
-            tiles.forEach(t -> {
-                t.button.grabFocus();
-            });
-        }
-        catch (Exception e) { }
     }
 
     public void paint(Graphics g) {

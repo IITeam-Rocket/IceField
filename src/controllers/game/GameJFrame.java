@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.image.BufferedImage;
 import java.util.HashMap;
 
 public class GameJFrame extends JFrame {
@@ -22,6 +23,8 @@ public class GameJFrame extends JFrame {
     private final Game game = new Game();
     private final CommandInterpreter commandInterpreter = new CommandInterpreter();
 
+    BufferedImage image;
+
     private Tile activeTile = null;
 
     public Game getGame() {
@@ -33,6 +36,13 @@ public class GameJFrame extends JFrame {
     }
 
     private GameJFrame() {
+        this.setContentPane(new JPanel() {
+            public void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.drawImage(image, 0, 0, 800, 600, this);
+            }
+        });
+
         initTextures();
         initComponents();
 
@@ -68,10 +78,7 @@ public class GameJFrame extends JFrame {
 
         this.setTitle("IceField");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        //this.setSize(imageLabel.getPreferredSize());
         this.setLocationRelativeTo(null);
-
-        this.getContentPane().setBackground(new Color(0, 148, 255));
     }
 
     public void initTextures()
@@ -204,6 +211,17 @@ public class GameJFrame extends JFrame {
         commandPanel.add(team);
     }
 
+    public void createBackground()
+    {
+        image = new BufferedImage(800, 600, BufferedImage.TYPE_INT_ARGB);
+        Graphics graph = image.createGraphics();
+        graph.setColor(new Color(0, 148, 255));
+        graph.fillRect(0, 0, 800, 600);
+        graph.setColor(new Color(0, 0, 0));
+        graph.translate(30, 30);
+        MapPresenter.getInstance().paint(graph);
+    }
+
     public void paint(Graphics g)
     {
         io.setBounds(10,10,20, 15);
@@ -223,15 +241,9 @@ public class GameJFrame extends JFrame {
         special.setBounds(60,250, 135, 20);
         text.setBounds(5,300, 200, 220);
         team.setBounds(90,520, 200, 230);
+
+        createBackground();
         super.paint(g);
-
-        g.translate(this.getInsets().left + 30, this.getInsets().top + 30);
-
-        MapPresenter.getInstance().paint(g);
-
-        g.translate(- this.getInsets().left - 30, - this.getInsets().top - 30);
-
-        MapPresenter.getInstance().afterDraw();
     }
 
     public static GameJFrame getInstance() {

@@ -1,5 +1,6 @@
 package models;
 
+import controllers.game.GameJFrame;
 import models.exceptions.EndOfGameException;
 import models.figures.Figure;
 import models.tiles.Tile;
@@ -329,6 +330,7 @@ public class Environment implements Serializable {
      * Plays the losing game sequence.
      */
     public void gameOver() {
-        System.out.println("Game over!");
+        GameJFrame.getInstance().OutputToTextBox("Game over!");
+        GameJFrame.getInstance().showEndGameDialog();
     }
 }

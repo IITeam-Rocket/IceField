@@ -82,6 +82,7 @@ public abstract class Character extends Figure implements Serializable {
                 stamina--;
             }
 
+
         } else
             GameJFrame.getInstance().OutputToTextBox("Not Enough Stamina available to complete this action!");
     }

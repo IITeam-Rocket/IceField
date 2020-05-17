@@ -1,5 +1,6 @@
 package models.tiles;
 
+import controllers.game.GameJFrame;
 import models.exceptions.EndOfGameException;
 import models.figures.Character;
 import models.figures.Figure;
@@ -59,6 +60,8 @@ abstract public class IcePatch extends Tile implements Serializable {
     public Item unBuryItem(Character player) {
         if (snowDepth > 0)
             return null;
+        else if(buriedItem == null)
+            GameJFrame.getInstance().OutputToTextBox("There aren't any unburied item on this tile!");
         return buriedItem;
     }
 

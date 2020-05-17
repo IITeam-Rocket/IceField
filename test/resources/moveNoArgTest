@@ -50,5 +50,6 @@ addsnowtotile 9 4
 addsnowtotile 12 2
 random off
 nextcharacter
+nextcharacter
 move
 quit

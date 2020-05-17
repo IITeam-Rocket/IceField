@@ -119,7 +119,7 @@ public class GameJFrame extends JFrame {
 
     private JTextArea text = new JTextArea("Csapattagok:\n  Ábrahám Dániel\n  Józsa György Bence\n  Kovács Marcell\n  Matyasi Lilla Nóra\n  Tóth Máté\n\nKonzulens:\n  Dr. Goldschmidt Balázs");
     private JTextArea debug = new JTextArea("Debug info");
-    private JTextArea team = new JTextArea("team_rocket\n    v1.0");
+    private JTextArea team = new JTextArea("team_rocket\n      v1.0");
     private JLabel io = new JLabel("IO:");
     private JTextField textbox = new JTextField("Filename Textbox");
     private JButton load = new JButton("Load");
@@ -138,13 +138,13 @@ public class GameJFrame extends JFrame {
 
     void initComponents() {
         this.setResizable(false);
-        this.setSize(855, 600);
+        this.setSize(930, 600);
         this.setLayout(null);
         this.setVisible(true);
         this.add(commandPanel);
         this.setIgnoreRepaint(true);
 
-        commandPanel.setBounds(600, 0, 255, 600);
+        commandPanel.setBounds(600, 0, 315, 600);
 
         io.setVisible(true);
         commandPanel.add(io);
@@ -301,22 +301,30 @@ public class GameJFrame extends JFrame {
     public void paint(Graphics g) {
 
         io.setBounds(10,10,20, 15);
-        textbox.setBounds(5,30,235, 20);
-        load.setBounds(5,60, 120, 20);
-        save.setBounds(130,60, 120, 20);
+        textbox.setBounds(5,30,305, 20);
+
+        load.setBounds(5,60, 150, 20);
+        save.setBounds(160,60, 150, 20);
+
         randomness.setBounds(10,90,150, 15);
-        random.setBounds(5,110, 120, 20);
-        weather.setBounds(130,110, 120, 20);
+
+        random.setBounds(5,110, 150, 20);
+        weather.setBounds(160,110, 150, 20);
+
         gameplay.setBounds(10,140,150, 15);
-        next.setBounds(5,160, 120, 20);
-        move.setBounds(130,160, 120, 20);
-        unbury.setBounds(5,190, 120, 20);
-        snow.setBounds(130,190, 120, 20);
-        rescue.setBounds(5,220, 120, 20);
-        craft.setBounds(130,220, 120, 20);
-        special.setBounds(60,250, 135, 20);
-        text.setBounds(5,300, 200, 220);
-        team.setBounds(90,520, 200, 230);
+
+        next.setBounds(5,160, 150, 20);
+        move.setBounds(160,160, 150, 20);
+        unbury.setBounds(5,190, 150, 20);
+        snow.setBounds(160,190, 150, 20);
+        rescue.setBounds(5,220, 150, 20);
+        craft.setBounds(160,220, 150, 20);
+        special.setBounds(80,250, 150, 20);
+
+
+        text.setBounds(5,280, 400, 145);
+        debug.setBounds(5, 430, 400,90);
+        team.setBounds(130,520, 400, 230);
 
         createBackground();
         super.paint(g);

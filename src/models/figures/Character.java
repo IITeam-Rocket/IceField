@@ -134,6 +134,7 @@ public abstract class Character extends Figure implements Serializable {
         }
         else
             System.out.println("Not Enough Stamina available to complete this action!");
+        notifyObservers();
     }
 
     /**

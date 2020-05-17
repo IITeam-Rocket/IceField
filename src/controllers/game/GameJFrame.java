@@ -1,7 +1,5 @@
 package controllers.game;
 
-import controllers.view.Listeners.MouseHandler;
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.HashMap;
@@ -10,7 +8,9 @@ public class GameJFrame extends JFrame {
 
     private static final GameJFrame instance = new GameJFrame();
 
-    private HashMap<String, ImageIcon> MapTextures;
+    private final HashMap<String, ImageIcon> MapTextures = new HashMap<>();
+
+    private final CommandPanel commandPanel = new CommandPanel();
 
 
     private GameJFrame() {
@@ -19,7 +19,6 @@ public class GameJFrame extends JFrame {
         this.setTitle("IceField");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        MapTextures = new HashMap<String, ImageIcon>();
         MapTextures.put("stable", new ImageIcon("resources/stable.png"));
 
         this.getContentPane().setBackground(new Color(0, 148, 255));
@@ -31,13 +30,10 @@ public class GameJFrame extends JFrame {
     }
 
     void initComponents() {
-        //JButton b = new JButton("");
-        //b.setBounds(130, 100, 60, 60);
-        //b.addActionListener(new MouseHandler());
-        //this.add(b);
         this.setSize(800, 600);
         this.setLayout(null);
         this.setVisible(true);
+        this.add(commandPanel);
     }
 
     public static GameJFrame getInstance() {

@@ -15,6 +15,8 @@ public class HolePresenter extends TilePresenter {
 
         button.setIcon(GameJFrame.getInstance().getTexture("stable"));
 
+        button.setText(Integer.toString(hole.getID()));
+
         GameJFrame.getInstance().getContentPane().validate();
         GameJFrame.getInstance().getContentPane().repaint();
     }

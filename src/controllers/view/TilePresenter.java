@@ -1,5 +1,6 @@
 package controllers.view;
 
+import controllers.game.Game;
 import controllers.game.GameJFrame;
 import models.tiles.Tile;
 
@@ -35,6 +36,15 @@ abstract public class TilePresenter implements Serializable {
         button.setVerticalTextPosition(JButton.CENTER);
 
         GameJFrame.getInstance().add(button);
+    }
+
+    public void init() {
+        GameJFrame.getInstance().add(button);
+        GameJFrame.getInstance().repaint();
+    }
+
+    public void destory() {
+        GameJFrame.getInstance().remove(button);
     }
 
     protected ImageIcon combineImage(ImageIcon tile, ImageIcon player, int x_offset, int y_offset)

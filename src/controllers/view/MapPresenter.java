@@ -37,9 +37,12 @@ public class MapPresenter implements Observer  {
     }
 
     public void afterDraw() {
-        tiles.forEach(t -> {
-            t.button.grabFocus();
-        });
+        try {
+            tiles.forEach(t -> {
+                t.button.grabFocus();
+            });
+        }
+        catch (Exception e) { }
     }
 
     public void paint(Graphics g) {

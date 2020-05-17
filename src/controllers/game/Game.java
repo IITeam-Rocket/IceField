@@ -1,5 +1,6 @@
 package controllers.game;
 
+import controllers.RandomController;
 import controllers.TextToCommandInterpeter;
 import controllers.view.MapPresenter;
 import models.Environment;
@@ -80,5 +81,29 @@ public class Game {
 
     public void Move(Tile t) {
         commandInterpreter.interpret(cip.interpter(String.format("move %d", t.getID())));
+    }
+
+    public void CraftSignalFlare() { commandInterpreter.interpret(cip.interpter("craftsignalflare")); }
+
+
+    public void Unbury() {
+        commandInterpreter.interpret(cip.interpter("unbury"));
+    }
+
+    public void clearSnow(Tile t) {
+        commandInterpreter.interpret(cip.interpter(String.format("clearsnow %d", t.getID())));
+    }
+
+    public void simulateWeather() {
+        commandInterpreter.interpret(cip.interpter("simulateweather"));
+    }
+
+    public void random() {
+        if (RandomController.getRandom()) {
+            commandInterpreter.interpret(cip.interpter("random off"));
+        } else {
+            commandInterpreter.interpret(cip.interpter("random on"));
+        }
+
     }
 }

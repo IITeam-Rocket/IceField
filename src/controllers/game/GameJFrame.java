@@ -1,7 +1,6 @@
 package controllers.game;
 
 import controllers.RandomController;
-import controllers.RandomListener;
 import controllers.view.MapPresenter;
 import models.Environment;
 import models.tiles.Tile;
@@ -213,6 +212,7 @@ public class GameJFrame extends JFrame {
                     game.Move(activeTile);
                     activeTile = null;
                 }
+                //TODO valami generic dialogus ablak vagy mi
             }
         });
         commandPanel.add(move);
@@ -234,6 +234,7 @@ public class GameJFrame extends JFrame {
                     game.clearSnow(activeTile);
                     activeTile = null;
                 }
+                //TODO valami dialogus ablak vagy mi
             }
         });
         commandPanel.add(snow);
@@ -246,6 +247,7 @@ public class GameJFrame extends JFrame {
                     game.Rescue(activeTile);
                     activeTile = null;
                 }
+                //TODO dialogus ablak vagy mi
             }
         });
         commandPanel.add(rescue);
@@ -282,12 +284,7 @@ public class GameJFrame extends JFrame {
         team.setVisible(true);
         commandPanel.add(team);
 
-        RandomController.addListener(new RandomListener() {
-            @Override
-            public void onRandomChange(boolean x) {
-                weather.setEnabled(!x);
-            }
-        });
+        RandomController.addListener(x -> weather.setEnabled(!x));
     }
 
     public void createBackground() {

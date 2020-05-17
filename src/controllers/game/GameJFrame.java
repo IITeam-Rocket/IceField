@@ -15,6 +15,9 @@ public class GameJFrame extends JFrame {
     private GameJFrame() {
         initComponents();
 
+        this.setTitle("IceField");
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+
         MapTextures.put("stable", new ImageIcon("resources/stable.png"));
 
 

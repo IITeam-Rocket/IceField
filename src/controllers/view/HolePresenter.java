@@ -43,8 +43,7 @@ public class HolePresenter extends TilePresenter implements Serializable {
         }
 
         super.drawFigures(base, hole);
-            //TODO implement further
-        }
+    }
 
 
 

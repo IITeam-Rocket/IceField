@@ -33,7 +33,6 @@ public class AddCharactertoTileCommand implements Command {
     @Override
     public void execute() {
         if (args.length != 2) {
-            //TODO printCharacters()
             return;
         } else {
             int tileID = Integer.MIN_VALUE;

@@ -23,17 +23,19 @@ public class SwimOutPolicy implements FallInWaterPolicy, Serializable {
      * Executes the player's strategy of getting out of water
      *
      * @param player the player, who fell in water.
+     *
+     * @return
      */
     @Override
-    public void executeStrategy(Figure player) {
+    public boolean executeStrategy(Figure player) {
         Tile source = player.getTile();
         ArrayList<Tile> neighbourtiles = source.getNeighbours();
 
         for (Tile t : neighbourtiles) {
-            if (t.acceptFigure(player))
-                break;
+            if (t.acceptFigureWithoutRemoval(player))
+                return true;
         }
-        source.removeFigure(player);
+        return false;
     }
 
     /**

@@ -45,12 +45,6 @@ public class StableIcePatchPresenter extends TilePresenter implements Serializab
             button.setText("");
 
         super.drawFigures(base, icePatch);
-        //SwingUtilities.updateComponentTreeUI(GameJFrame.getInstance());
-
-
-
-
-        //TODO implement further
     }
 
     @Override

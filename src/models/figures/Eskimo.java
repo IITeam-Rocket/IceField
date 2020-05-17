@@ -1,5 +1,6 @@
 package models.figures;
 
+import controllers.game.GameJFrame;
 import controllers.view.MapPresenter;
 import models.policies.IglooPolicy;
 import models.tiles.IcePatch;
@@ -61,8 +62,10 @@ public class Eskimo extends Character implements Serializable {
                 --stamina;
                 notifyObservers();
             }
-        } else
-            System.out.println("Not Enough Stamina available to complete this action!");
+        } else {
+            GameJFrame.getInstance().OutputToTextBox("Not Enough Stamina available to complete this action!");
+            MapPresenter.getInstance().update();
+        }
     }
 
     /**

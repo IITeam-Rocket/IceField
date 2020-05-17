@@ -40,6 +40,5 @@ public class PolarBearPresenter extends FigurePresenter implements Serializable 
             }
         }
         super.draw(x, y);
-        //TODO implement draw()
     }
 }

@@ -178,6 +178,10 @@ public class GameJFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 game.random();
+                if(random.getText().equals("Random Off"))
+                    random.setText("Random On");
+                else if(random.getText().equals("Random On"))
+                    random.setText("Random Off");
             }
         });
         commandPanel.add(random);
@@ -212,7 +216,6 @@ public class GameJFrame extends JFrame {
                     game.Move(activeTile);
                     activeTile = null;
                 }
-                //TODO valami generic dialogus ablak vagy mi
             }
         });
         commandPanel.add(move);
@@ -234,7 +237,6 @@ public class GameJFrame extends JFrame {
                     game.clearSnow(activeTile);
                     activeTile = null;
                 }
-                //TODO valami dialogus ablak vagy mi
             }
         });
         commandPanel.add(snow);
@@ -247,7 +249,6 @@ public class GameJFrame extends JFrame {
                     game.Rescue(activeTile);
                     activeTile = null;
                 }
-                //TODO dialogus ablak vagy mi
             }
         });
         commandPanel.add(rescue);
@@ -271,17 +272,19 @@ public class GameJFrame extends JFrame {
                     game.useSpecial(activeTile);
                     activeTile = null;
                 }
-                //TODO valami dialog ablak
             }
         });
         commandPanel.add(special);
 
         text.setVisible(true);
+        text.setEditable(false);
         commandPanel.add(text);
 
         debug.setVisible(true);
+        debug.setEditable(false);
         commandPanel.add(debug);
         team.setVisible(true);
+        team.setEditable(false);
         commandPanel.add(team);
 
         RandomController.addListener(x -> weather.setEnabled(!x));

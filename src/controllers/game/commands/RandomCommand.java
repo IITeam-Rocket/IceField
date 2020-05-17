@@ -3,6 +3,7 @@ package controllers.game.commands;
 import controllers.RandomController;
 import controllers.game.Game;
 import controllers.game.GameJFrame;
+import controllers.view.MapPresenter;
 
 public class RandomCommand implements Command {
 
@@ -30,5 +31,7 @@ public class RandomCommand implements Command {
                     break;
             }
         }
+
+        MapPresenter.getInstance().update();
     }
 }

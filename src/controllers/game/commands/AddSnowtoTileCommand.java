@@ -26,7 +26,6 @@ public class AddSnowtoTileCommand implements Command {
     @Override
     public void execute() {
         if (args.length != 2) {
-            //TODO printTiles()
         } else {
             int tileID;
             int snowQuantity;

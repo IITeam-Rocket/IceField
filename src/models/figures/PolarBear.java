@@ -37,7 +37,7 @@ public class PolarBear extends Figure implements Serializable {
     @Override
     public void moveTo(Tile destination) throws EndOfGameException{
         if (destination.acceptFigure(this))
-            System.out.println("move character to " + destination.getID() + ": successful");
+            System.out.println("Move character to " + destination.getID() + ": successful");
         tile.reactToAttack(this);
     }
 
@@ -73,5 +73,14 @@ public class PolarBear extends Figure implements Serializable {
     @Override
     public int getBaseBodyHeat() {
         return -1;
+    }
+
+    @Override
+    public void step() /*throws EndOfGameException */ {
+        /*
+        Random rand = new Random();
+        int neighbourCount = tile.getNeighbours().size();
+        moveTo(tile.getNeighbours().get(rand.nextInt(neighbourCount)));
+    */
     }
 }

@@ -36,7 +36,7 @@ public class MoveCommand implements Command {
             try {
                 tileID = Integer.parseInt(args[0]);
             } catch (NumberFormatException e) {
-                //TODO invalid parameter
+                MapPresenter.getInstance().update();
                 return;
             }
 
@@ -49,6 +49,7 @@ public class MoveCommand implements Command {
                         GameJFrame.getInstance().OutputToTextBox(e.getMessage());
                         Environment.getInstance().gameOver();
                     }
+                    MapPresenter.getInstance().update();
                     return;
                 }
             }

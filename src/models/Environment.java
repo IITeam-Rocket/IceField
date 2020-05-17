@@ -88,7 +88,7 @@ public class Environment implements Serializable {
             out.close();
             return true;
         } catch (IOException ex) {
-            System.out.println("File " + path + " doesn't exist!");
+            GameJFrame.getInstance().OutputToTextBox("File " + path + " doesn't exist!");
             return false;
         }
     }
@@ -136,10 +136,10 @@ public class Environment implements Serializable {
 
             return true;
         } catch (IOException ex) {
-            System.out.println("Couldn't load with serialization! File " + path + " doesn't exist or doesn't contain the correct data!");
+            GameJFrame.getInstance().OutputToTextBox("Couldn't load with serialization! File " + path + " doesn't exist or doesn't contain the correct data!");
             return false;
         } catch (ClassNotFoundException ex) {
-            System.out.println("Couldn't save with serialization! ClassNotFound");
+            GameJFrame.getInstance().OutputToTextBox("Couldn't save with serialization! ClassNotFound");
             return false;
         }
     }
@@ -334,9 +334,9 @@ public class Environment implements Serializable {
      */
     public void winGame() {
         if (gunIsDiscovered && beaconIsDiscovered && cartridgeIsDiscovered)
-            System.out.println("signal flare crafted");
+            GameJFrame.getInstance().OutputToTextBox("Signal flare crafted");
         else
-            System.out.println("at least one part is missing");
+            GameJFrame.getInstance().OutputToTextBox("At least one part is missing");
     }
 
     /**

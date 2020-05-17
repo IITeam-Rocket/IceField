@@ -40,6 +40,17 @@ abstract public class TilePresenter implements Serializable {
 
     public void init() {
         GameJFrame.getInstance().add(button);
+
+        if(button.getActionListeners().length != 0)
+            button.removeActionListener(button.getActionListeners()[0]);
+
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                GameJFrame.getInstance().setActiveTile(getTile());
+            }
+        });
+
         GameJFrame.getInstance().repaint();
     }
 

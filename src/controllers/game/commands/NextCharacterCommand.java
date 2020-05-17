@@ -25,7 +25,7 @@ public class NextCharacterCommand implements Command {
         }
 
         if (Environment.getInstance().getCurrentPlayer() == null) {
-            Environment.getInstance().setCurrentPlayer(Environment.getInstance().getPlayers().get(0));
+            Environment.getInstance().setCurrentPlayer(0);
         } else {
             Figure current = Environment.getInstance().getCurrentPlayer();
             int ID = Environment.getInstance().getPlayers().indexOf(current);
@@ -49,12 +49,13 @@ public class NextCharacterCommand implements Command {
                 ++ID;
             }
 
-            Environment.getInstance().setCurrentPlayer(Environment.getInstance().getPlayers().get(ID));
-            Environment.getInstance().getCurrentPlayer().notifyObservers();
+            Environment.getInstance().setCurrentPlayer(ID);
         }
 
         if (Environment.getInstance().getCurrentPlayer().getBaseBodyHeat() == -1 && RandomController.getRandom()) {
             new NextCharacterCommand(game, args).execute();
         }
+
+        Environment.getInstance().getCurrentPlayer().notifyObservers();
     }
 }

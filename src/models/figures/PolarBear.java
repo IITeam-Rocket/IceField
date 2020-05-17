@@ -24,6 +24,7 @@ public class PolarBear extends Figure implements Serializable {
 
     public PolarBear() {
         swimToShoreStrategy = new SwimOutPolicy();
+        initObservers();
     }
 
     /**

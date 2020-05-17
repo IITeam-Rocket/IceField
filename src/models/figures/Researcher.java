@@ -26,6 +26,7 @@ public class Researcher extends Character implements Serializable {
      */
     public Researcher() {
         super(4, 4);
+        initObservers();
     }
 
     /**
@@ -34,6 +35,7 @@ public class Researcher extends Character implements Serializable {
     public Researcher(Tile starting) {
         super(4, 4);
         this.tile = starting;
+        initObservers();
     }
 
     /**

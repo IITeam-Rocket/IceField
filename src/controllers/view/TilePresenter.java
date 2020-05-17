@@ -1,5 +1,6 @@
 package controllers.view;
 
+import controllers.game.GameJFrame;
 import models.tiles.Tile;
 
 import javax.swing.*;
@@ -14,7 +15,14 @@ abstract public class TilePresenter {
         this.y = y;
 
         button = new JButton();
-        button.setVisible(false);
+
+        button.setBounds(x, y, 60, 60);
+        button.setVisible(true);
+
+        button.setHorizontalTextPosition(JButton.CENTER);
+        button.setVerticalTextPosition(JButton.CENTER);
+
+        GameJFrame.getInstance().add(button);
     }
 
     public void draw() {

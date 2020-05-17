@@ -14,11 +14,7 @@ public class InstableIcePatchPresenter extends TilePresenter {
         super(x, y);
         this.icePatch = icePatch;
 
-        button.setBounds(x, y, 60, 60);
         button.setIcon(GameJFrame.getInstance().getTexture("stable"));
-        button.setVisible(true);
-
-        GameJFrame.getInstance().add(button);
 
         GameJFrame.getInstance().getContentPane().validate();
         GameJFrame.getInstance().getContentPane().repaint();

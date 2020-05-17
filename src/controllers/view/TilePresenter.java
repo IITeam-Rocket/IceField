@@ -47,7 +47,7 @@ abstract public class TilePresenter {
         for(int i = 0; i < tile.getEntities().size(); i++) {
             FigurePresenter figurePresenter = MapPresenter.getInstance().findFigure(tile.getEntities().get(i));
             if(figurePresenter != null) {
-                resultImage = combineImage(resultImage, figurePresenter.getImage(), 0, 0);
+                resultImage = combineImage(resultImage, figurePresenter.getImage(), ((i + 1) % 3) * 20, (int)(i / 3) );
             }
         }
 

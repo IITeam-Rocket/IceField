@@ -4,6 +4,8 @@ import controllers.view.MapPresenter;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -22,6 +24,15 @@ public class GameJFrame extends JFrame {
         initTextures();
         initComponents();
 
+        this.addWindowListener(new WindowAdapter() {
+            public void windowActivated(WindowEvent e) {
+                repaint();
+            }
+
+            public void windowDeactivated(WindowEvent e) {
+                repaint();
+            }
+        });
 
         this.setTitle("IceField");
         setDefaultCloseOperation(EXIT_ON_CLOSE);

@@ -33,9 +33,18 @@ public class AddTileCommand implements Command {
 
         if (args.length == 4) {
             try {
-                capacity = Integer.parseInt(args[1]);
-                x = Integer.parseInt(args[2]);
-                y = Integer.parseInt(args[3]);
+                x = Integer.parseInt(args[1]);
+                y = Integer.parseInt(args[2]);
+                capacity = Integer.parseInt(args[3]);
+            } catch (NumberFormatException e) {
+                //TODO
+                game.getOutput().println(e.getStackTrace().toString());
+            }
+        }
+        else if (args.length == 3) {
+            try {
+                x = Integer.parseInt(args[1]);
+                y = Integer.parseInt(args[2]);
             } catch (NumberFormatException e) {
                 //TODO
                 game.getOutput().println(e.getStackTrace().toString());

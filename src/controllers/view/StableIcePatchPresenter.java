@@ -27,6 +27,7 @@ public class StableIcePatchPresenter extends TilePresenter {
     public void draw() {
         int snowDepth = icePatch.getSnowDepth();
         int protpririty = icePatch.getProtectionStrategy().getPriority(); //iglu 2 sátor 1 noprot 0
+        boolean analyzed = icePatch.isAnalyzed();
 
         String Protection = new String("");
         if(protpririty == 2)
@@ -35,6 +36,11 @@ public class StableIcePatchPresenter extends TilePresenter {
             Protection = "_tent";
 
         button.setIcon(GameJFrame.getInstance().getTexture("stable_" + String.valueOf(snowDepth) + Protection));
+
+        if(analyzed)
+            button.setText("-1");
+        else
+            button.setText("");
 
         SwingUtilities.updateComponentTreeUI(GameJFrame.getInstance());
 

@@ -28,6 +28,7 @@ public class InstableIcePatchPresenter extends TilePresenter {
         int snowDepth = icePatch.getSnowDepth();
         int capacity = icePatch.getCapacity();
         boolean flipped = icePatch.isFlipped();
+        boolean analyzed = icePatch.isAnalyzed();
 
         int protpririty = icePatch.getProtectionStrategy().getPriority(); //iglu 2 sátor 1 noprot 0
 
@@ -45,7 +46,11 @@ public class InstableIcePatchPresenter extends TilePresenter {
         {
             button.setIcon(GameJFrame.getInstance().getTexture("water"));
         }
-        button.setText(String.valueOf(capacity));
+
+        if(analyzed)
+            button.setText(String.valueOf(capacity));
+        else
+            button.setText("");
 
         SwingUtilities.updateComponentTreeUI(GameJFrame.getInstance());
 

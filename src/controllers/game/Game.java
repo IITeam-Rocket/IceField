@@ -17,7 +17,7 @@ public class Game {
 
     private PrintStream os = System.out;
     private Scanner in = new Scanner(System.in);
-    private boolean running = true;
+    public boolean running = false;
 
     private TextToCommandInterpeter cip = new TextToCommandInterpeter(this);
 
@@ -46,7 +46,7 @@ public class Game {
         initializeObservers();
 
         commandInterpreter.interpret(cip.interpter("input map.txt"));
-
+        running = true;
         while (running) {
             if (in.hasNextLine()) {
                 String line = in.nextLine();
@@ -86,7 +86,6 @@ public class Game {
     public void Rescue(Tile t){commandInterpreter.interpret(cip.interpter(String.format("rescue %d", t.getID())));}
 
     public void CraftSignalFlare() { commandInterpreter.interpret(cip.interpter("craftsignalflare")); }
-
 
     public void Unbury() {
         commandInterpreter.interpret(cip.interpter("unbury"));

@@ -35,7 +35,7 @@ public class PolarBearPresenter extends FigurePresenter implements Serializable 
         Tile tile = bear.getTile();
         if (Environment.getInstance().getCurrentPlayer() != null) {
             if (Environment.getInstance().getCurrentPlayer().equals(bear)) {
-                GameJFrame.getInstance().OutputToTextBox(String.format("polar bear\n\nswimToShoreStrategy: %s\ntile: %d",
+                GameJFrame.getInstance().CharacterOutInfo(String.format("polar bear\n\nswimToShoreStrategy: %s\ntile: %d",
                         swimToShoreStrategy.toString(), tile.getID()));
             }
         }

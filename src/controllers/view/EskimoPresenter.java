@@ -42,7 +42,7 @@ public class EskimoPresenter extends FigurePresenter implements Serializable {
         Tile tile = eskimo.getTile();
         if (Environment.getInstance().getCurrentPlayer() != null) {
             if (Environment.getInstance().getCurrentPlayer().equals(eskimo)) {
-                GameJFrame.getInstance().OutputToTextBox(String.format("eskimo\n\nbodyheat: %d\nstamina: %d\nclearPatchStrategy: %s\nhelpFriendStrategy: %s\nswimToShoreStrategy: %s\ntile: %d",
+                GameJFrame.getInstance().CharacterOutInfo(String.format("eskimo\n\nbodyheat: %d\nstamina: %d\nclearPatchStrategy: %s\nhelpFriendStrategy: %s\nswimToShoreStrategy: %s\ntile: %d",
                         bodyHeat, stamina, clearSnowPolicy.toString(), rescueFriendPolicy.toString(), swimOutPolicy.toString(), tile.getID()));
             }
         }

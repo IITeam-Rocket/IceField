@@ -110,4 +110,6 @@ abstract public class Figure extends Subject implements Serializable {
      * Helper method to initialize observers
      */
     abstract void initObservers();
+
+    public void step(){}
 }

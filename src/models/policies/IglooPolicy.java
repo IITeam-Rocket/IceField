@@ -1,5 +1,6 @@
 package models.policies;
 
+import controllers.game.GameJFrame;
 import models.figures.Figure;
 
 import java.io.Serializable;
@@ -37,7 +38,7 @@ public class IglooPolicy implements ProtectionPolicy, Serializable {
     @Override
     public void protectAgainstAttack(Figure victim, Figure attacker) {
         if (!victim.equals(attacker))
-            System.out.println("Polarbear attacks character on tile "+ victim.getTile().getID()+", but survives due to iglu!");
+            GameJFrame.getInstance().OutputToTextBox("Polarbear attacks character on tile "+ victim.getTile().getID()+", but survives due to iglu!");
     }
 
     /**

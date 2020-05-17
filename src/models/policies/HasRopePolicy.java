@@ -1,5 +1,6 @@
 package models.policies;
 
+import controllers.game.GameJFrame;
 import models.figures.Character;
 import models.tiles.Tile;
 
@@ -32,6 +33,7 @@ public class HasRopePolicy implements RescueFriendPolicy, Serializable {
         dest.acceptFigure(friend);
 
         source.removeFigure(friend);
+        GameJFrame.getInstance().OutputToTextBox("Friend rescued!");
 
     }
 

@@ -9,10 +9,10 @@ public class GameJFrame extends JFrame {
     private static final GameJFrame instance = new GameJFrame();
 
     private GameJFrame() {
-        initComonents();
+        initComponents();
     }
 
-    void initComonents() {
+    void initComponents() {
         JButton b = new JButton("");
         b.setBounds(130, 100, 60, 60);
         b.addActionListener(new MouseHandler());

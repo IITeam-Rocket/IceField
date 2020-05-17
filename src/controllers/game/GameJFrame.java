@@ -19,6 +19,14 @@ public class GameJFrame extends JFrame {
         this.setTitle("IceField");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
+        for(int i = 0; i < 7; i++)
+        {
+            MapTextures.put("stable_" + String.valueOf(i), new ImageIcon("resources/stable_" + String.valueOf(i) + ".png"));
+            MapTextures.put("stable_" + String.valueOf(i) + "_iglu", new ImageIcon("resources/stable_" + String.valueOf(i) + "_iglu.png"));
+            MapTextures.put("stable_" + String.valueOf(i) + "_tent", new ImageIcon("resources/stable_" + String.valueOf(i) + "_tent.png"));
+        }
+        MapTextures.put("water", new ImageIcon("resources/water.png"));
+
         MapTextures.put("stable", new ImageIcon("resources/stable.png"));
 
         this.getContentPane().setBackground(new Color(0, 148, 255));

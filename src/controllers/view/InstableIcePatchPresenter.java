@@ -5,6 +5,7 @@ import models.policies.ProtectionPolicy;
 import models.tiles.InstableIcePatch;
 import models.tiles.Tile;
 
+import javax.swing.*;
 import java.awt.*;
 
 public class InstableIcePatchPresenter extends TilePresenter {
@@ -25,9 +26,29 @@ public class InstableIcePatchPresenter extends TilePresenter {
     @Override
     public void draw() {
         int snowDepth = icePatch.getSnowDepth();
-        ProtectionPolicy po = icePatch.getProtectionStrategy();
         int capacity = icePatch.getCapacity();
         boolean flipped = icePatch.isFlipped();
+
+        int protpririty = icePatch.getProtectionStrategy().getPriority(); //iglu 2 sátor 1 noprot 0
+
+        String Protection = new String("");
+
+        if(!flipped) {
+            if (protpririty == 2)
+                Protection = "_iglu";
+            else if (protpririty == 1)
+                Protection = "_tent";
+
+            button.setIcon(GameJFrame.getInstance().getTexture("stable_" + String.valueOf(snowDepth) + Protection));
+        }
+        else
+        {
+            button.setIcon(GameJFrame.getInstance().getTexture("water"));
+        }
+        button.setText(String.valueOf(capacity));
+
+        SwingUtilities.updateComponentTreeUI(GameJFrame.getInstance());
+
 
 
         //TODO implement further

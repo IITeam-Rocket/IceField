@@ -16,6 +16,10 @@ public class RandomController {
 
     static private List<RandomListener> listeners = new ArrayList<>();
 
+    /**
+     * Add Listener
+     * @param rl Listener to add
+     */
     static public void addListener(RandomListener rl) {
         listeners.add(rl);
     }

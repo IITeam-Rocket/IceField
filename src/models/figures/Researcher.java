@@ -49,9 +49,10 @@ public class Researcher extends Character implements Serializable {
     public void useSpecial(Tile target) {
         if (stamina <= 0)
             return;
-        if (tile.getNeighbours().contains(target)) {
+        if (tile.getNeighbours().contains(target) || tile == target) {
             target.reveal();
             stamina--;
+            notifyObservers();
         }
     }
 

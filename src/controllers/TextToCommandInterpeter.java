@@ -2,6 +2,7 @@ package controllers;
 
 import controllers.game.Game;
 import controllers.game.commands.*;
+import models.Environment;
 
 import java.util.ArrayList;
 
@@ -97,6 +98,13 @@ public class TextToCommandInterpeter {
             case "reset":
                 command = new ResetCommand(game, args);
                 break;
+            case "usespecial":
+                int bodyheat = Environment.getInstance().getCurrentPlayer().getBaseBodyHeat();
+                if (bodyheat == 4) {
+                    command = new AnalizeTileCommand(game, args);
+                } else if (bodyheat == 5) {
+                    command = new BuildIgluCommand(game, args);
+                }
             case "exit":
             case "quit":
                 game.endGame();

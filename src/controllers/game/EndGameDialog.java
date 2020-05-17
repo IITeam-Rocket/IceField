@@ -2,6 +2,8 @@ package controllers.game;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class EndGameDialog extends JDialog {
 
@@ -38,7 +40,14 @@ public class EndGameDialog extends JDialog {
         super(owner, title);
         initComponents();
         pack();
+        owner.setEnabled(false);
         this.setMinimumSize(new Dimension(200, 150));
+
+        this.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                System.exit(0);
+            }
+        });
     }
 
     private void initComponents() {

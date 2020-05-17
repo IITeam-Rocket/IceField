@@ -106,4 +106,8 @@ public class Game {
             commandInterpreter.interpret(cip.interpter("random on"));
         }
     }
+
+    public void useSpecial(Tile t) {
+        commandInterpreter.interpret(cip.interpter(String.format("usespecial %d", t.getID())));
+    }
 }

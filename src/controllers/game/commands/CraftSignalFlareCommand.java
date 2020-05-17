@@ -12,19 +12,18 @@ import models.tiles.Tile;
  *
  * @author Ábrahám Dániel
  */
-public class CraftSignalFlateCommand implements Command {
+public class CraftSignalFlareCommand implements Command {
 
-    private Game game;
-    private String[] args;
+    private final Game game;
+    private final String[] args;
 
-    public CraftSignalFlateCommand(Game _game, String[] _args) {
+    public CraftSignalFlareCommand(Game _game, String[] _args) {
         game = _game;
         args = _args;
     }
 
     /**
      * Command execution's logic.
-     *
      */
     @Override
     public void execute() {

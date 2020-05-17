@@ -41,6 +41,8 @@ public class MapPresenter implements Observer  {
             tiles.forEach(t -> {
                 t.button.grabFocus();
             });
+
+            figures.forEach(f -> f.button.grabFocus());
         }
         catch (Exception e) { }
     }

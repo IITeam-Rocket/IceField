@@ -11,6 +11,7 @@ public class ResearcherPresenter extends FigurePresenter {
     private final Researcher researcher;
 
     public ResearcherPresenter(Researcher researcher) {
+        super();
         this.researcher = researcher;
     }
 
@@ -19,6 +20,7 @@ public class ResearcherPresenter extends FigurePresenter {
 
     @Override
     public void draw(int x, int y) {
+        super.draw(x, y);
         int bodyHeat = researcher.getBodyHeat();
         int stamina = researcher.getStamina();
         ClearSnowPolicy clearSnowPolicy = researcher.getclearPatchStrategy();

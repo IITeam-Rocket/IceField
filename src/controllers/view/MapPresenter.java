@@ -13,8 +13,8 @@ public class MapPresenter implements Observer {
         tiles = new ArrayList<>();
     }
 
-    private List<FigurePresenter> figures;
-    private List<TilePresenter> tiles;
+    private final List<FigurePresenter> figures;
+    private final List<TilePresenter> tiles;
 
     public static MapPresenter getInstance() {
         return instance;
@@ -27,7 +27,7 @@ public class MapPresenter implements Observer {
     public void update() {
         tiles.forEach(t -> {
             t.draw();
-            tiles.forEach(t_neighbour -> t.isNeighbour(t_neighbour));
+            tiles.forEach(t::isNeighbour);
             //TODO what now?
         });
 
@@ -42,5 +42,13 @@ public class MapPresenter implements Observer {
     public int getYCoord(FigurePresenter figure) {
         // TODO return value
         return 0;
+    }
+
+    public void addTilePresenter(TilePresenter tile) {
+        tiles.add(tile);
+    }
+
+    public void addFigurePresenter(FigurePresenter figure) {
+        figures.add(figure);
     }
 }

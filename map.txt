@@ -41,6 +41,7 @@ addcharactertotile 1 3
 addcharactertotile 3 1
 addcharactertotile 5 2
 addcharactertotile 6 2
+additemtotile 5 2
 additemtotile 12 6
 additemtotile 8 7
 additemtotile 0 8

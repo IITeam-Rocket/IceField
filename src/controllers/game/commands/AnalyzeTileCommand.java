@@ -13,7 +13,7 @@ import models.tiles.Tile;
  *
  * @author Ábrahám Dániel
  */
-public class AnalizeTileCommand implements Command {
+public class AnalyzeTileCommand implements Command {
 
     private Game game;
     private String[] args;
@@ -24,14 +24,13 @@ public class AnalizeTileCommand implements Command {
      * @param _game The Game Object
      * @param _args Command Arguments
      */
-    public AnalizeTileCommand(Game _game, String[] _args) {
+    public AnalyzeTileCommand(Game _game, String[] _args) {
         game = _game;
         args = _args;
     }
 
     /**
      * Command execution's logic.
-     *
      */
     @Override
     public void execute() {

@@ -82,6 +82,7 @@ public abstract class Character extends Figure implements Serializable {
                 stamina--;
             }
 
+
         } else
             GameJFrame.getInstance().OutputToTextBox("Not Enough Stamina available to complete this action!");
     }
@@ -321,7 +322,7 @@ public abstract class Character extends Figure implements Serializable {
      *
      * @return clearPatchStrategy
      */
-    public ClearSnowPolicy getclearPatchStrategy() {
+    public ClearSnowPolicy getClearPatchStrategy() {
         return this.clearPatchStrategy;
     }
 

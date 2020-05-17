@@ -36,14 +36,14 @@ public class ResearcherPresenter extends FigurePresenter implements Serializable
         super.draw(x, y);
         int bodyHeat = researcher.getBodyHeat();
         int stamina = researcher.getStamina();
-        ClearSnowPolicy clearSnowPolicy = researcher.getclearPatchStrategy();
+        ClearSnowPolicy clearSnowPolicy = researcher.getClearPatchStrategy();
         RescueFriendPolicy rescueFriendPolicy = researcher.getHelpFriendStrategy();
         FallInWaterPolicy swimOutPolicy = researcher.getSwimToShoreStrategy();
         Tile tile = researcher.getTile();
 
         if (Environment.getInstance().getCurrentPlayer() != null) {
             if (Environment.getInstance().getCurrentPlayer().equals(researcher)) {
-                GameJFrame.getInstance().CharacterOutInfo(String.format("researcher\n\nbodyheat: %d\nstamina: %d\nclearPatchStrategy: %s\nhelpFriendStrategy: %s\nswimToShoreStrategy: %s\ntile: %d",
+                GameJFrame.getInstance().CharacterOutInfo(String.format("researcher\n\nbody heat: %d\nstamina: %d\nclearPatchStrategy: %s\nhelpFriendStrategy: %s\nswimToShoreStrategy: %s\ntile: %d",
                         bodyHeat, stamina, clearSnowPolicy.toString(), rescueFriendPolicy.toString(), swimOutPolicy.toString(), tile.getID()));
             }
         }

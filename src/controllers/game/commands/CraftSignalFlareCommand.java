@@ -8,7 +8,7 @@ import models.tiles.Tile;
 
 
 /**
- * A command to creaft signalflare
+ * A command to craft signal flare
  *
  * @author Ábrahám Dániel
  */
@@ -40,14 +40,17 @@ public class CraftSignalFlareCommand implements Command {
             return;
         }
 
+
+
         switch (currentPlayer.getBaseBodyHeat()) {
             case -1:
                 GameJFrame.getInstance().OutputToTextBox("A polar bear cannot craft!");
                 break;
             case 4:
             case 5:
-                if (onTheSamePage())
+                if (onTheSamePage()) {
                     ((models.figures.Character) currentPlayer).craftSignalFlare();
+                }
                 break;
             default:
                 GameJFrame.getInstance().OutputToTextBox("Unknown Figure!");
@@ -70,11 +73,11 @@ public class CraftSignalFlareCommand implements Command {
         beacon = Environment.getInstance().isBeaconIsDiscovered();
 
         if (gun && cartridge && beacon) {
-            Tile Tgun = Environment.getInstance().getGunLocation();
-            Tile Tcartridge = Environment.getInstance().getCartidgeLocation();
-            Tile Tbeacon = Environment.getInstance().getBeaconLocation();
+            Tile TGun = Environment.getInstance().getGunLocation();
+            Tile TCartridge = Environment.getInstance().getCartridgeLocation();
+            Tile TBeacon = Environment.getInstance().getBeaconLocation();
 
-            return Tgun.equals(Tcartridge) && Tgun.equals(Tbeacon);
+            return TGun.equals(TCartridge) && TGun.equals(TBeacon);
         }
 
         return false;

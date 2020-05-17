@@ -139,10 +139,9 @@ public class Game {
 
     /**
      * Clear snow using commands
-     * @param t Tile to clear snow from
      */
-    public void clearSnow(Tile t) {
-        commandInterpreter.interpret(cip.interpreter(String.format("clearsnow %d", t.getID())));
+    public void clearSnow() {
+        commandInterpreter.interpret(cip.interpreter("clearsnow"));
     }
 
     /**

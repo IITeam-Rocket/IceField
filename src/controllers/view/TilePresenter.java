@@ -1,5 +1,7 @@
 package controllers.view;
 
+import models.tiles.Tile;
+
 abstract public class TilePresenter {
     private int x, y;
 
@@ -8,4 +10,6 @@ abstract public class TilePresenter {
     }
 
     abstract public boolean isNeighbour(TilePresenter tile);
+
+    abstract public Tile getTile();
 }

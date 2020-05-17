@@ -2,6 +2,7 @@ package controllers.view;
 
 import models.policies.ProtectionPolicy;
 import models.tiles.InstableIcePatch;
+import models.tiles.Tile;
 
 public class InstableIcePatchPresenter extends TilePresenter {
     private final InstableIcePatch icePatch;
@@ -18,5 +19,15 @@ public class InstableIcePatchPresenter extends TilePresenter {
         boolean flipped = icePatch.isFlipped();
 
         //TODO implement further
+    }
+
+    @Override
+    public boolean isNeighbour(TilePresenter tile) {
+        return icePatch.getNeighbours().contains(tile.getTile());
+    }
+
+    @Override
+    public Tile getTile() {
+        return icePatch;
     }
 }

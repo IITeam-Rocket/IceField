@@ -1,6 +1,7 @@
 package controllers.view;
 
 import models.figures.Eskimo;
+import models.figures.Figure;
 import models.policies.ClearSnowPolicy;
 import models.policies.FallInWaterPolicy;
 import models.policies.RescueFriendPolicy;
@@ -12,6 +13,9 @@ public class EskimoPresenter extends FigurePresenter {
     public EskimoPresenter(Eskimo eskimo) {
         this.eskimo = eskimo;
     }
+
+    @Override
+    public Figure getFigure() { return eskimo; }
 
     @Override
     public void draw(int x, int y) {

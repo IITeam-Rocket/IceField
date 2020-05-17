@@ -60,13 +60,25 @@ public class MapPresenter implements Observer  {
     }
 
     public int getXCoord(FigurePresenter figure) {
-        // TODO return value
-        return 0;
+        for(int i = 0; i < tiles.size(); i++) {
+            for(int j = 0; j < tiles.get(i).getTile().getEntities().size(); j++) {
+                if(tiles.get(i).getTile().getEntities().get(j) == figure.getFigure())
+                    return tiles.get(i).x;
+            }
+        }
+
+        return -1;
     }
 
     public int getYCoord(FigurePresenter figure) {
-        // TODO return value
-        return 0;
+        for(int i = 0; i < tiles.size(); i++) {
+            for(int j = 0; j < tiles.get(i).getTile().getEntities().size(); j++) {
+                if(tiles.get(i).getTile().getEntities().get(j) == figure.getFigure())
+                    return tiles.get(i).y;
+            }
+        }
+
+        return -1;
     }
 
     public void addTilePresenter(TilePresenter tile) {

@@ -71,6 +71,7 @@ public class GameJFrame extends JFrame {
         this.setLayout(null);
         this.setVisible(true);
         this.add(commandPanel);
+        this.setIgnoreRepaint(true);
 
         commandPanel.setBounds(545,0,255, 600);
 

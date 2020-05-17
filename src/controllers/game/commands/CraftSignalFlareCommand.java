@@ -34,14 +34,17 @@ public class CraftSignalFlareCommand implements Command {
             return;
         }
 
+
+
         switch (currentPlayer.getBaseBodyHeat()) {
             case -1:
                 GameJFrame.getInstance().OutputToTextBox("A polar bear cannot craft!");
                 break;
             case 4:
             case 5:
-                if (onTheSamePage())
+                if (onTheSamePage()) {
                     ((models.figures.Character) currentPlayer).craftSignalFlare();
+                }
                 break;
             default:
                 GameJFrame.getInstance().OutputToTextBox("Unknown Figure!");

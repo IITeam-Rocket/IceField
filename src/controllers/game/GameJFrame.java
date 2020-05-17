@@ -259,6 +259,7 @@ public class GameJFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 game.CraftSignalFlare();
+                activeTile = null;
                 }
             }
         );

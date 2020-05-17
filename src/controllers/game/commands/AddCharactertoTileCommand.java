@@ -1,7 +1,7 @@
 package controllers.game.commands;
 
 import controllers.game.Game;
-import controllers.view.FigurePresenter;
+import controllers.view.*;
 import models.Environment;
 import models.figures.Eskimo;
 import models.figures.Figure;
@@ -69,13 +69,19 @@ public class AddCharactertoTileCommand implements Command {
 
             switch (characterID) {
                 case 1:
-                    figure = new Eskimo();
+                    Eskimo eskimo = new Eskimo();
+                    figure = eskimo;
+                    presenter = new EskimoPresenter(eskimo);
                     break;
                 case 2:
-                    figure = new Researcher();
+                    Researcher researcher = new Researcher();
+                    presenter = new ResearcherPresenter(researcher);
+                    figure = researcher;
                     break;
                 case 3:
-                    figure = new PolarBear();
+                    PolarBear polarBear = new PolarBear();
+                    presenter = new PolarBearPresenter(polarBear);
+                    figure = polarBear;
                     break;
                 default:
                     game.getOutput().println("Character ID mush be between 1 and 3!");
@@ -85,7 +91,7 @@ public class AddCharactertoTileCommand implements Command {
             patch.addCharacter(figure);
             figure.setTile(patch);
             Environment.getInstance().getPlayers().add(figure);
-
+            MapPresenter.getInstance().addFigurePresenter(presenter);
             game.getOutput().println("character added: " + tileID + ", " + characterID);
         }
     }

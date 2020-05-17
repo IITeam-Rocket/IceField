@@ -12,6 +12,8 @@ public class PolarBearPresenter extends FigurePresenter {
     @Override
     public void draw(int x, int y) {
         //TODO implement draw()
+
+
         super.draw(x, y);
     }
 }

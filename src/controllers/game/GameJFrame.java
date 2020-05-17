@@ -3,13 +3,26 @@ package controllers.game;
 import controllers.view.Listeners.MouseHandler;
 
 import javax.swing.*;
+import java.util.HashMap;
 
 public class GameJFrame extends JFrame {
 
     private static final GameJFrame instance = new GameJFrame();
 
+    private HashMap<String, ImageIcon> MapTextures;
+
+
     private GameJFrame() {
         initComponents();
+
+        MapTextures.put("stable", new ImageIcon("resources/stable.png"));
+
+
+    }
+
+    public ImageIcon getTexture(String key)
+    {
+        return MapTextures.get(key);
     }
 
     void initComponents() {

@@ -94,4 +94,4 @@ helpFriendStrategy: NoRescuePolicy
 swimToShoreStrategy: HasNoDiveSuitPolicy
 tile: 5
 unburied item: 2
-friend rescue: successful
+friend rescue: unsuccessful

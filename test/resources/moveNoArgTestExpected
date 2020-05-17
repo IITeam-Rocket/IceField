@@ -77,4 +77,11 @@ snow added: 12, 2
 set random: off
 polarbear
 tile: 1
-neighbours: 0 2 9 8
+eskimo
+bodyheat: 5
+stamina: 4
+clearPatchStrategy: EmptyHandPolicy
+helpFriendStrategy: NoRescuePolicy
+swimToShoreStrategy: HasNoDiveSuitPolicy
+tile: 3
+neighbours: 2 4 5 7 8

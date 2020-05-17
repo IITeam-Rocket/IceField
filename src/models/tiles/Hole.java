@@ -110,7 +110,11 @@ public class Hole extends Tile implements Serializable {
         return false;
     }
 
-    //TODO: javadoc
+    /**
+     * Accept Figure Without Removal
+     * @param figure Figure
+     * @return was it a success
+     */
     @Override
     public boolean acceptFigureWithoutRemoval(Figure figure) {
         if (analyzed)

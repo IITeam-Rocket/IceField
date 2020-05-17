@@ -44,7 +44,6 @@ public class AddTileCommand implements Command {
                 y = Integer.parseInt(args[2]);
                 capacity = Integer.parseInt(args[3]);
             } catch (NumberFormatException e) {
-                //TODO
                 GameJFrame.getInstance().OutputToTextBox(e.getStackTrace().toString());
             }
         }
@@ -53,7 +52,6 @@ public class AddTileCommand implements Command {
                 x = Integer.parseInt(args[1]);
                 y = Integer.parseInt(args[2]);
             } catch (NumberFormatException e) {
-                //TODO
                 GameJFrame.getInstance().OutputToTextBox(e.getStackTrace().toString());
             }
         }

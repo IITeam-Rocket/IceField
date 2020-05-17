@@ -36,16 +36,14 @@ public class NeighbourTileCommand implements Command {
         try {
             firstID = Integer.parseInt(args[0]);
         } catch (NumberFormatException e) {
-            //TODO
-            GameJFrame.getInstance().OutputToTextBox("Error");
+            GameJFrame.getInstance().OutputToTextBox("First Tile ID not a number");
             return;
         }
 
         try {
             secondID = Integer.parseInt(args[1]);
         } catch (NumberFormatException e) {
-            //TODO
-            GameJFrame.getInstance().OutputToTextBox("Error");
+            GameJFrame.getInstance().OutputToTextBox("Second Tile ID not a number");
             return;
         }
 

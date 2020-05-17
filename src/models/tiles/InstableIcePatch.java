@@ -135,7 +135,11 @@ public class InstableIcePatch extends IcePatch implements Serializable {
         this.playerCapacity = playerCapacity;
     }
 
-    //TODO: javadoc
+    /**
+     * Accept Figure Without Removal
+     * @param figure Figure
+     * @return was it a success
+     */
     @Override
     public boolean acceptFigureWithoutRemoval(Figure figure) {
         if (flipped)

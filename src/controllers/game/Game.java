@@ -22,6 +22,10 @@ public class Game {
 
     private CommandInterpreter commandInterpreter = new CommandInterpreter(this);
 
+    public Game() {
+
+    }
+
     private void initializeObservers() {
         ArrayList<Tile> tiles = environment.getIceTiles();
         ArrayList<Figure> figures = environment.getPlayers();

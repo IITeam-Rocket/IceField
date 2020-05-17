@@ -3,7 +3,6 @@ package controllers.view;
 import controllers.game.GameJFrame;
 import models.Observer;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.Line2D;
 import java.util.ArrayList;
@@ -31,10 +30,11 @@ public class MapPresenter implements Observer  {
     public void update() {
         tiles.forEach(t -> {
             t.draw();
-            GameJFrame.getInstance().repaint();
+
         });
 
         figures.forEach(f -> f.draw(getXCoord(f), getYCoord(f)));
+        GameJFrame.getInstance().repaint();
     }
 
     public void paint(Graphics g) {

@@ -52,6 +52,7 @@ public class Researcher extends Character implements Serializable {
         if (tile.getNeighbours().contains(target)) {
             target.reveal();
             stamina--;
+            notifyObservers();
         }
     }
 

@@ -12,12 +12,13 @@ import java.util.List;
  * @since prototype
  * @since 2020.04.24
  */
-public class RandomController {
+public class RandomControllerUtil {
 
     static private final List<RandomListener> listeners = new ArrayList<>();
 
     /**
      * Add Listener
+     *
      * @param rl Listener to add
      */
     static public void addListener(RandomListener rl) {

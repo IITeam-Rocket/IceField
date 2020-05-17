@@ -3,6 +3,11 @@ package controllers.game.commands;
 import controllers.game.GameJFrame;
 import models.Environment;
 
+/**
+ * A command to load a serialized game
+ *
+ * @author Ábrahám Dániel
+ */
 public class LoadCommand implements Command {
 
     private final String[] args;

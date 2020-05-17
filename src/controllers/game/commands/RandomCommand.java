@@ -1,6 +1,6 @@
 package controllers.game.commands;
 
-import controllers.RandomController;
+import controllers.RandomControllerUtil;
 import controllers.game.GameJFrame;
 import controllers.view.MapPresenter;
 
@@ -26,11 +26,11 @@ public class RandomCommand implements Command {
         if (args.length == 1) {
             switch (args[0]) {
                 case "on":
-                    RandomController.setRandom(true);
+                    RandomControllerUtil.setRandom(true);
                     GameJFrame.getInstance().OutputToTextBox("set random: on");
                     break;
                 case "off":
-                    RandomController.setRandom(false);
+                    RandomControllerUtil.setRandom(false);
                     GameJFrame.getInstance().OutputToTextBox("set random: off");
                     break;
                 default:

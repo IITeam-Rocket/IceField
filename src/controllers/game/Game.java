@@ -1,6 +1,6 @@
 package controllers.game;
 
-import controllers.RandomController;
+import controllers.RandomControllerUtil;
 import controllers.TextToCommandInterpreter;
 import controllers.view.MapPresenter;
 import models.Environment;
@@ -22,11 +22,6 @@ public class Game {
     private final TextToCommandInterpreter cip = new TextToCommandInterpreter(this);
 
     private final CommandInterpreter commandInterpreter = new CommandInterpreter();
-
-    /**
-     * Constructor
-     */
-    public Game() { }
 
     /**
      * Initialize the observers
@@ -155,7 +150,7 @@ public class Game {
      * Change random using commands
      */
     public void random() {
-        if (RandomController.getRandom()) {
+        if (RandomControllerUtil.getRandom()) {
             commandInterpreter.interpret(cip.interpreter("random off"));
         } else {
             commandInterpreter.interpret(cip.interpreter("random on"));

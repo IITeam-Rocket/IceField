@@ -1,6 +1,6 @@
 package controllers.game;
 
-import controllers.RandomController;
+import controllers.RandomControllerUtil;
 import controllers.view.MapPresenter;
 import models.Environment;
 import models.tiles.Tile;
@@ -21,9 +21,27 @@ public class GameJFrame extends JFrame {
     private final CommandPanel commandPanel = new CommandPanel();
 
     private final Game game = new Game();
-    private final CommandInterpreter commandInterpreter = new CommandInterpreter();
 
     BufferedImage image;
+
+    private final JTextArea text = new JTextArea("Csapattagok:\n  Ábrahám Dániel\n  Józsa György Bence\n  Kovács Marcell\n  Matyasi Lilla Nóra\n  Tóth Máté\n\nKonzulens:\n  Dr. Goldschmidt Balázs");
+    private final JTextArea debug = new JTextArea("Debug info");
+    private final JTextArea team = new JTextArea("team_rocket\n      v1.0");
+    private final JLabel io = new JLabel("IO:");
+    private final JTextField textBox = new JTextField("Filename Textbox");
+    private final JButton load = new JButton("Load");
+    private final JButton save = new JButton("Save");
+    private final JLabel randomness = new JLabel("Randomness:   ");
+    private final JButton random = new JButton("Random Off");
+    private final JButton weather = new JButton("Simulate Weather");
+    private final JLabel gameplay = new JLabel("Gameplay:");
+    private final JButton special = new JButton("Use Special Ability");
+    private final JButton craft = new JButton("Craft Signal Flare");
+    private final JButton rescue = new JButton("Rescue");
+    private final JButton snow = new JButton("Clear Snow");
+    private final JButton unbury = new JButton("Unbury");
+    private final JButton move = new JButton("Move");
+    private final JButton next = new JButton("Next Character");
 
     private Tile activeTile = null;
 
@@ -160,25 +178,6 @@ public class GameJFrame extends JFrame {
         this.debug.grabFocus();
     }
 
-    private final JTextArea text = new JTextArea("Csapattagok:\n  Ábrahám Dániel\n  Józsa György Bence\n  Kovács Marcell\n  Matyasi Lilla Nóra\n  Tóth Máté\n\nKonzulens:\n  Dr. Goldschmidt Balázs");
-    private final JTextArea debug = new JTextArea("Debug info");
-    private final JTextArea team = new JTextArea("team_rocket\n      v1.0");
-    private final JLabel io = new JLabel("IO:");
-    private final JTextField textBox = new JTextField("Filename Textbox");
-    private final JButton load = new JButton("Load");
-    private final JButton save = new JButton("Save");
-    private final JLabel randomness = new JLabel("Randomness:   ");
-    private final JButton random = new JButton("Random Off");
-    private final JButton weather = new JButton("Simulate Weather");
-    private final JLabel gameplay = new JLabel("Gameplay:");
-    private final JButton special = new JButton("Use Special Ability");
-    private final JButton craft = new JButton("Craft Signal Flare");
-    private final JButton rescue = new JButton("Rescue");
-    private final JButton snow = new JButton("Clear Snow");
-    private final JButton unbury = new JButton("Unbury");
-    private final JButton move = new JButton("Move");
-    private final JButton next = new JButton("Next Character");
-
     /**
      * Get texture
      * @param key Kex to get Texture with
@@ -314,7 +313,7 @@ public class GameJFrame extends JFrame {
         team.setEditable(false);
         commandPanel.add(team);
 
-        RandomController.addListener(x -> weather.setEnabled(!x));
+        RandomControllerUtil.addListener(x -> weather.setEnabled(!x));
     }
 
     /**

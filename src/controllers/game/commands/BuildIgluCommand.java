@@ -1,26 +1,17 @@
 package controllers.game.commands;
 
-import controllers.game.Game;
 import controllers.game.GameJFrame;
 import models.Environment;
 import models.figures.Eskimo;
 import models.figures.Figure;
 
+/**
+ * A command to build Iglu on the current tile.
+ *
+ * @author Ábrahám Dániel
+ * @version 1.0
+ */
 public class BuildIgluCommand implements Command {
-
-    private final Game game;
-    private final String[] args;
-
-    /**
-     * Constructor
-     *
-     * @param _game The Game Object
-     * @param _args Command Arguments
-     */
-    public BuildIgluCommand(Game _game, String[] _args) {
-        game = _game;
-        args = _args;
-    }
 
     /**
      * Command execution's logic.

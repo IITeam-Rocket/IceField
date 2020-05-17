@@ -1,6 +1,6 @@
 package controllers.game.commands;
 
-import controllers.RandomController;
+import controllers.RandomControllerUtil;
 import controllers.game.Game;
 import controllers.game.GameJFrame;
 import controllers.view.MapPresenter;
@@ -58,6 +58,8 @@ public class NextCharacterCommand implements Command {
                         }
                     }
                 });
+                if (RandomControllerUtil.getRandom())
+                    new SimulateWeatherCommand(game, args).execute();
                 if (RandomController.getRandom())
                     new SimulateWeatherCommand(game).execute();
             } else {
@@ -67,7 +69,7 @@ public class NextCharacterCommand implements Command {
             Environment.getInstance().setCurrentPlayer(ID);
         }
 
-        if (Environment.getInstance().getCurrentPlayer().getBaseBodyHeat() == -1 && RandomController.getRandom()) {
+        if (Environment.getInstance().getCurrentPlayer().getBaseBodyHeat() == -1 && RandomControllerUtil.getRandom()) {
             try {
                 Environment.getInstance().getCurrentPlayer().moveTo(Environment.getInstance().getCurrentPlayer().getTile().getNeighbours().get(new Random().nextInt(Environment.getInstance().getCurrentPlayer().getTile().getNeighbours().size())));
             } catch (EndOfGameException e) {

@@ -11,12 +11,6 @@ import models.Environment;
 public class ResetCommand implements Command {
 
     /**
-     * Constructor
-     */
-    public ResetCommand() {
-    }
-
-    /**
      * Command execution's logic.
      *
      */

@@ -14,12 +14,6 @@ import models.figures.Researcher;
 public class BuildTentCommand implements Command {
 
     /**
-     * Constructor
-     */
-    public BuildTentCommand() {
-    }
-
-    /**
      * Command execution's logic.
      *
      */

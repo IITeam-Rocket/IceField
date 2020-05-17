@@ -1,6 +1,5 @@
 package controllers.game.commands;
 
-import controllers.game.Game;
 import controllers.game.GameJFrame;
 import controllers.view.MapPresenter;
 import models.Environment;
@@ -8,21 +7,12 @@ import models.figures.Eskimo;
 import models.figures.Figure;
 import models.figures.Researcher;
 
+/**
+ * A command to clear the snow a the current tile
+ *
+ * @author Ábaráhm Dániel
+ */
 public class ClearSnowCommand implements Command {
-
-    private final Game game;
-    private final String[] args;
-
-    /**
-     * Constructor
-     *
-     * @param _game The Game Object
-     * @param _args Command Arguments
-     */
-    public ClearSnowCommand(Game _game, String[] _args) {
-        game = _game;
-        args = _args;
-    }
 
     /**
      * Command execution's logic.

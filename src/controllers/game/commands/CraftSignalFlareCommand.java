@@ -13,12 +13,6 @@ import models.figures.Figure;
 public class CraftSignalFlareCommand implements Command {
 
     /**
-     * Constructor
-     */
-    public CraftSignalFlareCommand() {
-    }
-
-    /**
      * Command execution's logic.
      */
     @Override

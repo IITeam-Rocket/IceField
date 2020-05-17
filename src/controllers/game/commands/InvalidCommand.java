@@ -2,13 +2,12 @@ package controllers.game.commands;
 
 import controllers.game.GameJFrame;
 
+/**
+ * A command that implement unknown command
+ *
+ * @author Ábrahám Dániel
+ */
 public class InvalidCommand implements Command {
-
-    /**
-     * Constructor
-     */
-    public InvalidCommand() {
-    }
 
     /**
      * Command execution's logic.

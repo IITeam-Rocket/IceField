@@ -3,6 +3,7 @@ package controllers.game.commands;
 import controllers.RandomController;
 import controllers.game.Game;
 import controllers.game.GameJFrame;
+import controllers.view.MapPresenter;
 import models.Environment;
 import models.exceptions.EndOfGameException;
 import models.figures.Figure;
@@ -65,5 +66,6 @@ public class NextCharacterCommand implements Command {
         }
 
         Environment.getInstance().getCurrentPlayer().notifyObservers();
+        MapPresenter.getInstance().update();
     }
 }

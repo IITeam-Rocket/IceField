@@ -1,5 +1,6 @@
 package models.items;
 
+import controllers.game.GameJFrame;
 import models.figures.Character;
 import models.policies.HasRopePolicy;
 
@@ -25,6 +26,7 @@ public class Rope extends Item implements Serializable {
     public void uponDiscovery(Character finder) {
         System.out.println("unburied item: 2");
         finder.changeRescuePolicy(new HasRopePolicy());
+        GameJFrame.getInstance().showItemDialog(this.toString());
     }
 
     /**

@@ -1,5 +1,6 @@
 package models.items;
 
+import controllers.game.GameJFrame;
 import models.figures.Character;
 
 import java.io.Serializable;
@@ -22,6 +23,7 @@ public class Food extends Item implements Serializable {
     public void uponDiscovery(Character finder) {
         System.out.println("unburied item: 1");
         finder.addHeat(1);
+        GameJFrame.getInstance().showItemDialog(this.toString());
     }
 
     /**

@@ -6,7 +6,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class GameJFrame extends JFrame {
@@ -56,7 +55,6 @@ public class GameJFrame extends JFrame {
 
         this.setTitle("IceField");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        //this.setSize(imageLabel.getPreferredSize());
         this.setLocationRelativeTo(null);
 
         this.getContentPane().setBackground(new Color(0, 148, 255));
@@ -81,30 +79,28 @@ public class GameJFrame extends JFrame {
         MapTextures.put("researcher_active", new ImageIcon("resources/researcher_active.png"));
 
 
-
     }
 
-    public ImageIcon getTexture(String key)
-    {
+    public ImageIcon getTexture(String key) {
         return MapTextures.get(key);
     }
 
-    private JTextArea team= new JTextArea("Csapattagok:\nÁbrahám Dániel\nJózsa György Bence\nKovács Marcell\nMatyasi Lilla Nóra\nTóth Máté\n\nKonzulens:\nDr. Goldschmidt Balázs\n \nteam_rocket\nv1.0");
-    private JLabel io = new JLabel("IO:");
-    private JTextField text = new JTextField("Filename Textbox");
-    private JButton load = new JButton("Load");
-    private JButton save = new JButton("Save");
-    private JLabel randomness = new JLabel("Randomness:");
-    private JButton random = new JButton("Random Off");
-    private JButton weather = new JButton("Simulate Weather");
-    private JLabel gameplay = new JLabel("Gameplay:");
-    private JButton special = new JButton("Use Special Ability");
-    private JButton craft = new JButton("Craft Signal Flare");
-    private JButton rescue = new JButton("Rescue");
-    private JButton snow = new JButton("Clear Snow");
-    private JButton unbury = new JButton("Unbury");
-    private JButton move = new JButton("Move");
-    private JButton next = new JButton("Next Character");
+    private final JTextArea team = new JTextArea("Csapattagok:\nÁbrahám Dániel\nJózsa György Bence\nKovács Marcell\nMatyasi Lilla Nóra\nTóth Máté\n\nKonzulens:\nDr. Goldschmidt Balázs\n \nteam_rocket\nv1.0");
+    private final JLabel io = new JLabel("IO:");
+    private final JTextField text = new JTextField("Filename Textbox");
+    private final JButton load = new JButton("Load");
+    private final JButton save = new JButton("Save");
+    private final JLabel randomness = new JLabel("Randomness:");
+    private final JButton random = new JButton("Random Off");
+    private final JButton weather = new JButton("Simulate Weather");
+    private final JLabel gameplay = new JLabel("Gameplay:");
+    private final JButton special = new JButton("Use Special Ability");
+    private final JButton craft = new JButton("Craft Signal Flare");
+    private final JButton rescue = new JButton("Rescue");
+    private final JButton snow = new JButton("Clear Snow");
+    private final JButton unbury = new JButton("Unbury");
+    private final JButton move = new JButton("Move");
+    private final JButton next = new JButton("Next Character");
 
     void initComponents() {
         this.setResizable(false);
@@ -114,7 +110,7 @@ public class GameJFrame extends JFrame {
         this.add(commandPanel);
         this.setIgnoreRepaint(true);
 
-        commandPanel.setBounds(545,0,255, 600);
+        commandPanel.setBounds(545, 0, 255, 600);
 
         io.setVisible(true);
         commandPanel.add(io);
@@ -189,12 +185,16 @@ public class GameJFrame extends JFrame {
 
         MapPresenter.getInstance().paint(g);
 
-        g.translate(- this.getInsets().left - 30, - this.getInsets().top - 30);
+        g.translate(-this.getInsets().left - 30, -this.getInsets().top - 30);
 
         MapPresenter.getInstance().afterDraw();
     }
 
     public static GameJFrame getInstance() {
         return instance;
+    }
+
+    public void showItemDialog(String itemName) {
+        ItemDialog dialog = new ItemDialog(this, itemName);
     }
 }

@@ -57,7 +57,6 @@ public class EndGameDialog extends JDialog {
     }
 
     private void onOK() {
-        getOwner().dispose();
         dispose();
     }
 }

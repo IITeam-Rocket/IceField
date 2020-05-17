@@ -74,78 +74,48 @@ public class GameJFrame extends JFrame {
 
         commandPanel.setBounds(545,0,255, 600);
 
-        io = new JLabel("IO:");
-        io.setBounds(10,10,20, 10);
         io.setVisible(true);
         commandPanel.add(io);
 
-        text = new JTextField("Filename Textbox");
-        text.setBounds(10,30,180, 20);
         text.setVisible(true);
         commandPanel.add(text);
 
-        load = new JButton("Load");
-        load.setBounds(5,60, 120, 20);
         load.setVisible(true);
         commandPanel.add(load);
 
-        save = new JButton("Save");
-        save.setBounds(130,60, 120, 20);
         save.setVisible(true);
         commandPanel.add(save);
 
-        randomness = new JLabel("Randomness:");
-        randomness.setBounds(10,90,150, 15);
         randomness.setVisible(true);
         commandPanel.add(randomness);
 
-        random = new JButton("Random Off");
-        random.setBounds(5,110, 120, 20);
         random.setVisible(true);
         commandPanel.add(random);
 
-        weather = new JButton("Simulate Weather");
-        weather.setBounds(130,110, 120, 20);
         weather.setVisible(true);
         commandPanel.add(weather);
 
-        gameplay = new JLabel("Gameplay:");
-        gameplay.setBounds(10,140,150, 15);
         gameplay.setVisible(true);
         commandPanel.add(gameplay);
 
-        next = new JButton("Next Character");
-        next.setBounds(5,160, 120, 20);
         next.setVisible(true);
         commandPanel.add(next);
 
-        move = new JButton("Move");
-        move.setBounds(130,160, 120, 20);
         move.setVisible(true);
         commandPanel.add(move);
 
-        unbury = new JButton("Unbury");
-        unbury.setBounds(5,190, 120, 20);
         unbury.setVisible(true);
         commandPanel.add(unbury);
 
-        snow = new JButton("Clear Snow");
-        snow.setBounds(130,190, 120, 20);
         snow.setVisible(true);
         commandPanel.add(snow);
 
-        JButton rescue = new JButton("Rescue");
-        rescue.setBounds(5,220, 120, 20);
         rescue.setVisible(true);
         commandPanel.add(rescue);
 
-        JButton craft = new JButton("Craft Signal Flare");
-        craft.setBounds(130,220, 120, 20);
         craft.setVisible(true);
-        commandPanel.add(craft, BorderLayout.CENTER);
+        commandPanel.add(craft);
 
-        JButton special = new JButton("Use Special Ability");
-        special.setBounds(60,250, 135, 20);
         special.setVisible(true);
         commandPanel.add(special);
 

@@ -202,6 +202,14 @@ public class GameJFrame extends JFrame {
 
         craft.setVisible(true);
         commandPanel.add(craft);
+        craft.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                game.CraftSignalFlare();
+                }
+            }
+        );
+
 
         special.setVisible(true);
         commandPanel.add(special);

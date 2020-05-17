@@ -81,4 +81,7 @@ public class Game {
     public void Move(Tile t) {
         commandInterpreter.interpret(cip.interpter(String.format("move %d", t.getID())));
     }
+
+    public void CraftSignalFlare() { commandInterpreter.interpret(cip.interpter("craftsignalflare")); }
+
 }

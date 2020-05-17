@@ -36,7 +36,7 @@ public class IglooPolicy implements ProtectionPolicy, Serializable {
      */
     @Override
     public void protectAgainstAttack(Figure victim, Figure attacker) {
-        if(victim != attacker)
+        if (!victim.equals(attacker))
             System.out.println("Polarbear attacks character on tile "+ victim.getTile().getID()+", but survives due to iglu!");
     }
 

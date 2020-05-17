@@ -25,6 +25,7 @@ public class HasNoDiveSuitPolicy implements FallInWaterPolicy, Serializable {
      */
     @Override
     public void executeStrategy(Figure player) {
+        //Empty
     }
 
     /**

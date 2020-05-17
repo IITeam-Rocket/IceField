@@ -35,7 +35,7 @@ abstract public class IcePatch extends Tile implements Serializable {
     /**
      * Creates a new IcePatch.
      */
-    public IcePatch() {
+    IcePatch() {
         super();
     }
 
@@ -45,7 +45,7 @@ abstract public class IcePatch extends Tile implements Serializable {
      *
      * @param ID the new IcePatch's unique ID
      */
-    public IcePatch(int ID) {
+    IcePatch(int ID) {
         super(ID);
     }
 

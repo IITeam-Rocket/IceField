@@ -7,8 +7,17 @@ import java.io.FileNotFoundException;
 import java.io.PrintStream;
 
 public class OutputCommand implements Command {
+
+    private Game game;
+    private String[] args;
+
+    public OutputCommand(Game _game, String[] _args) {
+        game = _game;
+        args = _args;
+    }
+
     @Override
-    public void execute(Game game, String[] args) {
+    public void execute() {
         if (args.length != 1) {
             return;
         }
@@ -20,11 +29,11 @@ public class OutputCommand implements Command {
         }
 
         try {
-            game.getOutput().println(String.format("set output: {0}", args[0]));
+            game.getOutput().println(String.format("set output: %s", args[0]));
             game.changeOutput(new PrintStream(new File(args[0])));
-            game.getOutput().println(String.format("set output: {0}", args[0]));
+            game.getOutput().println(String.format("set output: %s", args[0]));
         } catch (FileNotFoundException e) {
-            game.getOutput().println(String.format("File {0} does not exist!", args[0]));
+            game.getOutput().println(String.format("File %s does not exist!", args[0]));
         }
     }
 }

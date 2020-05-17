@@ -23,7 +23,7 @@ public class Gun extends Item implements Serializable {
     @Override
     public void uponDiscovery(Character finder) {
         System.out.println("unburied item: 7");
-        Environment.getInstance().recordGun();
+        Environment.getInstance().recordGun(finder.getTile());
     }
 
     /**

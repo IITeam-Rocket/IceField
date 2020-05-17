@@ -6,8 +6,17 @@ import models.exceptions.EndOfGameException;
 import models.tiles.Tile;
 
 public class MoveCommand implements Command {
+
+    private Game game;
+    private String[] args;
+
+    public MoveCommand(Game _game, String[] _args) {
+        game = _game;
+        args = _args;
+    }
+
     @Override
-    public void execute(Game game, String[] args) {
+    public void execute() {
         if (Environment.getInstance().getCurrentPlayer() == null) {
             game.getOutput().println("There is no Figure selected, please use the \"nextcharacter\" command before the first move!");
             return;
@@ -18,7 +27,7 @@ public class MoveCommand implements Command {
         if (args.length == 0) {
             game.getOutput().println("neigbours: ");
             StringBuilder sb = new StringBuilder();
-            currentTile.getNeighbours().forEach(t -> sb.append(String.format("{0} ", t.getID())));
+            currentTile.getNeighbours().forEach(t -> sb.append(String.format("%d ", t.getID())));
             game.getOutput().println(sb.toString().trim());
         } else if (args.length == 1) {
             int tileID;
@@ -41,8 +50,8 @@ public class MoveCommand implements Command {
                 }
             }
 
-            game.getOutput().println(String.format("move character to {0}: unsuccessful", tileID));
-            game.getOutput().println(String.format("The current Tile has no neighbor with the ID {0}", tileID));
+            game.getOutput().println(String.format("move character to %d: unsuccessful", tileID));
+            game.getOutput().println(String.format("The current Tile has no neighbor with the ID %d", tileID));
         }
     }
 }

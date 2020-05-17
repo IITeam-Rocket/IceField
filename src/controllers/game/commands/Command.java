@@ -1,7 +1,18 @@
 package controllers.game.commands;
 
-import controllers.game.Game;
-
+/**
+ * A generic Command design pattern class
+ *
+ * @author Ábrahám Dániel
+ * @version 1.0
+ * @since graphical Interface
+ * @since 2020.05.01
+ */
 public interface Command {
-    void execute(Game game, String[] args);
+
+    /**
+     * Command execution's logic.
+     *
+     */
+    void execute();
 }

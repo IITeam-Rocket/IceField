@@ -41,6 +41,7 @@ public interface ProtectionPolicy {
      * Steps the object for aging effects.
      */
     default void step() {
+        //Empty
     }
 
     /**

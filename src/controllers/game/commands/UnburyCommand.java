@@ -7,8 +7,17 @@ import models.figures.Figure;
 import models.figures.Researcher;
 
 public class UnburyCommand implements Command {
+
+    private Game game;
+    private String[] args;
+
+    public UnburyCommand(Game _game, String[] _args) {
+        game = _game;
+        args = _args;
+    }
+
     @Override
-    public void execute(Game game, String[] args) {
+    public void execute() {
         if (args.length != 0) {
             game.getOutput().println("IllegalArgumentException");
             return;

@@ -48,7 +48,7 @@ public class TentPolicy implements ProtectionPolicy, Serializable {
      */
     @Override
     public void protectAgainstAttack(Figure victim, Figure attacker) throws EndOfGameException {
-        if (victim != attacker)
+        if (!victim.equals(attacker))
             throw new EndOfGameException("A character has been mauled!");
     }
 

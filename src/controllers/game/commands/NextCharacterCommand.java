@@ -7,8 +7,17 @@ import models.exceptions.EndOfGameException;
 import models.figures.Figure;
 
 public class NextCharacterCommand implements Command {
+
+    private Game game;
+    private String[] args;
+
+    public NextCharacterCommand(Game _game, String[] _args) {
+        game = _game;
+        args = _args;
+    }
+
     @Override
-    public void execute(Game game, String[] args) {
+    public void execute() {
         if (Environment.getInstance().getPlayers().size() == 0) {
             game.getOutput().println("There are currently no characters!");
             return;
@@ -43,7 +52,7 @@ public class NextCharacterCommand implements Command {
         }
 
         if (Environment.getInstance().getCurrentPlayer().getBaseBodyHeat() == -1 && RandomController.getRandom()) {
-            new NextCharacterCommand().execute(game, args);
+            new NextCharacterCommand(game, args).execute();
         }
     }
 }

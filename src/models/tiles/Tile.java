@@ -27,15 +27,19 @@ abstract public class Tile extends Subject implements Serializable {
     /**
      * The next unique ID.
      */
-    protected static int IDCounter = 0;
+    private static int IDCounter = 0;
     /**
      * The Tile's unique ID.
      */
-    protected final int ID;
+    private final int ID;
     /**
      * The actual snow depth on the Tile.
      */
     protected int snowDepth;
+    /**
+     * Stores information on whether the tile has been analyzed or not.
+     */
+    protected boolean analyzed = false;
     /**
      * Contains the Figures who stands on the Tile.
      */
@@ -43,16 +47,12 @@ abstract public class Tile extends Subject implements Serializable {
     /**
      * Contains the neighbours of the Tile.
      */
-    protected ArrayList<Tile> neighbours = new ArrayList<>();
-    /**
-     * Stores information on whether the tile has been analyzed or not.
-     */
-    protected boolean analyzed = false;
+    private ArrayList<Tile> neighbours = new ArrayList<>();
 
     /**
      * Creates a new Tile.
      */
-    public Tile() {
+    Tile() {
         this.ID = IDCounter;
         IDCounter++;
     }
@@ -63,7 +63,7 @@ abstract public class Tile extends Subject implements Serializable {
      *
      * @param ID the new Tile's unique ID.
      */
-    public Tile(int ID) {
+    Tile(int ID) {
         this.ID = ID;
     }
 
@@ -265,7 +265,7 @@ abstract public class Tile extends Subject implements Serializable {
      *
      * @param figure the figure to move
      */
-    protected void moveFigureToThisTile(Figure figure) {
+    void moveFigureToThisTile(Figure figure) {
         addCharacter(figure);
         figure.removeFromTile(figure.getTile());
         figure.setTile(this);

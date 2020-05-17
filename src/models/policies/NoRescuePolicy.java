@@ -26,7 +26,7 @@ public class NoRescuePolicy implements RescueFriendPolicy, Serializable {
      */
     @Override
     public void executeStrategy(Character friend, Tile dest) {
-
+        //Empty
     }
 
     /**

@@ -44,8 +44,10 @@ public class Eskimo extends Character implements Serializable {
     @Override
     public void useSpecial(Tile target) {
         if (stamina > 0) {
-            if (target == tile)
+            if (target == tile) {
                 ((IcePatch) tile).changeProtectionPolicy(new IglooPolicy());
+                --stamina;
+            }
         } else
             System.out.println("Not Enough Stamina available to complete this action!");
     }

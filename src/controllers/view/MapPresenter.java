@@ -43,6 +43,8 @@ public class MapPresenter implements Observer, Serializable {
 
         for(int i = 0; i < tiles.size(); i++)
             tiles.get(i).init();
+
+        update();
     }
 
     public FigurePresenter findFigure(Figure figure) {

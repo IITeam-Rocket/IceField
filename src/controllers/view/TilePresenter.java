@@ -85,22 +85,12 @@ abstract public class TilePresenter implements Serializable {
      */
     protected int getFigureX(int num) {
         switch (num) {
-            case 0:
-                return 0;
             case 1:
-                return 21;
-            case 2:
-                return 42;
-            case 3:
-                return 0;
             case 4:
-                return 21;
-            case 5:
-                return 42;
-            case 6:
-                return 0;
             case 7:
                 return 21;
+            case 2:
+            case 5:
             case 8:
                 return 42;
             default:
@@ -115,22 +105,12 @@ abstract public class TilePresenter implements Serializable {
      */
     protected int getFigureY(int num) {
         switch (num) {
-            case 0:
-                return 0;
-            case 1:
-                return 0;
-            case 2:
-                return 0;
             case 3:
-                return 21;
             case 4:
-                return 21;
             case 5:
                 return 21;
             case 6:
-                return 42;
             case 7:
-                return 42;
             case 8:
                 return 42;
             default:

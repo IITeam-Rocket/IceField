@@ -72,6 +72,16 @@ public class GameJFrame extends JFrame {
         }
         MapTextures.put("water", new ImageIcon("resources/water.png"));
         MapTextures.put("stable", new ImageIcon("resources/stable.png"));
+
+        MapTextures.put("bear", new ImageIcon("resources/bear.png"));
+        MapTextures.put("bear_active", new ImageIcon("resources/bear_active.png"));
+        MapTextures.put("eskimo", new ImageIcon("resources/eskimo.png"));
+        MapTextures.put("eskimo_active", new ImageIcon("resources/eskimo_active.png"));
+        MapTextures.put("researcher", new ImageIcon("resources/researcher.png"));
+        MapTextures.put("researcher_active", new ImageIcon("resources/researcher_active.png"));
+
+
+
     }
 
     public ImageIcon getTexture(String key)

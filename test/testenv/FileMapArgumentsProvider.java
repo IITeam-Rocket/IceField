@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 
 
 public class FileMapArgumentsProvider implements ArgumentsProvider {
-    Map<File, File> fileMap = new TreeMap<>();
+    final Map<File, File> fileMap = new TreeMap<>();
 
     @Override
     public Stream<? extends Arguments> provideArguments(ExtensionContext extensionContext) {

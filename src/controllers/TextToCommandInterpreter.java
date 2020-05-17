@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class TextToCommandInterpreter {
-    public Game game;
+    public final Game game;
 
     public TextToCommandInterpreter(Game _game) {
         this.game = _game;

@@ -11,7 +11,7 @@ import java.io.Serializable;
 abstract public class TilePresenter implements Serializable {
     protected final int x;
     protected final int y;
-    protected JButton button;
+    protected final JButton button;
 
     /**
      * Constructor

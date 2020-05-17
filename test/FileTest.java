@@ -1,4 +1,4 @@
-import controllers.Prototype;
+import controllers.game.Game;
 import models.exceptions.EndOfGameException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,14 +19,14 @@ public class FileTest {
     private final hackOStream consoleOut = new hackOStream();
     private final PrintStream os = System.out;
     private final InputStream is = System.in;
-    private Prototype game;
+    private Game game;
 
     FileTest() throws IOException {
     }
 
     @BeforeEach
     public void setup() {
-        game = new Prototype(true);
+        game = new Game();
         System.setOut(consoleOut);
     }
 
@@ -41,7 +41,7 @@ public class FileTest {
         FileInputStream fis = new FileInputStream(testInputFile);
         System.setIn(fis);
 
-        game.run();
+        game.playGame();
         FileInputStream efis = new FileInputStream(testExpectedOutput);
         InputStreamReader isr = new InputStreamReader(efis);
         BufferedReader br = new BufferedReader(isr);

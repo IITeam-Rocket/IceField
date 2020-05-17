@@ -9,8 +9,20 @@ import models.figures.Researcher;
 import java.io.PrintStream;
 
 public class ClearSnowCommand implements Command {
+
+    private Game game;
+    private String[] args;
+
+    public ClearSnowCommand(Game _game, String[] _args) {
+        game = _game;
+        args = _args;
+    }
+
+    /**
+     * Command execution's logic.
+     */
     @Override
-    public void execute(Game game, String[] args) {
+    public void execute() {
         Environment e = Environment.getInstance();
         PrintStream out = game.getOutput();
         if (e.getCurrentPlayer() == null) {

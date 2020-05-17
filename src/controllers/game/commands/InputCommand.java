@@ -7,8 +7,18 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class InputCommand implements Command {
+
+    private Game game;
+    private String[] args;
+
+    public InputCommand(Game _game, String[] _args) {
+        game = _game;
+        args = _args;
+    }
+
+
     @Override
-    public void execute(Game game, String[] args) {
+    public void execute() {
         if (args.length == 0) {
             game.getOutput().println("Invalid Arguments");
             return;

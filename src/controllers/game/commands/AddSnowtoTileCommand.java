@@ -9,14 +9,21 @@ import models.Environment;
  * @author Ábrahám Dániel
  */
 public class AddSnowtoTileCommand implements Command {
+
+    private Game game;
+    private String[] args;
+
+    public AddSnowtoTileCommand(Game _game, String[] _args) {
+        game = _game;
+        args = _args;
+    }
+
     /**
      * Command execution's logic.
      *
-     * @param game The game object that is currently running
-     * @param args Command arguments
      */
     @Override
-    public void execute(Game game, String[] args) {
+    public void execute() {
         if (args.length != 2) {
             //TODO printTiles()
         } else {

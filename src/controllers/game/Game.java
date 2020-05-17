@@ -1,5 +1,6 @@
 package controllers.game;
 
+import controllers.TextToCommandInterpeter;
 import controllers.view.MapPresenter;
 import models.Environment;
 import models.figures.Figure;
@@ -17,18 +18,18 @@ public class Game {
     private Scanner in = new Scanner(System.in);
     private boolean running = true;
 
-    private CommandInterpreter cip = new CommandInterpreter(this);
+    private TextToCommandInterpeter cip = new TextToCommandInterpeter(this);
+
+    private CommandInterpreter commandInterpreter = new CommandInterpreter(this);
 
     private void initializeObservers() {
         ArrayList<Tile> tiles = environment.getIceTiles();
         ArrayList<Figure> figures = environment.getPlayers();
 
-
         tiles.forEach(t -> {
             t.clear();
             t.register(mp);
         });
-
 
         figures.forEach(f -> {
             f.clear();
@@ -43,7 +44,7 @@ public class Game {
             if (in.hasNextLine()) {
                 String line = in.nextLine();
 
-                cip.interpret(line);
+                commandInterpreter.interpret(cip.interpter(line));
             }
         }
     }

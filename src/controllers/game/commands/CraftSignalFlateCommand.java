@@ -12,14 +12,21 @@ import models.tiles.Tile;
  * @author Ábrahám Dániel
  */
 public class CraftSignalFlateCommand implements Command {
+
+    private Game game;
+    private String[] args;
+
+    public CraftSignalFlateCommand(Game _game, String[] _args) {
+        game = _game;
+        args = _args;
+    }
+
     /**
      * Command execution's logic.
      *
-     * @param game The game object that is currently running
-     * @param args Command arguments
      */
     @Override
-    public void execute(Game game, String[] args) {
+    public void execute() {
         Figure currentPlayer = Environment.getInstance().getCurrentPlayer();
 
         if (currentPlayer == null) {

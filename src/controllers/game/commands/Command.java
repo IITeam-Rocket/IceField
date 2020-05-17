@@ -1,8 +1,5 @@
 package controllers.game.commands;
 
-import controllers.game.Game;
-
-
 /**
  * A generic Command design pattern class
  *
@@ -16,8 +13,6 @@ public interface Command {
     /**
      * Command execution's logic.
      *
-     * @param game The game object that is currently running
-     * @param args Command arguments
      */
-    void execute(Game game, String[] args);
+    void execute();
 }

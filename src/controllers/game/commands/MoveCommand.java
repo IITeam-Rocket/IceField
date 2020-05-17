@@ -6,8 +6,17 @@ import models.exceptions.EndOfGameException;
 import models.tiles.Tile;
 
 public class MoveCommand implements Command {
+
+    private Game game;
+    private String[] args;
+
+    public MoveCommand(Game _game, String[] _args) {
+        game = _game;
+        args = _args;
+    }
+
     @Override
-    public void execute(Game game, String[] args) {
+    public void execute() {
         if (Environment.getInstance().getCurrentPlayer() == null) {
             game.getOutput().println("There is no Figure selected, please use the \"nextcharacter\" command before the first move!");
             return;

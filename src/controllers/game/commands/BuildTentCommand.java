@@ -12,14 +12,21 @@ import models.figures.Researcher;
  * @author Ábrahám Dániel
  */
 public class BuildTentCommand implements Command {
+
+    private Game game;
+    private String[] args;
+
+    public BuildTentCommand(Game _game, String[] _args) {
+        game = _game;
+        args = _args;
+    }
+
     /**
      * Command execution's logic.
      *
-     * @param game The game object that is currently running
-     * @param args Command arguments
      */
     @Override
-    public void execute(Game game, String[] args) {
+    public void execute() {
         Figure figure = Environment.getInstance().getCurrentPlayer();
 
         if (figure == null) {

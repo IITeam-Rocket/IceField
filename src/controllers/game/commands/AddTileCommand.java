@@ -8,14 +8,21 @@ import models.tiles.StableIcePatch;
 import models.tiles.Tile;
 
 public class AddTileCommand implements Command {
+
+    private Game game;
+    private String[] args;
+
+    public AddTileCommand(Game _game, String[] _args) {
+        game = _game;
+        args = _args;
+    }
+
     /**
      * Command execution's logic.
      *
-     * @param game The game object that is currently running
-     * @param args Command arguments
      */
     @Override
-    public void execute(Game game, String[] args) {
+    public void execute() {
         if (args.length < 1 || 2 < args.length)
             return;
 

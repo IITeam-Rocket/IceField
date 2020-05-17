@@ -4,8 +4,17 @@ import controllers.RandomController;
 import controllers.game.Game;
 
 public class RandomCommand implements Command {
+
+    private Game game;
+    private String[] args;
+
+    public RandomCommand(Game _game, String[] _args) {
+        game = _game;
+        args = _args;
+    }
+
     @Override
-    public void execute(Game game, String[] args) {
+    public void execute() {
         if (args.length == 1) {
             switch (args[0]) {
                 case "on":

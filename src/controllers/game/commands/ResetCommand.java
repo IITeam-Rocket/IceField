@@ -10,14 +10,20 @@ import models.Environment;
  */
 public class ResetCommand implements Command {
 
+    private Game game;
+    private String[] args;
+
+    public ResetCommand(Game _game, String[] _args) {
+        game = _game;
+        args = _args;
+    }
+
     /**
      * Command execution's logic.
      *
-     * @param game The game object that is currently running
-     * @param args Command arguments
      */
     @Override
-    public void execute(Game game, String[] args) {
+    public void execute() {
         Environment.getInstance().reset();
         game.getOutput().println("Game Reset!");
     }

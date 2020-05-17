@@ -8,8 +8,9 @@ import models.policies.FallInWaterPolicy;
 import models.tiles.Tile;
 
 import javax.swing.*;
+import java.io.Serializable;
 
-public class PolarBearPresenter extends FigurePresenter {
+public class PolarBearPresenter extends FigurePresenter implements Serializable {
     private final PolarBear bear;
 
     public PolarBearPresenter(PolarBear bear) {

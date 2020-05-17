@@ -1,6 +1,7 @@
 package models;
 
 import controllers.game.GameJFrame;
+import controllers.view.MapPresenter;
 import models.exceptions.EndOfGameException;
 import models.figures.Figure;
 import models.tiles.Tile;
@@ -83,6 +84,7 @@ public class Environment implements Serializable {
             FileOutputStream f = new FileOutputStream(path);
             ObjectOutputStream out = new ObjectOutputStream(f);
             out.writeObject(instance);
+            out.writeObject(MapPresenter.getInstance());
             out.close();
             return true;
         } catch (IOException ex) {
@@ -121,6 +123,14 @@ public class Environment implements Serializable {
             if (env.isGunIsDiscovered())
                 instance.recordGun(env.getGunLocation());
 
+            MapPresenter mapPresenter = (MapPresenter) in.readObject();
+
+            MapPresenter.getInstance().reset();
+
+            MapPresenter.getInstance().setFigures(mapPresenter.getFigures());
+            MapPresenter.getInstance().setTiles(mapPresenter.getTiles());
+
+            mapPresenter.getInstance().update();
 
             in.close();
 

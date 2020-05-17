@@ -32,6 +32,8 @@ public class ItemDialog extends JDialog {
      */
     public ItemDialog(Frame owner, String itemName) {
         super(owner);
+        initComponents();
+        itemLabel.setText("Item: " + itemName);
 
     }
 
@@ -39,5 +41,9 @@ public class ItemDialog extends JDialog {
         this.setLayout(new BorderLayout());
         this.add(buttonOK, BorderLayout.SOUTH);
         buttonOK.setContentAreaFilled(false);
+    }
+
+    private void onOK() {
+        dispose();
     }
 }

@@ -24,10 +24,11 @@ public class HasNoDiveSuitPolicy implements FallInWaterPolicy, Serializable {
      *
      * @param player the player, who fell in water.
      *
-     * @return
+     * @return false
      */
     @Override
     public boolean executeStrategy(Figure player) {
+        GameJFrame.getInstance().getGame().NextCharacter();
         return false;
     }
 

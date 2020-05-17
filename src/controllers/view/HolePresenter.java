@@ -7,9 +7,10 @@ import models.tiles.Tile;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class HolePresenter extends TilePresenter {
+public class HolePresenter extends TilePresenter implements Serializable {
     private final Hole hole;
 
     public HolePresenter(Hole hole, int x, int y) {

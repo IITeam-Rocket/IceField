@@ -5,8 +5,9 @@ import models.figures.Figure;
 import models.tiles.Tile;
 
 import javax.swing.*;
+import java.io.Serializable;
 
-public abstract class FigurePresenter {
+public abstract class FigurePresenter implements Serializable {
 
     public abstract Figure getFigure();
 

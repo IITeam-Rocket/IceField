@@ -7,10 +7,11 @@ import models.figures.Figure;
 
 import java.awt.*;
 import java.awt.geom.Line2D;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MapPresenter implements Observer  {
+public class MapPresenter implements Observer, Serializable {
     private static final MapPresenter instance = new MapPresenter();
 
     private MapPresenter() {
@@ -18,11 +19,27 @@ public class MapPresenter implements Observer  {
         tiles = new ArrayList<>();
     }
 
-    private final List<FigurePresenter> figures;
-    private final List<TilePresenter> tiles;
+    private List<FigurePresenter> figures;
+    private List<TilePresenter> tiles;
 
     public static MapPresenter getInstance() {
         return instance;
+    }
+
+    public List<FigurePresenter> getFigures() {
+        return figures;
+    }
+
+    public List<TilePresenter> getTiles() {
+        return tiles;
+    }
+
+    public void setFigures(List<FigurePresenter> figures) {
+        this.figures = figures;
+    }
+
+    public void setTiles(List<TilePresenter> tiles) {
+        this.tiles = tiles;
     }
 
     public FigurePresenter findFigure(Figure figure) {
@@ -31,6 +48,11 @@ public class MapPresenter implements Observer  {
                 return figures.get(i);
         }
         return null;
+    }
+
+    public void reset() {
+        figures.clear();
+        tiles.clear();
     }
 
     /**

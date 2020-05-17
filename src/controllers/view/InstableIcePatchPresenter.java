@@ -7,8 +7,9 @@ import models.tiles.Tile;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.Serializable;
 
-public class InstableIcePatchPresenter extends TilePresenter {
+public class InstableIcePatchPresenter extends TilePresenter implements Serializable {
     private final InstableIcePatch icePatch;
 
     public InstableIcePatchPresenter(InstableIcePatch icePatch, int x, int y) {

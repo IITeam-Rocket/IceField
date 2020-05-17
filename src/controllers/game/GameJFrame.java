@@ -3,6 +3,7 @@ package controllers.game;
 import controllers.view.Listeners.MouseHandler;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.HashMap;
 
 public class GameJFrame extends JFrame {
@@ -20,6 +21,8 @@ public class GameJFrame extends JFrame {
 
         MapTextures = new HashMap<String, ImageIcon>();
         MapTextures.put("stable", new ImageIcon("resources/stable.png"));
+
+        this.getContentPane().setBackground(new Color(0, 148, 255));
     }
 
     public ImageIcon getTexture(String key)
@@ -28,10 +31,10 @@ public class GameJFrame extends JFrame {
     }
 
     void initComponents() {
-        JButton b = new JButton("");
-        b.setBounds(130, 100, 60, 60);
-        b.addActionListener(new MouseHandler());
-        this.add(b);
+        //JButton b = new JButton("");
+        //b.setBounds(130, 100, 60, 60);
+        //b.addActionListener(new MouseHandler());
+        //this.add(b);
         this.setSize(800, 600);
         this.setLayout(null);
         this.setVisible(true);

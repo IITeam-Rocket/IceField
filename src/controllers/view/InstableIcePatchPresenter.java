@@ -13,6 +13,15 @@ public class InstableIcePatchPresenter extends TilePresenter {
     public InstableIcePatchPresenter(InstableIcePatch icePatch, int x, int y) {
         super(x, y);
         this.icePatch = icePatch;
+
+        button.setBounds(x, y, 60, 60);
+        button.setIcon(GameJFrame.getInstance().getTexture("stable"));
+        button.setVisible(true);
+
+        GameJFrame.getInstance().add(button);
+
+        GameJFrame.getInstance().getContentPane().validate();
+        GameJFrame.getInstance().getContentPane().repaint();
     }
 
     @Override
@@ -21,12 +30,6 @@ public class InstableIcePatchPresenter extends TilePresenter {
         ProtectionPolicy po = icePatch.getProtectionStrategy();
         int capacity = icePatch.getCapacity();
         boolean flipped = icePatch.isFlipped();
-
-        button.setBounds(x, y, 60, 60);
-        button.setIcon(GameJFrame.getInstance().getTexture("stable"));
-        button.setVisible(true);
-
-        GameJFrame.getInstance().add(button);
 
 
         //TODO implement further

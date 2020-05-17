@@ -14,18 +14,21 @@ public class StableIcePatchPresenter extends TilePresenter {
     public StableIcePatchPresenter(StableIcePatch icePatch, int x, int y) {
         super(x, y);
         this.icePatch = icePatch;
-    }
-
-    @Override
-    public void draw() {
-        int snowDepth = icePatch.getSnowDepth();
-        ProtectionPolicy po = icePatch.getProtectionStrategy();
 
         button.setBounds(x, y, 60, 60);
         button.setIcon(GameJFrame.getInstance().getTexture("stable"));
         button.setVisible(true);
 
         GameJFrame.getInstance().add(button);
+
+        GameJFrame.getInstance().getContentPane().validate();
+        GameJFrame.getInstance().getContentPane().repaint();
+    }
+
+    @Override
+    public void draw() {
+        int snowDepth = icePatch.getSnowDepth();
+        ProtectionPolicy po = icePatch.getProtectionStrategy();
 
         //TODO implement further
     }

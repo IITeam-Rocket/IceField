@@ -12,18 +12,21 @@ public class HolePresenter extends TilePresenter {
     public HolePresenter(Hole hole, int x, int y) {
         super(x, y);
         this.hole = hole;
-    }
-
-    @Override
-    public void draw() {
-        int snowDepth = hole.getSnowDepth();
-        boolean isDiscovered = hole.isAnalyzed();
 
         button.setBounds(x, y, 60, 60);
         button.setIcon(GameJFrame.getInstance().getTexture("stable"));
         button.setVisible(true);
 
         GameJFrame.getInstance().add(button);
+
+        GameJFrame.getInstance().getContentPane().validate();
+        GameJFrame.getInstance().getContentPane().repaint();
+    }
+
+    @Override
+    public void draw() {
+        int snowDepth = hole.getSnowDepth();
+        boolean isDiscovered = hole.isAnalyzed();
 
 
         //TODO implement further

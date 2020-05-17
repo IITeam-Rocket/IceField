@@ -30,11 +30,16 @@ public class MapPresenter implements Observer  {
     public void update() {
         tiles.forEach(t -> {
             t.draw();
-
         });
 
         figures.forEach(f -> f.draw(getXCoord(f), getYCoord(f)));
         GameJFrame.getInstance().repaint();
+    }
+
+    public void afterDraw() {
+        tiles.forEach(t -> {
+            t.button.grabFocus();
+        });
     }
 
     public void paint(Graphics g) {

@@ -22,7 +22,7 @@ abstract public class TilePresenter {
         button.setHorizontalTextPosition(JButton.CENTER);
         button.setVerticalTextPosition(JButton.CENTER);
 
-        GameJFrame.getInstance().AddTile(button);
+        GameJFrame.getInstance().add(button);
     }
 
     public void draw() {

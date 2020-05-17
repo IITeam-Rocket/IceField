@@ -18,6 +18,11 @@ public class TextToCommandInterpreter {
         return parts.length > 1;
     }
 
+    /**
+     * Interpret command
+     * @param line Line to interpret
+     * @return Command created from line
+     */
     public Command interpreter(String line) {
         if (line.length() == 0) {
             game.getOutput().println("No command to interpret");

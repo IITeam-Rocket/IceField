@@ -1,9 +1,9 @@
-addtile instable 10 10 2
+addtile instable 10 20 2
 addtile stable 80 10
 addtile hole 160 10
-addtile instable 240 20 1
-addtile hole 320 20
-addtile stable 290 100
+addtile instable 240 100 1
+addtile hole 320 200
+addtile stable 180 210
 addtile instable 100 380 1
 addtile hole 250 240
 addtile stable 160 100

@@ -80,8 +80,8 @@ public class AddTileCommand implements Command {
         }
 
         Environment.getInstance().getIceTiles().add(t);
-        System.out.println("Size:" + Environment.getInstance().getIceTiles().size());
         MapPresenter.getInstance().addTilePresenter(presenter);
+        
         MapPresenter.getInstance().update();
         game.getOutput().println("tile added\ntype: " + args[0] + "\nID: " + t.getID());
     }

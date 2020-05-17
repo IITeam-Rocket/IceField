@@ -1,16 +1,16 @@
-addtile instable 10 10 2
-addtile stable 80 10
-addtile hole 160 10
-addtile instable 240 20 1
-addtile hole 320 20
-addtile stable 290 100
-addtile instable 100 380 1
-addtile hole 250 240
-addtile stable 160 100
-addtile hole 80 100
-addtile stable 140 200
-addtile hole 140 300
-addtile stable 10 300
+addtile instable 15 45 2
+addtile stable 150 15
+addtile hole 300 15
+addtile instable 360 150 1
+addtile hole 480 150
+addtile stable 450 300
+addtile instable 255 375 1
+addtile hole 300 270
+addtile stable 240 150
+addtile hole 120 150
+addtile stable 180 270
+addtile hole 90 375
+addtile stable 15 270
 neighbourtile 0 1
 neighbourtile 1 2
 neighbourtile 2 3

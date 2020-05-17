@@ -24,7 +24,7 @@ public class SwimOutPolicy implements FallInWaterPolicy, Serializable {
      *
      * @param player the player, who fell in water.
      *
-     * @return
+     * @return true, if the player got out of the water.
      */
     @Override
     public boolean executeStrategy(Figure player) {

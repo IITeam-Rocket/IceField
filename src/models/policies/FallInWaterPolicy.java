@@ -17,7 +17,7 @@ public interface FallInWaterPolicy {
      *
      * @param player the player, who fell in water.
      *
-     * @return
+     * @return true if strategy was successfully executed.
      */
     boolean executeStrategy(Figure player);
 }

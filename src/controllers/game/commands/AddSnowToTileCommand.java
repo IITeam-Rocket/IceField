@@ -1,6 +1,5 @@
 package controllers.game.commands;
 
-import controllers.game.Game;
 import controllers.game.GameJFrame;
 import models.Environment;
 
@@ -11,17 +10,14 @@ import models.Environment;
  */
 public class AddSnowToTileCommand implements Command {
 
-    private Game game;
-    private String[] args;
+    private final String[] args;
 
     /**
      * Constructor
      *
-     * @param _game The Game Object
      * @param _args Command Arguments
      */
-    public AddSnowToTileCommand(Game _game, String[] _args) {
-        game = _game;
+    public AddSnowToTileCommand(String[] _args) {
         args = _args;
     }
 
@@ -30,8 +26,7 @@ public class AddSnowToTileCommand implements Command {
      */
     @Override
     public void execute() {
-        if (args.length != 2) {
-        } else {
+        if (args.length == 2) {
             int tileID;
             int snowQuantity;
 

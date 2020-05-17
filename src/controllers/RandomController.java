@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class RandomController {
 
-    static private List<RandomListener> listeners = new ArrayList<>();
+    static private final List<RandomListener> listeners = new ArrayList<>();
 
     /**
      * Add Listener

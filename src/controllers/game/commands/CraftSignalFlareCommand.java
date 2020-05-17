@@ -1,10 +1,8 @@
 package controllers.game.commands;
 
-import controllers.game.Game;
 import controllers.game.GameJFrame;
 import models.Environment;
 import models.figures.Figure;
-import models.tiles.Tile;
 
 
 /**
@@ -14,18 +12,10 @@ import models.tiles.Tile;
  */
 public class CraftSignalFlareCommand implements Command {
 
-    private Game game;
-    private String[] args;
-
     /**
      * Constructor
-     *
-     * @param _game The Game Object
-     * @param _args Command Arguments
      */
-    public CraftSignalFlareCommand(Game _game, String[] _args) {
-        game = _game;
-        args = _args;
+    public CraftSignalFlareCommand() {
     }
 
     /**

@@ -1,22 +1,18 @@
 package controllers.game.commands;
 
-import controllers.game.Game;
 import controllers.game.GameJFrame;
 import models.Environment;
 
 public class LoadCommand implements Command {
 
-    private Game game;
-    private String[] args;
+    private final String[] args;
 
     /**
      * Constructor
      *
-     * @param _game The Game Object
      * @param _args Command Arguments
      */
-    public LoadCommand(Game _game, String[] _args) {
-        game = _game;
+    public LoadCommand(String[] _args) {
         args = _args;
     }
 

@@ -14,8 +14,8 @@ import models.tiles.Tile;
  */
 public class AddItemToTileCommand implements Command {
 
-    private Game game;
-    private String[] args;
+    private final Game game;
+    private final String[] args;
 
     /**
      * Constructor
@@ -33,9 +33,7 @@ public class AddItemToTileCommand implements Command {
      */
     @Override
     public void execute() {
-        if (args.length != 2) {
-            return;
-        } else {
+        if (args.length == 2) {
             int tileID = Integer.MIN_VALUE;
             int itemID = Integer.MIN_VALUE;
 

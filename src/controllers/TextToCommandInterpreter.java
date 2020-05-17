@@ -28,7 +28,7 @@ public class TextToCommandInterpreter {
             game.getOutput().println("No command to interpret");
             return null;
         }
-        Command command = new InvalidCommand(game, new String[]{});
+        Command command = new InvalidCommand();
         String[] parts = line.split(" ");
         String cmd = parts[0];
         String[] args = {};
@@ -45,13 +45,13 @@ public class TextToCommandInterpreter {
                 command = new OutputCommand(game, args);
                 break;
             case "load":
-                command = new LoadCommand(game, args);
+                command = new LoadCommand(args);
                 break;
             case "save":
-                command = new SaveCommand(game, args);
+                command = new SaveCommand(args);
                 break;
             case "random":
-                command = new RandomCommand(game, args);
+                command = new RandomCommand(args);
                 break;
             case "nextcharacter":
                 command = new NextCharacterCommand(game, args);
@@ -60,25 +60,25 @@ public class TextToCommandInterpreter {
                 command = new MoveCommand(game, args);
                 break;
             case "unbury":
-                command = new UnburyCommand(game, args);
+                command = new UnburyCommand(args);
                 break;
             case "clearsnow":
                 command = new ClearSnowCommand(game, args);
                 break;
             case "simulateweather":
-                command = new SimulateWeatherCommand(game, args);
+                command = new SimulateWeatherCommand(game);
                 break;
             case "rescue":
                 command = new RescueCommand(game, args);
                 break;
             case "craftsignalflare":
-                command = new CraftSignalFlareCommand(game, args);
+                command = new CraftSignalFlareCommand();
                 break;
             case "buildiglu":
                 command = new BuildIgluCommand(game, args);
                 break;
             case "buildtent":
-                command = new BuildTentCommand(game, args);
+                command = new BuildTentCommand();
                 break;
             case "analyzetile":
                 command = new AnalyzeTileCommand(game, args);
@@ -87,19 +87,19 @@ public class TextToCommandInterpreter {
                 command = new AddTileCommand(game, args);
                 break;
             case "neighbourtile":
-                command = new NeighbourTileCommand(game, args);
+                command = new NeighbourTileCommand(args);
                 break;
             case "additemtotile":
                 command = new AddItemToTileCommand(game, args);
                 break;
             case "addcharactertotile":
-                command = new AddCharacterToTileCommand(game, args);
+                command = new AddCharacterToTileCommand(args);
                 break;
             case "addsnowtotile":
-                command = new AddSnowToTileCommand(game, args);
+                command = new AddSnowToTileCommand(args);
                 break;
             case "reset":
-                command = new ResetCommand(game, args);
+                command = new ResetCommand();
                 break;
             case "usespecial":
                 int bodyheat = Environment.getInstance().getCurrentPlayer().getBaseBodyHeat();
@@ -113,7 +113,7 @@ public class TextToCommandInterpreter {
                 game.endGame();
                 break;
             default:
-                command = new InvalidCommand(game, args);
+                command = new InvalidCommand();
                 break;
         }
         return command;

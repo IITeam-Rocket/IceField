@@ -15,8 +15,8 @@ import models.tiles.Tile;
  */
 public class AnalyzeTileCommand implements Command {
 
-    private Game game;
-    private String[] args;
+    private final Game game;
+    private final String[] args;
 
     /**
      * Constructor

@@ -10,8 +10,8 @@ import java.util.Scanner;
 
 public class InputCommand implements Command {
 
-    private Game game;
-    private String[] args;
+    private final Game game;
+    private final String[] args;
 
     /**
      * Constructor

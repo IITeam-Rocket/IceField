@@ -1,6 +1,5 @@
 package controllers.game.commands;
 
-import controllers.game.Game;
 import controllers.game.GameJFrame;
 import models.Environment;
 import models.figures.Eskimo;
@@ -14,18 +13,10 @@ import models.figures.Researcher;
  */
 public class BuildTentCommand implements Command {
 
-    private Game game;
-    private String[] args;
-
     /**
      * Constructor
-     *
-     * @param _game The Game Object
-     * @param _args Command Arguments
      */
-    public BuildTentCommand(Game _game, String[] _args) {
-        game = _game;
-        args = _args;
+    public BuildTentCommand() {
     }
 
     /**

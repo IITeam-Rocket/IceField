@@ -1,23 +1,19 @@
 package controllers.game.commands;
 
 import controllers.RandomController;
-import controllers.game.Game;
 import controllers.game.GameJFrame;
 import controllers.view.MapPresenter;
 
 public class RandomCommand implements Command {
 
-    private Game game;
-    private String[] args;
+    private final String[] args;
 
     /**
      * Constructor
      *
-     * @param _game The Game Object
      * @param _args Command Arguments
      */
-    public RandomCommand(Game _game, String[] _args) {
-        game = _game;
+    public RandomCommand(String[] _args) {
         args = _args;
     }
 

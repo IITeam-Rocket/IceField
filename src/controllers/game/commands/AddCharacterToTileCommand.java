@@ -1,6 +1,5 @@
 package controllers.game.commands;
 
-import controllers.game.Game;
 import controllers.game.GameJFrame;
 import controllers.view.*;
 import models.Environment;
@@ -18,17 +17,14 @@ import models.tiles.Tile;
  */
 public class AddCharacterToTileCommand implements Command {
 
-    private Game game;
-    private String[] args;
+    private final String[] args;
 
     /**
      * Constructor
      *
-     * @param _game The Game Object
      * @param _args Command Arguments
      */
-    public AddCharacterToTileCommand(Game _game, String[] _args) {
-        game = _game;
+    public AddCharacterToTileCommand(String[] _args) {
         args = _args;
     }
 
@@ -37,9 +33,7 @@ public class AddCharacterToTileCommand implements Command {
      */
     @Override
     public void execute() {
-        if (args.length != 2) {
-            return;
-        } else {
+        if (args.length == 2) {
             int tileID = Integer.MIN_VALUE;
             int characterID = Integer.MIN_VALUE;
 

@@ -1,23 +1,19 @@
 package controllers.game.commands;
 
-import controllers.game.Game;
 import controllers.game.GameJFrame;
 import models.Environment;
 import models.tiles.Tile;
 
 public class NeighbourTileCommand implements Command {
 
-    private Game game;
-    private String[] args;
+    private final String[] args;
 
     /**
      * Constructor
      *
-     * @param _game The Game Object
      * @param _args Command Arguments
      */
-    public NeighbourTileCommand(Game _game, String[] _args) {
-        game = _game;
+    public NeighbourTileCommand(String[] _args) {
         args = _args;
     }
 
@@ -66,14 +62,12 @@ public class NeighbourTileCommand implements Command {
         tile1.getNeighbours().forEach(tile -> {
             if (tile.equals(tile2)) {
                 GameJFrame.getInstance().OutputToTextBox("These tiles are already neighbours!");
-                return;
             }
         });
 
         tile2.getNeighbours().forEach(tile -> {
             if (tile.equals(tile1)) {
                 GameJFrame.getInstance().OutputToTextBox("These tiles are already neighbours!");
-                return;
             }
         });
 

@@ -1,6 +1,5 @@
 package controllers.game.commands;
 
-import controllers.game.Game;
 import controllers.game.GameJFrame;
 import models.Environment;
 
@@ -11,18 +10,10 @@ import models.Environment;
  */
 public class ResetCommand implements Command {
 
-    private Game game;
-    private String[] args;
-
     /**
      * Constructor
-     *
-     * @param _game The Game Object
-     * @param _args Command Arguments
      */
-    public ResetCommand(Game _game, String[] _args) {
-        game = _game;
-        args = _args;
+    public ResetCommand() {
     }
 
     /**

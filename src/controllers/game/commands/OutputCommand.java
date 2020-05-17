@@ -9,8 +9,8 @@ import java.io.PrintStream;
 
 public class OutputCommand implements Command {
 
-    private Game game;
-    private String[] args;
+    private final Game game;
+    private final String[] args;
 
     /**
      * Constructor

@@ -8,18 +8,15 @@ import models.exceptions.EndOfGameException;
 
 public class SimulateWeatherCommand implements Command {
 
-    private Game game;
-    private String[] args;
+    private final Game game;
 
     /**
      * Constructor
      *
      * @param _game The Game Object
-     * @param _args Command Arguments
      */
-    public SimulateWeatherCommand(Game _game, String[] _args) {
+    public SimulateWeatherCommand(Game _game) {
         game = _game;
-        args = _args;
     }
 
     /**

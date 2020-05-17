@@ -9,10 +9,11 @@ import models.tiles.InstableIcePatch;
 import models.tiles.StableIcePatch;
 import models.tiles.Tile;
 
+import java.util.Arrays;
+
 public class AddTileCommand implements Command {
 
-    private Game game;
-    private String[] args;
+    private final String[] args;
 
     /**
      * Constructor
@@ -21,7 +22,6 @@ public class AddTileCommand implements Command {
      * @param _args Command Arguments
      */
     public AddTileCommand(Game _game, String[] _args) {
-        game = _game;
         args = _args;
     }
 
@@ -44,20 +44,19 @@ public class AddTileCommand implements Command {
                 y = Integer.parseInt(args[2]);
                 capacity = Integer.parseInt(args[3]);
             } catch (NumberFormatException e) {
-                GameJFrame.getInstance().OutputToTextBox(e.getStackTrace().toString());
+                GameJFrame.getInstance().OutputToTextBox(Arrays.toString(e.getStackTrace()));
             }
-        }
-        else if (args.length == 3) {
+        } else if (args.length == 3) {
             try {
                 x = Integer.parseInt(args[1]);
                 y = Integer.parseInt(args[2]);
             } catch (NumberFormatException e) {
-                GameJFrame.getInstance().OutputToTextBox(e.getStackTrace().toString());
+                GameJFrame.getInstance().OutputToTextBox(Arrays.toString(e.getStackTrace()));
             }
         }
 
-        Tile t = null;
-        TilePresenter presenter = null;
+        Tile t;
+        TilePresenter presenter;
 
         switch (args[0]) {
             case "hole":
@@ -78,10 +77,6 @@ public class AddTileCommand implements Command {
             default:
                 System.out.println("Unknown tile type!");
                 return;
-        }
-
-        if (t == null || presenter == null) {
-            GameJFrame.getInstance().OutputToTextBox("Error!");
         }
 
         Environment.getInstance().getIceTiles().add(t);

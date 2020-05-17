@@ -12,8 +12,8 @@ import java.util.Random;
 
 public class NextCharacterCommand implements Command {
 
-    private Game game;
-    private String[] args;
+    private final Game game;
+    private final String[] args;
 
     /**
      * Constructor
@@ -59,7 +59,7 @@ public class NextCharacterCommand implements Command {
                     }
                 });
                 if (RandomController.getRandom())
-                    new SimulateWeatherCommand(game, args).execute();
+                    new SimulateWeatherCommand(game).execute();
             } else {
                 ++ID;
             }

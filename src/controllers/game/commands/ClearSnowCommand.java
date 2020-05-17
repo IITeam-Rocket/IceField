@@ -2,6 +2,7 @@ package controllers.game.commands;
 
 import controllers.game.Game;
 import controllers.game.GameJFrame;
+import controllers.view.MapPresenter;
 import models.Environment;
 import models.figures.Eskimo;
 import models.figures.Figure;
@@ -42,5 +43,7 @@ public class ClearSnowCommand implements Command {
                 GameJFrame.getInstance().OutputToTextBox("Error occurred");
                 break;
         }
+
+        MapPresenter.getInstance().update();
     }
 }

@@ -1,5 +1,8 @@
 package controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * A class that controls the randomness
  * of the game.
@@ -10,6 +13,12 @@ package controllers;
  * @since 2020.04.24
  */
 public class RandomController {
+
+    static private List<RandomListener> listeners = new ArrayList<>();
+
+    static public void addListener(RandomListener rl) {
+        listeners.add(rl);
+    }
 
     /**
      * Boolean flag signifying whether
@@ -37,6 +46,7 @@ public class RandomController {
      */
     static public void setRandom(boolean newValue) {
         random = newValue;
+        listeners.forEach(rl -> rl.onRandomChange(random));
     }
 
     /**

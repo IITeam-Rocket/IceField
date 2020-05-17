@@ -1,6 +1,7 @@
 package controllers.game;
 
 import controllers.RandomController;
+import controllers.RandomListener;
 import controllers.view.MapPresenter;
 import models.Environment;
 import models.tiles.Tile;
@@ -120,7 +121,7 @@ public class GameJFrame extends JFrame {
     private JTextField textbox = new JTextField("Filename Textbox");
     private JButton load = new JButton("Load");
     private JButton save = new JButton("Save");
-    private JLabel randomness = new JLabel("Randomness:");
+    private JLabel randomness = new JLabel("Randomness:   ");
     private JButton random = new JButton("Random Off");
     private JButton weather = new JButton("Simulate Weather");
     private JLabel gameplay = new JLabel("Gameplay:");
@@ -174,17 +175,18 @@ public class GameJFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 game.random();
-                if (RandomController.getRandom()) {
-                    random.setText("Random on");
-
-                } else {
-                    random.setText("Random off");
-                }
             }
         });
         commandPanel.add(random);
 
         weather.setVisible(true);
+        weather.setEnabled(false);
+        weather.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                game.simulateWeather();
+            }
+        });
         commandPanel.add(weather);
 
         gameplay.setVisible(true);
@@ -263,6 +265,13 @@ public class GameJFrame extends JFrame {
 
         team.setVisible(true);
         commandPanel.add(team);
+
+        RandomController.addListener(new RandomListener() {
+            @Override
+            public void onRandomChange(boolean x) {
+                weather.setEnabled(!x);
+            }
+        });
     }
 
     public void createBackground()

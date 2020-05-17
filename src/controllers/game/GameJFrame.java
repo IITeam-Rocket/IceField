@@ -178,6 +178,10 @@ public class GameJFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 game.random();
+                if(random.getText().equals("Random Off"))
+                    random.setText("Random On");
+                else if(random.getText().equals("Random On"))
+                    random.setText("Random Off");
             }
         });
         commandPanel.add(random);

@@ -18,4 +18,12 @@ abstract public class TilePresenter {
     abstract public boolean isNeighbour(TilePresenter tile);
 
     abstract public Tile getTile();
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
 }

@@ -43,7 +43,7 @@ abstract public class Tile extends Subject implements Serializable {
     /**
      * Contains the Figures who stands on the Tile.
      */
-    private ArrayList<Figure> entities = new ArrayList<>();
+    protected ArrayList<Figure> entities = new ArrayList<>();
     /**
      * Contains the neighbours of the Tile.
      */

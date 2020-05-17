@@ -29,7 +29,6 @@ public class AddItemtoTileCommand implements Command {
     @Override
     public void execute() {
         if (args.length != 2) {
-            //TODO printItems()
             return;
         } else {
             int tileID = Integer.MIN_VALUE;

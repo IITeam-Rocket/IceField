@@ -135,9 +135,7 @@ abstract public class TilePresenter implements Serializable {
         button.setIcon(resultImage);
     }
 
-    public void draw() {
-        // TODO implement draw()
-    }
+    public void draw() { }
 
     abstract public boolean isNeighbour(TilePresenter tile);
 

@@ -1,5 +1,6 @@
 package controllers.view;
 
+import models.figures.Figure;
 import models.figures.Researcher;
 import models.policies.ClearSnowPolicy;
 import models.policies.FallInWaterPolicy;
@@ -12,6 +13,9 @@ public class ResearcherPresenter extends FigurePresenter {
     public ResearcherPresenter(Researcher researcher) {
         this.researcher = researcher;
     }
+
+    @Override
+    public Figure getFigure() { return researcher; }
 
     @Override
     public void draw(int x, int y) {

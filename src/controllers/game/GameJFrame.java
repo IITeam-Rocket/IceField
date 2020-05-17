@@ -25,11 +25,31 @@ public class GameJFrame extends JFrame {
         initComponents();
 
         this.addWindowListener(new WindowAdapter() {
+            public void windowOpened(WindowEvent e) {
+                repaint();
+            }
+
+            public void windowIconified(WindowEvent e) {
+                repaint();
+            }
+
+            public void windowDeiconified(WindowEvent e) {
+                repaint();
+            }
+
             public void windowActivated(WindowEvent e) {
                 repaint();
             }
 
             public void windowDeactivated(WindowEvent e) {
+                repaint();
+            }
+
+            public void windowStateChanged(WindowEvent e) {
+                repaint();
+            }
+
+            public void windowGainedFocus(WindowEvent e) {
                 repaint();
             }
         });
@@ -52,6 +72,16 @@ public class GameJFrame extends JFrame {
         }
         MapTextures.put("water", new ImageIcon("resources/water.png"));
         MapTextures.put("stable", new ImageIcon("resources/stable.png"));
+
+        MapTextures.put("bear", new ImageIcon("resources/bear.png"));
+        MapTextures.put("bear_active", new ImageIcon("resources/bear_active.png"));
+        MapTextures.put("eskimo", new ImageIcon("resources/eskimo.png"));
+        MapTextures.put("eskimo_active", new ImageIcon("resources/eskimo_active.png"));
+        MapTextures.put("researcher", new ImageIcon("resources/researcher.png"));
+        MapTextures.put("researcher_active", new ImageIcon("resources/researcher_active.png"));
+
+
+
     }
 
     public ImageIcon getTexture(String key)
@@ -59,10 +89,9 @@ public class GameJFrame extends JFrame {
         return MapTextures.get(key);
     }
 
-    private JTextArea text = new JTextArea("Csapattagok:\n  Ábrahám Dániel\n  Józsa György Bence\n  Kovács Marcell\n  Matyasi Lilla Nóra\n  Tóth Máté\n\nKonzulens:\n  Dr. Goldschmidt Balázs");
-    private JTextArea team= new JTextArea("team_rocket\n      v1.0");
+    private JTextArea team= new JTextArea("Csapattagok:\nÁbrahám Dániel\nJózsa György Bence\nKovács Marcell\nMatyasi Lilla Nóra\nTóth Máté\n\nKonzulens:\nDr. Goldschmidt Balázs\n \nteam_rocket\nv1.0");
     private JLabel io = new JLabel("IO:");
-    private JTextField textbox = new JTextField("Filename Textbox");
+    private JTextField text = new JTextField("Filename Textbox");
     private JButton load = new JButton("Load");
     private JButton save = new JButton("Save");
     private JLabel randomness = new JLabel("Randomness:");
@@ -90,8 +119,8 @@ public class GameJFrame extends JFrame {
         io.setVisible(true);
         commandPanel.add(io);
 
-        textbox.setVisible(true);
-        commandPanel.add(textbox);
+        text.setVisible(true);
+        commandPanel.add(text);
 
         load.setVisible(true);
         commandPanel.add(load);
@@ -132,9 +161,6 @@ public class GameJFrame extends JFrame {
         special.setVisible(true);
         commandPanel.add(special);
 
-        text.setVisible(true);
-        commandPanel.add(text);
-
         team.setVisible(true);
         commandPanel.add(team);
     }
@@ -142,7 +168,7 @@ public class GameJFrame extends JFrame {
     public void paint(Graphics g)
     {
         io.setBounds(10,10,20, 15);
-        textbox.setBounds(5,30,235, 20);
+        text.setBounds(5,30,235, 20);
         load.setBounds(5,60, 120, 20);
         save.setBounds(130,60, 120, 20);
         randomness.setBounds(10,90,150, 15);
@@ -156,8 +182,7 @@ public class GameJFrame extends JFrame {
         rescue.setBounds(5,220, 120, 20);
         craft.setBounds(130,220, 120, 20);
         special.setBounds(60,250, 135, 20);
-        text.setBounds(5,300, 200, 220);
-        team.setBounds(90, 520, 200, 40);
+        team.setBounds(5,300, 200, 200);
         super.paint(g);
 
         g.translate(this.getInsets().left + 30, this.getInsets().top + 30);

@@ -13,11 +13,18 @@ public class GameJFrame extends JFrame {
 
 
     private GameJFrame() {
+
+        initTextures();
         initComponents();
 
         this.setTitle("IceField");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
+
+    }
+
+    public void  initTextures()
+    {
         MapTextures = new HashMap<String, ImageIcon>();
         MapTextures.put("stable", new ImageIcon("resources/stable.png"));
     }
@@ -30,6 +37,12 @@ public class GameJFrame extends JFrame {
     void initComponents() {
         JButton b = new JButton("");
         b.setBounds(130, 100, 60, 60);
+        b.setIcon(getTexture("stable"));
+
+        b.setHorizontalTextPosition(JButton.CENTER);
+        b.setVerticalTextPosition(JButton.CENTER);
+
+        b.setText("asd");
         b.addActionListener(new MouseHandler());
         this.add(b);
         this.setSize(800, 600);

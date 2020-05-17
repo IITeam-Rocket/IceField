@@ -233,10 +233,7 @@ public class GameJFrame extends JFrame {
         snow.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (activeTile != null) {
-                    game.clearSnow(activeTile);
-                    activeTile = null;
-                }
+                game.clearSnow(activeTile);
             }
         });
         commandPanel.add(snow);
@@ -344,4 +341,9 @@ public class GameJFrame extends JFrame {
     public void showEndGameDialog() {
         EndGameDialog dialog = new EndGameDialog(this, "End Game");
     }
+
+    public void showWinGameDialog() {
+        EndGameDialog dialog = new EndGameDialog(this, "Game Won");
+    }
+
 }

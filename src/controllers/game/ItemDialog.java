@@ -42,6 +42,9 @@ public class ItemDialog extends JDialog {
         this.setMinimumSize(new Dimension(200, 150));
     }
 
+    /**
+     * Initialize the components
+     */
     private void initComponents() {
         this.add(contentPane);
         contentPane.setLayout(new GridLayout(2, 1));

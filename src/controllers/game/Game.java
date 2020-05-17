@@ -116,7 +116,7 @@ public class Game {
     public void Move(Tile t) {
         commandInterpreter.interpret(cip.interpreter(String.format("move %d", t.getID())));
     }
-    
+
     /**
      * Do a rescue using the commands
      * @param t Tile to rescue from

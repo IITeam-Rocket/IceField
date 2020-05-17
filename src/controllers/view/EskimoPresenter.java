@@ -15,11 +15,19 @@ import java.io.Serializable;
 public class EskimoPresenter extends FigurePresenter implements Serializable {
     private final Eskimo eskimo;
 
+    /**
+     * Constructor
+     * @param eskimo The Eskimo to present
+     */
     public EskimoPresenter(Eskimo eskimo) {
         super();
         this.eskimo = eskimo;
     }
 
+    /**
+     * Get the Image to Draw
+     * @return ImageIcon
+     */
     @Override
     public ImageIcon getImage() {
         if(Environment.getInstance().getCurrentPlayer() == eskimo)
@@ -28,9 +36,18 @@ public class EskimoPresenter extends FigurePresenter implements Serializable {
             return GameJFrame.getInstance().getTexture("eskimo");
     }
 
+    /**
+     * Get Figure
+     * @return Figure
+     */
     @Override
     public Figure getFigure() { return eskimo; }
 
+    /**
+     * Draw
+     * @param x where X
+     * @param y where Y
+     */
     @Override
     public void draw(int x, int y) {
         super.draw(x, y);

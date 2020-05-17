@@ -48,7 +48,8 @@ public class Hole extends Tile implements Serializable {
             return false;
         reveal();
         moveFigureToThisTile(figure);
-        figure.swimToShore();
+        if (figure.swimToShore())
+            entities.remove(figure);
         return true;
     }
 
@@ -107,5 +108,18 @@ public class Hole extends Tile implements Serializable {
     @Override
     public boolean storeItem(Item item) {
         return false;
+    }
+
+    //TODO: javadoc
+    @Override
+    public boolean acceptFigureWithoutRemoval(Figure figure) {
+        if (analyzed)
+            return false;
+        reveal();
+        addCharacter(figure);
+        figure.setTile(this);
+        if (figure.swimToShore())
+            entities.remove(figure);
+        return true;
     }
 }

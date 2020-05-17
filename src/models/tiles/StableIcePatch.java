@@ -59,4 +59,12 @@ public class StableIcePatch extends IcePatch implements Serializable {
     public int getCapacity() {
         return -1;
     }
+
+    //TODO: javadoc
+    @Override
+    public boolean acceptFigureWithoutRemoval(Figure figure) {
+        addCharacter(figure);
+        figure.setTile(this);
+        return true;
+    }
 }

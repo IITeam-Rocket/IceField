@@ -1,6 +1,5 @@
 package models.policies;
 
-import controllers.game.GameJFrame;
 import models.figures.Figure;
 
 import java.io.Serializable;
@@ -23,10 +22,12 @@ public class HasNoDiveSuitPolicy implements FallInWaterPolicy, Serializable {
      * do anything and die.
      *
      * @param player the player, who fell in water.
+     *
+     * @return false
      */
     @Override
-    public void executeStrategy(Figure player) {
-        GameJFrame.getInstance().getGame().NextCharacter();
+    public boolean executeStrategy(Figure player) {
+        return false;
     }
 
     /**

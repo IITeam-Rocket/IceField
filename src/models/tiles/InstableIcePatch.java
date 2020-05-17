@@ -66,9 +66,7 @@ public class InstableIcePatch extends IcePatch implements Serializable {
         moveFigureToThisTile(figure);
         if (entities.size() > playerCapacity) {
             flip();
-            for (Figure f : entities) {
-                f.swimToShore();
-            }
+            entities.removeIf(Figure::swimToShore);
         }
         return true;
     }
@@ -135,5 +133,19 @@ public class InstableIcePatch extends IcePatch implements Serializable {
      */
     public void setPlayerCapacity(int playerCapacity) {
         this.playerCapacity = playerCapacity;
+    }
+
+    //TODO: javadoc
+    @Override
+    public boolean acceptFigureWithoutRemoval(Figure figure) {
+        if (flipped)
+            return false;
+        addCharacter(figure);
+        figure.setTile(this);
+        if (entities.size() > playerCapacity) {
+            flip();
+            entities.removeIf(Figure::swimToShore);
+        }
+        return true;
     }
 }

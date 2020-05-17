@@ -48,6 +48,8 @@ public class NextCharacterCommand implements Command {
                         }
                     }
                 });
+                if (RandomController.getRandom())
+                    new SimulateWeatherCommand(game, args).execute();
             } else {
                 ++ID;
             }

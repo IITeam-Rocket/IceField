@@ -1,9 +1,13 @@
 package controllers.game;
 
+import controllers.game.commands.LoadCommand;
 import controllers.view.MapPresenter;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class GameJFrame extends JFrame {
@@ -14,6 +18,9 @@ public class GameJFrame extends JFrame {
 
     private final CommandPanel commandPanel = new CommandPanel();
 
+    private final ArrayList<JButton> buttons = new ArrayList<>();
+    private final Game game = new Game();
+    private final CommandInterpreter commandInterpreter = new CommandInterpreter();
 
     private GameJFrame() {
         initTextures();
@@ -28,13 +35,18 @@ public class GameJFrame extends JFrame {
         this.getContentPane().setBackground(new Color(0, 148, 255));
     }
 
+    public void AddTile(JButton b) {
+        buttons.add(b);
+        this.add(b);
+    }
+
     public void initTextures()
     {
         for(int i = 0; i < 7; i++)
         {
-            MapTextures.put("stable_" + String.valueOf(i), new ImageIcon("resources/stable_" + String.valueOf(i) + ".png"));
-            MapTextures.put("stable_" + String.valueOf(i) + "_iglu", new ImageIcon("resources/stable_" + String.valueOf(i) + "_iglu.png"));
-            MapTextures.put("stable_" + String.valueOf(i) + "_tent", new ImageIcon("resources/stable_" + String.valueOf(i) + "_tent.png"));
+            MapTextures.put("stable_" + i, new ImageIcon("resources/stable_" + i + ".png"));
+            MapTextures.put("stable_" + i + "_iglu", new ImageIcon("resources/stable_" + i + "_iglu.png"));
+            MapTextures.put("stable_" + i + "_tent", new ImageIcon("resources/stable_" + i + "_tent.png"));
         }
         MapTextures.put("water", new ImageIcon("resources/water.png"));
         MapTextures.put("stable", new ImageIcon("resources/stable.png"));
@@ -45,7 +57,8 @@ public class GameJFrame extends JFrame {
         return MapTextures.get(key);
     }
 
-    void initComponents() {
+    private void initComponents() {
+        this.setResizable(false);
         this.setSize(800, 600);
         this.setLayout(null);
         this.setVisible(true);
@@ -66,6 +79,12 @@ public class GameJFrame extends JFrame {
         JButton load = new JButton("Load");
         load.setBounds(5,60, 120, 20);
         load.setVisible(true);
+        load.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                commandInterpreter.interpret(new LoadCommand(game, text.getText().trim().split(" ")));
+            }
+        });
         commandPanel.add(load);
 
         JButton save = new JButton("Save");
@@ -132,11 +151,16 @@ public class GameJFrame extends JFrame {
     public void paint(Graphics g)
     {
         super.paint(g);
+
         g.translate(this.getInsets().left + 30, this.getInsets().top + 30);
 
         MapPresenter.getInstance().paint(g);
 
         g.translate(- this.getInsets().left - 30, - this.getInsets().top - 30);
+
+        for (JButton b : buttons) {
+            b.requestFocus();
+        }
     }
 
     public static GameJFrame getInstance() {

@@ -1,6 +1,7 @@
 package controllers.game.commands;
 
 import controllers.game.Game;
+import controllers.game.GameJFrame;
 import models.Environment;
 import models.items.*;
 import models.tiles.IcePatch;
@@ -47,7 +48,7 @@ public class AddItemtoTileCommand implements Command {
             }
 
             if (Environment.getInstance().getIceTiles().size() - 1 < tileID || tileID < 0) {
-                game.getOutput().println("Tile ID must be between 0 and the maximum ID of " + (Environment.getInstance().getIceTiles().size() - 1));
+                GameJFrame.getInstance().OutputToTextBox("Tile ID must be between 0 and the maximum ID of " + (Environment.getInstance().getIceTiles().size() - 1));
                 return;
             }
 

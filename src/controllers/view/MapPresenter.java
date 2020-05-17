@@ -2,6 +2,7 @@ package controllers.view;
 
 import controllers.game.GameJFrame;
 import models.Observer;
+import models.figures.Figure;
 
 import java.awt.*;
 import java.awt.geom.Line2D;
@@ -21,6 +22,14 @@ public class MapPresenter implements Observer  {
 
     public static MapPresenter getInstance() {
         return instance;
+    }
+
+    public FigurePresenter findFigure(Figure figure) {
+        for(int i = 0; i < figures.size(); i++) {
+            if(figures.get(i).getFigure() == figure)
+                return figures.get(i);
+        }
+        return null;
     }
 
     /**

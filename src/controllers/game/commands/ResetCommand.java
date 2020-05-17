@@ -1,6 +1,7 @@
 package controllers.game.commands;
 
 import controllers.game.Game;
+import controllers.game.GameJFrame;
 import models.Environment;
 
 /**
@@ -25,6 +26,6 @@ public class ResetCommand implements Command {
     @Override
     public void execute() {
         Environment.getInstance().reset();
-        game.getOutput().println("Game Reset!");
+        GameJFrame.getInstance().OutputToTextBox("Game Reset!");
     }
 }

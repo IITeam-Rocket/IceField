@@ -1,6 +1,7 @@
 package controllers.game.commands;
 
 import controllers.game.Game;
+import controllers.game.GameJFrame;
 import models.Environment;
 import models.exceptions.EndOfGameException;
 
@@ -17,7 +18,7 @@ public class SimulateWeatherCommand implements Command {
     @Override
     public void execute() {
         try {
-            game.getOutput().println("weather simulated");
+            GameJFrame.getInstance().OutputToTextBox("weather simulated");
             Environment.getInstance().makeStorm();
         } catch (EndOfGameException e) {
             game.getOutput().println(e.getMessage());

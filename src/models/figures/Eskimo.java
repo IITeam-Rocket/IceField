@@ -1,5 +1,6 @@
 package models.figures;
 
+import controllers.view.MapPresenter;
 import models.policies.IglooPolicy;
 import models.tiles.IcePatch;
 import models.tiles.Tile;
@@ -25,6 +26,8 @@ public class Eskimo extends Character implements Serializable {
      */
     public Eskimo() {
         super(5, 4);
+        register(MapPresenter.getInstance());
+        initObservers();
     }
 
     /**
@@ -33,6 +36,15 @@ public class Eskimo extends Character implements Serializable {
     public Eskimo(Tile starting) {
         super(5, 4);
         this.tile = starting;
+        initObservers();
+    }
+
+    /**
+     * Helper method to initialize observers
+     */
+    @Override
+    void initObservers() {
+        register(MapPresenter.getInstance());
     }
 
     /**

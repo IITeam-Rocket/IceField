@@ -49,7 +49,6 @@ public class Game {
         while (running) {
             if (in.hasNextLine()) {
                 String line = in.nextLine();
-
                 commandInterpreter.interpret(cip.interpter(line));
             }
         }
@@ -73,5 +72,13 @@ public class Game {
 
     public void endGame() {
         this.running = false;
+    }
+
+    public void NextCharacter() {
+        commandInterpreter.interpret(cip.interpter("nextcharacter"));
+    }
+
+    public void Move(Tile t) {
+        commandInterpreter.interpret(cip.interpter(String.format("move ")));
     }
 }

@@ -1,6 +1,7 @@
 package controllers.game.commands;
 
 import controllers.game.Game;
+import controllers.game.GameJFrame;
 import models.Environment;
 import models.figures.Eskimo;
 import models.figures.Figure;
@@ -30,27 +31,27 @@ public class BuildTentCommand implements Command {
         Figure figure = Environment.getInstance().getCurrentPlayer();
 
         if (figure == null) {
-            game.getOutput().println("There is no Figure currently selected!");
+            GameJFrame.getInstance().OutputToTextBox("There is no Figure currently selected!");
             return;
         }
 
         switch (figure.getBaseBodyHeat()) {
             case -1:
-                game.getOutput().println("A polar bear cannot build Tent!");
+                GameJFrame.getInstance().OutputToTextBox("A polar bear cannot build Tent!");
                 break;
             case 4:
                 ((Researcher) figure).buildTent();
-                game.getOutput().println("build tent: successful");
+                GameJFrame.getInstance().OutputToTextBox("build tent: successful");
                 return;
             case 5:
                 ((Eskimo) figure).buildTent();
-                game.getOutput().println("build tent: successful");
+                GameJFrame.getInstance().OutputToTextBox("build tent: successful");
                 return;
             default:
-                game.getOutput().println("Unknown Figure!");
+                GameJFrame.getInstance().OutputToTextBox("Unknown Figure!");
                 break;
         }
 
-        game.getOutput().println("build tent: unsuccessful");
+        GameJFrame.getInstance().OutputToTextBox("build tent: unsuccessful");
     }
 }

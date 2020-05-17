@@ -1,5 +1,6 @@
 package models.figures;
 
+import controllers.view.MapPresenter;
 import models.tiles.Tile;
 
 import java.io.Serializable;
@@ -25,6 +26,7 @@ public class Researcher extends Character implements Serializable {
      */
     public Researcher() {
         super(4, 4);
+        initObservers();
     }
 
     /**
@@ -33,6 +35,7 @@ public class Researcher extends Character implements Serializable {
     public Researcher(Tile starting) {
         super(4, 4);
         this.tile = starting;
+        initObservers();
     }
 
     /**
@@ -52,6 +55,14 @@ public class Researcher extends Character implements Serializable {
         }
     }
 
+
+    /**
+     * Helper method to initialize observers
+     */
+    @Override
+    void initObservers() {
+        register(MapPresenter.getInstance());
+    }
 
     /**
      * Returns the base body heat of the figure

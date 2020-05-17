@@ -4,7 +4,10 @@ import controllers.game.GameJFrame;
 import models.tiles.Hole;
 import models.tiles.Tile;
 
+import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 public class HolePresenter extends TilePresenter {
     private final Hole hole;
@@ -25,21 +28,25 @@ public class HolePresenter extends TilePresenter {
         int snowDepth = hole.getSnowDepth();
         boolean isDiscovered = hole.isAnalyzed();
 
+        ImageIcon base;
+
         if(!isDiscovered)
         {
-            button.setIcon(GameJFrame.getInstance().getTexture("stable_" + String.valueOf(snowDepth)));
+            base = GameJFrame.getInstance().getTexture("stable_" + String.valueOf(snowDepth));
             button.setText("");
         }
         else
         {
-            button.setIcon(GameJFrame.getInstance().getTexture("water"));
+            base = GameJFrame.getInstance().getTexture("water");
             button.setText("0");
+        }
+
+        super.drawFigures(base, hole);
+            //TODO implement further
         }
 
 
 
-        //TODO implement further
-    }
 
     @Override
     public boolean isNeighbour(TilePresenter tile) {

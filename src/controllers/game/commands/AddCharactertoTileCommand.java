@@ -1,6 +1,7 @@
 package controllers.game.commands;
 
 import controllers.game.Game;
+import controllers.game.GameJFrame;
 import controllers.view.*;
 import models.Environment;
 import models.figures.Eskimo;
@@ -41,24 +42,24 @@ public class AddCharactertoTileCommand implements Command {
             try {
                 tileID = Integer.parseInt(args[0]);
             } catch (NumberFormatException e) {
-                game.getOutput().println("Error!");
+                GameJFrame.getInstance().OutputToTextBox("Error!");
             }
 
             try {
                 characterID = Integer.parseInt(args[1]);
             } catch (NumberFormatException e) {
-                game.getOutput().println("Error!");
+                GameJFrame.getInstance().OutputToTextBox("Error!");
             }
 
             if (tileID < 0 || Environment.getInstance().getIceTiles().size() - 1 < tileID) {
-                game.getOutput().println("Tile ID must be between 0 and the maximum ID of " + (Environment.getInstance().getIceTiles().size() - 1));
+                GameJFrame.getInstance().OutputToTextBox("Tile ID must be between 0 and the maximum ID of " + (Environment.getInstance().getIceTiles().size() - 1));
                 return;
             }
 
             Tile tile = Environment.getInstance().getIceTiles().get(tileID);
 
             if (tile.getCapacity() == 0) {
-                game.getOutput().println("Characters can't be placed in a hole!");
+                GameJFrame.getInstance().OutputToTextBox("Characters can't be placed in a hole!");
                 return;
             }
 
@@ -84,7 +85,7 @@ public class AddCharactertoTileCommand implements Command {
                     figure = polarBear;
                     break;
                 default:
-                    game.getOutput().println("Character ID mush be between 1 and 3!");
+                    GameJFrame.getInstance().OutputToTextBox("Character ID mush be between 1 and 3!");
                     return;
             }
 
@@ -93,7 +94,7 @@ public class AddCharactertoTileCommand implements Command {
             Environment.getInstance().getPlayers().add(figure);
             MapPresenter.getInstance().addFigurePresenter(presenter);
 
-            game.getOutput().println("character added: " + tileID + ", " + characterID);
+            GameJFrame.getInstance().OutputToTextBox("character added: " + tileID + ", " + characterID);
         }
     }
 }

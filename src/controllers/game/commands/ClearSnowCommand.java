@@ -1,12 +1,11 @@
 package controllers.game.commands;
 
 import controllers.game.Game;
+import controllers.game.GameJFrame;
 import models.Environment;
 import models.figures.Eskimo;
 import models.figures.Figure;
 import models.figures.Researcher;
-
-import java.io.PrintStream;
 
 public class ClearSnowCommand implements Command {
 
@@ -24,15 +23,14 @@ public class ClearSnowCommand implements Command {
     @Override
     public void execute() {
         Environment e = Environment.getInstance();
-        PrintStream out = game.getOutput();
         if (e.getCurrentPlayer() == null) {
-            out.println("Nincs elérhető karakter");
+            GameJFrame.getInstance().OutputToTextBox("Nincs elérhető karakter");
         }
         Figure f = e.getCurrentPlayer();
 
         switch (f.getBaseBodyHeat()) {
             case -1:
-                out.println("Polarbear can't clear snow!");
+                GameJFrame.getInstance().OutputToTextBox("Polarbear can't clear snow!");
                 break;
             case 4:
                 ((Researcher) f).clearPatch();
@@ -41,7 +39,7 @@ public class ClearSnowCommand implements Command {
                 ((Eskimo) f).clearPatch();
                 break;
             default:
-                out.println("Error occurred");
+                GameJFrame.getInstance().OutputToTextBox("Error occurred");
                 break;
         }
     }

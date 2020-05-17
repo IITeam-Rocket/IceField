@@ -1,6 +1,7 @@
 package controllers.game.commands;
 
 import controllers.game.Game;
+import controllers.game.GameJFrame;
 import models.Environment;
 
 public class LoadCommand implements Command {
@@ -19,7 +20,7 @@ public class LoadCommand implements Command {
             return;
         }
         if (Environment.serializeRead(args[0])) {
-            game.getOutput().println(String.format("loaded: %s", args[0]));
+            GameJFrame.getInstance().OutputToTextBox(String.format("loaded: %s", args[0]));
         }
     }
 }

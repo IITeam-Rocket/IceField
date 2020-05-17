@@ -104,4 +104,10 @@ abstract public class Figure extends Subject implements Serializable {
     public void removeFromTile(Tile tile) {
         tile.removeFigure(this);
     }
+
+
+    /**
+     * Helper method to initialize observers
+     */
+    abstract void initObservers();
 }

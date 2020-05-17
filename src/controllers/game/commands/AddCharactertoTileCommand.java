@@ -1,6 +1,7 @@
 package controllers.game.commands;
 
 import controllers.game.Game;
+import controllers.view.FigurePresenter;
 import models.Environment;
 import models.figures.Eskimo;
 import models.figures.Figure;
@@ -64,6 +65,7 @@ public class AddCharactertoTileCommand implements Command {
             IcePatch patch = (IcePatch) tile;
 
             Figure figure;
+            FigurePresenter presenter;
 
             switch (characterID) {
                 case 1:

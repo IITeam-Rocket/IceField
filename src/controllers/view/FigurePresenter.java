@@ -1,6 +1,6 @@
 package controllers.view;
 
-class FigurePresenter {
+public class FigurePresenter {
     public void draw(int x, int y) {
 
     }

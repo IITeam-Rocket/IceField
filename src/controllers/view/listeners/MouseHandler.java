@@ -1,4 +1,4 @@
-package controllers.view.Listeners;
+package controllers.view.listeners;
 
 import javax.swing.*;
 import java.awt.*;

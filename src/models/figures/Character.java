@@ -319,4 +319,9 @@ public abstract class Character extends Figure implements Serializable {
     public ClearSnowPolicy getclearPatchStrategy() {
         return this.clearPatchStrategy;
     }
+
+    @Override
+    public void step(){
+        stamina = 4;
+    }
 }

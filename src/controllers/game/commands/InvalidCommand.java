@@ -1,6 +1,7 @@
 package controllers.game.commands;
 
 import controllers.game.Game;
+import controllers.game.GameJFrame;
 
 public class InvalidCommand implements Command {
 
@@ -14,6 +15,6 @@ public class InvalidCommand implements Command {
 
     @Override
     public void execute() {
-        game.getOutput().println("Invalid command");
+        GameJFrame.getInstance().OutputToTextBox("Invalid command");
     }
 }

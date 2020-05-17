@@ -1,6 +1,7 @@
 package controllers.game.commands;
 
 import controllers.game.Game;
+import controllers.game.GameJFrame;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -22,18 +23,18 @@ public class OutputCommand implements Command {
             return;
         }
         if (args[0].equals("console")) {
-            game.getOutput().println("set output: console");
+            GameJFrame.getInstance().OutputToTextBox("set output: console");
             game.changeOutput(System.out);
-            game.getOutput().println("set output: console");
+            GameJFrame.getInstance().OutputToTextBox("set output: console");
             return;
         }
 
         try {
-            game.getOutput().println(String.format("set output: %s", args[0]));
+            GameJFrame.getInstance().OutputToTextBox(String.format("set output: %s", args[0]));
             game.changeOutput(new PrintStream(new File(args[0])));
-            game.getOutput().println(String.format("set output: %s", args[0]));
+            GameJFrame.getInstance().OutputToTextBox(String.format("set output: %s", args[0]));
         } catch (FileNotFoundException e) {
-            game.getOutput().println(String.format("File %s does not exist!", args[0]));
+            GameJFrame.getInstance().OutputToTextBox(String.format("File %s does not exist!", args[0]));
         }
     }
 }

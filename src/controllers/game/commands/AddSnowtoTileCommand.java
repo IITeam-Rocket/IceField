@@ -1,7 +1,7 @@
 package controllers.game.commands;
 
 import controllers.game.Game;
-import controllers.view.MapPresenter;
+import controllers.game.GameJFrame;
 import models.Environment;
 
 /**
@@ -35,7 +35,7 @@ public class AddSnowtoTileCommand implements Command {
                 tileID = Integer.parseInt(args[0]);
             } catch (NumberFormatException e) {
                 //TODO
-                game.getOutput().println("Error!");
+                GameJFrame.getInstance().OutputToTextBox("Error!");
                 return;
             }
 
@@ -43,18 +43,18 @@ public class AddSnowtoTileCommand implements Command {
                 snowQuantity = Integer.parseInt(args[1]);
             } catch (NumberFormatException e) {
                 //TODO
-                game.getOutput().println("Error!");
+                GameJFrame.getInstance().OutputToTextBox("Error!");
                 return;
             }
 
             if (Environment.getInstance().getIceTiles().size() - 1 < tileID || tileID < 0) {
-                game.getOutput().println("Tile ID must be between 0 and the maximum ID of " + (Environment.getInstance().getIceTiles().size() - 1));
+                GameJFrame.getInstance().OutputToTextBox("Tile ID must be between 0 and the maximum ID of " + (Environment.getInstance().getIceTiles().size() - 1));
                 return;
             }
 
             int result = Environment.getInstance().getIceTiles().get(tileID).addSnow(snowQuantity);
 
-            game.getOutput().println("snow added: " + tileID + ", " + result);
+            GameJFrame.getInstance().OutputToTextBox("snow added: " + tileID + ", " + result);
         }
     }
 }

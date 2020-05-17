@@ -1,6 +1,7 @@
 package controllers.game.commands;
 
 import controllers.game.Game;
+import controllers.game.GameJFrame;
 import models.Environment;
 import models.figures.Eskimo;
 import models.figures.Figure;
@@ -19,12 +20,12 @@ public class UnburyCommand implements Command {
     @Override
     public void execute() {
         if (args.length != 0) {
-            game.getOutput().println("IllegalArgumentException");
+            GameJFrame.getInstance().OutputToTextBox("IllegalArgument");
             return;
         }
 
         if (Environment.getInstance().getCurrentPlayer() == null) {
-            game.getOutput().println("There is no Figure selected, please use the \"nextcharacter\" command before the first unbury!");
+            GameJFrame.getInstance().OutputToTextBox("There is no Figure selected, please use the \"nextcharacter\" command before the first unbury!");
             return;
         }
 
@@ -32,7 +33,7 @@ public class UnburyCommand implements Command {
 
         switch (f.getBaseBodyHeat()) {
             case -1:
-                game.getOutput().println("The polar bear can't unbury!");
+                GameJFrame.getInstance().OutputToTextBox("The polar bear can't unbury!");
                 break;
             case 4:
                 ((Researcher) f).retrieveItem();
@@ -41,7 +42,7 @@ public class UnburyCommand implements Command {
                 ((Eskimo) f).retrieveItem();
                 break;
             default:
-                game.getOutput().println("Unknown Figure Type!");
+                GameJFrame.getInstance().OutputToTextBox("Unknown Figure Type!");
                 break;
         }
     }

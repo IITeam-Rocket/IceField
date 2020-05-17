@@ -2,6 +2,7 @@ package controllers.game.commands;
 
 import controllers.RandomController;
 import controllers.game.Game;
+import controllers.game.GameJFrame;
 
 public class RandomCommand implements Command {
 
@@ -19,11 +20,11 @@ public class RandomCommand implements Command {
             switch (args[0]) {
                 case "on":
                     RandomController.setRandom(true);
-                    game.getOutput().println("set random: on");
+                    GameJFrame.getInstance().OutputToTextBox("set random: on");
                     break;
                 case "off":
                     RandomController.setRandom(false);
-                    game.getOutput().println("set random: off");
+                    GameJFrame.getInstance().OutputToTextBox("set random: off");
                     break;
                 default:
                     break;

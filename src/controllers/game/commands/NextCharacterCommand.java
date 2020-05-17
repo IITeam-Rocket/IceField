@@ -2,6 +2,7 @@ package controllers.game.commands;
 
 import controllers.RandomController;
 import controllers.game.Game;
+import controllers.game.GameJFrame;
 import models.Environment;
 import models.exceptions.EndOfGameException;
 import models.figures.Figure;
@@ -19,7 +20,7 @@ public class NextCharacterCommand implements Command {
     @Override
     public void execute() {
         if (Environment.getInstance().getPlayers().size() == 0) {
-            game.getOutput().println("There are currently no characters!");
+            GameJFrame.getInstance().OutputToTextBox("There are currently no characters!");
             return;
         }
 
@@ -36,10 +37,10 @@ public class NextCharacterCommand implements Command {
                         t.step();
                     } catch (EndOfGameException e) {
                         if (e.getMessage().equals("Win")) {
-                            game.getOutput().println(e.getMessage());
+                            GameJFrame.getInstance().OutputToTextBox(e.getMessage());
                             Environment.getInstance().winGame();
                         } else {
-                            game.getOutput().println(e.getMessage());
+                            GameJFrame.getInstance().OutputToTextBox(e.getMessage());
                             Environment.getInstance().gameOver();
                         }
                     }
@@ -49,6 +50,7 @@ public class NextCharacterCommand implements Command {
             }
 
             Environment.getInstance().setCurrentPlayer(Environment.getInstance().getPlayers().get(ID));
+            Environment.getInstance().getCurrentPlayer().notifyObservers();
         }
 
         if (Environment.getInstance().getCurrentPlayer().getBaseBodyHeat() == -1 && RandomController.getRandom()) {

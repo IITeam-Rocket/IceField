@@ -1,12 +1,14 @@
 package controllers.game;
 
 import controllers.view.MapPresenter;
+import models.tiles.Tile;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class GameJFrame extends JFrame {
@@ -19,6 +21,16 @@ public class GameJFrame extends JFrame {
 
     private final Game game = new Game();
     private final CommandInterpreter commandInterpreter = new CommandInterpreter();
+
+    private Tile activeTile = null;
+
+    public Game getGame() {
+        return game;
+    }
+
+    public void setActiveTile(Tile t) {
+        activeTile = t;
+    }
 
     private GameJFrame() {
         initTextures();
@@ -84,6 +96,10 @@ public class GameJFrame extends JFrame {
 
 }
 
+    public void OutputToTextBox(String text) {
+        this.text.setText(text);
+    }
+
     public ImageIcon getTexture(String key)
     {
         return MapTextures.get(key);
@@ -127,6 +143,12 @@ public class GameJFrame extends JFrame {
         commandPanel.add(load);
 
         save.setVisible(true);
+        save.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
         commandPanel.add(save);
 
         randomness.setVisible(true);
@@ -142,9 +164,22 @@ public class GameJFrame extends JFrame {
         commandPanel.add(gameplay);
 
         next.setVisible(true);
+        next.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                game.NextCharacter();
+            }
+        });
         commandPanel.add(next);
 
         move.setVisible(true);
+        move.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                game.Move(activeTile);
+                activeTile = null;
+            }
+        });
         commandPanel.add(move);
 
         unbury.setVisible(true);

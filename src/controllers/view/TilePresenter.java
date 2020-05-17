@@ -5,6 +5,8 @@ import models.tiles.Tile;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 
 abstract public class TilePresenter {
@@ -17,6 +19,13 @@ abstract public class TilePresenter {
         this.y = y;
 
         button = new JButton();
+
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                GameJFrame.getInstance().setActiveTile(getTile());
+            }
+        });
 
         button.setBounds(x, y, 60, 60);
         button.setVisible(true);
@@ -47,7 +56,7 @@ abstract public class TilePresenter {
         for(int i = 0; i < tile.getEntities().size(); i++) {
             FigurePresenter figurePresenter = MapPresenter.getInstance().findFigure(tile.getEntities().get(i));
             if(figurePresenter != null) {
-                resultImage = combineImage(resultImage, figurePresenter.getImage(), ((i + 1) % 3) * 20, (int)(i / 3) );
+                resultImage = combineImage(resultImage, figurePresenter.getImage(), ((i + 1) % 3) * 20, (i / 3));
             }
         }
 

@@ -7,6 +7,7 @@ public class PolarBearPresenter extends FigurePresenter {
     private final PolarBear bear;
 
     public PolarBearPresenter(PolarBear bear) {
+        super();
         this.bear = bear;
     }
 
@@ -15,6 +16,7 @@ public class PolarBearPresenter extends FigurePresenter {
 
     @Override
     public void draw(int x, int y) {
+        super.draw(x, y);
         //TODO implement draw()
 
 

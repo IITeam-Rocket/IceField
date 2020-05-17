@@ -11,6 +11,7 @@ public class EskimoPresenter extends FigurePresenter {
     private final Eskimo eskimo;
 
     public EskimoPresenter(Eskimo eskimo) {
+        super();
         this.eskimo = eskimo;
     }
 
@@ -19,6 +20,7 @@ public class EskimoPresenter extends FigurePresenter {
 
     @Override
     public void draw(int x, int y) {
+        super.draw(x, y);
         int bodyHeat = eskimo.getBodyHeat();
         int stamina = eskimo.getStamina();
         ClearSnowPolicy clearSnowPolicy = eskimo.getclearPatchStrategy();
@@ -26,6 +28,7 @@ public class EskimoPresenter extends FigurePresenter {
         FallInWaterPolicy swimOutPolicy = eskimo.getSwimToShoreStrategy();
         Tile tile = eskimo.getTile();
 
+        //MapPresenter.getInstance().getXCoord(this)
         //TODO implement further
     }
 }

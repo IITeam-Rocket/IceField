@@ -84,8 +84,8 @@ public class GameJFrame extends JFrame {
         this.setLocationRelativeTo(null);
     }
 
-    public void initTextures()
-    {
+    public void initTextures() {
+
         for(int i = 0; i < 7; i++)
         {
             MapTextures.put("stable_" + i, new ImageIcon("resources/stable_" + i + ".png"));
@@ -101,13 +101,16 @@ public class GameJFrame extends JFrame {
         MapTextures.put("eskimo_active", new ImageIcon("resources/eskimo_active.png"));
         MapTextures.put("researcher", new ImageIcon("resources/researcher.png"));
         MapTextures.put("researcher_active", new ImageIcon("resources/researcher_active.png"));
+    }
 
-
+    public void CharacterOutInfo(String text) {
+        this.text.setText(text);
+        this.text.grabFocus();
     }
 
     public void OutputToTextBox(String text) {
-        this.text.setText(text);
-        this.text.grabFocus();
+        this.debug.setText(text);
+        this.debug.grabFocus();
     }
 
     public ImageIcon getTexture(String key)
@@ -116,6 +119,7 @@ public class GameJFrame extends JFrame {
     }
 
     private JTextArea text = new JTextArea("Csapattagok:\n  Ábrahám Dániel\n  Józsa György Bence\n  Kovács Marcell\n  Matyasi Lilla Nóra\n  Tóth Máté\n\nKonzulens:\n  Dr. Goldschmidt Balázs");
+    private JTextArea debug = new JTextArea("Debug info");
     private JTextArea team = new JTextArea("team_rocket\n    v1.0");
     private JLabel io = new JLabel("IO:");
     private JTextField textbox = new JTextField("Filename Textbox");
@@ -135,13 +139,13 @@ public class GameJFrame extends JFrame {
 
     void initComponents() {
         this.setResizable(false);
-        this.setSize(800, 600);
+        this.setSize(855, 600);
         this.setLayout(null);
         this.setVisible(true);
         this.add(commandPanel);
         this.setIgnoreRepaint(true);
 
-        commandPanel.setBounds(545,0,255, 600);
+        commandPanel.setBounds(600, 0, 255, 600);
 
         io.setVisible(true);
         commandPanel.add(io);
@@ -263,6 +267,8 @@ public class GameJFrame extends JFrame {
         text.setVisible(true);
         commandPanel.add(text);
 
+        debug.setVisible(true);
+        commandPanel.add(debug);
         team.setVisible(true);
         commandPanel.add(team);
 
@@ -274,8 +280,8 @@ public class GameJFrame extends JFrame {
         });
     }
 
-    public void createBackground()
-    {
+    public void createBackground() {
+
         image = new BufferedImage(800, 600, BufferedImage.TYPE_INT_ARGB);
         Graphics graph = image.createGraphics();
         graph.setColor(new Color(0, 148, 255));
@@ -285,8 +291,8 @@ public class GameJFrame extends JFrame {
         MapPresenter.getInstance().paint(graph);
     }
 
-    public void paint(Graphics g)
-    {
+    public void paint(Graphics g) {
+
         io.setBounds(10,10,20, 15);
         textbox.setBounds(5,30,235, 20);
         load.setBounds(5,60, 120, 20);

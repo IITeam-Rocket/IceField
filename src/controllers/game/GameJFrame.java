@@ -15,7 +15,6 @@ public class GameJFrame extends JFrame {
 
     private final CommandPanel commandPanel = new CommandPanel();
 
-    private final ArrayList<JButton> buttons = new ArrayList<>();
     private final Game game = new Game();
     private final CommandInterpreter commandInterpreter = new CommandInterpreter();
 
@@ -30,11 +29,6 @@ public class GameJFrame extends JFrame {
         this.setLocationRelativeTo(null);
 
         this.getContentPane().setBackground(new Color(0, 148, 255));
-    }
-
-    public void AddTile(JButton b) {
-        buttons.add(b);
-        this.add(b);
     }
 
     public void initTextures()
@@ -80,7 +74,7 @@ public class GameJFrame extends JFrame {
 
         commandPanel.setBounds(545,0,255, 600);
 
-        io = new Label("IO:");
+        io = new JLabel("IO:");
         io.setBounds(10,10,20, 10);
         io.setVisible(true);
         commandPanel.add(io);
@@ -100,7 +94,7 @@ public class GameJFrame extends JFrame {
         save.setVisible(true);
         commandPanel.add(save);
 
-        randomness = new Label("Randomness:");
+        randomness = new JLabel("Randomness:");
         randomness.setBounds(10,90,150, 15);
         randomness.setVisible(true);
         commandPanel.add(randomness);
@@ -115,7 +109,7 @@ public class GameJFrame extends JFrame {
         weather.setVisible(true);
         commandPanel.add(weather);
 
-        gameplay = new Label("Gameplay:");
+        gameplay = new JLabel("Gameplay:");
         gameplay.setBounds(10,140,150, 15);
         gameplay.setVisible(true);
         commandPanel.add(gameplay);
@@ -185,9 +179,7 @@ public class GameJFrame extends JFrame {
 
         g.translate(- this.getInsets().left - 30, - this.getInsets().top - 30);
 
-        for (JButton b : buttons) {
-            b.requestFocus();
-        }
+        MapPresenter.getInstance().afterDraw();
     }
 
     public static GameJFrame getInstance() {

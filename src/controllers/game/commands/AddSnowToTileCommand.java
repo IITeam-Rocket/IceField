@@ -38,16 +38,14 @@ public class AddSnowToTileCommand implements Command {
             try {
                 tileID = Integer.parseInt(args[0]);
             } catch (NumberFormatException e) {
-                //TODO
-                GameJFrame.getInstance().OutputToTextBox("Error!");
+                GameJFrame.getInstance().OutputToTextBox("TileID not a number!");
                 return;
             }
 
             try {
                 snowQuantity = Integer.parseInt(args[1]);
             } catch (NumberFormatException e) {
-                //TODO
-                GameJFrame.getInstance().OutputToTextBox("Error!");
+                GameJFrame.getInstance().OutputToTextBox("Snow quantity not a number!");
                 return;
             }
 

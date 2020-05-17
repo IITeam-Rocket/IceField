@@ -60,7 +60,11 @@ public class StableIcePatch extends IcePatch implements Serializable {
         return -1;
     }
 
-    //TODO: javadoc
+    /**
+     * Accept Figure Without Removal
+     * @param figure Figure
+     * @return was it a success
+     */
     @Override
     public boolean acceptFigureWithoutRemoval(Figure figure) {
         addCharacter(figure);

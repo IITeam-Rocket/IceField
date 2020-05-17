@@ -249,11 +249,19 @@ public class Environment implements Serializable {
         return currentPlayer;
     }
 
+    /**
+     * Set current player
+     * @param currentPlayer Player to set to
+     */
     protected void setCurrentPlayer(Figure currentPlayer) {
         currentPlayer.step();
         this.currentPlayer = currentPlayer;
     }
 
+    /**
+     * Set current Player ID
+     * @param ID ID to set to
+     */
     public void setCurrentPlayer(int ID) {
         Figure current =  this.players.get(ID);
         current.step();
@@ -271,14 +279,26 @@ public class Environment implements Serializable {
         return beaconIsDiscovered;
     }
 
+    /**
+     * Set Beacon discovered
+     * @param beaconIsDiscovered boolean Beacon set
+     */
     protected void setBeaconIsDiscovered(boolean beaconIsDiscovered) {
         this.beaconIsDiscovered = beaconIsDiscovered;
     }
 
+    /**
+     * Get Beacon location
+     * @return Location
+     */
     public Tile getBeaconLocation() {
         return beaconLocation;
     }
 
+    /**
+     * Set Beacon location
+     * @param tile Location
+     */
     private void setBeaconLocation(Tile tile) {
         beaconLocation = tile;
     }
@@ -294,14 +314,26 @@ public class Environment implements Serializable {
         return cartridgeIsDiscovered;
     }
 
+    /**
+     * Set is discovered
+     * @param cartridgeIsDiscovered Set to this
+     */
     protected void setCartridgeIsDiscovered(boolean cartridgeIsDiscovered) {
         this.cartridgeIsDiscovered = cartridgeIsDiscovered;
     }
 
+    /**
+     * Get Cartridge location
+     * @return Location
+     */
     public Tile getCartridgeLocation() {
         return cartridgeLocation;
     }
 
+    /**
+     * Set Cartridge location
+     * @param tile Location
+     */
     private void setCartridgeLocation(Tile tile) {
         cartridgeLocation = tile;
     }
@@ -317,14 +349,26 @@ public class Environment implements Serializable {
         return gunIsDiscovered;
     }
 
+    /**
+     * Set is discovered
+     * @param gunIsDiscovered Set to this
+     */
     protected void setGunIsDiscovered(boolean gunIsDiscovered) {
         this.gunIsDiscovered = gunIsDiscovered;
     }
 
+    /**
+     * Get Gun location
+     * @return Location
+     */
     public Tile getGunLocation() {
         return gunLocation;
     }
 
+    /**
+     * Set Gun location
+     * @param tile Location
+     */
     private void setGunLocation(Tile tile) {
         gunLocation = tile;
     }

@@ -209,11 +209,15 @@ public class GameJFrame extends JFrame {
         commandPanel.add(textBox);
 
         load.setVisible(true);
-        load.addActionListener(e -> Environment.serializeRead(textBox.getText()));
+        load.addActionListener(e -> {
+            Environment.serializeRead(textBox.getText());
+            MapPresenter.getInstance().update();
+        });
         commandPanel.add(load);
 
         save.setVisible(true);
-        save.addActionListener(e -> Environment.serializeWrite(textBox.getText()));
+        save.addActionListener(e -> {Environment.serializeWrite(textBox.getText());
+                    MapPresenter.getInstance().update();});
         commandPanel.add(save);
 
         randomness.setVisible(true);
@@ -226,19 +230,24 @@ public class GameJFrame extends JFrame {
                 random.setText("Random On");
             else if (random.getText().equals("Random On"))
                 random.setText("Random Off");
+            MapPresenter.getInstance().update();
         });
         commandPanel.add(random);
 
         weather.setVisible(true);
         weather.setEnabled(false);
-        weather.addActionListener(e -> game.simulateWeather());
+        weather.addActionListener(e -> {game.simulateWeather();
+                    MapPresenter.getInstance().update();
+        });
         commandPanel.add(weather);
 
         gameplay.setVisible(true);
         commandPanel.add(gameplay);
 
         next.setVisible(true);
-        next.addActionListener(e -> game.NextCharacter());
+        next.addActionListener(e -> {game.NextCharacter();
+                    MapPresenter.getInstance().update();
+        });
         commandPanel.add(next);
 
         move.setVisible(true);
@@ -251,11 +260,17 @@ public class GameJFrame extends JFrame {
         commandPanel.add(move);
 
         unbury.setVisible(true);
-        unbury.addActionListener(e -> game.Unbury());
+        unbury.addActionListener(e -> {
+            game.Unbury();
+            MapPresenter.getInstance().update();
+        });
         commandPanel.add(unbury);
 
         snow.setVisible(true);
-        snow.addActionListener(e -> game.clearSnow(activeTile));
+        snow.addActionListener(e -> {
+            game.clearSnow();
+            MapPresenter.getInstance().update();
+        });
         commandPanel.add(snow);
 
         rescue.setVisible(true);
@@ -264,6 +279,7 @@ public class GameJFrame extends JFrame {
                 game.Rescue(activeTile);
                 activeTile = null;
             }
+            MapPresenter.getInstance().update();
         });
         commandPanel.add(rescue);
 
@@ -272,6 +288,7 @@ public class GameJFrame extends JFrame {
         craft.addActionListener(e -> {
                     game.CraftSignalFlare();
                     activeTile = null;
+                    MapPresenter.getInstance().update();
                 }
         );
 
@@ -282,6 +299,7 @@ public class GameJFrame extends JFrame {
                 game.useSpecial(activeTile);
                 activeTile = null;
             }
+            MapPresenter.getInstance().update();
         });
         commandPanel.add(special);
 

@@ -18,9 +18,8 @@ public class GameJFrame extends JFrame {
         this.setTitle("IceField");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
+        MapTextures = new HashMap<String, ImageIcon>();
         MapTextures.put("stable", new ImageIcon("resources/stable.png"));
-
-
     }
 
     public ImageIcon getTexture(String key)

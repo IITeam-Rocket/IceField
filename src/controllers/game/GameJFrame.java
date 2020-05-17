@@ -110,7 +110,7 @@ public class GameJFrame extends JFrame {
         commandPanel.add(rescue);
 
         craft.setVisible(true);
-        commandPanel.add(craft, BorderLayout.CENTER);
+        commandPanel.add(craft);
 
         special.setVisible(true);
         commandPanel.add(special);

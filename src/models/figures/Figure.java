@@ -39,9 +39,11 @@ abstract public class Figure extends Subject implements Serializable {
 
     /**
      * Executes the FallInWaterStrategy to avoid death.
+     *
+     * @return true, if swimming out was successful, false otherwise.
      */
-    public void swimToShore() {
-        swimToShoreStrategy.executeStrategy(this);
+    public boolean swimToShore() {
+        return swimToShoreStrategy.executeStrategy(this);
     }
 
     /**
@@ -111,5 +113,5 @@ abstract public class Figure extends Subject implements Serializable {
      */
     abstract void initObservers();
 
-    public void step(){}
+    public void step() /*throws EndOfGameException*/ {}
 }

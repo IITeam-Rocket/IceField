@@ -22,10 +22,12 @@ public class HasNoDiveSuitPolicy implements FallInWaterPolicy, Serializable {
      * do anything and die.
      *
      * @param player the player, who fell in water.
+     *
+     * @return
      */
     @Override
-    public void executeStrategy(Figure player) {
-        //Empty
+    public boolean executeStrategy(Figure player) {
+        return false;
     }
 
     /**

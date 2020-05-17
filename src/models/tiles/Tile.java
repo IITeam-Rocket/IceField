@@ -270,4 +270,7 @@ abstract public class Tile extends Subject implements Serializable {
         figure.removeFromTile(figure.getTile());
         figure.setTile(this);
     }
+
+    //TODO: javadoc
+    abstract public boolean acceptFigureWithoutRemoval(Figure figure);
 }

@@ -74,4 +74,13 @@ public class PolarBear extends Figure implements Serializable {
     public int getBaseBodyHeat() {
         return -1;
     }
+
+    @Override
+    public void step() /*throws EndOfGameException */ {
+        /*
+        Random rand = new Random();
+        int neighbourCount = tile.getNeighbours().size();
+        moveTo(tile.getNeighbours().get(rand.nextInt(neighbourCount)));
+    */
+    }
 }

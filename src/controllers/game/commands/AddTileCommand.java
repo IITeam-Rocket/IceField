@@ -1,6 +1,7 @@
 package controllers.game.commands;
 
 import controllers.game.Game;
+import controllers.view.*;
 import models.Environment;
 import models.tiles.Hole;
 import models.tiles.InstableIcePatch;
@@ -26,46 +27,51 @@ public class AddTileCommand implements Command {
         if (args.length < 1 || 2 < args.length)
             return;
 
-        int capcity = Integer.MIN_VALUE;
+        int capacity = Integer.MIN_VALUE;
+        int x = 0;
+        int y = 0;
 
-        if (args.length == 2) {
+        if (args.length == 4) {
             try {
-                capcity = Integer.parseInt(args[1]);
+                capacity = Integer.parseInt(args[1]);
+                x = Integer.parseInt(args[2]);
+                y = Integer.parseInt(args[3]);
             } catch (NumberFormatException e) {
                 //TODO
                 game.getOutput().println(e.getStackTrace().toString());
             }
         }
 
-        Tile t = getTilebyName(args[0], capcity);
+        Tile t = null;
+        TilePresenter presenter = null;
 
-        if (t == null) {
+        switch (args[0]) {
+            case "hole":
+                Hole hole = new Hole();
+                presenter = new HolePresenter(hole);
+                t = hole;
+                break;
+            case "stable":
+                StableIcePatch stableIcePatch = new StableIcePatch();
+                presenter = new StableIcePatchPresenter(stableIcePatch);
+                t = stableIcePatch;
+                break;
+            case "instable":
+                InstableIcePatch instableIcePatch = new InstableIcePatch(capacity);
+                presenter = new InstableIcePatchPresenter(instableIcePatch);
+                t = instableIcePatch;
+                break;
+            default:
+                System.out.println("Unknown tile type!");
+                return;
+        }
+
+        if (t == null || presenter == null) {
             game.getOutput().println("Error!");
         }
 
         Environment.getInstance().getIceTiles().add(t);
+        //MapPresenter.getInstance().
         game.getOutput().println("tile added\ntype: " + args[0] + "\nID: " + t.getID());
-    }
-
-
-    /**
-     * A helper method to get a new instance of a Tile.
-     *
-     * @param name     Type of a Tile.
-     * @param capacity Capacity of an InstableIcePatch
-     * @return Return a new Tile instance.
-     */
-    private Tile getTilebyName(String name, int capacity) {
-        switch (name) {
-            case "hole":
-                return new Hole();
-            case "stable":
-                return new StableIcePatch();
-            case "instable":
-                return new InstableIcePatch(capacity);
-            default:
-                return null;
-        }
-
     }
 }

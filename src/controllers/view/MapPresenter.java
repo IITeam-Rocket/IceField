@@ -31,8 +31,6 @@ public class MapPresenter implements Observer {
             //TODO what now?
         });
 
-        System.out.println("Tiles: " + tiles.size());
-
         figures.forEach(f -> f.draw(getXCoord(f), getYCoord(f)));
     }
 

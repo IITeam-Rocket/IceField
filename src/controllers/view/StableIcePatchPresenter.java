@@ -19,8 +19,7 @@ public class StableIcePatchPresenter extends TilePresenter {
 
         button.setText(Integer.toString(icePatch.getID()));
 
-        GameJFrame.getInstance().getContentPane().validate();
-        GameJFrame.getInstance().getContentPane().repaint();
+        draw();
     }
 
     @Override
@@ -42,7 +41,7 @@ public class StableIcePatchPresenter extends TilePresenter {
         else
             button.setText("");
 
-        SwingUtilities.updateComponentTreeUI(GameJFrame.getInstance());
+        //SwingUtilities.updateComponentTreeUI(GameJFrame.getInstance());
 
 
 

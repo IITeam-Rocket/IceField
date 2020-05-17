@@ -17,8 +17,7 @@ public class HolePresenter extends TilePresenter {
 
         button.setText(Integer.toString(hole.getID()));
 
-        GameJFrame.getInstance().getContentPane().validate();
-        GameJFrame.getInstance().getContentPane().repaint();
+        draw();
     }
 
     @Override

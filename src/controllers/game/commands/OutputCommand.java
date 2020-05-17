@@ -33,18 +33,18 @@ public class OutputCommand implements Command {
             return;
         }
         if (args[0].equals("console")) {
-            GameJFrame.getInstance().OutputToTextBox("set output: console");
+            GameJFrame.getInstance().outputToTextBox("set output: console");
             game.changeOutput(System.out);
-            GameJFrame.getInstance().OutputToTextBox("set output: console");
+            GameJFrame.getInstance().outputToTextBox("set output: console");
             return;
         }
 
         try {
-            GameJFrame.getInstance().OutputToTextBox(String.format("set output: %s", args[0]));
+            GameJFrame.getInstance().outputToTextBox(String.format("set output: %s", args[0]));
             game.changeOutput(new PrintStream(new File(args[0])));
-            GameJFrame.getInstance().OutputToTextBox(String.format("set output: %s", args[0]));
+            GameJFrame.getInstance().outputToTextBox(String.format("set output: %s", args[0]));
         } catch (FileNotFoundException e) {
-            GameJFrame.getInstance().OutputToTextBox(String.format("File %s does not exist!", args[0]));
+            GameJFrame.getInstance().outputToTextBox(String.format("File %s does not exist!", args[0]));
         }
     }
 }

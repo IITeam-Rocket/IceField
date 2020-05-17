@@ -88,7 +88,7 @@ public class Environment implements Serializable {
             out.close();
             return true;
         } catch (IOException ex) {
-            GameJFrame.getInstance().OutputToTextBox("File " + path + " doesn't exist!");
+            GameJFrame.getInstance().outputToTextBox("File " + path + " doesn't exist!");
             return false;
         }
     }
@@ -136,10 +136,10 @@ public class Environment implements Serializable {
 
             return true;
         } catch (IOException ex) {
-            GameJFrame.getInstance().OutputToTextBox("Couldn't load with serialization!\nFile " + path + " doesn't exist or doesn't contain the correct data!");
+            GameJFrame.getInstance().outputToTextBox("Couldn't load with serialization!\nFile " + path + " doesn't exist or doesn't contain the correct data!");
             return false;
         } catch (ClassNotFoundException ex) {
-            GameJFrame.getInstance().OutputToTextBox("Couldn't save with serialization! ClassNotFound");
+            GameJFrame.getInstance().outputToTextBox("Couldn't save with serialization! ClassNotFound");
             return false;
         }
     }
@@ -389,22 +389,22 @@ public class Environment implements Serializable {
                 }
             }
             if(win) {
-                GameJFrame.getInstance().OutputToTextBox("Signal flare crafted");
+                GameJFrame.getInstance().outputToTextBox("Signal flare crafted");
                 GameJFrame.getInstance().getGame().endGame();
                 GameJFrame.getInstance().showWinGameDialog();
             }
             else
-                GameJFrame.getInstance().OutputToTextBox("The characters aren't on the same tile!");
+                GameJFrame.getInstance().outputToTextBox("The characters aren't on the same tile!");
         }
         else
-            GameJFrame.getInstance().OutputToTextBox("At least one part is missing");
+            GameJFrame.getInstance().outputToTextBox("At least one part is missing");
     }
 
     /**
      * Plays the losing game sequence.
      */
     public void gameOver() {
-        GameJFrame.getInstance().OutputToTextBox("Game over!");
+        GameJFrame.getInstance().outputToTextBox("Game over!");
         GameJFrame.getInstance().getGame().endGame();
         GameJFrame.getInstance().showEndGameDialog();
     }

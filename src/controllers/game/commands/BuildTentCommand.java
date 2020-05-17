@@ -22,27 +22,27 @@ public class BuildTentCommand implements Command {
         Figure figure = Environment.getInstance().getCurrentPlayer();
 
         if (figure == null) {
-            GameJFrame.getInstance().OutputToTextBox("There is no Figure currently selected!");
+            GameJFrame.getInstance().outputToTextBox("There is no Figure currently selected!");
             return;
         }
 
         switch (figure.getBaseBodyHeat()) {
             case -1:
-                GameJFrame.getInstance().OutputToTextBox("A polar bear cannot build Tent!");
+                GameJFrame.getInstance().outputToTextBox("A polar bear cannot build Tent!");
                 break;
             case 4:
                 ((Researcher) figure).buildTent();
-                GameJFrame.getInstance().OutputToTextBox("build tent: successful");
+                GameJFrame.getInstance().outputToTextBox("build tent: successful");
                 return;
             case 5:
                 ((Eskimo) figure).buildTent();
-                GameJFrame.getInstance().OutputToTextBox("build tent: successful");
+                GameJFrame.getInstance().outputToTextBox("build tent: successful");
                 return;
             default:
-                GameJFrame.getInstance().OutputToTextBox("Unknown Figure!");
+                GameJFrame.getInstance().outputToTextBox("Unknown Figure!");
                 break;
         }
 
-        GameJFrame.getInstance().OutputToTextBox("build tent: unsuccessful");
+        GameJFrame.getInstance().outputToTextBox("build tent: unsuccessful");
     }
 }

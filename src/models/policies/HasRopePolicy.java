@@ -33,7 +33,7 @@ public class HasRopePolicy implements RescueFriendPolicy, Serializable {
         dest.acceptFigure(friend);
 
         source.removeFigure(friend);
-        GameJFrame.getInstance().OutputToTextBox("Friend rescued!");
+        GameJFrame.getInstance().outputToTextBox("Friend rescued!");
 
     }
 

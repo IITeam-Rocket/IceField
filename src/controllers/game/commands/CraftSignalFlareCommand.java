@@ -20,7 +20,7 @@ public class CraftSignalFlareCommand implements Command {
         Figure currentPlayer = Environment.getInstance().getCurrentPlayer();
 
         if (currentPlayer == null) {
-            GameJFrame.getInstance().OutputToTextBox("There is no Figure currently selected!");
+            GameJFrame.getInstance().outputToTextBox("There is no Figure currently selected!");
             return;
         }
 
@@ -33,7 +33,7 @@ public class CraftSignalFlareCommand implements Command {
 
         switch (currentPlayer.getBaseBodyHeat()) {
             case -1:
-                GameJFrame.getInstance().OutputToTextBox("A polar bear cannot craft!");
+                GameJFrame.getInstance().outputToTextBox("A polar bear cannot craft!");
                 break;
             case 4:
             case 5:
@@ -41,10 +41,10 @@ public class CraftSignalFlareCommand implements Command {
                     ((models.figures.Character) currentPlayer).craftSignalFlare();
                 }
                 else
-                    GameJFrame.getInstance().OutputToTextBox("At least one part is missing");
+                    GameJFrame.getInstance().outputToTextBox("At least one part is missing");
                 break;
             default:
-                GameJFrame.getInstance().OutputToTextBox("Unknown Figure!");
+                GameJFrame.getInstance().outputToTextBox("Unknown Figure!");
                 break;
         }
     }

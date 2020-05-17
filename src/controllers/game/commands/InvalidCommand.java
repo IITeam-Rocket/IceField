@@ -15,6 +15,6 @@ public class InvalidCommand implements Command {
      */
     @Override
     public void execute() {
-        GameJFrame.getInstance().OutputToTextBox("Invalid command");
+        GameJFrame.getInstance().outputToTextBox("Invalid command");
     }
 }

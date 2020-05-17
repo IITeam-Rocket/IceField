@@ -27,7 +27,7 @@ public class IglooPolicy implements ProtectionPolicy, Serializable {
     @Override
     public void protectAgainstStorm(Figure victim) {
         //Empty
-        GameJFrame.getInstance().OutputToTextBox("Iglu protected character against storm.");
+        GameJFrame.getInstance().outputToTextBox("Iglu protected character against storm.");
     }
 
     /**
@@ -39,7 +39,7 @@ public class IglooPolicy implements ProtectionPolicy, Serializable {
     @Override
     public void protectAgainstAttack(Figure victim, Figure attacker) {
         if (!victim.equals(attacker))
-            GameJFrame.getInstance().OutputToTextBox("Polar bear attacks character on tile " + victim.getTile().getID() + ",\nbut survives due to iglu!");
+            GameJFrame.getInstance().outputToTextBox("Polar bear attacks character on tile " + victim.getTile().getID() + ",\nbut survives due to iglu!");
     }
 
     /**

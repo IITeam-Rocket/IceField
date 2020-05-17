@@ -31,7 +31,7 @@ public class InputCommand implements Command {
     @Override
     public void execute() {
         if (args.length == 0) {
-            GameJFrame.getInstance().OutputToTextBox("Invalid Arguments");
+            GameJFrame.getInstance().outputToTextBox("Invalid Arguments");
             return;
         }
 
@@ -45,7 +45,7 @@ public class InputCommand implements Command {
         try {
             game.changeInput(new Scanner(new File(args[0])));
         } catch (FileNotFoundException e) {
-            GameJFrame.getInstance().OutputToTextBox(String.format("File %s does not exist!", args[0]));
+            GameJFrame.getInstance().outputToTextBox(String.format("File %s does not exist!", args[0]));
         }
     }
 }

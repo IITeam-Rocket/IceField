@@ -33,25 +33,25 @@ public class AddSnowToTileCommand implements Command {
             try {
                 tileID = Integer.parseInt(args[0]);
             } catch (NumberFormatException e) {
-                GameJFrame.getInstance().OutputToTextBox("TileID not a number!");
+                GameJFrame.getInstance().outputToTextBox("TileID not a number!");
                 return;
             }
 
             try {
                 snowQuantity = Integer.parseInt(args[1]);
             } catch (NumberFormatException e) {
-                GameJFrame.getInstance().OutputToTextBox("Snow quantity not a number!");
+                GameJFrame.getInstance().outputToTextBox("Snow quantity not a number!");
                 return;
             }
 
             if (Environment.getInstance().getIceTiles().size() - 1 < tileID || tileID < 0) {
-                GameJFrame.getInstance().OutputToTextBox("Tile ID must be between 0 and the maximum ID of " + (Environment.getInstance().getIceTiles().size() - 1));
+                GameJFrame.getInstance().outputToTextBox("Tile ID must be between 0 and the maximum ID of " + (Environment.getInstance().getIceTiles().size() - 1));
                 return;
             }
 
             int result = Environment.getInstance().getIceTiles().get(tileID).addSnow(snowQuantity);
 
-            GameJFrame.getInstance().OutputToTextBox("snow added: " + tileID + ", " + result);
+            GameJFrame.getInstance().outputToTextBox("snow added: " + tileID + ", " + result);
         }
     }
 }

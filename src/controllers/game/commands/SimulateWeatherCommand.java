@@ -14,10 +14,10 @@ public class SimulateWeatherCommand implements Command {
     @Override
     public void execute() {
         try {
-            GameJFrame.getInstance().OutputToTextBox("weather simulated");
+            GameJFrame.getInstance().outputToTextBox("weather simulated");
             Environment.getInstance().makeStorm();
         } catch (EndOfGameException e) {
-            GameJFrame.getInstance().OutputToTextBox(e.getMessage());
+            GameJFrame.getInstance().outputToTextBox(e.getMessage());
             if (e.getMessage().equals("Win")) {
                 Environment.getInstance().winGame();
             } else {

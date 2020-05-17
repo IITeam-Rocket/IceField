@@ -28,7 +28,7 @@ public class NoRescuePolicy implements RescueFriendPolicy, Serializable {
     @Override
     public void executeStrategy(Character friend, Tile dest) {
         //Empty
-        GameJFrame.getInstance().OutputToTextBox("The character doesn't have a rope!");
+        GameJFrame.getInstance().outputToTextBox("The character doesn't have a rope!");
     }
 
     /**

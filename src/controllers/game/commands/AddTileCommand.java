@@ -44,14 +44,14 @@ public class AddTileCommand implements Command {
                 y = Integer.parseInt(args[2]);
                 capacity = Integer.parseInt(args[3]);
             } catch (NumberFormatException e) {
-                GameJFrame.getInstance().OutputToTextBox(Arrays.toString(e.getStackTrace()));
+                GameJFrame.getInstance().outputToTextBox(Arrays.toString(e.getStackTrace()));
             }
         } else if (args.length == 3) {
             try {
                 x = Integer.parseInt(args[1]);
                 y = Integer.parseInt(args[2]);
             } catch (NumberFormatException e) {
-                GameJFrame.getInstance().OutputToTextBox(Arrays.toString(e.getStackTrace()));
+                GameJFrame.getInstance().outputToTextBox(Arrays.toString(e.getStackTrace()));
             }
         }
 
@@ -82,6 +82,6 @@ public class AddTileCommand implements Command {
         Environment.getInstance().getIceTiles().add(t);
         MapPresenter.getInstance().addTilePresenter(presenter);
 
-        GameJFrame.getInstance().OutputToTextBox("tile added\ntype: " + args[0] + "\nID: " + t.getID());
+        GameJFrame.getInstance().outputToTextBox("tile added\ntype: " + args[0] + "\nID: " + t.getID());
     }
 }

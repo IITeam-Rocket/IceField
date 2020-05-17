@@ -61,7 +61,7 @@ abstract public class IcePatch extends Tile implements Serializable {
         if (snowDepth > 0)
             return null;
         else if(buriedItem == null)
-            GameJFrame.getInstance().OutputToTextBox("There aren't any unburied item on this tile!");
+            GameJFrame.getInstance().outputToTextBox("There aren't any unburied item on this tile!");
         return buriedItem;
     }
 

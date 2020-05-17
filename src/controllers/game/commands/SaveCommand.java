@@ -23,7 +23,7 @@ public class SaveCommand implements Command {
     @Override
     public void execute() {
         if (args.length == 1 && Environment.serializeWrite(args[0])) {
-            GameJFrame.getInstance().OutputToTextBox(String.format("saved: %s", args[0]));
+            GameJFrame.getInstance().outputToTextBox(String.format("saved: %s", args[0]));
         }
     }
 }

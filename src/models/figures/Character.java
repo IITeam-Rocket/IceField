@@ -64,7 +64,7 @@ public abstract class Character extends Figure implements Serializable {
             clearPatchStrategy.clear(tile);
             stamina--;
         } else
-            GameJFrame.getInstance().OutputToTextBox("Not Enough Stamina available to complete this action!");
+            GameJFrame.getInstance().outputToTextBox("Not Enough Stamina available to complete this action!");
     }
 
 
@@ -84,7 +84,7 @@ public abstract class Character extends Figure implements Serializable {
 
 
         } else
-            GameJFrame.getInstance().OutputToTextBox("Not Enough Stamina available to complete this action!");
+            GameJFrame.getInstance().outputToTextBox("Not Enough Stamina available to complete this action!");
     }
 
     /**
@@ -123,7 +123,7 @@ public abstract class Character extends Figure implements Serializable {
         if (stamina > 0)
             Environment.getInstance().winGame();
         else
-            GameJFrame.getInstance().OutputToTextBox("Not Enough Stamina available to complete this action!");
+            GameJFrame.getInstance().outputToTextBox("Not Enough Stamina available to complete this action!");
     }
 
     /**
@@ -139,7 +139,7 @@ public abstract class Character extends Figure implements Serializable {
                 --stamina;
         }
         else
-            GameJFrame.getInstance().OutputToTextBox("Not Enough Stamina available to complete this action!");
+            GameJFrame.getInstance().outputToTextBox("Not Enough Stamina available to complete this action!");
         notifyObservers();
     }
 

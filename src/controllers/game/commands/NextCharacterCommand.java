@@ -33,7 +33,7 @@ public class NextCharacterCommand implements Command {
     @Override
     public void execute() {
         if (Environment.getInstance().getPlayers().size() == 0) {
-            GameJFrame.getInstance().OutputToTextBox("There are currently no characters!");
+            GameJFrame.getInstance().outputToTextBox("There are currently no characters!");
             return;
         }
 
@@ -50,18 +50,18 @@ public class NextCharacterCommand implements Command {
                         t.step();
                     } catch (EndOfGameException e) {
                         if (e.getMessage().equals("Win")) {
-                            GameJFrame.getInstance().OutputToTextBox(e.getMessage());
+                            GameJFrame.getInstance().outputToTextBox(e.getMessage());
                             Environment.getInstance().winGame();
                         } else {
-                            GameJFrame.getInstance().OutputToTextBox(e.getMessage());
+                            GameJFrame.getInstance().outputToTextBox(e.getMessage());
                             Environment.getInstance().gameOver();
                         }
                     }
                 });
                 if (RandomControllerUtil.getRandom())
-                    new SimulateWeatherCommand(game, args).execute();
-                if (RandomController.getRandom())
-                    new SimulateWeatherCommand(game).execute();
+                    new SimulateWeatherCommand().execute();
+                if (RandomControllerUtil.getRandom())
+                    new SimulateWeatherCommand().execute();
             } else {
                 ++ID;
             }
@@ -73,7 +73,7 @@ public class NextCharacterCommand implements Command {
             try {
                 Environment.getInstance().getCurrentPlayer().moveTo(Environment.getInstance().getCurrentPlayer().getTile().getNeighbours().get(new Random().nextInt(Environment.getInstance().getCurrentPlayer().getTile().getNeighbours().size())));
             } catch (EndOfGameException e) {
-                GameJFrame.getInstance().OutputToTextBox(e.getMessage());
+                GameJFrame.getInstance().outputToTextBox(e.getMessage());
                 Environment.getInstance().gameOver();
             }
             new NextCharacterCommand(game, args).execute();

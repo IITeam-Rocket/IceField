@@ -17,6 +17,6 @@ public class ResetCommand implements Command {
     @Override
     public void execute() {
         Environment.getInstance().reset();
-        GameJFrame.getInstance().OutputToTextBox("Game Reset!");
+        GameJFrame.getInstance().outputToTextBox("Game Reset!");
     }
 }

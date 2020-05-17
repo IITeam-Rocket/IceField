@@ -38,7 +38,7 @@ public class AnalyzeTileCommand implements Command {
             return;
 
         if (Environment.getInstance().getCurrentPlayer() == null) {
-            GameJFrame.getInstance().OutputToTextBox("There is no Figure currently selected, please use the\n \"nextcharacter\" command before!");
+            GameJFrame.getInstance().outputToTextBox("There is no Figure currently selected, please use the\n \"nextcharacter\" command before!");
             return;
         }
         Figure figure = Environment.getInstance().getCurrentPlayer();

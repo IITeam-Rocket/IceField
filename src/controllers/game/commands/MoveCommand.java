@@ -30,17 +30,17 @@ public class MoveCommand implements Command {
     @Override
     public void execute() {
         if (Environment.getInstance().getCurrentPlayer() == null) {
-            GameJFrame.getInstance().OutputToTextBox("There is no Figure selected, please use the\n \"nextcharacter\" command before the first move!");
+            GameJFrame.getInstance().outputToTextBox("There is no Figure selected, please use the\n \"nextcharacter\" command before the first move!");
             return;
         }
 
         Tile currentTile = Environment.getInstance().getCurrentPlayer().getTile();
 
         if (args.length == 0) {
-            GameJFrame.getInstance().OutputToTextBox("neighbours: ");
+            GameJFrame.getInstance().outputToTextBox("neighbours: ");
             StringBuilder sb = new StringBuilder();
             currentTile.getNeighbours().forEach(t -> sb.append(String.format("%d ", t.getID())));
-            GameJFrame.getInstance().OutputToTextBox(sb.toString().trim());
+            GameJFrame.getInstance().outputToTextBox(sb.toString().trim());
         } else if (args.length == 1) {
             int tileID;
             try {
@@ -56,7 +56,7 @@ public class MoveCommand implements Command {
                         Environment.getInstance().getCurrentPlayer().moveTo(tile);
                         MapPresenter.getInstance().update();
                     } catch (EndOfGameException e) {
-                        GameJFrame.getInstance().OutputToTextBox(e.getMessage());
+                        GameJFrame.getInstance().outputToTextBox(e.getMessage());
                         Environment.getInstance().gameOver();
                     }
                     MapPresenter.getInstance().update();
@@ -64,8 +64,8 @@ public class MoveCommand implements Command {
                 }
             }
 
-            GameJFrame.getInstance().OutputToTextBox(String.format("move character to %d: unsuccessful", tileID));
-            GameJFrame.getInstance().OutputToTextBox(String.format("The current Tile has no neighbor with the ID %d", tileID));
+            GameJFrame.getInstance().outputToTextBox(String.format("move character to %d: unsuccessful", tileID));
+            GameJFrame.getInstance().outputToTextBox(String.format("The current Tile has no neighbor with the ID %d", tileID));
 
             MapPresenter.getInstance().update();
         }

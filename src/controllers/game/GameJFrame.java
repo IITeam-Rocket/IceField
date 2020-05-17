@@ -14,6 +14,9 @@ import java.util.HashMap;
 
 public class GameJFrame extends JFrame {
 
+    /**
+     * Attributes
+     */
     private static final GameJFrame instance = new GameJFrame();
 
     private final HashMap<String, ImageIcon> MapTextures = new HashMap<>();
@@ -22,7 +25,7 @@ public class GameJFrame extends JFrame {
 
     private final Game game = new Game();
 
-    BufferedImage image;
+    private BufferedImage image;
 
     private final JTextArea text = new JTextArea("Csapattagok:\n  Ábrahám Dániel\n  Józsa György Bence\n  Kovács Marcell\n  Matyasi Lilla Nóra\n  Tóth Máté\n\nKonzulens:\n  Dr. Goldschmidt Balázs");
     private final JTextArea debug = new JTextArea("Debug info");
@@ -44,6 +47,7 @@ public class GameJFrame extends JFrame {
     private final JButton next = new JButton("Next Character");
 
     private Tile activeTile = null;
+
 
     /**
      * Get the Game Object
@@ -164,7 +168,7 @@ public class GameJFrame extends JFrame {
      * Set the character out info on the screen
      * @param text Text to set it to
      */
-    public void CharacterOutInfo(String text) {
+    public void characterOutInfo(String text) {
         this.text.setText(text);
         this.text.grabFocus();
     }
@@ -173,7 +177,7 @@ public class GameJFrame extends JFrame {
      * Set the output info on the screen
      * @param text Text to set it to
      */
-    public void OutputToTextBox(String text) {
+    public void outputToTextBox(String text) {
         this.debug.setText(text);
         this.debug.grabFocus();
     }
@@ -191,7 +195,7 @@ public class GameJFrame extends JFrame {
     /**
      * Initialize the components
      */
-    void initComponents() {
+    private void initComponents() {
         this.setResizable(false);
         this.setSize(930, 600);
         this.setLayout(null);

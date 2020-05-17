@@ -40,24 +40,24 @@ public class AddCharacterToTileCommand implements Command {
             try {
                 tileID = Integer.parseInt(args[0]);
             } catch (NumberFormatException e) {
-                GameJFrame.getInstance().OutputToTextBox("Error!");
+                GameJFrame.getInstance().outputToTextBox("Error!");
             }
 
             try {
                 characterID = Integer.parseInt(args[1]);
             } catch (NumberFormatException e) {
-                GameJFrame.getInstance().OutputToTextBox("Error!");
+                GameJFrame.getInstance().outputToTextBox("Error!");
             }
 
             if (tileID < 0 || Environment.getInstance().getIceTiles().size() - 1 < tileID) {
-                GameJFrame.getInstance().OutputToTextBox("Tile ID must be between 0 and the maximum ID of " + (Environment.getInstance().getIceTiles().size() - 1));
+                GameJFrame.getInstance().outputToTextBox("Tile ID must be between 0 and the maximum ID of " + (Environment.getInstance().getIceTiles().size() - 1));
                 return;
             }
 
             Tile tile = Environment.getInstance().getIceTiles().get(tileID);
 
             if (tile.getCapacity() == 0) {
-                GameJFrame.getInstance().OutputToTextBox("Characters can't be placed in a hole!");
+                GameJFrame.getInstance().outputToTextBox("Characters can't be placed in a hole!");
                 return;
             }
 
@@ -83,7 +83,7 @@ public class AddCharacterToTileCommand implements Command {
                     figure = polarBear;
                     break;
                 default:
-                    GameJFrame.getInstance().OutputToTextBox("Character ID mush be between 1 and 3!");
+                    GameJFrame.getInstance().outputToTextBox("Character ID mush be between 1 and 3!");
                     return;
             }
 
@@ -92,7 +92,7 @@ public class AddCharacterToTileCommand implements Command {
             Environment.getInstance().getPlayers().add(figure);
             MapPresenter.getInstance().addFigurePresenter(presenter);
 
-            GameJFrame.getInstance().OutputToTextBox("character added: " + tileID + ", " + characterID);
+            GameJFrame.getInstance().outputToTextBox("character added: " + tileID + ", " + characterID);
         }
     }
 }

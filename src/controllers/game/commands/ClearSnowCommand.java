@@ -21,13 +21,13 @@ public class ClearSnowCommand implements Command {
     public void execute() {
         Environment e = Environment.getInstance();
         if (e.getCurrentPlayer() == null) {
-            GameJFrame.getInstance().OutputToTextBox("Nincs elérhető karakter");
+            GameJFrame.getInstance().outputToTextBox("Nincs elérhető karakter");
         }
         Figure f = e.getCurrentPlayer();
 
         switch (f.getBaseBodyHeat()) {
             case -1:
-                GameJFrame.getInstance().OutputToTextBox("Polar bear can't clear snow!");
+                GameJFrame.getInstance().outputToTextBox("Polar bear can't clear snow!");
                 break;
             case 4:
                 ((Researcher) f).clearPatch();
@@ -36,7 +36,7 @@ public class ClearSnowCommand implements Command {
                 ((Eskimo) f).clearPatch();
                 break;
             default:
-                GameJFrame.getInstance().OutputToTextBox("Error occurred");
+                GameJFrame.getInstance().outputToTextBox("Error occurred");
                 break;
         }
 

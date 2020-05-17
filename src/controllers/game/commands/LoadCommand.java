@@ -31,7 +31,7 @@ public class LoadCommand implements Command {
             return;
         }
         if (Environment.serializeRead(args[0])) {
-            GameJFrame.getInstance().OutputToTextBox(String.format("loaded: %s", args[0]));
+            GameJFrame.getInstance().outputToTextBox(String.format("loaded: %s", args[0]));
         }
     }
 }

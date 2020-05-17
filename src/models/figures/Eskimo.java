@@ -63,7 +63,7 @@ public class Eskimo extends Character implements Serializable {
                 notifyObservers();
             }
         } else {
-            GameJFrame.getInstance().OutputToTextBox("Not Enough Stamina available to complete this action!");
+            GameJFrame.getInstance().outputToTextBox("Not Enough Stamina available to complete this action!");
             MapPresenter.getInstance().update();
         }
     }

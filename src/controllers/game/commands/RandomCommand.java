@@ -27,11 +27,11 @@ public class RandomCommand implements Command {
             switch (args[0]) {
                 case "on":
                     RandomControllerUtil.setRandom(true);
-                    GameJFrame.getInstance().OutputToTextBox("set random: on");
+                    GameJFrame.getInstance().outputToTextBox("set random: on");
                     break;
                 case "off":
                     RandomControllerUtil.setRandom(false);
-                    GameJFrame.getInstance().OutputToTextBox("set random: off");
+                    GameJFrame.getInstance().outputToTextBox("set random: off");
                     break;
                 default:
                     break;

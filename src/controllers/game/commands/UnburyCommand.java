@@ -27,12 +27,12 @@ public class UnburyCommand implements Command {
     @Override
     public void execute() {
         if (args.length != 0) {
-            GameJFrame.getInstance().OutputToTextBox("IllegalArgument");
+            GameJFrame.getInstance().outputToTextBox("IllegalArgument");
             return;
         }
 
         if (Environment.getInstance().getCurrentPlayer() == null) {
-            GameJFrame.getInstance().OutputToTextBox("There is no Figure selected, please use the\n \"nextcharacter\" command before the first unbury!");
+            GameJFrame.getInstance().outputToTextBox("There is no Figure selected, please use the\n \"nextcharacter\" command before the first unbury!");
             return;
         }
 
@@ -40,7 +40,7 @@ public class UnburyCommand implements Command {
 
         switch (f.getBaseBodyHeat()) {
             case -1:
-                GameJFrame.getInstance().OutputToTextBox("The polar bear can't unbury!");
+                GameJFrame.getInstance().outputToTextBox("The polar bear can't unbury!");
                 break;
             case 4:
                 ((Researcher) f).retrieveItem();
@@ -49,7 +49,7 @@ public class UnburyCommand implements Command {
                 ((Eskimo) f).retrieveItem();
                 break;
             default:
-                GameJFrame.getInstance().OutputToTextBox("Unknown Figure Type!");
+                GameJFrame.getInstance().outputToTextBox("Unknown Figure Type!");
                 break;
         }
 

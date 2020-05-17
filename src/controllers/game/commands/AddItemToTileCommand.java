@@ -50,7 +50,7 @@ public class AddItemToTileCommand implements Command {
             }
 
             if (Environment.getInstance().getIceTiles().size() - 1 < tileID || tileID < 0) {
-                GameJFrame.getInstance().OutputToTextBox("Tile ID must be between 0 and the maximum ID of " + (Environment.getInstance().getIceTiles().size() - 1));
+                GameJFrame.getInstance().outputToTextBox("Tile ID must be between 0 and the maximum ID of " + (Environment.getInstance().getIceTiles().size() - 1));
                 return;
             }
 

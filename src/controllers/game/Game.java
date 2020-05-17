@@ -100,7 +100,7 @@ public class Game {
      * Next character
      */
     public void nextCharacter() {
-        GameJFrame.getInstance().OutputToTextBox("");
+        GameJFrame.getInstance().outputToTextBox("");
         commandInterpreter.interpret(cip.interpreter("nextcharacter"));
     }
 

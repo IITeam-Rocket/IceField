@@ -24,7 +24,7 @@ public class AddTileCommand implements Command {
      */
     @Override
     public void execute() {
-        if (args.length < 1 || 2 < args.length)
+        if (args.length < 3)
             return;
 
         int capacity = Integer.MIN_VALUE;
@@ -80,6 +80,7 @@ public class AddTileCommand implements Command {
         }
 
         Environment.getInstance().getIceTiles().add(t);
+        System.out.println("Size:" + Environment.getInstance().getIceTiles().size());
         MapPresenter.getInstance().addTilePresenter(presenter);
         game.getOutput().println("tile added\ntype: " + args[0] + "\nID: " + t.getID());
     }

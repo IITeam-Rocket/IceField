@@ -1,6 +1,5 @@
 package controllers.view;
 
-import controllers.game.Game;
 import controllers.game.GameJFrame;
 import models.Observer;
 import models.figures.Figure;
@@ -57,7 +56,7 @@ public class MapPresenter implements Observer, Serializable {
 
     public void reset() {
         for(int i = 0; i < tiles.size(); i++)
-            tiles.get(i).destory();
+            tiles.get(i).destroy();
 
         figures.clear();
         tiles.clear();

@@ -12,19 +12,24 @@ import models.tiles.Tile;
  *
  * @author Ábrahám Dániel
  */
-public class AddItemtoTileCommand implements Command {
+public class AddItemToTileCommand implements Command {
 
     private Game game;
     private String[] args;
 
-    public AddItemtoTileCommand(Game _game, String[] _args) {
+    /**
+     * Constructor
+     *
+     * @param _game The Game Object
+     * @param _args Command Arguments
+     */
+    public AddItemToTileCommand(Game _game, String[] _args) {
         game = _game;
         args = _args;
     }
 
     /**
      * Command execution's logic.
-     *
      */
     @Override
     public void execute() {
@@ -37,13 +42,13 @@ public class AddItemtoTileCommand implements Command {
             try {
                 tileID = Integer.parseInt(args[0]);
             } catch (NumberFormatException e) {
-                game.getOutput().println("Eror!");
+                game.getOutput().println("Error!");
             }
 
             try {
                 itemID = Integer.parseInt(args[1]);
             } catch (NumberFormatException e) {
-                game.getOutput().println("Eror!");
+                game.getOutput().println("Error!");
             }
 
             if (Environment.getInstance().getIceTiles().size() - 1 < tileID || tileID < 0) {
@@ -59,7 +64,7 @@ public class AddItemtoTileCommand implements Command {
             }
 
             IcePatch patch = (IcePatch) tile;
-            Item item = getItemfromID(itemID);
+            Item item = getItemFromID(itemID);
 
             if (item == null) {
                 game.getOutput().println("Item ID must be between 1 and 9!");
@@ -76,9 +81,10 @@ public class AddItemtoTileCommand implements Command {
      * A helper method for getting a new item.
      *
      * @param ID itemID.
+     *
      * @return return a new item instance based on the ID.
      */
-    private Item getItemfromID(int ID) {
+    private Item getItemFromID(int ID) {
         switch (ID) {
             case 1:
                 return new Food();

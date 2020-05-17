@@ -8,15 +8,21 @@ import models.tiles.Tile;
 
 
 /**
- * A command to creaft signalflare
+ * A command to craft signal flare
  *
  * @author Ábrahám Dániel
  */
 public class CraftSignalFlareCommand implements Command {
 
-    private final Game game;
-    private final String[] args;
+    private Game game;
+    private String[] args;
 
+    /**
+     * Constructor
+     *
+     * @param _game The Game Object
+     * @param _args Command Arguments
+     */
     public CraftSignalFlareCommand(Game _game, String[] _args) {
         game = _game;
         args = _args;
@@ -67,11 +73,11 @@ public class CraftSignalFlareCommand implements Command {
         beacon = Environment.getInstance().isBeaconIsDiscovered();
 
         if (gun && cartridge && beacon) {
-            Tile Tgun = Environment.getInstance().getGunLocation();
-            Tile Tcartridge = Environment.getInstance().getCartidgeLocation();
-            Tile Tbeacon = Environment.getInstance().getBeaconLocation();
+            Tile TGun = Environment.getInstance().getGunLocation();
+            Tile TCartridge = Environment.getInstance().getCartridgeLocation();
+            Tile TBeacon = Environment.getInstance().getBeaconLocation();
 
-            return Tgun.equals(Tcartridge) && Tgun.equals(Tbeacon);
+            return TGun.equals(TCartridge) && TGun.equals(TBeacon);
         }
 
         return false;

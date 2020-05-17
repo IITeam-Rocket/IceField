@@ -1,6 +1,5 @@
 package controllers.view;
 
-import controllers.game.Game;
 import controllers.game.GameJFrame;
 import models.tiles.Tile;
 
@@ -54,7 +53,7 @@ abstract public class TilePresenter implements Serializable {
         GameJFrame.getInstance().repaint();
     }
 
-    public void destory() {
+    public void destroy() {
         GameJFrame.getInstance().remove(button);
     }
 

@@ -54,7 +54,7 @@ public class FileTest {
 
             assertNotNull(actualLine, "actualLine is null, expected: " + expectedLine);
 
-            assertEquals(expectedLine.trim(), actualLine.trim(), String.format("Error in testfile: %s expected output file: %s", testFilename, testExpectedFilename));
+            assertEquals(expectedLine.trim(), actualLine.trim(), String.format("Error in test file: %s expected output file: %s", testFilename, testExpectedFilename));
         }
     }
 

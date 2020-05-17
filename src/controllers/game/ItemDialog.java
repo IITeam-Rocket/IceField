@@ -7,6 +7,9 @@ public class ItemDialog extends JDialog {
     private final JButton buttonOK = new JButton("OK");
     private final JLabel foundLabel = new JLabel("You have found an item!");
     private final JLabel itemLabel = new JLabel();
+    private final JPanel buttonPanel = new JPanel();
+    private final JPanel labelPanel = new JPanel();
+    private final JPanel contentPane = new JPanel();
 
     /**
      * Creates a modeless dialog with the specified {@code Frame}
@@ -34,15 +37,25 @@ public class ItemDialog extends JDialog {
         super(owner);
         initComponents();
         itemLabel.setText("Item: " + itemName);
-
+        pack();
+        this.setMinimumSize(new Dimension(200, 150));
     }
 
     private void initComponents() {
-        this.setLayout(null);
-        this.add(buttonOK);
-        buttonOK.setBounds(100, 100, 50, 10);
+        this.add(contentPane);
+        contentPane.setLayout(new GridLayout(2, 1));
+        contentPane.add(labelPanel);
+        contentPane.add(buttonPanel);
+        buttonPanel.add(buttonOK);
+        labelPanel.setLayout(new GridLayout(2, 1));
+        labelPanel.add(foundLabel);
+        foundLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        labelPanel.add(itemLabel);
+        itemLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
         buttonOK.addActionListener(e -> onOK());
         setVisible(true);
+        setLocationRelativeTo(getOwner());
     }
 
     private void onOK() {

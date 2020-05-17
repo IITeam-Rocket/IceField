@@ -47,10 +47,10 @@ public class FileMapArgumentsProvider implements ArgumentsProvider {
 
         FileFilter expectedFilter = f -> f.getName().endsWith("Expected");
 
-        File[] testfiles = wd.listFiles(testFilter);
+        File[] testFiles = wd.listFiles(testFilter);
         File[] expected = wd.listFiles(expectedFilter);
 
-        for (File f : testfiles) {
+        for (File f : testFiles) {
             for (File v : expected) {
                 if (v.getName().startsWith(f.getName())) {
                     fileMap.put(f, v);

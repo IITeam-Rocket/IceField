@@ -7,10 +7,10 @@ import models.Environment;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class TextToCommandInterpeter {
+public class TextToCommandInterpreter {
     public Game game;
 
-    public TextToCommandInterpeter(Game _game) {
+    public TextToCommandInterpreter(Game _game) {
         this.game = _game;
     }
 
@@ -18,7 +18,7 @@ public class TextToCommandInterpeter {
         return parts.length > 1;
     }
 
-    public Command interpter(String line) {
+    public Command interpreter(String line) {
         if (line.length() == 0) {
             game.getOutput().println("No command to interpret");
             return null;
@@ -76,7 +76,7 @@ public class TextToCommandInterpeter {
                 command = new BuildTentCommand(game, args);
                 break;
             case "analyzetile":
-                command = new AnalizeTileCommand(game, args);
+                command = new AnalyzeTileCommand(game, args);
                 break;
             case "addtile":
                 command = new AddTileCommand(game, args);
@@ -85,13 +85,13 @@ public class TextToCommandInterpeter {
                 command = new NeighbourTileCommand(game, args);
                 break;
             case "additemtotile":
-                command = new AddItemtoTileCommand(game, args);
+                command = new AddItemToTileCommand(game, args);
                 break;
             case "addcharactertotile":
-                command = new AddCharactertoTileCommand(game, args);
+                command = new AddCharacterToTileCommand(game, args);
                 break;
             case "addsnowtotile":
-                command = new AddSnowtoTileCommand(game, args);
+                command = new AddSnowToTileCommand(game, args);
                 break;
             case "reset":
                 command = new ResetCommand(game, args);
@@ -99,7 +99,7 @@ public class TextToCommandInterpeter {
             case "usespecial":
                 int bodyheat = Environment.getInstance().getCurrentPlayer().getBaseBodyHeat();
                 if (bodyheat == 4) {
-                    command = new AnalizeTileCommand(game, args);
+                    command = new AnalyzeTileCommand(game, args);
                 } else if (bodyheat == 5) {
                     command = new BuildIgluCommand(game, args);
                 }

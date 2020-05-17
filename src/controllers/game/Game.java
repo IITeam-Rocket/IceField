@@ -1,7 +1,7 @@
 package controllers.game;
 
 import controllers.RandomController;
-import controllers.TextToCommandInterpeter;
+import controllers.TextToCommandInterpreter;
 import controllers.view.MapPresenter;
 import models.Environment;
 import models.figures.Figure;
@@ -19,9 +19,9 @@ public class Game {
     private Scanner in = new Scanner(System.in);
     public boolean running = false;
 
-    private TextToCommandInterpeter cip = new TextToCommandInterpeter(this);
+    private final TextToCommandInterpreter cip = new TextToCommandInterpreter(this);
 
-    private CommandInterpreter commandInterpreter = new CommandInterpreter();
+    private final CommandInterpreter commandInterpreter = new CommandInterpreter();
 
     public Game() {
 
@@ -45,12 +45,12 @@ public class Game {
     public void playGame() {
         initializeObservers();
 
-        commandInterpreter.interpret(cip.interpter("input map.txt"));
+        commandInterpreter.interpret(cip.interpreter("input map.txt"));
         running = true;
         while (running) {
             if (in.hasNextLine()) {
                 String line = in.nextLine();
-                commandInterpreter.interpret(cip.interpter(line));
+                commandInterpreter.interpret(cip.interpreter(line));
             }
         }
     }
@@ -77,38 +77,42 @@ public class Game {
 
     public void NextCharacter() {
         GameJFrame.getInstance().OutputToTextBox("");
-        commandInterpreter.interpret(cip.interpter("nextcharacter"));
+        commandInterpreter.interpret(cip.interpreter("nextcharacter"));
     }
 
     public void Move(Tile t) {
-        commandInterpreter.interpret(cip.interpter(String.format("move %d", t.getID())));
+        commandInterpreter.interpret(cip.interpreter(String.format("move %d", t.getID())));
     }
 
-    public void Rescue(Tile t){commandInterpreter.interpret(cip.interpter(String.format("rescue %d", t.getID())));}
+    public void Rescue(Tile t) {
+        commandInterpreter.interpret(cip.interpreter(String.format("rescue %d", t.getID())));
+    }
 
-    public void CraftSignalFlare() { commandInterpreter.interpret(cip.interpter("craftsignalflare")); }
+    public void CraftSignalFlare() {
+        commandInterpreter.interpret(cip.interpreter("craftsignalflare"));
+    }
 
     public void Unbury() {
-        commandInterpreter.interpret(cip.interpter("unbury"));
+        commandInterpreter.interpret(cip.interpreter("unbury"));
     }
 
-    public void clearSnow() {
-        commandInterpreter.interpret(cip.interpter("clearsnow"));
+    public void clearSnow(Tile t) {
+        commandInterpreter.interpret(cip.interpreter(String.format("clearsnow %d", t.getID())));
     }
 
     public void simulateWeather() {
-        commandInterpreter.interpret(cip.interpter("simulateweather"));
+        commandInterpreter.interpret(cip.interpreter("simulateweather"));
     }
 
     public void random() {
         if (RandomController.getRandom()) {
-            commandInterpreter.interpret(cip.interpter("random off"));
+            commandInterpreter.interpret(cip.interpreter("random off"));
         } else {
-            commandInterpreter.interpret(cip.interpter("random on"));
+            commandInterpreter.interpret(cip.interpreter("random on"));
         }
     }
 
     public void useSpecial(Tile t) {
-        commandInterpreter.interpret(cip.interpter(String.format("usespecial %d", t.getID())));
+        commandInterpreter.interpret(cip.interpreter(String.format("usespecial %d", t.getID())));
     }
 }

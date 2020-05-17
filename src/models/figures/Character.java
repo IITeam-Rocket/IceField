@@ -322,7 +322,7 @@ public abstract class Character extends Figure implements Serializable {
      *
      * @return clearPatchStrategy
      */
-    public ClearSnowPolicy getclearPatchStrategy() {
+    public ClearSnowPolicy getClearPatchStrategy() {
         return this.clearPatchStrategy;
     }
 

@@ -9,8 +9,8 @@ import models.tiles.Tile;
 
 public class MoveCommand implements Command {
 
-    private Game game;
-    private String[] args;
+    private final Game game;
+    private final String[] args;
 
     /**
      * Constructor
@@ -37,7 +37,7 @@ public class MoveCommand implements Command {
         Tile currentTile = Environment.getInstance().getCurrentPlayer().getTile();
 
         if (args.length == 0) {
-            GameJFrame.getInstance().OutputToTextBox("neigbours: ");
+            GameJFrame.getInstance().OutputToTextBox("neighbours: ");
             StringBuilder sb = new StringBuilder();
             currentTile.getNeighbours().forEach(t -> sb.append(String.format("%d ", t.getID())));
             GameJFrame.getInstance().OutputToTextBox(sb.toString().trim());

@@ -16,7 +16,7 @@ import models.tiles.Tile;
  *
  * @author Ábrahám Dániel
  */
-public class AddCharactertoTileCommand implements Command {
+public class AddCharacterToTileCommand implements Command {
 
     private Game game;
     private String[] args;
@@ -27,14 +27,13 @@ public class AddCharactertoTileCommand implements Command {
      * @param _game The Game Object
      * @param _args Command Arguments
      */
-    public AddCharactertoTileCommand(Game _game, String[] _args) {
+    public AddCharacterToTileCommand(Game _game, String[] _args) {
         game = _game;
         args = _args;
     }
 
     /**
      * Command execution's logic.
-     *
      */
     @Override
     public void execute() {

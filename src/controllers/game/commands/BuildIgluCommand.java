@@ -8,8 +8,8 @@ import models.figures.Figure;
 
 public class BuildIgluCommand implements Command {
 
-    private Game game;
-    private String[] args;
+    private final Game game;
+    private final String[] args;
 
     /**
      * Constructor
@@ -24,7 +24,6 @@ public class BuildIgluCommand implements Command {
 
     /**
      * Command execution's logic.
-     *
      */
     @Override
     public void execute() {
@@ -51,6 +50,6 @@ public class BuildIgluCommand implements Command {
                 break;
         }
 
-        GameJFrame.getInstance().OutputToTextBox("build iglu: unseccessful");
+        GameJFrame.getInstance().OutputToTextBox("build iglu: unsuccessful");
     }
 }

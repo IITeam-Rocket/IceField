@@ -2,6 +2,7 @@ package controllers.game.commands;
 
 import controllers.game.Game;
 import controllers.game.GameJFrame;
+import controllers.view.MapPresenter;
 import models.Environment;
 import models.exceptions.EndOfGameException;
 
@@ -28,5 +29,7 @@ public class SimulateWeatherCommand implements Command {
                 Environment.getInstance().gameOver();
             }
         }
+
+        MapPresenter.getInstance().update();
     }
 }

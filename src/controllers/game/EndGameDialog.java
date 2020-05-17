@@ -50,6 +50,9 @@ public class EndGameDialog extends JDialog {
         });
     }
 
+    /**
+     * Initialize the components
+     */
     private void initComponents() {
         this.add(contentPane);
         contentPane.setLayout(new GridLayout(2, 1));
@@ -65,6 +68,9 @@ public class EndGameDialog extends JDialog {
         setLocationRelativeTo(getOwner());
     }
 
+    /**
+     * On OK Button Press
+     */
     private void onOK() {
         System.exit(0);
     }

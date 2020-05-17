@@ -13,6 +13,9 @@ public class CommandPanel extends JPanel {
         initComponents();
     }
 
+    /**
+     * Initialize the components
+     */
     void initComponents() {
         this.setBounds(600, 0, 200, 600);
         this.setBackground(Color.white);

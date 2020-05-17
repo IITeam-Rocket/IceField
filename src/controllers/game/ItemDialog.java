@@ -38,6 +38,7 @@ public class ItemDialog extends JDialog {
         initComponents();
         itemLabel.setText("Item: " + itemName);
         pack();
+        owner.setEnabled(false);
         this.setMinimumSize(new Dimension(200, 150));
     }
 
@@ -59,6 +60,7 @@ public class ItemDialog extends JDialog {
     }
 
     private void onOK() {
+        getOwner().setEnabled(true);
         dispose();
     }
 }

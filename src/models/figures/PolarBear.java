@@ -76,11 +76,7 @@ public class PolarBear extends Figure implements Serializable {
     }
 
     @Override
-    public void step() /*throws EndOfGameException */ {
-        /*
-        Random rand = new Random();
-        int neighbourCount = tile.getNeighbours().size();
-        moveTo(tile.getNeighbours().get(rand.nextInt(neighbourCount)));
-    */
+    public void step() {
+        //Empty
     }
 }

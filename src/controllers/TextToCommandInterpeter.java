@@ -5,6 +5,7 @@ import controllers.game.commands.*;
 import models.Environment;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class TextToCommandInterpeter {
     public Game game;
@@ -27,10 +28,7 @@ public class TextToCommandInterpeter {
         String cmd = parts[0];
         String[] args = {};
         if (hasArgs(parts)) {
-            ArrayList<String> a = new ArrayList<>();
-            for (int i = 1; i < parts.length; i++) {
-                a.add(parts[i]);
-            }
+            ArrayList<String> a = new ArrayList<>(Arrays.asList(parts).subList(1, parts.length));
 
             args = a.toArray(new String[]{});
         }
@@ -69,7 +67,7 @@ public class TextToCommandInterpeter {
                 command = new RescueCommand(game, args);
                 break;
             case "craftsignalflare":
-                command = new CraftSignalFlateCommand(game, args);
+                command = new CraftSignalFlareCommand(game, args);
                 break;
             case "buildiglu":
                 command = new BuildIgluCommand(game, args);

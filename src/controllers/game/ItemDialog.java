@@ -37,6 +37,7 @@ public class ItemDialog extends JDialog {
 
     private void initComponents() {
         this.setLayout(new BorderLayout());
-
+        this.add(buttonOK, BorderLayout.SOUTH);
+        buttonOK.setContentAreaFilled(false);
     }
 }

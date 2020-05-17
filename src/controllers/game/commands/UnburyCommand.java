@@ -36,7 +36,7 @@ public class UnburyCommand implements Command {
         }
 
         if (Environment.getInstance().getCurrentPlayer() == null) {
-            GameJFrame.getInstance().OutputToTextBox("There is no Figure selected, please use the \"nextcharacter\" command before the first unbury!");
+            GameJFrame.getInstance().OutputToTextBox("There is no Figure selected, please use the\n \"nextcharacter\" command before the first unbury!");
             return;
         }
 

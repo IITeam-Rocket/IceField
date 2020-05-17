@@ -30,7 +30,7 @@ public class MoveCommand implements Command {
     @Override
     public void execute() {
         if (Environment.getInstance().getCurrentPlayer() == null) {
-            GameJFrame.getInstance().OutputToTextBox("There is no Figure selected, please use the \"nextcharacter\" command before the first move!");
+            GameJFrame.getInstance().OutputToTextBox("There is no Figure selected, please use the\n \"nextcharacter\" command before the first move!");
             return;
         }
 

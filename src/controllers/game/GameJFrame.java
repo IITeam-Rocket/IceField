@@ -1,5 +1,7 @@
 package controllers.game;
 
+import controllers.view.MapPresenter;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.HashMap;
@@ -18,6 +20,8 @@ public class GameJFrame extends JFrame {
 
         this.setTitle("IceField");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        //this.setSize(imageLabel.getPreferredSize());
+        this.setLocationRelativeTo(null);
 
         MapTextures.put("stable", new ImageIcon("resources/stable.png"));
 
@@ -34,6 +38,16 @@ public class GameJFrame extends JFrame {
         this.setLayout(null);
         this.setVisible(true);
         this.add(commandPanel);
+    }
+
+    public void paint(Graphics g)
+    {
+        super.paint(g);
+        g.translate(this.getInsets().left + 30, this.getInsets().top + 30);
+
+        MapPresenter.getInstance().paint(g);
+
+        g.translate(- this.getInsets().left - 30, - this.getInsets().top - 30);
     }
 
     public static GameJFrame getInstance() {

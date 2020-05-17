@@ -15,11 +15,21 @@ public class NextCharacterCommand implements Command {
     private Game game;
     private String[] args;
 
+    /**
+     * Constructor
+     *
+     * @param _game The Game Object
+     * @param _args Command Arguments
+     */
     public NextCharacterCommand(Game _game, String[] _args) {
         game = _game;
         args = _args;
     }
 
+    /**
+     * Command execution's logic.
+     *
+     */
     @Override
     public void execute() {
         if (Environment.getInstance().getPlayers().size() == 0) {

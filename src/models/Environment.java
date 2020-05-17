@@ -333,8 +333,11 @@ public class Environment implements Serializable {
      * Plays the winning game sequence.
      */
     public void winGame() {
-        if (gunIsDiscovered && beaconIsDiscovered && cartridgeIsDiscovered)
+        if (gunIsDiscovered && beaconIsDiscovered && cartridgeIsDiscovered) {
             GameJFrame.getInstance().OutputToTextBox("Signal flare crafted");
+            GameJFrame.getInstance().getGame().endGame();
+            GameJFrame.getInstance().showWinGameDialog();
+        }
         else
             GameJFrame.getInstance().OutputToTextBox("At least one part is missing");
     }

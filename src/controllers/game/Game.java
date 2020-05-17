@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 public class Game {
     private final MapPresenter mp = MapPresenter.getInstance();
-    private final Environment environment = Environment.getInstance();
+    private Environment environment = Environment.getInstance();
 
     private PrintStream os = System.out;
     private Scanner in = new Scanner(System.in);

@@ -76,8 +76,12 @@ public abstract class Character extends Figure implements Serializable {
             IcePatch p = (IcePatch) this.tile;
             Item find = p.unBuryItem(this);
 
-            if (find != null)
+            if (find != null){
                 find.uponDiscovery(this);
+                p.setBuriedItem(null);
+                stamina--;
+            }
+
         } else
             GameJFrame.getInstance().OutputToTextBox("Not Enough Stamina available to complete this action!");
     }

@@ -14,9 +14,15 @@ import models.tiles.Tile;
  */
 public class AddItemToTileCommand implements Command {
 
-    private final Game game;
-    private final String[] args;
+    private Game game;
+    private String[] args;
 
+    /**
+     * Constructor
+     *
+     * @param _game The Game Object
+     * @param _args Command Arguments
+     */
     public AddItemToTileCommand(Game _game, String[] _args) {
         game = _game;
         args = _args;

@@ -13,6 +13,12 @@ public class ClearSnowCommand implements Command {
     private final Game game;
     private final String[] args;
 
+    /**
+     * Constructor
+     *
+     * @param _game The Game Object
+     * @param _args Command Arguments
+     */
     public ClearSnowCommand(Game _game, String[] _args) {
         game = _game;
         args = _args;

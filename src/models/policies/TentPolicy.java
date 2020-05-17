@@ -1,5 +1,6 @@
 package models.policies;
 
+import controllers.game.GameJFrame;
 import models.exceptions.EndOfGameException;
 import models.figures.Figure;
 
@@ -33,6 +34,7 @@ public class TentPolicy implements ProtectionPolicy, Serializable {
      */
     @Override
     public void protectAgainstStorm(Figure victim) throws EndOfGameException {
+        GameJFrame.getInstance().OutputToTextBox("Tent protected character against storm.");
         if (!isIntact)
             victim.reactToStorm();
     }

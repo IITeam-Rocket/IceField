@@ -76,6 +76,7 @@ public class Game {
     }
 
     public void NextCharacter() {
+        GameJFrame.getInstance().OutputToTextBox("");
         commandInterpreter.interpret(cip.interpter("nextcharacter"));
     }
 

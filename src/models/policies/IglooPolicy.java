@@ -27,6 +27,7 @@ public class IglooPolicy implements ProtectionPolicy, Serializable {
     @Override
     public void protectAgainstStorm(Figure victim) {
         //Empty
+        GameJFrame.getInstance().OutputToTextBox("Iglu protected character against storm.");
     }
 
     /**

@@ -1,7 +1,6 @@
 package controllers.game;
 
 import controllers.TextToCommandInterpeter;
-import controllers.game.commands.Command;
 import controllers.view.MapPresenter;
 import models.Environment;
 import models.figures.Figure;
@@ -21,7 +20,7 @@ public class Game {
 
     private TextToCommandInterpeter cip = new TextToCommandInterpeter(this);
 
-    private CommandInterpreter commandInterpreter = new CommandInterpreter(this);
+    private CommandInterpreter commandInterpreter = new CommandInterpreter();
 
     public Game() {
 
@@ -44,6 +43,8 @@ public class Game {
 
     public void playGame() {
         initializeObservers();
+
+        commandInterpreter.interpret(cip.interpter("input map.txt"));
 
         while (running) {
             if (in.hasNextLine()) {

@@ -233,7 +233,7 @@ public class GameJFrame extends JFrame {
         snow.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                game.clearSnow(activeTile);
+                game.clearSnow();
             }
         });
         commandPanel.add(snow);

@@ -92,8 +92,8 @@ public class Game {
         commandInterpreter.interpret(cip.interpter("unbury"));
     }
 
-    public void clearSnow(Tile t) {
-        commandInterpreter.interpret(cip.interpter(String.format("clearsnow %d", t.getID())));
+    public void clearSnow() {
+        commandInterpreter.interpret(cip.interpter("clearsnow"));
     }
 
     public void simulateWeather() {

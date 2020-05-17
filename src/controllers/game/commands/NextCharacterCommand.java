@@ -7,6 +7,8 @@ import models.Environment;
 import models.exceptions.EndOfGameException;
 import models.figures.Figure;
 
+import java.util.Random;
+
 public class NextCharacterCommand implements Command {
 
     private Game game;
@@ -53,6 +55,12 @@ public class NextCharacterCommand implements Command {
         }
 
         if (Environment.getInstance().getCurrentPlayer().getBaseBodyHeat() == -1 && RandomController.getRandom()) {
+            try {
+                Environment.getInstance().getCurrentPlayer().moveTo(Environment.getInstance().getCurrentPlayer().getTile().getNeighbours().get(new Random().nextInt(Environment.getInstance().getCurrentPlayer().getTile().getNeighbours().size())));
+            } catch (EndOfGameException e) {
+                GameJFrame.getInstance().OutputToTextBox(e.getMessage());
+                Environment.getInstance().gameOver();
+            }
             new NextCharacterCommand(game, args).execute();
         }
 

@@ -2,6 +2,7 @@ package controllers.game.commands;
 
 import controllers.game.Game;
 import controllers.game.GameJFrame;
+import controllers.view.MapPresenter;
 import models.Environment;
 import models.exceptions.EndOfGameException;
 import models.tiles.Tile;
@@ -43,6 +44,7 @@ public class MoveCommand implements Command {
                 if (tile.getID() == tileID) {
                     try {
                         Environment.getInstance().getCurrentPlayer().moveTo(tile);
+                        MapPresenter.getInstance().update();
                     } catch (EndOfGameException e) {
                         GameJFrame.getInstance().OutputToTextBox(e.getMessage());
                         Environment.getInstance().gameOver();
@@ -53,6 +55,8 @@ public class MoveCommand implements Command {
 
             GameJFrame.getInstance().OutputToTextBox(String.format("move character to %d: unsuccessful", tileID));
             GameJFrame.getInstance().OutputToTextBox(String.format("The current Tile has no neighbor with the ID %d", tileID));
+
+            MapPresenter.getInstance().update();
         }
     }
 }

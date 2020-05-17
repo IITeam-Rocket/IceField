@@ -250,11 +250,14 @@ public class Environment implements Serializable {
     }
 
     protected void setCurrentPlayer(Figure currentPlayer) {
+        currentPlayer.step();
         this.currentPlayer = currentPlayer;
     }
 
     public void setCurrentPlayer(int ID) {
-        this.currentPlayer = this.players.get(ID);
+        Figure current =  this.players.get(ID);
+        current.step();
+        this.currentPlayer = current;
     }
 
     /**

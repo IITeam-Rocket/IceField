@@ -295,7 +295,6 @@ public abstract class Character extends Figure implements Serializable {
      */
     public void buildTent() {
         ((IcePatch) tile).changeProtectionPolicy(new TentPolicy());
-        --stamina;
     }
 
     /**

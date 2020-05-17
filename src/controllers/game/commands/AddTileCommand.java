@@ -48,17 +48,17 @@ public class AddTileCommand implements Command {
         switch (args[0]) {
             case "hole":
                 Hole hole = new Hole();
-                presenter = new HolePresenter(hole);
+                presenter = new HolePresenter(hole, x, y);
                 t = hole;
                 break;
             case "stable":
                 StableIcePatch stableIcePatch = new StableIcePatch();
-                presenter = new StableIcePatchPresenter(stableIcePatch);
+                presenter = new StableIcePatchPresenter(stableIcePatch, x, y);
                 t = stableIcePatch;
                 break;
             case "instable":
                 InstableIcePatch instableIcePatch = new InstableIcePatch(capacity);
-                presenter = new InstableIcePatchPresenter(instableIcePatch);
+                presenter = new InstableIcePatchPresenter(instableIcePatch, x, y);
                 t = instableIcePatch;
                 break;
             default:
@@ -71,7 +71,7 @@ public class AddTileCommand implements Command {
         }
 
         Environment.getInstance().getIceTiles().add(t);
-        //MapPresenter.getInstance().
+        MapPresenter.getInstance().addTilePresenter(presenter);
         game.getOutput().println("tile added\ntype: " + args[0] + "\nID: " + t.getID());
     }
 }

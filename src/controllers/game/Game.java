@@ -44,6 +44,8 @@ public class Game {
     public void playGame() {
         initializeObservers();
 
+        commandInterpreter.interpret(cip.interpter("input map.txt"));
+
         while (running) {
             if (in.hasNextLine()) {
                 String line = in.nextLine();

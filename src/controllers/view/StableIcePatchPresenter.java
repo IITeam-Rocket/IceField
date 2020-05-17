@@ -26,7 +26,26 @@ public class StableIcePatchPresenter extends TilePresenter {
     @Override
     public void draw() {
         int snowDepth = icePatch.getSnowDepth();
-        ProtectionPolicy po = icePatch.getProtectionStrategy();
+        int protpririty = icePatch.getProtectionStrategy().getPriority(); //iglu 2 sátor 1 noprot 0
+        boolean analyzed = icePatch.isAnalyzed();
+
+        String Protection = new String("");
+        if(protpririty == 2)
+            Protection = "_iglu";
+        else if(protpririty == 1)
+            Protection = "_tent";
+
+        button.setIcon(GameJFrame.getInstance().getTexture("stable_" + String.valueOf(snowDepth) + Protection));
+
+        if(analyzed)
+            button.setText("-1");
+        else
+            button.setText("");
+
+        SwingUtilities.updateComponentTreeUI(GameJFrame.getInstance());
+
+
+
 
         //TODO implement further
     }

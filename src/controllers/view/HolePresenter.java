@@ -26,6 +26,18 @@ public class HolePresenter extends TilePresenter {
         int snowDepth = hole.getSnowDepth();
         boolean isDiscovered = hole.isAnalyzed();
 
+        if(!isDiscovered)
+        {
+            button.setIcon(GameJFrame.getInstance().getTexture("stable_" + String.valueOf(snowDepth)));
+            button.setText("");
+        }
+        else
+        {
+            button.setIcon(GameJFrame.getInstance().getTexture("water"));
+            button.setText("0");
+        }
+
+
 
         //TODO implement further
     }

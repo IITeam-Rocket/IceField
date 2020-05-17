@@ -83,6 +83,8 @@ public class Game {
         commandInterpreter.interpret(cip.interpter(String.format("move %d", t.getID())));
     }
 
+    public void Rescue(Tile t){commandInterpreter.interpret(cip.interpter(String.format("rescue %d", t.getID())));}
+
     public void CraftSignalFlare() { commandInterpreter.interpret(cip.interpter("craftsignalflare")); }
 
 

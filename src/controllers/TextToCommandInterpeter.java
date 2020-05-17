@@ -69,7 +69,7 @@ public class TextToCommandInterpeter {
                 command = new RescueCommand(game, args);
                 break;
             case "craftsignalflare":
-                command = new CraftSignalFlateCommand(game, args);
+                command = new CraftSignalFlareCommand(game, args);
                 break;
             case "buildiglu":
                 command = new BuildIgluCommand(game, args);

@@ -53,7 +53,7 @@ public class Environment implements Serializable {
 
     private Tile beaconLocation = null;
 
-    private Tile cartidgeLocation = null;
+    private Tile cartridgeLocation = null;
 
     private Tile gunLocation = null;
 
@@ -118,7 +118,7 @@ public class Environment implements Serializable {
                 instance.recordBeacon(env.getBeaconLocation());
 
             if (env.isCartridgeIsDiscovered())
-                instance.recordCartridge(env.getCartidgeLocation());
+                instance.recordCartridge(env.getCartridgeLocation());
 
             if (env.isGunIsDiscovered())
                 instance.recordGun(env.getGunLocation());
@@ -130,7 +130,7 @@ public class Environment implements Serializable {
             MapPresenter.getInstance().setFigures(mapPresenter.getFigures());
             MapPresenter.getInstance().setTiles(mapPresenter.getTiles());
 
-            mapPresenter.getInstance().update();
+            MapPresenter.getInstance().update();
 
             in.close();
 
@@ -170,7 +170,7 @@ public class Environment implements Serializable {
      */
     public void recordCartridge(Tile tile) {
         this.cartridgeIsDiscovered = true;
-        setCartidgeLocation(tile);
+        setCartridgeLocation(tile);
     }
 
     /**
@@ -298,12 +298,12 @@ public class Environment implements Serializable {
         this.cartridgeIsDiscovered = cartridgeIsDiscovered;
     }
 
-    public Tile getCartidgeLocation() {
-        return cartidgeLocation;
+    public Tile getCartridgeLocation() {
+        return cartridgeLocation;
     }
 
-    private void setCartidgeLocation(Tile tile) {
-        cartidgeLocation = tile;
+    private void setCartridgeLocation(Tile tile) {
+        cartridgeLocation = tile;
     }
 
     /**

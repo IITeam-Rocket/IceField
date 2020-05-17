@@ -16,19 +16,18 @@ import models.tiles.Tile;
  *
  * @author Ábrahám Dániel
  */
-public class AddCharactertoTileCommand implements Command {
+public class AddCharacterToTileCommand implements Command {
 
-    private Game game;
-    private String[] args;
+    private final Game game;
+    private final String[] args;
 
-    public AddCharactertoTileCommand(Game _game, String[] _args) {
+    public AddCharacterToTileCommand(Game _game, String[] _args) {
         game = _game;
         args = _args;
     }
 
     /**
      * Command execution's logic.
-     *
      */
     @Override
     public void execute() {

@@ -112,29 +112,28 @@ public class GameJFrame extends JFrame {
         this.debug.grabFocus();
     }
 
-    public ImageIcon getTexture(String key)
-    {
+    private final JTextArea text = new JTextArea("Csapattagok:\n  Ábrahám Dániel\n  Józsa György Bence\n  Kovács Marcell\n  Matyasi Lilla Nóra\n  Tóth Máté\n\nKonzulens:\n  Dr. Goldschmidt Balázs");
+    private final JTextArea debug = new JTextArea("Debug info");
+    private final JTextArea team = new JTextArea("team_rocket\n      v1.0");
+    private final JLabel io = new JLabel("IO:");
+    private final JTextField textBox = new JTextField("Filename Textbox");
+    private final JButton load = new JButton("Load");
+    private final JButton save = new JButton("Save");
+    private final JLabel randomness = new JLabel("Randomness:   ");
+    private final JButton random = new JButton("Random Off");
+    private final JButton weather = new JButton("Simulate Weather");
+    private final JLabel gameplay = new JLabel("Gameplay:");
+    private final JButton special = new JButton("Use Special Ability");
+    private final JButton craft = new JButton("Craft Signal Flare");
+    private final JButton rescue = new JButton("Rescue");
+    private final JButton snow = new JButton("Clear Snow");
+    private final JButton unbury = new JButton("Unbury");
+    private final JButton move = new JButton("Move");
+    private final JButton next = new JButton("Next Character");
+
+    public ImageIcon getTexture(String key) {
         return MapTextures.get(key);
     }
-
-    private JTextArea text = new JTextArea("Csapattagok:\n  Ábrahám Dániel\n  Józsa György Bence\n  Kovács Marcell\n  Matyasi Lilla Nóra\n  Tóth Máté\n\nKonzulens:\n  Dr. Goldschmidt Balázs");
-    private JTextArea debug = new JTextArea("Debug info");
-    private JTextArea team = new JTextArea("team_rocket\n      v1.0");
-    private JLabel io = new JLabel("IO:");
-    private JTextField textbox = new JTextField("Filename Textbox");
-    private JButton load = new JButton("Load");
-    private JButton save = new JButton("Save");
-    private JLabel randomness = new JLabel("Randomness:   ");
-    private JButton random = new JButton("Random Off");
-    private JButton weather = new JButton("Simulate Weather");
-    private JLabel gameplay = new JLabel("Gameplay:");
-    private JButton special = new JButton("Use Special Ability");
-    private JButton craft = new JButton("Craft Signal Flare");
-    private JButton rescue = new JButton("Rescue");
-    private JButton snow = new JButton("Clear Snow");
-    private JButton unbury = new JButton("Unbury");
-    private JButton move = new JButton("Move");
-    private JButton next = new JButton("Next Character");
 
     void initComponents() {
         this.setResizable(false);
@@ -149,14 +148,14 @@ public class GameJFrame extends JFrame {
         io.setVisible(true);
         commandPanel.add(io);
 
-        textbox.setVisible(true);
-        commandPanel.add(textbox);
+        textBox.setVisible(true);
+        commandPanel.add(textBox);
 
         load.setVisible(true);
         load.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Environment.serializeRead(textbox.getText());
+                Environment.serializeRead(textBox.getText());
             }
         });
         commandPanel.add(load);
@@ -165,7 +164,7 @@ public class GameJFrame extends JFrame {
         save.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Environment.serializeWrite(textbox.getText());
+                Environment.serializeWrite(textBox.getText());
             }
         });
         commandPanel.add(save);
@@ -303,18 +302,18 @@ public class GameJFrame extends JFrame {
 
     public void paint(Graphics g) {
 
-        io.setBounds(10,10,20, 15);
-        textbox.setBounds(5,30,305, 20);
+        io.setBounds(10, 10, 20, 15);
+        textBox.setBounds(5, 30, 305, 20);
 
-        load.setBounds(5,60, 150, 20);
-        save.setBounds(160,60, 150, 20);
+        load.setBounds(5, 60, 150, 20);
+        save.setBounds(160, 60, 150, 20);
 
-        randomness.setBounds(10,90,150, 15);
+        randomness.setBounds(10, 90, 150, 15);
 
-        random.setBounds(5,110, 150, 20);
-        weather.setBounds(160,110, 150, 20);
+        random.setBounds(5, 110, 150, 20);
+        weather.setBounds(160, 110, 150, 20);
 
-        gameplay.setBounds(10,140,150, 15);
+        gameplay.setBounds(10, 140, 150, 15);
 
         next.setBounds(5,160, 150, 20);
         move.setBounds(160,160, 150, 20);

@@ -10,8 +10,8 @@ import models.figures.Researcher;
 
 public class ClearSnowCommand implements Command {
 
-    private Game game;
-    private String[] args;
+    private final Game game;
+    private final String[] args;
 
     public ClearSnowCommand(Game _game, String[] _args) {
         game = _game;
@@ -31,7 +31,7 @@ public class ClearSnowCommand implements Command {
 
         switch (f.getBaseBodyHeat()) {
             case -1:
-                GameJFrame.getInstance().OutputToTextBox("Polarbear can't clear snow!");
+                GameJFrame.getInstance().OutputToTextBox("Polar bear can't clear snow!");
                 break;
             case 4:
                 ((Researcher) f).clearPatch();

@@ -1,12 +1,10 @@
 package controllers.view;
 
 import controllers.game.GameJFrame;
-import models.policies.ProtectionPolicy;
 import models.tiles.InstableIcePatch;
 import models.tiles.Tile;
 
 import javax.swing.*;
-import java.awt.*;
 import java.io.Serializable;
 
 public class InstableIcePatchPresenter extends TilePresenter implements Serializable {
@@ -30,19 +28,19 @@ public class InstableIcePatchPresenter extends TilePresenter implements Serializ
         boolean flipped = icePatch.isFlipped();
         boolean analyzed = icePatch.isAnalyzed();
 
-        int protpririty = icePatch.getProtectionStrategy().getPriority(); //iglu 2 sátor 1 noprot 0
+        int protectionPriority = icePatch.getProtectionStrategy().getPriority(); //iglu 2 sátor 1 noProtection 0
 
-        String Protection = new String("");
+        String Protection = "";
 
         ImageIcon base;
 
         if(!flipped) {
-            if (protpririty == 2)
+            if (protectionPriority == 2)
                 Protection = "_iglu";
-            else if (protpririty == 1)
+            else if (protectionPriority == 1)
                 Protection = "_tent";
 
-            base = GameJFrame.getInstance().getTexture("stable_" + String.valueOf(snowDepth) + Protection);
+            base = GameJFrame.getInstance().getTexture("stable_" + snowDepth + Protection);
         }
         else
         {

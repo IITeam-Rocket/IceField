@@ -48,14 +48,14 @@ public class RescueCommand implements Command {
             return;
         }
 
-        Tile basetile = findTilebyID(tileID);
+        Tile baseTile = findTileByID(tileID);
 
-        if (basetile == null) {
+        if (baseTile == null) {
             GameJFrame.getInstance().OutputToTextBox(String.format("The tile with ID %d doesn't neighbour the tile, the character is on!", tileID));
             MapPresenter.getInstance().update();
             return;
         }
-        Character characterToRescue = findFriendonTile(basetile);
+        Character characterToRescue = findFriendOnTile(baseTile);
 
         if (characterToRescue == null) {
             GameJFrame.getInstance().OutputToTextBox("friend rescue: unsuccessful");
@@ -79,7 +79,7 @@ public class RescueCommand implements Command {
         MapPresenter.getInstance().update();
     }
 
-    private Tile findTilebyID(int ID) {
+    private Tile findTileByID(int ID) {
         for (Tile tile : Environment.getInstance().getCurrentPlayer().getTile().getNeighbours()) {
             if (tile.getID() == ID) {
                 return tile;
@@ -89,7 +89,7 @@ public class RescueCommand implements Command {
         return null;
     }
 
-    private Character findFriendonTile(Tile base) {
+    private Character findFriendOnTile(Tile base) {
         for (Figure figure : base.getEntities()) {
             if (figure.getBaseBodyHeat() != 1) {
                 return (Character) figure;

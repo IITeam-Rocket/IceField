@@ -63,7 +63,7 @@ public class Researcher extends Character implements Serializable {
      * Helper method to initialize observers
      */
     @Override
-    void initObservers() {
+    protected void initObservers() {
         register(MapPresenter.getInstance());
     }
 

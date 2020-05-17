@@ -61,7 +61,7 @@ public class PolarBear extends Figure implements Serializable {
      * Helper method to initialize observers
      */
     @Override
-    void initObservers() {
+    protected void initObservers() {
         register(MapPresenter.getInstance());
     }
 

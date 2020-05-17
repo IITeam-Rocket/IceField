@@ -40,31 +40,6 @@ public class CraftSignalFlareCommand implements Command {
             return;
         }
 
-
-
-        switch (currentPlayer.getBaseBodyHeat()) {
-            case -1:
-                GameJFrame.getInstance().OutputToTextBox("A polar bear cannot craft!");
-                break;
-            case 4:
-            case 5:
-                if (onTheSamePage()) {
-                    ((models.figures.Character) currentPlayer).craftSignalFlare();
-                }
-                break;
-            default:
-                GameJFrame.getInstance().OutputToTextBox("Unknown Figure!");
-                break;
-        }
-    }
-
-    /**
-     * Helper method to determine if the necessary requirements are fulfilled to craft a signal flare.
-     *
-     * @return returns true is requirements fulfilled, otherwise return false.
-     */
-    private boolean onTheSamePage() {
-
         boolean gun;
         boolean cartridge;
         boolean beacon;
@@ -72,14 +47,22 @@ public class CraftSignalFlareCommand implements Command {
         cartridge = Environment.getInstance().isCartridgeIsDiscovered();
         beacon = Environment.getInstance().isBeaconIsDiscovered();
 
-        if (gun && cartridge && beacon) {
-            Tile TGun = Environment.getInstance().getGunLocation();
-            Tile TCartridge = Environment.getInstance().getCartridgeLocation();
-            Tile TBeacon = Environment.getInstance().getBeaconLocation();
-
-            return TGun.equals(TCartridge) && TGun.equals(TBeacon);
+        switch (currentPlayer.getBaseBodyHeat()) {
+            case -1:
+                GameJFrame.getInstance().OutputToTextBox("A polar bear cannot craft!");
+                break;
+            case 4:
+            case 5:
+                if (gun && cartridge && beacon) {
+                    ((models.figures.Character) currentPlayer).craftSignalFlare();
+                }
+                else
+                    GameJFrame.getInstance().OutputToTextBox("At least one part is missing");
+                break;
+            default:
+                GameJFrame.getInstance().OutputToTextBox("Unknown Figure!");
+                break;
         }
-
-        return false;
     }
+
 }

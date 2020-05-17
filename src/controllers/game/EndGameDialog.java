@@ -6,8 +6,7 @@ import java.awt.*;
 public class EndGameDialog extends JDialog {
 
     private final JButton buttonOK = new JButton("OK");
-    private final JLabel foundLabel = new JLabel("Game has ended!");
-    private final JLabel itemLabel = new JLabel();
+    private final JLabel GameOverLabel = new JLabel("Game has ended!");
     private final JPanel buttonPanel = new JPanel();
     private final JPanel labelPanel = new JPanel();
     private final JPanel contentPane = new JPanel();
@@ -38,6 +37,8 @@ public class EndGameDialog extends JDialog {
     public EndGameDialog(Frame owner, String title) {
         super(owner, title);
         initComponents();
+        pack();
+        this.setMinimumSize(new Dimension(200, 150));
     }
 
     private void initComponents() {
@@ -47,10 +48,8 @@ public class EndGameDialog extends JDialog {
         contentPane.add(buttonPanel);
         buttonPanel.add(buttonOK);
         labelPanel.setLayout(new GridLayout(2, 1));
-        labelPanel.add(foundLabel);
-        foundLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        labelPanel.add(itemLabel);
-        itemLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        labelPanel.add(GameOverLabel);
+        GameOverLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
         buttonOK.addActionListener(e -> onOK());
         setVisible(true);
@@ -58,6 +57,7 @@ public class EndGameDialog extends JDialog {
     }
 
     private void onOK() {
+        System.exit(0);
         getOwner().dispose();
         dispose();
     }

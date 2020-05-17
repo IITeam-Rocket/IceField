@@ -331,6 +331,7 @@ public class Environment implements Serializable {
      */
     public void gameOver() {
         GameJFrame.getInstance().OutputToTextBox("Game over!");
+        GameJFrame.getInstance().getGame().endGame();
         GameJFrame.getInstance().showEndGameDialog();
     }
 }

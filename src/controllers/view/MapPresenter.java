@@ -43,7 +43,7 @@ public class MapPresenter implements Observer  {
 
         for(int i = 0; i < figures.size(); i++)
             figures.get(i).draw(getXCoord(figures.get(i)), getYCoord(figures.get(i)));
-        
+
         GameJFrame.getInstance().repaint();
     }
 

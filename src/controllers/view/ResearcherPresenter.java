@@ -58,11 +58,9 @@ public class ResearcherPresenter extends FigurePresenter implements Serializable
         FallInWaterPolicy swimOutPolicy = researcher.getSwimToShoreStrategy();
         Tile tile = researcher.getTile();
 
-        if (Environment.getInstance().getCurrentPlayer() != null) {
-            if (Environment.getInstance().getCurrentPlayer().equals(researcher)) {
-                GameJFrame.getInstance().characterOutInfo(String.format("researcher\n\nbody heat: %d\nstamina: %d\nclearPatchStrategy: %s\nhelpFriendStrategy: %s\nswimToShoreStrategy: %s\ntile: %d",
-                        bodyHeat, stamina, clearSnowPolicy.toString(), rescueFriendPolicy.toString(), swimOutPolicy.toString(), tile.getID()));
-            }
+        if (Environment.getInstance().getCurrentPlayer() != null && Environment.getInstance().getCurrentPlayer().equals(researcher)) {
+            GameJFrame.getInstance().characterOutInfo(String.format("researcher\n\nbody heat: %d\nstamina: %d\nclearPatchStrategy: %s\nhelpFriendStrategy: %s\nswimToShoreStrategy: %s\ntile: %d",
+                    bodyHeat, stamina, clearSnowPolicy.toString(), rescueFriendPolicy.toString(), swimOutPolicy.toString(), tile.getID()));
         }
     }
 }

@@ -69,7 +69,7 @@ public class TextToCommandInterpreter {
                 command = new SimulateWeatherCommand();
                 break;
             case "rescue":
-                command = new RescueCommand(game, args);
+                command = new RescueCommand(args);
                 break;
             case "craftsignalflare":
                 command = new CraftSignalFlareCommand();

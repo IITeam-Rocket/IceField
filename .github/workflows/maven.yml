@@ -26,8 +26,6 @@ jobs:
       run: mvn -B validate --file pom.xml
     - name: Compiling
       run: mvn -B compile --file pom.xml
-    - name: Tesing shit
-      run: mvn -B test --file pom.xml
     - name: Build with Maven
       run: mvn -B package --file pom.xml
     - run: mkdir staging && xcopy target\*.jar staging

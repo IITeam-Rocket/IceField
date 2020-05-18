@@ -113,5 +113,7 @@ abstract public class Figure extends Subject implements Serializable {
      */
     abstract protected void initObservers();
 
-    public void step() /*throws EndOfGameException*/ {}
+    public void step() /*throws EndOfGameException*/ {
+        //Empty
+    }
 }

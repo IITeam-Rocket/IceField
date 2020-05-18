@@ -25,7 +25,7 @@ public class GameJFrame extends JFrame {
 
     private final Game game = new Game();
 
-    private BufferedImage image;
+    BufferedImage image;
 
     private final JTextArea text = new JTextArea("Csapattagok:\n  Ábrahám Dániel\n  Józsa György Bence\n  Kovács Marcell\n  Matyasi Lilla Nóra\n  Tóth Máté\n\nKonzulens:\n  Dr. Goldschmidt Balázs");
     private final JTextArea debug = new JTextArea("Debug info");

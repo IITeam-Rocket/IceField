@@ -49,11 +49,9 @@ public class PolarBearPresenter extends FigurePresenter implements Serializable 
     public void draw(int x, int y) {
         FallInWaterPolicy swimToShoreStrategy = bear.getSwimToShoreStrategy();
         Tile tile = bear.getTile();
-        if (Environment.getInstance().getCurrentPlayer() != null) {
-            if (Environment.getInstance().getCurrentPlayer().equals(bear)) {
-                GameJFrame.getInstance().characterOutInfo(String.format("polar bear\n\nswimToShoreStrategy: %s\ntile: %d",
-                        swimToShoreStrategy.toString(), tile.getID()));
-            }
+        if (Environment.getInstance().getCurrentPlayer() != null && Environment.getInstance().getCurrentPlayer().equals(bear)) {
+            GameJFrame.getInstance().characterOutInfo(String.format("polar bear\n\nswimToShoreStrategy: %s\ntile: %d",
+                    swimToShoreStrategy.toString(), tile.getID()));
         }
         super.draw(x, y);
     }

@@ -14,6 +14,16 @@ import java.util.List;
  */
 public class RandomControllerUtil {
 
+    /**
+     * Boolean flag signifying whether
+     * the randomness of the game is
+     * turned on or off.
+     */
+    static private boolean random = true;
+
+    /**
+     * List of listeners
+     */
     static private final List<RandomListener> listeners = new ArrayList<>();
 
     /**
@@ -24,13 +34,6 @@ public class RandomControllerUtil {
     static public void addListener(RandomListener rl) {
         listeners.add(rl);
     }
-
-    /**
-     * Boolean flag signifying whether
-     * the randomness of the game is
-     * turned on or off.
-     */
-    static private boolean random = true;
 
     /**
      * Returns with the randomness-value of

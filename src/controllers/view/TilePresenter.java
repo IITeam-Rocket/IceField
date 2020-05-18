@@ -139,7 +139,9 @@ abstract public class TilePresenter implements Serializable {
     /**
      * Draw
      */
-    public void draw() { }
+    public void draw() {
+        //Empty
+    }
 
     /**
      * Check if the TilePresenter's Tile whether is a neighbour of the current Tile

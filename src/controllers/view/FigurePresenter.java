@@ -27,6 +27,6 @@ public abstract class FigurePresenter implements Serializable {
      * @param y where Y
      */
     public void draw(int x, int y) {
-
+        //Empty
     }
 }

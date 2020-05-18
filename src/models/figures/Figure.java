@@ -21,12 +21,12 @@ abstract public class Figure extends Subject implements Serializable {
     /**
      * The first and last name actual tile of this figure.
      */
-    Tile tile;
+    protected Tile tile;
     /**
      * The swim to shore strategy of this figure.
      * Indicates the behavior of the figure when falls in water.
      */
-    FallInWaterPolicy swimToShoreStrategy;
+    protected FallInWaterPolicy swimToShoreStrategy;
 
     /**
      * Moves the player to the destination Tile.

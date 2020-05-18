@@ -11,6 +11,8 @@ addtile hole 120 150
 addtile stable 180 270
 addtile hole 90 375
 addtile stable 15 270
+addtile stable 430 50
+addtile instable 400 420 2
 neighbourtile 0 1
 neighbourtile 1 2
 neighbourtile 2 3
@@ -37,6 +39,10 @@ neighbourtile 7 10
 neighbourtile 9 0
 neighbourtile 9 12
 neighbourtile 10 12
+neighbourtile 4 13
+neighbourtile 3 13
+neighbourtile 6 14
+neighbourtile 5 14
 addcharactertotile 1 3
 addcharactertotile 3 1
 addcharactertotile 5 2
@@ -46,7 +52,14 @@ additemtotile 12 6
 additemtotile 8 7
 additemtotile 0 8
 additemtotile 10 4
+additemtotile 13 9
+additemtotile 14 3
+additemtotile 3 1
+additemtotile 1 5
 addsnowtotile 0 3
 addsnowtotile 9 4
 addsnowtotile 12 2
+addsnowtotile 13 3
+addsnowtotile 5 4
+addsnowtotile 2 1
 input console

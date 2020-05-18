@@ -203,29 +203,106 @@ public class GameJFrame extends JFrame {
         this.add(commandPanel);
         this.setIgnoreRepaint(true);
 
+        constructCommandPanel();
+
+        RandomControllerUtil.addListener(x -> weather.setEnabled(!x));
+    }
+
+    /**
+     * Constructs the commandPanel
+     */
+    private void constructCommandPanel() {
         commandPanel.setBounds(600, 0, 315, 600);
 
+        initIo();
+
+        initTextBox();
+
+        initLoad();
+
+        initSave();
+
+        initRandomness();
+
+        initRandom();
+
+        initWeather();
+
+        initGameplay();
+
+        initNext();
+
+        initMove();
+
+        initUnbury();
+
+        initSnow();
+
+        initRescue();
+
+        initCraft();
+
+        initSpecial();
+
+        initText();
+
+        initDebugBox();
+
+        initTeam();
+    }
+
+    /**
+     * Initializes JLabel io
+     */
+    private void initIo() {
         io.setVisible(true);
         commandPanel.add(io);
+    }
 
+    /**
+     * Initializes JTextBox textBox
+     */
+    private void initTextBox() {
         textBox.setVisible(true);
         commandPanel.add(textBox);
+    }
 
+    /**
+     * Initializes JButton load
+     */
+    private void initLoad() {
         load.setVisible(true);
         load.addActionListener(e -> {
             Environment.serializeRead(textBox.getText());
             MapPresenter.getInstance().update();
         });
         commandPanel.add(load);
+    }
 
+    /**
+     * Initializes JButton save
+     */
+    private void initSave() {
         save.setVisible(true);
-        save.addActionListener(e -> {Environment.serializeWrite(textBox.getText());
-                    MapPresenter.getInstance().update();});
+        save.addActionListener(e -> {
+            Environment.serializeWrite(textBox.getText());
+            MapPresenter.getInstance().update();
+        });
         commandPanel.add(save);
+    }
 
+    /**
+     * Initializes JLabel randomness
+     */
+    private void initRandomness() {
         randomness.setVisible(true);
         commandPanel.add(randomness);
+    }
 
+    /**
+     * Initializes JButton random
+     */
+    private void initRandom() {
         random.setVisible(true);
         random.addActionListener(e -> {
             game.random();
@@ -236,24 +313,45 @@ public class GameJFrame extends JFrame {
             MapPresenter.getInstance().update();
         });
         commandPanel.add(random);
+    }
 
+    /**
+     * Initializes JButton weather
+     */
+    private void initWeather() {
         weather.setVisible(true);
         weather.setEnabled(false);
-        weather.addActionListener(e -> {game.simulateWeather();
-                    MapPresenter.getInstance().update();
+        weather.addActionListener(e -> {
+            game.simulateWeather();
+            MapPresenter.getInstance().update();
         });
         commandPanel.add(weather);
+    }
 
+    /**
+     * Initializes JLabel gameplay
+     */
+    private void initGameplay() {
         gameplay.setVisible(true);
         commandPanel.add(gameplay);
+    }
 
+    /**
+     * Initializes JButton next
+     */
+    private void initNext() {
         next.setVisible(true);
         next.addActionListener(e -> {
             game.nextCharacter();
-                    MapPresenter.getInstance().update();
+            MapPresenter.getInstance().update();
         });
         commandPanel.add(next);
+    }
 
+    /**
+     * Initializes JButton move
+     */
+    private void initMove() {
         move.setVisible(true);
         move.addActionListener(e -> {
             if (activeTile != null) {
@@ -262,21 +360,36 @@ public class GameJFrame extends JFrame {
             }
         });
         commandPanel.add(move);
+    }
 
+    /**
+     * Initialized JButton unbury
+     */
+    private void initUnbury() {
         unbury.setVisible(true);
         unbury.addActionListener(e -> {
             game.unBury();
             MapPresenter.getInstance().update();
         });
         commandPanel.add(unbury);
+    }
 
+    /**
+     * Initialized JButton snow
+     */
+    private void initSnow() {
         snow.setVisible(true);
         snow.addActionListener(e -> {
             game.clearSnow();
             MapPresenter.getInstance().update();
         });
         commandPanel.add(snow);
+    }
 
+    /**
+     * Initializes JButton rescue
+     */
+    private void initRescue() {
         rescue.setVisible(true);
         rescue.addActionListener(e -> {
             if (activeTile != null) {
@@ -286,17 +399,26 @@ public class GameJFrame extends JFrame {
             MapPresenter.getInstance().update();
         });
         commandPanel.add(rescue);
+    }
 
+    /**
+     * Initializes JButton craft
+     */
+    private void initCraft() {
         craft.setVisible(true);
-        commandPanel.add(craft);
         craft.addActionListener(e -> {
-            game.craftSignalFlare();
+                    game.craftSignalFlare();
                     activeTile = null;
                     MapPresenter.getInstance().update();
                 }
         );
+        commandPanel.add(craft);
+    }
 
-
+    /**
+     * Initializes JButton special
+     */
+    private void initSpecial() {
         special.setVisible(true);
         special.addActionListener(e -> {
             if (activeTile != null) {
@@ -306,20 +428,35 @@ public class GameJFrame extends JFrame {
             MapPresenter.getInstance().update();
         });
         commandPanel.add(special);
+    }
 
+    /**
+     * Initializes JTextArea text
+     */
+    private void initText() {
         text.setVisible(true);
         text.setEditable(false);
         commandPanel.add(text);
+    }
 
-        debug.setVisible(true);
-        debug.setEditable(false);
-        commandPanel.add(debug);
+    /**
+     * Initializes JTextArea team
+     */
+    private void initTeam() {
         team.setVisible(true);
         team.setEditable(false);
         commandPanel.add(team);
-
-        RandomControllerUtil.addListener(x -> weather.setEnabled(!x));
     }
+
+    /**
+     * Initializes JTextArea debug
+     */
+    private void initDebugBox() {
+        debug.setVisible(true);
+        debug.setEditable(false);
+        commandPanel.add(debug);
+    }
+
 
     /**
      * Create the background

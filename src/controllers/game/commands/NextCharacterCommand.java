@@ -58,6 +58,7 @@ public class NextCharacterCommand implements Command {
                         }
                     }
                 });
+                Environment.getInstance().getPlayers().forEach(Figure::step);
                 if (RandomControllerUtil.getRandom())
                     new SimulateWeatherCommand().execute();
                 if (RandomControllerUtil.getRandom())

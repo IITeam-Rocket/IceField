@@ -27,7 +27,7 @@ public class HasNoDiveSuitPolicy implements FallInWaterPolicy, Serializable {
      */
     @Override
     public boolean executeStrategy(Figure player) {
-        ((models.figures.Character) player).setStamina(1);
+        ((models.figures.Character) player).setStamina(0);
         return false;
     }
 

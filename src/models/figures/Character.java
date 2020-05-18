@@ -310,7 +310,7 @@ public abstract class Character extends Figure implements Serializable {
      */
     @Override
     public void moveTo(Tile destination) {
-        if (stamina == 0) return;
+        if (stamina <= 0) return;
         if (destination.acceptFigure(this)) {
             stamina--;
             notifyObservers();

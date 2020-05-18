@@ -254,7 +254,6 @@ public class Environment implements Serializable {
      * @param currentPlayer Player to set to
      */
     protected void setCurrentPlayer(Figure currentPlayer) {
-        currentPlayer.step();
         this.currentPlayer = currentPlayer;
     }
 
@@ -263,9 +262,7 @@ public class Environment implements Serializable {
      * @param ID ID to set to
      */
     public void setCurrentPlayer(int ID) {
-        Figure current =  this.players.get(ID);
-        current.step();
-        this.currentPlayer = current;
+        this.currentPlayer = this.players.get(ID);
     }
 
     /**

@@ -11,7 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MapPresenter implements Observer, Serializable {
+
     private static final MapPresenter instance = new MapPresenter();
+
+    private List<FigurePresenter> figures;
+    private List<TilePresenter> tiles;
 
     /**
      * Private Constructor, Singleton
@@ -21,8 +25,6 @@ public class MapPresenter implements Observer, Serializable {
         tiles = new ArrayList<>();
     }
 
-    private List<FigurePresenter> figures;
-    private List<TilePresenter> tiles;
 
     /**
      * Get Singleton instance

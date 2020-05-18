@@ -216,6 +216,8 @@ public class GameJFrame extends JFrame {
 
         initIo();
 
+        initTextBox();
+
         initLoad();
 
         initSave();
@@ -248,7 +250,6 @@ public class GameJFrame extends JFrame {
 
         initTeam();
     }
-
 
     /**
      * Initializes JLabel io

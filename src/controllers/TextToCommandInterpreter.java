@@ -108,7 +108,8 @@ public class TextToCommandInterpreter {
                 } else if (bodyheat == 5) {
                     command = new BuildIgluCommand();
                 }
-            case "exit":
+                break;
+            case "exit":    // empty case
             case "quit":
                 game.endGame();
                 break;

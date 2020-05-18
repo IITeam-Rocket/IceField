@@ -1,6 +1,5 @@
 package controllers.game.commands;
 
-import controllers.game.Game;
 import controllers.game.GameJFrame;
 import controllers.view.MapPresenter;
 import models.Environment;
@@ -9,17 +8,14 @@ import models.tiles.Tile;
 
 public class MoveCommand implements Command {
 
-    private final Game game;
     private final String[] args;
 
     /**
      * Constructor
      *
-     * @param _game The Game Object
      * @param _args Command Arguments
      */
-    public MoveCommand(Game _game, String[] _args) {
-        game = _game;
+    public MoveCommand(String[] _args) {
         args = _args;
     }
 

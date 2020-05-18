@@ -1,6 +1,5 @@
 package controllers.game.commands;
 
-import controllers.game.Game;
 import controllers.game.GameJFrame;
 import controllers.view.*;
 import models.Environment;
@@ -18,10 +17,9 @@ public class AddTileCommand implements Command {
     /**
      * Constructor
      *
-     * @param _game The Game Object
      * @param _args Command Arguments
      */
-    public AddTileCommand(Game _game, String[] _args) {
+    public AddTileCommand(String[] _args) {
         args = _args;
     }
 

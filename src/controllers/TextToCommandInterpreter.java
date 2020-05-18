@@ -57,7 +57,7 @@ public class TextToCommandInterpreter {
                 command = new NextCharacterCommand(game, args);
                 break;
             case "move":
-                command = new MoveCommand(game, args);
+                command = new MoveCommand(args);
                 break;
             case "unbury":
                 command = new UnburyCommand(args);
@@ -84,7 +84,7 @@ public class TextToCommandInterpreter {
                 command = new AnalyzeTileCommand(game, args);
                 break;
             case "addtile":
-                command = new AddTileCommand(game, args);
+                command = new AddTileCommand(args);
                 break;
             case "neighbourtile":
                 command = new NeighbourTileCommand(args);

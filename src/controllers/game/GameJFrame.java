@@ -40,11 +40,12 @@ public class GameJFrame extends JFrame {
     private final JLabel gameplay = new JLabel("Gameplay:");
     private final JButton special = new JButton("Use Special Ability");
     private final JButton craft = new JButton("Craft Signal Flare");
-    private final JButton rescue = new JButton("rescue");
+    private final JButton rescue = new JButton("Rescue");
     private final JButton snow = new JButton("Clear Snow");
-    private final JButton unbury = new JButton("unBury");
-    private final JButton move = new JButton("move");
+    private final JButton unbury = new JButton("Unbury");
+    private final JButton move = new JButton("Move");
     private final JButton next = new JButton("Next Character");
+    private final JButton help = new JButton("?");
 
     private Tile activeTile = null;
 
@@ -249,6 +250,8 @@ public class GameJFrame extends JFrame {
         initDebugBox();
 
         initTeam();
+
+        initHelp();
     }
 
     /**
@@ -457,6 +460,20 @@ public class GameJFrame extends JFrame {
         commandPanel.add(debug);
     }
 
+    /**
+     * Initializes JButton help
+     */
+    private void initHelp() {
+        help.setVisible(true);
+        help.addActionListener(e -> {
+            String text1 = ("Type a filename and press the Save or the Load button to\nsave or load the current game.\nPress the Random On/Off button to turn it on/off.\nPress the Simulate Weather button to release a storm\n(only available if random off).\n");
+            String text2 = ("Press Next Character to change the current player.\nSelect a tile and than press Move, Rescue or Use Special\nAbility to make the action. Press Unbury, Clear Snow or\nCraft Signal Flare to make the action.");
+            this.characterOutInfo(text1 + text2);
+            MapPresenter.getInstance().update();
+        });
+        commandPanel.add(help);
+    }
+
 
     /**
      * Create the background
@@ -502,7 +519,8 @@ public class GameJFrame extends JFrame {
 
         text.setBounds(5,280, 400, 145);
         debug.setBounds(5, 430, 400,90);
-        team.setBounds(130,520, 400, 230);
+        team.setBounds(130,520, 100, 230);
+        help.setBounds(260,530, 50, 20);
 
         createBackground();
         super.paint(g);

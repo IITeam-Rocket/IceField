@@ -1,9 +1,10 @@
-import controllers.Skeleton;
+import controllers.game.GameJFrame;
 
 public class Main {
 
-    public static void main(String[] args){
-        Skeleton skeleton = new Skeleton();
-        skeleton.run();
+  public static void main(String[] args) {
+      GameJFrame frame = GameJFrame.getInstance();
+
+      frame.getGame().playGame();
     }
 }

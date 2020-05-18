@@ -1,30 +1,65 @@
 package models;
 
-import models.characters.Character;
+import controllers.game.GameJFrame;
+import controllers.view.MapPresenter;
 import models.exceptions.EndOfGameException;
-import models.tiles.StableIcePatch;
+import models.figures.Figure;
 import models.tiles.Tile;
 
+import java.io.*;
 import java.util.ArrayList;
-
-import static controllers.TabController.*;
+import java.util.Random;
 
 /**
- * Singleton class representing the Environment and the Game
- * It controls the gameplay with the environmental state
- * such as the relationship between Tiles and making a storm.
+ * Singleton class representing the Environment.
+ * It contains the environmental state such as the relationship between Tiles and making a storm.
+ *
+ * @author Józsa György
+ * @version 3.0
+ * @since skeleton
+ * @since 2020.03.10
  */
 
-public class Environment {
+public class Environment implements Serializable {
 
-    static private Environment instance = new Environment();
-    private ArrayList<Tile> iceTiles;
-    private ArrayList<Character> players;
-    private Character currentPlayer;
+    /**
+     * The only live instance of the class.
+     */
+    static private final Environment instance = new Environment();
+    /**
+     * Contains the Tile's of the game.
+     */
+    private ArrayList<Tile> iceTiles = new ArrayList<>();
+    /**
+     * Contains the Figure's of the game.
+     */
+    private ArrayList<Figure> players = new ArrayList<>();
+    /**
+     * The player, who is currently on turn.
+     */
+    private Figure currentPlayer;
+    /**
+     * Shows that the beacon is discovered or not.
+     */
     private boolean beaconIsDiscovered = false;
+    /**
+     * Shows that the cartridge is discovered or not.
+     */
     private boolean cartridgeIsDiscovered = false;
+    /**
+     * Shows that the gun is discovered or not.
+     */
     private boolean gunIsDiscovered = false;
 
+    private Tile beaconLocation = null;
+
+    private Tile cartridgeLocation = null;
+
+    private Tile gunLocation = null;
+
+    /**
+     * Creates a new Environment.
+     */
     private Environment() {
     }
 
@@ -34,66 +69,129 @@ public class Environment {
      * @return the singleton object
      */
     static public Environment getInstance() {
-        addIndent();
-        printlnWithIndents("Environment.getInstance()");
-
-        printlnWithIndents("return: instance");
-        removeIndent();
         return instance;
+    }
+
+    /**
+     * Writes the instance object to the given path using serialization
+     *
+     * @param path The path where the object should be written serialized
+     *
+     * @return Return whether or not the serialization was a success
+     */
+    public static boolean serializeWrite(String path) {
+        try {
+            FileOutputStream f = new FileOutputStream(path);
+            ObjectOutputStream out = new ObjectOutputStream(f);
+            out.writeObject(instance);
+            out.writeObject(MapPresenter.getInstance());
+            out.close();
+            return true;
+        } catch (IOException ex) {
+            GameJFrame.getInstance().outputToTextBox("File " + path + " doesn't exist!");
+            return false;
+        }
+    }
+
+    /**
+     * Reads the instance object from the given path using serialization
+     *
+     * @param path The path where the object should be read from serialized
+     *
+     * @return Return whether or not the serialization was a success
+     */
+    public static boolean serializeRead(String path) {
+        try {
+            FileInputStream f = new FileInputStream(path);
+            ObjectInputStream in = new ObjectInputStream(f);
+            Environment env = (Environment) in.readObject();
+
+            Tile.setIDCounter(env.getIceTiles().size());
+
+            instance.reset();
+
+            instance.setIceTiles(env.getIceTiles());
+            instance.setPlayers(env.getPlayers());
+            instance.setCurrentPlayer(env.getCurrentPlayer());
+
+            if (env.isBeaconIsDiscovered())
+                instance.recordBeacon(env.getBeaconLocation());
+
+            if (env.isCartridgeIsDiscovered())
+                instance.recordCartridge(env.getCartridgeLocation());
+
+            if (env.isGunIsDiscovered())
+                instance.recordGun(env.getGunLocation());
+
+            MapPresenter mapPresenter = (MapPresenter) in.readObject();
+
+            MapPresenter.getInstance().reset();
+
+            MapPresenter.getInstance().setFigures(mapPresenter.getFigures());
+            MapPresenter.getInstance().setTiles(mapPresenter.getTiles());
+
+            MapPresenter.getInstance().update();
+
+            in.close();
+
+            return true;
+        } catch (IOException ex) {
+            GameJFrame.getInstance().outputToTextBox("Couldn't load with serialization!\nFile " + path + " doesn't exist or doesn't contain the correct data!");
+            return false;
+        } catch (ClassNotFoundException ex) {
+            GameJFrame.getInstance().outputToTextBox("Couldn't save with serialization! ClassNotFound");
+            return false;
+        }
+    }
+
+    /**
+     * Resets the content of the current Environment class
+     */
+    public void reset() {
+        iceTiles = new ArrayList<>();
+        players = new ArrayList<>();
+        currentPlayer = null;
+        beaconIsDiscovered = false;
+        cartridgeIsDiscovered = false;
+        gunIsDiscovered = false;
+        Tile.setIDCounter(0);
     }
 
     /**
      * Records the discovery of Beacon.
      */
-    public void recordBeacon() {
-        addIndent();
-        printlnWithIndents("Environment.recordBeacon()");
+    public void recordBeacon(Tile tile) {
         this.beaconIsDiscovered = true;
-
-        printlnWithIndents("return");
-        removeIndent();
+        setBeaconLocation(tile);
     }
 
     /**
      * Records the discovery of Cartridge.
      */
-    public void recordCartridge() {
-        addIndent();
-        printlnWithIndents("Environment.recordCartridge()");
-
+    public void recordCartridge(Tile tile) {
         this.cartridgeIsDiscovered = true;
-        printlnWithIndents("return");
-        removeIndent();
+        setCartridgeLocation(tile);
     }
 
     /**
      * Records the discovery of Gun.
      */
-    public void recordGun() {
-        addIndent();
-        printlnWithIndents("Environment.recordGun()");
+    public void recordGun(Tile tile) {
         this.gunIsDiscovered = true;
-        printlnWithIndents("return");
-        removeIndent();
+        setGunLocation(tile);
     }
 
     /**
      * Initiates a storm that fills the Tiles with snow,
      * and takes the Characters' body-heat.
+     *
+     * @throws EndOfGameException if a player character
+     *                            dies
      */
-    public void makeStorm() {
-        addIndent();
-        printlnWithIndents("Environment.makeStorm()");
-
-        ArrayList<Tile> randomTiles = getRandomTiles();
-
-        for(Tile tile: randomTiles){
-            tile.addSnow(1);
-            tile.reactToStorm();
-        }
-
-        printlnWithIndents("return");
-        removeIndent();
+    public void makeStorm() throws EndOfGameException {
+        ArrayList<Tile> target = getRandomTiles();
+        for (Tile t : target)
+            t.reactToStorm();
     }
 
     /**
@@ -101,41 +199,19 @@ public class Environment {
      *
      * @return a random set of tiles.
      */
-    public ArrayList<Tile> getRandomTiles() {
-        addIndent();
-        printlnWithIndents("Environment.getRandomTiles()");
-
-        printlnWithIndents("return: tiles");
-        removeIndent();
-
-        ArrayList<Tile> tiles = new ArrayList<Tile>();
-        StableIcePatch stable = new StableIcePatch();
-        stable.addSnow(2);
-        tiles.add(stable);
-
-        return tiles;
-    }
-
-    /**
-     * Plays the winning game sequence.
-     */
-    public void winGame() {
-        addIndent();
-        printlnWithIndents("Environment.winGame()");
-        ///TODO implement winGame()
-        printlnWithIndents("return");
-        removeIndent();
-    }
-
-    /**
-     * Controls the entire game-play.
-     */
-    public void playGame() {
-        addIndent();
-        printlnWithIndents("Environment.playGame()");
-        ///TODO implement playGame()
-        printlnWithIndents("return");
-        removeIndent();
+    private ArrayList<Tile> getRandomTiles() {
+        ArrayList<Tile> randomTiles = new ArrayList<>();
+        Random rand = new Random();
+        int numberOfRandomTiles = rand.nextInt(iceTiles.size());
+        if (iceTiles.size() == 1)
+            numberOfRandomTiles = 1;
+        while (randomTiles.size() != numberOfRandomTiles) {
+            int nextID = rand.nextInt(iceTiles.size());
+            Tile nextTile = iceTiles.get(nextID);
+            if (!randomTiles.contains(nextTile))
+                randomTiles.add(nextTile);
+        }
+        return randomTiles;
     }
 
     /**
@@ -144,26 +220,24 @@ public class Environment {
      * @return the list of Tiles in the game
      */
     public ArrayList<Tile> getIceTiles() {
-        addIndent();
-        printlnWithIndents("Environment.getIceTiles()");
-
-        printlnWithIndents("return: iceTiles");
-        removeIndent();
         return iceTiles;
     }
 
+    private void setIceTiles(ArrayList<Tile> iceTiles) {
+        this.iceTiles = iceTiles;
+    }
+
     /**
-     * Return a list of Characters in the game
+     * Return a list of Figures in the game
      *
      * @return the list of players
      */
-    public ArrayList<Character> getPlayers() {
-        addIndent();
-        printlnWithIndents("Environment.getPlayers()");
-
-        printlnWithIndents("return: players");
-        removeIndent();
+    public ArrayList<Figure> getPlayers() {
         return players;
+    }
+
+    private void setPlayers(ArrayList<Figure> players) {
+        this.players = players;
     }
 
     /**
@@ -171,13 +245,27 @@ public class Environment {
      *
      * @return the current player
      */
-    public Character getCurrentPlayer() {
-        addIndent();
-        printlnWithIndents("Environment.getCurrentPlayer()");
-
-        printlnWithIndents("return: currentPlayer");
-        removeIndent();
+    public Figure getCurrentPlayer() {
         return currentPlayer;
+    }
+
+    /**
+     * Set current player
+     * @param currentPlayer Player to set to
+     */
+    protected void setCurrentPlayer(Figure currentPlayer) {
+        currentPlayer.step();
+        this.currentPlayer = currentPlayer;
+    }
+
+    /**
+     * Set current Player ID
+     * @param ID ID to set to
+     */
+    public void setCurrentPlayer(int ID) {
+        Figure current =  this.players.get(ID);
+        current.step();
+        this.currentPlayer = current;
     }
 
     /**
@@ -188,12 +276,31 @@ public class Environment {
      * false otherwise.
      */
     public boolean isBeaconIsDiscovered() {
-        addIndent();
-        printlnWithIndents("Environment.isBeaconIsDiscovered()");
-
-        printlnWithIndents("return: beaconIsDiscovered");
-        removeIndent();
         return beaconIsDiscovered;
+    }
+
+    /**
+     * Set Beacon discovered
+     * @param beaconIsDiscovered boolean Beacon set
+     */
+    protected void setBeaconIsDiscovered(boolean beaconIsDiscovered) {
+        this.beaconIsDiscovered = beaconIsDiscovered;
+    }
+
+    /**
+     * Get Beacon location
+     * @return Location
+     */
+    public Tile getBeaconLocation() {
+        return beaconLocation;
+    }
+
+    /**
+     * Set Beacon location
+     * @param tile Location
+     */
+    private void setBeaconLocation(Tile tile) {
+        beaconLocation = tile;
     }
 
     /**
@@ -204,12 +311,31 @@ public class Environment {
      * false otherwise.
      */
     public boolean isCartridgeIsDiscovered() {
-        addIndent();
-        printlnWithIndents("Environment.isCartridgeIsDiscovered()");
-
-        printlnWithIndents("return: cartridgeIsDiscovered");
-        removeIndent();
         return cartridgeIsDiscovered;
+    }
+
+    /**
+     * Set is discovered
+     * @param cartridgeIsDiscovered Set to this
+     */
+    protected void setCartridgeIsDiscovered(boolean cartridgeIsDiscovered) {
+        this.cartridgeIsDiscovered = cartridgeIsDiscovered;
+    }
+
+    /**
+     * Get Cartridge location
+     * @return Location
+     */
+    public Tile getCartridgeLocation() {
+        return cartridgeLocation;
+    }
+
+    /**
+     * Set Cartridge location
+     * @param tile Location
+     */
+    private void setCartridgeLocation(Tile tile) {
+        cartridgeLocation = tile;
     }
 
     /**
@@ -220,49 +346,66 @@ public class Environment {
      * false otherwise.
      */
     public boolean isGunIsDiscovered() {
-        addIndent();
-        printlnWithIndents("Environment.isGunIsDiscovered()");
-
-        printlnWithIndents("return: gunIsDiscovered");
-        removeIndent();
         return gunIsDiscovered;
     }
 
     /**
-     * Plays the losing game sequence.
-     *
-     * @throws EndOfGameException always
+     * Set is discovered
+     * @param gunIsDiscovered Set to this
      */
-    public void gameOver() throws EndOfGameException {
-        addIndent();
-        printlnWithIndents("Environment.gameOver()");
-
-        printlnWithIndents("throw: EndOfGameException");
-        removeIndent();
-        throw new EndOfGameException("Somebody died!");
-    }
-
-    public void setIceTiles(ArrayList<Tile> iceTiles) {
-        this.iceTiles = iceTiles;
-    }
-
-    public void setPlayers(ArrayList<Character> players) {
-        this.players = players;
-    }
-
-    public void setCurrentPlayer(Character currentPlayer) {
-        this.currentPlayer = currentPlayer;
-    }
-
-    public void setBeaconIsDiscovered(boolean beaconIsDiscovered) {
-        this.beaconIsDiscovered = beaconIsDiscovered;
-    }
-
-    public void setCartridgeIsDiscovered(boolean cartridgeIsDiscovered) {
-        this.cartridgeIsDiscovered = cartridgeIsDiscovered;
-    }
-
-    public void setGunIsDiscovered(boolean gunIsDiscovered) {
+    protected void setGunIsDiscovered(boolean gunIsDiscovered) {
         this.gunIsDiscovered = gunIsDiscovered;
+    }
+
+    /**
+     * Get Gun location
+     * @return Location
+     */
+    public Tile getGunLocation() {
+        return gunLocation;
+    }
+
+    /**
+     * Set Gun location
+     * @param tile Location
+     */
+    private void setGunLocation(Tile tile) {
+        gunLocation = tile;
+    }
+
+    /**
+     * Plays the winning game sequence.
+     */
+    public void winGame() {
+        if (gunIsDiscovered && beaconIsDiscovered && cartridgeIsDiscovered) {
+            Tile tile = null;
+            boolean win = true;
+            for (Figure figure: players) {
+                if(figure.getBaseBodyHeat() != -1){
+                    if(tile == null)
+                        tile = figure.getTile();
+                    else if(tile != figure.getTile())
+                        win = false;
+                }
+            }
+            if(win) {
+                GameJFrame.getInstance().outputToTextBox("Signal flare crafted");
+                GameJFrame.getInstance().getGame().endGame();
+                GameJFrame.getInstance().showWinGameDialog();
+            }
+            else
+                GameJFrame.getInstance().outputToTextBox("The characters aren't on the same tile!");
+        }
+        else
+            GameJFrame.getInstance().outputToTextBox("At least one part is missing");
+    }
+
+    /**
+     * Plays the losing game sequence.
+     */
+    public void gameOver() {
+        GameJFrame.getInstance().outputToTextBox("Game over!");
+        GameJFrame.getInstance().getGame().endGame();
+        GameJFrame.getInstance().showEndGameDialog();
     }
 }

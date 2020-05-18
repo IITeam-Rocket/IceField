@@ -1,0 +1,10 @@
+random off
+addtile stable
+addcharactertotile 0 1
+nextcharacter
+buildiglu
+simulateweather
+nextcharacter
+simulateweather
+nextcharacter
+quit

@@ -1,13 +1,17 @@
 package models.policies;
 
-
-import models.characters.Character;
+import models.figures.Character;
 import models.tiles.Tile;
 
 /**
  * Interface that represents a strategy concerning
  * the player's policy of helping a friend who has
  * fallen into water.
+ *
+ * @author Józsa György
+ * @version 3.0
+ * @since skeleton
+ * @since 2020.03.10
  */
 public interface RescueFriendPolicy {
     /**

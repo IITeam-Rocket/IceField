@@ -1,44 +1,73 @@
 package models.tiles;
 
-import models.characters.Character;
+import models.exceptions.EndOfGameException;
+import models.figures.Figure;
 
-import static controllers.TabController.*;
+import java.io.Serializable;
 
 /**
  * An unstable IcePatch that may hold
  * a number of people before flipping
  * over.
+ *
+ * @author Józsa György
+ * @version 3.0
+ * @see models.tiles.IcePatch
+ * @see models.tiles.Tile
+ * @see models.Subject
+ * @see java.io.Serializable
+ * @since skeleton
+ * @since 2020.03.10
  */
-public class InstableIcePatch extends IcePatch {
 
-    int playerCapacity;
-    boolean flipped = false;
+public class InstableIcePatch extends IcePatch implements Serializable {
 
+    /**
+     * The capacity of this InstableIcePatch.
+     */
+    private int playerCapacity;
+    /**
+     * The state of the InstableIcePatch with the default value: false.
+     */
+    private boolean flipped = false;
+
+    /**
+     * Creates a new InstableIcePatch with the given playerCapacity.
+     *
+     * @param playerCapacity the new InstableIcePatch's capacity
+     */
     public InstableIcePatch(int playerCapacity) {
+        super();
+        this.playerCapacity = playerCapacity;
+    }
+
+    /**
+     * Creates a new InstableIcePatch with the given playerCapacity and with the given ID.
+     *
+     * @param playerCapacity the new InstableIcePatch's capacity.
+     * @param ID             the new InstableIcePatch's unique ID.
+     */
+    public InstableIcePatch(int ID, int playerCapacity) {
+        super(ID);
         this.playerCapacity = playerCapacity;
     }
 
     /**
      * Accepts the player who tries to move on it.
      *
-     * @param character the player to accept
+     * @param figure the player to accept
+     *
      * @return true if successful, false otherwise
      */
     @Override
-    public boolean acceptCharacter(Character character) {
-        addIndent();
-        printlnWithIndents("InstableIcePatch.acceptCharacter(character)");
-
-        characters.add(character);
-        if(characters.size() > playerCapacity){
+    public boolean acceptFigure(Figure figure) {
+        if (flipped)
+            return false;
+        moveFigureToThisTile(figure);
+        if (entities.size() > playerCapacity) {
             flip();
-            for (Character var :characters) {
-                var.swimToShore();
-            }
+            entities.removeIf(Figure::swimToShore);
         }
-
-        printlnWithIndents("return: true");
-        removeIndent();
         return true;
     }
 
@@ -50,10 +79,6 @@ public class InstableIcePatch extends IcePatch {
      */
     @Override
     public int getCapacity() {
-        addIndent();
-        printlnWithIndents("InstableIcePatch.getCapacity()");
-        printlnWithIndents("return: " + playerCapacity);
-        removeIndent();
         return playerCapacity;
     }
 
@@ -62,14 +87,24 @@ public class InstableIcePatch extends IcePatch {
      * behaviour from stable to hole
      * and vice versa.
      */
-    public void flip() {
-        addIndent();
-        printlnWithIndents("InstableIcePatch.flip()");
-
+    private void flip() {
         flipped = !flipped;
+    }
 
-        printlnWithIndents("return");
-        removeIndent();
+    /**
+     * Performs duties that must be done
+     * at the end of a turn
+     *
+     * @throws EndOfGameException if the patch is flipped and a player was left in the water.
+     */
+    @Override
+    public void step() throws EndOfGameException {
+        super.step();
+        if (!flipped)
+            return;
+        if (entities.size() != 0)
+            throw new EndOfGameException("A player has drowned!");
+        flip();
     }
 
     /**
@@ -79,32 +114,42 @@ public class InstableIcePatch extends IcePatch {
      * @return false, if the Patch can
      */
     public boolean isFlipped() {
-        addIndent();
-        printlnWithIndents("InstableIcePatch.isFlipped()");
-        printlnWithIndents("return: "+ flipped);
-        removeIndent();
-
         return flipped;
     }
 
-    public void setPlayerCapacity(int playerCapacity) {
-
-        addIndent();
-        printlnWithIndents("InstableIcePatch.setPlayerCapacity()");
-
-        this.playerCapacity = playerCapacity;
-
-        printlnWithIndents("return");
-        removeIndent();
+    /**
+     * Sets the InstableIcePatch is flipped or not.
+     *
+     * @param flipped the flipped attribute's new value
+     */
+    public void setFlipped(boolean flipped) {
+        this.flipped = flipped;
     }
 
-    public void setFlipped(boolean flipped) {
-        addIndent();
-        printlnWithIndents("InstableIcePatch.setFlipped()");
+    /**
+     * Sets the InstableIcePatch's playerCapacity to the parameter.
+     *
+     * @param playerCapacity the playerCapacity attribute's new value
+     */
+    public void setPlayerCapacity(int playerCapacity) {
+        this.playerCapacity = playerCapacity;
+    }
 
-        this.flipped = flipped;
-
-        printlnWithIndents("return");
-        removeIndent();
+    /**
+     * Accept Figure Without Removal
+     * @param figure Figure
+     * @return was it a success
+     */
+    @Override
+    public boolean acceptFigureWithoutRemoval(Figure figure) {
+        if (flipped)
+            return false;
+        addCharacter(figure);
+        figure.setTile(this);
+        if (entities.size() > playerCapacity) {
+            flip();
+            entities.removeIf(Figure::swimToShore);
+        }
+        return true;
     }
 }

@@ -1,0 +1,19 @@
+set random: off
+tile added
+type: stable
+ID: 0
+character added: 0, 2
+tile added
+type: hole
+ID: 1
+neighbours: 0, 1
+researcher
+bodyheat: 4
+stamina: 4
+clearPatchStrategy: EmptyHandPolicy
+helpFriendStrategy: NoRescuePolicy
+swimToShoreStrategy: HasNoDiveSuitPolicy
+tile: 0
+move character to 1: successful
+Researcher remains in water at the end of the turn, researcher dies!
+Game over!

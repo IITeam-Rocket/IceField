@@ -1,0 +1,17 @@
+random off
+addtile stable
+addcharactertotile 0 2
+addtile stable
+neighbourtile 0 1
+nextcharacter
+move 1
+move 0
+move 1
+move 0
+move 1
+unbury
+clearsnow
+rescue 0
+craftsignalflare
+analyzetile 0
+quit

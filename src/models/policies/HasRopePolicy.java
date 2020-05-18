@@ -1,17 +1,23 @@
 package models.policies;
 
-
-import models.characters.Character;
+import controllers.game.GameJFrame;
+import models.figures.Character;
 import models.tiles.Tile;
 
-import static controllers.TabController.*;
+import java.io.Serializable;
 
 /**
  * A strategy of the player to help their friend
  * when said friend has fallen into water. This strategy is
  * to pull them out with a rope.
+ *
+ * @author Józsa György
+ * @version 3.0
+ * @see models.policies.RescueFriendPolicy
+ * @since skeleton
+ * @since 2020.03.10
  */
-public class HasRopePolicy implements RescueFriendPolicy {
+public class HasRopePolicy implements RescueFriendPolicy, Serializable {
 
     /**
      * Executes the strategy. Pulls the character
@@ -22,15 +28,22 @@ public class HasRopePolicy implements RescueFriendPolicy {
      */
     @Override
     public void executeStrategy(Character friend, Tile dest) {
-        addIndent();
-        printlnWithIndents("RescueFriendPolicy.executeStrategy(friend, dest)");
 
         Tile source = friend.getTile();
-        dest.acceptCharacter(friend);
+        dest.acceptFigure(friend);
 
-        source.removeCharacter(friend);
+        source.removeFigure(friend);
+        GameJFrame.getInstance().outputToTextBox("Friend rescued!");
 
-        printlnWithIndents("return");
-        removeIndent();
+    }
+
+    /**
+     * Converts the name of the strategy to String so we can use it to print it
+     *
+     * @return The name of the Strategy
+     */
+    @Override
+    public String toString() {
+        return "HasRopePolicy";
     }
 }

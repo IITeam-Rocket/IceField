@@ -1,14 +1,22 @@
 package models.items;
 
-import models.characters.Character;
+import controllers.game.GameJFrame;
+import models.figures.Character;
+import models.policies.ShovelPolicy;
 
-import static controllers.TabController.*;
+import java.io.Serializable;
 
 /**
  * An Item that gives the finding character
- * strength up to a unit of 2.
+ * the ability to remove 2 units of snow
+ * on clearing.
+ *
+ * @author Józsa György
+ * @version 3.0
+ * @since skeleton
+ * @since 2020.03.10
  */
-public class Shovel extends Item {
+public class Shovel extends Item implements Serializable {
     /**
      * Sets the finder player's strength to 2, if it's lower.
      *
@@ -16,12 +24,34 @@ public class Shovel extends Item {
      */
     @Override
     public void uponDiscovery(Character finder) {
-        addIndent();
-        printlnWithIndents("Shovel.uponDiscovery(finder)");
+        System.out.println("unburied item: 4");
+        finder.changeClearSnowPolicy(new ShovelPolicy());
+        GameJFrame.getInstance().showItemDialog(this.toString());
+    }
 
-        finder.setStrength(2);
-
-        printlnWithIndents("return");
-        removeIndent();
+    /**
+     * Returns a string representation of the object. In general, the
+     * {@code toString} method returns a string that
+     * "textually represents" this object. The result should
+     * be a concise but informative representation that is easy for a
+     * person to read.
+     * It is recommended that all subclasses override this method.
+     * <p>
+     * The {@code toString} method for class {@code Object}
+     * returns a string consisting of the name of the class of which the
+     * object is an instance, the at-sign character `{@code @}', and
+     * the unsigned hexadecimal representation of the hash code of the
+     * object. In other words, this method returns a string equal to the
+     * value of:
+     * <blockquote>
+     * <pre>
+     * getClass().getName() + '@' + Integer.toHexString(hashCode())
+     * </pre></blockquote>
+     *
+     * @return a string representation of the object.
+     */
+    @Override
+    public String toString() {
+        return "Shovel";
     }
 }

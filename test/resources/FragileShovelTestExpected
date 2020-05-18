@@ -1,0 +1,27 @@
+set random: off
+tile added
+type: stable
+ID: 0
+item added: 0, 3
+character added: 0, 2
+researcher
+bodyheat: 4
+stamina: 4
+clearPatchStrategy: EmptyHandPolicy
+helpFriendStrategy: NoRescuePolicy
+swimToShoreStrategy: HasNoDiveSuitPolicy
+tile: 0
+unburied item: 3
+snow added: 0, 6
+cleared snow: 2 unit(s)
+cleared snow: 2 unit(s)
+cleared snow: 2 unit(s)
+snow added: 0, 6
+researcher
+bodyheat: 4
+stamina: 4
+clearPatchStrategy: EmptyHandPolicy
+helpFriendStrategy: NoRescuePolicy
+swimToShoreStrategy: HasNoDiveSuitPolicy
+tile: 0
+cleared snow: 1 unit(s)

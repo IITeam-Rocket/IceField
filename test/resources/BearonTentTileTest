@@ -1,0 +1,13 @@
+random off
+addtile stable
+addtile stable
+neighbourtile 0 1
+additemtotile 0 9
+addcharactertotile 0 2
+addcharactertotile 1 3
+nextcharacter
+unbury
+buildtent
+nextcharacter
+move 0
+quit

@@ -1,103 +1,129 @@
 package models.tiles;
 
-import models.characters.Character;
+import models.exceptions.EndOfGameException;
+import models.figures.Figure;
+import models.items.Item;
 
-import java.util.Random;
-
-import static controllers.TabController.*;
+import java.io.Serializable;
 
 /**
  * A tile with no solid platform.
+ *
+ * @author Józsa György
+ * @version 3.0
+ * @see models.tiles.Tile
+ * @see models.Subject
+ * @see java.io.Serializable
+ * @since skeleton
+ * @since 2020.03.10
  */
-public class Hole extends Tile {
+public class Hole extends Tile implements Serializable {
 
-    private boolean isDiscovered = false;
-
+    /**
+     * Creates a new Hole.
+     */
     public Hole() {
-        Random r = new Random();
-        int i = 0;
-        while (i == 0)
-            i = r.nextInt(maxSnowDepth + 1);
+        super();
+    }
 
-        snowDepth = i;
+    /**
+     * Creates a new Hole with the given ID.
+     * The ID should be unique.
+     */
+    public Hole(int ID) {
+        super(ID);
     }
 
     /**
      * If the Hole has not been revealed, the
      * accepts the player, otherwise it doesn't.
      *
-     * @param character the player to accept
+     * @param figure the player to accept
+     *
      * @return true if successful, false otherwise
      */
     @Override
-    public boolean acceptCharacter(Character character) {
-        addIndent();
-        printlnWithIndents("Hole.acceptCharacter(character)");
-
-        if(!isDiscovered){
-            reveal();
-            character.swimToShore();
-
-            printlnWithIndents("return: true");
-            removeIndent();
-            return true;
-        }
-
-        printlnWithIndents("return: false");
-        removeIndent();
-        return false;
+    public boolean acceptFigure(Figure figure) {
+        if (analyzed)
+            return false;
+        reveal();
+        moveFigureToThisTile(figure);
+        if (figure.swimToShore())
+            entities.remove(figure);
+        return true;
     }
+
 
     /**
      * Realises the storm's effects.
      */
     @Override
     public void reactToStorm() {
-        addIndent();
-        printlnWithIndents("Hole.reactToStorm()");
-
-        addSnow(1);
-
-        printlnWithIndents("return");
-        removeIndent();
-
+        if (snowDepth < maxSnowDepth)
+            addSnow(1);
     }
 
     /**
      * Returns the maximum number of characters the
      * Tile can hold at one time, which is zero.
+     * It also reveals the hole.
      *
-     * @return 0
+     * @return zero
      */
     @Override
     public int getCapacity() {
-        addIndent();
-        printlnWithIndents("Hole.getCapacity()");
-
-        reveal();
-
-        printlnWithIndents("return: 0");
-        removeIndent();
-
         return 0;
     }
+
+
     /**
-     * Sets isDiscovered true.
+     * Performs duties that must be done
+     * at the end of a turn
+     *
+     * @throws EndOfGameException if it contains players
      */
-    public void reveal(){
-        addIndent();
-        printlnWithIndents("Hole.reveals()");
-        setDiscovered(true);
-
-        printlnWithIndents("return");
-        removeIndent();
+    @Override
+    public void step() throws EndOfGameException {
+        if (entities.size() > 0)
+            throw new EndOfGameException("A player has drowned!");
     }
 
-    public boolean isDiscovered() {
-        return isDiscovered;
+    /**
+     * Upon attack, does nothing
+     *
+     * @param attacker the attacking entity
+     */
+    @Override
+    public void reactToAttack(Figure attacker) {
+        //Empty
     }
 
-    public void setDiscovered(boolean discovered) {
-        isDiscovered = discovered;
+    /**
+     * Buries an item in the Tile
+     *
+     * @param item the item to bury
+     *
+     * @return false
+     */
+    @Override
+    public boolean storeItem(Item item) {
+        return false;
+    }
+
+    /**
+     * Accept Figure Without Removal
+     * @param figure Figure
+     * @return was it a success
+     */
+    @Override
+    public boolean acceptFigureWithoutRemoval(Figure figure) {
+        if (analyzed)
+            return false;
+        reveal();
+        addCharacter(figure);
+        figure.setTile(this);
+        if (figure.swimToShore())
+            entities.remove(figure);
+        return true;
     }
 }

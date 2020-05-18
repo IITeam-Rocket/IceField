@@ -1,0 +1,57 @@
+addtile instable 2
+addtile stable
+addtile hole
+addtile instable 1
+addtile hole
+addtile stable
+addtile instable 1
+addtile hole
+addtile stable
+addtile hole
+addtile stable
+addtile hole
+addtile stable
+neighbourtile 0 1
+neighbourtile 1 2
+neighbourtile 2 3
+neighbourtile 3 4
+neighbourtile 4 5
+neighbourtile 5 6
+neighbourtile 6 7
+neighbourtile 7 8
+neighbourtile 8 9
+neighbourtile 9 10
+neighbourtile 10 11
+neighbourtile 11 12
+neighbourtile 12 0
+neighbourtile 1 9
+neighbourtile 1 8
+neighbourtile 2 8
+neighbourtile 3 5
+neighbourtile 3 7
+neighbourtile 3 8
+neighbourtile 5 7
+neighbourtile 6 10
+neighbourtile 6 11
+neighbourtile 7 10
+neighbourtile 9 0
+neighbourtile 9 12
+neighbourtile 10 12
+addcharactertotile 1 3
+addcharactertotile 3 1
+addcharactertotile 5 2
+addcharactertotile 6 2
+additemtotile 12 6
+additemtotile 8 7
+additemtotile 0 8
+additemtotile 10 4
+addsnowtotile 0 3
+addsnowtotile 9 4
+addsnowtotile 12 2
+random off
+nextcharacter
+nextcharacter
+move 4
+nextcharacter
+rescue 4
+quit

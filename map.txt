@@ -62,4 +62,5 @@ addsnowtotile 12 2
 addsnowtotile 13 3
 addsnowtotile 5 4
 addsnowtotile 2 1
+addsnowtotile 4 2
 input console
